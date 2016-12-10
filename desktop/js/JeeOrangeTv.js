@@ -37,8 +37,6 @@ if (init(_cmd.type) == 'action') {
     tr += '<input disabled class="cmdAttr form-control input-sm" data-l1key="name">';
     tr += '</div>';
     tr += '</div>';
-    tr += '<select class="cmdAttr form-control tooltips input-sm expertModeVisible" data-l1key="value" style="display : none;margin-top : 5px;margin-right : 10px;" title="{{La valeur de la commande vaut par défaut la commande}}">';
-    tr += '</select>';
     tr += '</td>';
     tr += '<td>';
     tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="type" value="action" disabled style="margin-bottom : 5px;" />';
@@ -49,9 +47,6 @@ if (init(_cmd.type) == 'action') {
     tr += '<span>{{Code touche : }}<br/></span><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="code_touche" style="margin-bottom : 5px;width : 50%; display : inline-block;" />';
     tr += '</td>';
     tr += '<td>';
-    tr += '<select class="cmdAttr form-control input-sm expertModeVisible" data-l1key="configuration" data-l2key="updateCmdId" style="display : none;margin-top : 5px;" title="Commande d\'information à mettre à jour">';
-    tr += '</select>';
-    tr += '<input class="cmdAttr form-control input-sm expertModeVisible" data-l1key="configuration" data-l2key="updateCmdToValue" style="display : none;margin-top : 5px;">';
     tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
     tr += '</td>';
     tr += '<td>';
@@ -65,18 +60,5 @@ if (init(_cmd.type) == 'action') {
     $('#table_cmd tbody').append(tr);
     $('#table_cmd tbody tr:last').setValues(_cmd, '.cmdAttr');
     var tr = $('#table_cmd tbody tr:last');
-    jeedom.eqLogic.builSelectCmd({
-        id: $(".li_eqLogic.active").attr('data-eqLogic_id'),
-        filter: {type: 'info'},
-        error: function (error) {
-            $('#div_alert').showAlert({message: error.message, level: 'danger'});
-        },
-        success: function (result) {
-            tr.find('.cmdAttr[data-l1key=value]').append(result);
-            tr.find('.cmdAttr[data-l1key=configuration][data-l2key=updateCmdId]').append(result);
-            tr.setValues(_cmd, '.cmdAttr');
-            jeedom.cmd.changeType(tr, init(_cmd.subType));
-        }
-    });
 }
 }

@@ -110,7 +110,7 @@ foreach ($eqLogics as $eqLogic) {
 					{{Obligatoire pour que cela fonctionne.}}
 				</div>
 				<div class="form-group">
-					<label class="col-lg-3 control-label">{{Adresse IP du Déodeur}}</label>
+					<label class="col-lg-3 control-label">{{Adresse IP du Décodeur}}</label>
 					<div class="col-sm-2">
 						<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="box_ip" placeholder="{{Adresse IP}}"/>
 					</div>

@@ -117,19 +117,29 @@ class JeeOrangeTv extends eqLogic {
      */
 	
 	public function ActionCommande($box_ip, $code_touche, $code_mode) {
-		
+
 		// construction de la commande
-		$cmd_html = 'curl "http://'.$box_ip.':8080/remoteControl/cmd?operation=01&key='.$code_touche.'&mode='.$code_mode.'" > /dev/null 2>&1';
+		$cmd_html = 'curl -s "http://'.$box_ip.':8080/remoteControl/cmd?operation=01&key='.$code_touche.'&mode='.$code_mode.'" > /dev/null 2>&1';
 		
 		// execution de la commande
 		$retour_action = shell_exec($cmd_html);
 		
+		
+		// etat du decodeur
+		$cmd_retour = 'curl -s "http://'.$box_ip.':8080/remoteControl/cmd?operation=10"';
+		// execution de la commande
+		$retour_action = shell_exec($cmd_retour);	
+		$retour = json_decode($retour_action, true);
+		
+		log::add('JeeOrangeTv', 'debug', 'JSON chaine actuelle : ' . $retour_action);
+		log::add('JeeOrangeTv', 'debug', 'JSON etat du decodeur : ' . $retour['result']['data']['activeStandbyState']);
+		log::add('JeeOrangeTv', 'debug', 'JSON chaine actuelle : ' . $retour['result']['data']['playedMediaId']);		
 		return;
 	}
 	
 
     public function autoAjoutCommande() {
-
+		
 		global $listCmdJeeOrangeTv;
 		
         foreach ($listCmdJeeOrangeTv as $cmd) {
