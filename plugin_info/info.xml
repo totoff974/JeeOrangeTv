@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info>
+    <id>JeeOrangeTv</id>
+    <name>JeeOrangeTv</name>
+    <description>Plugin pour piloter le décodeur TV Orange par IP</description>
+    <icon>fa fa-plug</icon>
+    <licence>AGPL</licence>
+    <author>Christophe CHAMANT</author>
+    <installation></installation>
+    <require>2.3</require>
+	<version>1.0</version>
+    <category>multimedia</category>
+</info>
