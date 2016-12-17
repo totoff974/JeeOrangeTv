@@ -29,7 +29,7 @@ class JeeOrangeTv extends eqLogic {
     /*     * ***********************Methode static*************************** */
     public static function cron5() {
 		foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
-			$this->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
+			$JeeOrangeTv->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
 		}	
 	}
 	public static function dependancy_info() {
