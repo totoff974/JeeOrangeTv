@@ -1,0 +1,283 @@
+<div id="plugin_container" class="eqLogic-widget eqLogic" style="width:160px;height:250px;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#; #style#" data-category="" data-eqLogic_id="#id#" data-version="#version#" >
+<center class="widget-name"><strong><a href="#eqLink#" style="font-size : 1.1em;#hideEqLogicName#">#name_display#</strong></a
+<div style="width:160px;height:250px;margin:auto;padding: 10px 0px">
+<!-- 1ère ligne -->
+<div>
+<img src=plugins/JeeOrangeTv/doc/images/mobileWidget/#etat_decodeur#.png style="margin-right: -2px"/>
+<span title="Up" class="up" data-type="action" data-subtype="other" data-cmd_id="#cmd_UP_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/2.png /></a>
+<script>
+		$('.up[data-cmd_id=#cmd_UP_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_UP_id#'});
+		});
+		
+</script>
+</span>
+<span title="Back" class="back" data-type="action" data-subtype="other" data-cmd_id="#cmd_BACK_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/3.png /></a>
+<script>
+		$('.back[data-cmd_id=#cmd_BACK_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_BACK_id#'});
+		});
+</script>
+</span>
+</div>
+
+<!-- 2ème ligne -->
+<div style="margin-top: -5px">
+<span title="Left" class="left" data-type="action" data-subtype="other" data-cmd_id="#cmd_LEFT_id#" style="margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/4.png /></a>
+<script>
+		$('.left[data-cmd_id=#cmd_LEFT_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_LEFT_id#'});
+		});
+</script>
+</span>
+<img src=plugins/JeeOrangeTv/doc/images/mobileWidget/5.png style="margin-left: -2px; margin-right: -2px" />
+<span title="Right" class="right" data-type="action" data-subtype="other" data-cmd_id="#cmd_RIGHT_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/6.png /></a>
+<script>
+		$('.right[data-cmd_id=#cmd_RIGHT_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_RIGHT_id#'});
+		});
+</script>
+</span>
+</div>
+
+<!-- 3ème ligne -->
+<div style="margin-top: -5px">
+<span title="Menu" class="menu" data-type="action" data-subtype="other" data-cmd_id="#cmd_MENU_id#" style="margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/7.png /></a>
+<script>
+		$('.menu[data-cmd_id=#cmd_MENU_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_MENU_id#'});
+		});
+</script>
+</span>
+<span title="Down" class="down" data-type="action" data-subtype="other" data-cmd_id="#cmd_DOWN_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/8.png /></a>
+<script>
+		$('.down[data-cmd_id=#cmd_DOWN_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_DOWN_id#'});
+		});
+</script>
+</span>
+<span title="Ok" class="ok" data-type="action" data-subtype="other" data-cmd_id="#cmd_OK_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/9.png /></a>
+<script>
+		$('.ok[data-cmd_id=#cmd_OK_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_OK_id#'});
+		});
+</script>
+</span>
+</div>
+
+<!-- 4ème ligne -->
+<div style="margin-top: -5px">
+<span title="Vol+" class="volP" data-type="action" data-subtype="other" data-cmd_id="#cmd_VOL+_id#" style="margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/10.png /></a>
+<script>
+		$('.volP[data-cmd_id=#cmd_VOL+_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_VOL+_id#'});
+		});
+</script>
+</span>
+<span title="1" class="1" data-type="action" data-subtype="other" data-cmd_id="#cmd_1_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/11.png /></a>
+<script>
+		$('.1[data-cmd_id=#cmd_1_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_1_id#'});
+		});
+</script>
+</span>
+<span title="2" class="2" data-type="action" data-subtype="other" data-cmd_id="#cmd_2_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/12.png /></a>
+<script>
+		$('.2[data-cmd_id=#cmd_2_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_2_id#'});
+		});
+</script>
+</span>
+<span title="3" class="3" data-type="action" data-subtype="other" data-cmd_id="#cmd_3_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/13.png /></a>
+<script>
+		$('.3[data-cmd_id=#cmd_3_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_3_id#'});
+		});
+</script>
+</span>
+<span title="CH+" class="chP" data-type="action" data-subtype="other" data-cmd_id="#cmd_CH+_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/14.png /></a>
+<script>
+		$('.chP[data-cmd_id=#cmd_CH+_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_CH+_id#'});
+		});
+</script>
+</span>
+</div>
+
+<!-- 5ème ligne -->
+<div style="margin-top: -5px">
+<span title="Vol-" class="volM" data-type="action" data-subtype="other" data-cmd_id="#cmd_VOL-_id#" style="margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/15.png /></a>
+<script>
+		$('.volM[data-cmd_id=#cmd_VOL-_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_VOL-_id#'});
+		});
+</script>
+</span>
+<span title="4" class="4" data-type="action" data-subtype="other" data-cmd_id="#cmd_4_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/16.png /></a>
+<script>
+		$('.4[data-cmd_id=#cmd_4_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_4_id#'});
+		});
+</script>
+</span>
+<span title="5" class="5" data-type="action" data-subtype="other" data-cmd_id="#cmd_5_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/17.png /></a>
+<script>
+		$('.5[data-cmd_id=#cmd_5_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_5_id#'});
+		});
+</script>
+</span>
+<span title="6" class="6" data-type="action" data-subtype="other" data-cmd_id="#cmd_6_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/18.png /></a>
+<script>
+		$('.6[data-cmd_id=#cmd_6_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_6_id#'});
+		});
+</script>
+</span>
+<span title="CH-" class="chM" data-type="action" data-subtype="other" data-cmd_id="#cmd_CH-_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/19.png /></a>
+<script>
+		$('.chM[data-cmd_id=#cmd_CH-_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_CH-_id#'});
+		});
+</script>
+</span>
+</div>
+
+<!-- 6ème ligne -->
+<div style="margin-top: -5px">
+<span title="Mute" class="mute" data-type="action" data-subtype="other" data-cmd_id="#cmd_MUTE_id#" style="margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/20.png /></a>
+<script>
+		$('.mute[data-cmd_id=#cmd_MUTE_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_MUTE_id#'});
+		});
+</script>
+</span>
+<span title="7" class="7" data-type="action" data-subtype="other" data-cmd_id="#cmd_7_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/21.png /></a>
+<script>
+		$('.7[data-cmd_id=#cmd_7_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_7_id#'});
+		});
+</script>
+</span>
+<span title="8" class="8" data-type="action" data-subtype="other" data-cmd_id="#cmd_8_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/22.png /></a>
+<script>
+		$('.8[data-cmd_id=#cmd_8_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_8_id#'});
+		});
+</script>
+</span>
+<span title="9" class="9" data-type="action" data-subtype="other" data-cmd_id="#cmd_9_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/23.png /></a>
+<script>
+		$('.9[data-cmd_id=#cmd_9_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_9_id#'});
+		});
+</script>
+</span>
+<img src=plugins/JeeOrangeTv/doc/images/mobileWidget/24.png style="margin-left: -2px; margin-right: -2px"/>
+</div>
+
+<!-- 7ème ligne -->
+<div style="margin-top: -5px">
+<span title="VOD" class="vod" data-type="action" data-subtype="other" data-cmd_id="#cmd_VOD_id#" style="margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/25.png /></a>
+<script>
+		$('.vod[data-cmd_id=#cmd_VOD_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_VOD_id#'});
+		});
+</script>
+</span>
+<img src=plugins/JeeOrangeTv/doc/images/mobileWidget/26.png style="margin-left: -2px; margin-right: -2px"/>
+<span title="0" class="0" data-type="action" data-subtype="other" data-cmd_id="#cmd_0_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/27.png /></a>
+<script>
+		$('.0[data-cmd_id=#cmd_0_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_0_id#'});
+		});
+</script>
+</span>
+<img src=plugins/JeeOrangeTv/doc/images/mobileWidget/28.png style="margin-left: -2px; margin-right: -2px"/>
+<img src=plugins/JeeOrangeTv/doc/images/mobileWidget/29.png style="margin-left: -2px; margin-right: -2px"/>
+</div>
+
+<!-- 8ème ligne -->
+<div style="margin-top: -5px">
+<img src=plugins/JeeOrangeTv/doc/images/mobileWidget/30.png style="margin-right: -2px"/>
+<span title="FBWD" class="fbwd" data-type="action" data-subtype="other" data-cmd_id="#cmd_FBWD_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/31.png /></a>
+<script>
+		$('.fbwd[data-cmd_id=#cmd_FBWD_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_FBWD_id#'});
+		});
+</script>
+</span>
+<span title="PLAY-PAUSE" class="plpa" data-type="action" data-subtype="other" data-cmd_id="#cmd_PLAY-PAUSE_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/32.png /></a>
+<script>
+		$('.plpa[data-cmd_id=#cmd_PLAY-PAUSE_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_PLAY-PAUSE_id#'});
+		});
+</script>
+</span>
+<span title="FFWD" class="ffwd" data-type="action" data-subtype="other" data-cmd_id="#cmd_FFWD_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/33.png /></a>
+<script>
+		$('.ffwd[data-cmd_id=#cmd_FFWD_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_FFWD_id#'});
+		});
+</script>
+</span>
+<img src=plugins/JeeOrangeTv/doc/images/mobileWidget/34.png style="margin-left: -2px; margin-right: -2px"/>
+</div>
+
+<!-- 8ème ligne -->
+<div style="margin-top: -5px">
+<span title="ON-OFF" class="onoff" data-type="action" data-subtype="other" data-cmd_id="#cmd_ON-OFF_id#" style="margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/35.png /></a>
+<script>
+		$('.onoff[data-cmd_id=#cmd_ON-OFF_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_ON-OFF_id#'});
+		});
+</script>
+</span>
+<span title="STOP" class="stop" data-type="action" data-subtype="other" data-cmd_id="#cmd_STOP_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/36.png /></a>
+<script>
+		$('.stop[data-cmd_id=#cmd_STOP_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_STOP_id#'});
+		});
+</script>
+</span>
+<img src=plugins/JeeOrangeTv/doc/images/mobileWidget/37.png style="margin-left: -2px; margin-right: -2px"/>
+<span title="REC" class="rec" data-type="action" data-subtype="other" data-cmd_id="#cmd_REC_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/38.png /></a>
+<script>
+		$('.rec[data-cmd_id=#cmd_REC_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_REC_id#'});
+		});
+</script>
+</span>
+<img src=plugins/JeeOrangeTv/doc/images/mobileWidget/39.png style="margin-left: -2px; margin-right: -2px"/>
+</div>
+</div>
+</div>

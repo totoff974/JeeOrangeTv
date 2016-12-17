@@ -21,7 +21,40 @@
     if (!isset(_cmd)) {
         var _cmd = {configuration: {}};
     }
-	
+ if (init(_cmd.type) == 'info') {
+     var disabled = (init(_cmd.configuration.virtualAction) == '1') ? 'disabled' : '';
+     var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '" virtualAction="' + init(_cmd.configuration.virtualAction) + '">';
+     tr += '<td>';
+     tr += '<span class="cmdAttr" data-l1key="id"></span>';
+     tr += '</td>';
+     tr += '<td> ';
+     tr += '<input disabled class="cmdAttr form-control input-sm" data-l1key="name" style="width : 100%;"></td>';
+     tr += '<td>';
+     tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="type" value="info" disabled style="margin-bottom : 5px;" />';
+	 tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="etat" style="margin-bottom : 5px;" />';
+     tr += '<span class="subType" subType="' + init(_cmd.subType) + '"></span>';
+     tr += '</td>';
+     tr += '<td>';
+     tr += '</td>';
+     tr += '<td>';
+     tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
+     tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isHistorized" checked/>{{Historiser}}</label></span> ';
+     tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr expertModeVisible" data-l1key="display" data-l2key="invertBinary"/>{{Inverser}}</label></span><br/>';
+     tr += '</td>';
+     tr += '<td>';
+     if (is_numeric(_cmd.id)) {
+        tr += '<a class="btn btn-default btn-xs cmdAction " data-action="configure"><i class="fa fa-cogs"></i></a> ';
+        tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fa fa-rss"></i> {{Tester}}</a>';
+    }
+    tr += '<i class="fa fa-minus-circle pull-right cmdAction cursor expertModeVisible" data-action="remove"></i></td>';
+    tr += '</tr>';
+    $('#table_cmd tbody').append(tr);
+    $('#table_cmd tbody tr:last').setValues(_cmd, '.cmdAttr');
+    if (isset(_cmd.type)) {
+        $('#table_cmd tbody tr:last .cmdAttr[data-l1key=type]').value(init(_cmd.type));
+    }
+    jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
+}	
 if (init(_cmd.type) == 'action') {
     var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
     tr += '<td>';

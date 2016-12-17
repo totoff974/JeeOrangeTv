@@ -27,7 +27,11 @@ class JeeOrangeTv extends eqLogic {
 
 	
     /*     * ***********************Methode static*************************** */
-
+    public static function cron5() {
+		foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
+			$this->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
+		}	
+	}
 	public static function dependancy_info() {
 
 	}
@@ -88,6 +92,11 @@ class JeeOrangeTv extends eqLogic {
     public function postSave() {
 		if (!$this->getId())
           return;
+	    foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
+			$JeeOrangeTv->toHtml('mobile');
+			$JeeOrangeTv->toHtml('dashboard');
+			$JeeOrangeTv->refreshWidget();
+		}
     }
 
     public function preUpdate() {
@@ -109,6 +118,25 @@ class JeeOrangeTv extends eqLogic {
         
     }
 
+ 	public function toHtml($_version = 'dashboard')	{
+		$replace = $this->preToHtml($_version);
+		if (!is_array($replace)) {
+			return $replace;
+		}
+		$_version = jeedom::versionAlias($_version);
+		foreach ($this->getCmd('info') as $inf) {
+			$etat_decodeur = $inf->getConfiguration('etat');
+			$replace['#etat_decodeur#'] = $etat_decodeur;
+		}
+		
+		foreach ($this->getCmd('action') as $cmd) {
+			$replace['#cmd_' . $cmd->getName() . '_id#'] = $cmd->getId();
+		}
+		
+		$html = template_replace($replace, getTemplate('core', $_version, 'current','JeeOrangeTv'));
+
+		return $html;
+	}		
     /*
      * Non obligatoire mais permet de modifier l'affichage du widget si vous en avez besoin
       public function toHtml($_version = 'dashboard') {
@@ -123,17 +151,39 @@ class JeeOrangeTv extends eqLogic {
 		
 		// execution de la commande
 		$retour_action = shell_exec($cmd_html);
-		
-		
+		$this->ActionInfo($box_ip);		
+		return;
+	}
+	
+	public function ActionInfo($box_ip) {
+	
 		// etat du decodeur
 		$cmd_retour = 'curl -s "http://'.$box_ip.':8080/remoteControl/cmd?operation=10"';
 		// execution de la commande
 		$retour_action = shell_exec($cmd_retour);	
-		$retour = json_decode($retour_action, true);
 		
-		log::add('JeeOrangeTv', 'debug', 'JSON chaine actuelle : ' . $retour_action);
-		log::add('JeeOrangeTv', 'debug', 'JSON etat du decodeur : ' . $retour['result']['data']['activeStandbyState']);
-		log::add('JeeOrangeTv', 'debug', 'JSON chaine actuelle : ' . $retour['result']['data']['playedMediaId']);		
+		// lecture du json depuis le décodeur
+		$retour = json_decode($retour_action, true);
+			
+		foreach (eqLogic::getCmd() as $info) {
+			if ($info->getName() == 'etat') {
+				$retour_etat = intval($retour['result']['data']['activeStandbyState']);
+				if ( $retour_etat == 0 ) {
+					$etat_decodeur = 1;
+				} else {
+					$etat_decodeur = 0;
+				}			
+				$info->setConfiguration('etat', $etat_decodeur);
+				$info->save();
+				$info->event($etat_decodeur);
+			}
+		}
+		
+		foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
+			$JeeOrangeTv->toHtml('mobile');
+			$JeeOrangeTv->toHtml('dashboard');
+			$JeeOrangeTv->refreshWidget();
+		}
 		return;
 	}
 	
@@ -151,6 +201,7 @@ class JeeOrangeTv extends eqLogic {
 					$JeeOrangeTvCmd->setName(__($cmd['name'], __FILE__));
 					$JeeOrangeTvCmd->setEqLogic_id($this->id);
 					$JeeOrangeTvCmd->setConfiguration('code_touche', $cmd['configuration']['code_touche']);
+					$JeeOrangeTvCmd->setConfiguration('etat', 0);
 					$JeeOrangeTvCmd->setType($cmd['type']);
 					$JeeOrangeTvCmd->setSubType($cmd['subType']);
 					$JeeOrangeTvCmd->setOrder($cmd['order']);
@@ -185,7 +236,6 @@ class JeeOrangeTvCmd extends cmd {
 	
     public function execute($_options = array()) 
 	{
-		
 		
 		$eqLogic = $this->getEqLogic();
 		$box_ip = $eqLogic->getConfiguration('box_ip');

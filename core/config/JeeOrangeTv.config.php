@@ -20,7 +20,18 @@ global $listCmdJeeOrangeTv;
 
 $listCmdJeeOrangeTv = array(
     array(
-        'name' => 'ON/OFF',
+        'name' => 'etat',
+        'type' => 'info',
+        'subType' => 'binary',
+		'order' => 0,
+		'configuration' => array(
+			'etat'=> '',
+        ),
+		'generic_type' => 'GENERIC_STATE',
+    ),
+	
+    array(
+        'name' => 'ON-OFF',
         'type' => 'action',
         'subType' => 'other',
 		'order' => 0,
@@ -296,7 +307,7 @@ $listCmdJeeOrangeTv = array(
     ),	
 	
     array(
-        'name' => 'PLAY/PAUSE',
+        'name' => 'PLAY-PAUSE',
         'type' => 'action',
         'subType' => 'other',
 		'order' => 23,
