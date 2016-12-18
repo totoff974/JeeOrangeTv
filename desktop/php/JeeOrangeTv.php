@@ -114,6 +114,7 @@ foreach ($eqLogics as $eqLogic) {
 					<div class="col-sm-2">
 						<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="box_ip" placeholder="{{Adresse IP}}"/>
 					</div>
+					<input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Activer Widget}}" data-l1key="configuration" data-l2key="widget" checked />
 				</div>
 
 			</fieldset> 

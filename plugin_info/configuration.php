@@ -22,3 +22,15 @@ if (!isConnect()) {
 	die();
 }
 ?>
+
+<form class="form-horizontal">
+    <fieldset>
+            <legend><i class="icon loisir-darth"></i> {{Configuration de Tv Orange}}</legend>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">{{Activer le widget :}}</label>
+                <div class="col-sm-4">
+					<input type="checkbox" class="configKey bootstrapSwitch" data-label-text="{{Activer}}" data-l1key="widget" checked />
+               </div>
+           </div>		
+    </fieldset>
+</form>

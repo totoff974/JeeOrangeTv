@@ -93,9 +93,11 @@ class JeeOrangeTv extends eqLogic {
 		if (!$this->getId())
           return;
 	    foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
-			$JeeOrangeTv->toHtml('mobile');
-			$JeeOrangeTv->toHtml('dashboard');
-			$JeeOrangeTv->refreshWidget();
+			if (config::byKey('widget', 'JeeOrangeTv') == 1) {
+				$JeeOrangeTv->toHtml('mobile');
+				$JeeOrangeTv->toHtml('dashboard');
+				$JeeOrangeTv->refreshWidget();
+			}
 		}
     }
 
@@ -119,6 +121,13 @@ class JeeOrangeTv extends eqLogic {
     }
 
  	public function toHtml($_version = 'dashboard')	{
+
+		foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
+			if (config::byKey('widget', 'JeeOrangeTv') == 0) {
+				return parent::toHtml($_version);
+			}
+		}
+		
 		$replace = $this->preToHtml($_version);
 		if (!is_array($replace)) {
 			return $replace;
@@ -132,11 +141,11 @@ class JeeOrangeTv extends eqLogic {
 		foreach ($this->getCmd('action') as $cmd) {
 			$replace['#cmd_' . $cmd->getName() . '_id#'] = $cmd->getId();
 		}
-		
+			
 		$html = template_replace($replace, getTemplate('core', $_version, 'current','JeeOrangeTv'));
-
 		return $html;
-	}		
+	}
+	
     /*
      * Non obligatoire mais permet de modifier l'affichage du widget si vous en avez besoin
       public function toHtml($_version = 'dashboard') {
@@ -151,7 +160,9 @@ class JeeOrangeTv extends eqLogic {
 		
 		// execution de la commande
 		$retour_action = shell_exec($cmd_html);
-		$this->ActionInfo($box_ip);		
+
+		$this->ActionInfo($box_ip);
+
 		return;
 	}
 	
@@ -179,10 +190,12 @@ class JeeOrangeTv extends eqLogic {
 			}
 		}
 		
-		foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
-			$JeeOrangeTv->toHtml('mobile');
-			$JeeOrangeTv->toHtml('dashboard');
-			$JeeOrangeTv->refreshWidget();
+		if (config::byKey('widget', 'JeeOrangeTv') == 1) {		
+			foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
+				$JeeOrangeTv->toHtml('mobile');
+				$JeeOrangeTv->toHtml('dashboard');
+				$JeeOrangeTv->refreshWidget();
+			}
 		}
 		return;
 	}
@@ -236,7 +249,6 @@ class JeeOrangeTvCmd extends cmd {
 	
     public function execute($_options = array()) 
 	{
-		
 		$eqLogic = $this->getEqLogic();
 		$box_ip = $eqLogic->getConfiguration('box_ip');
 		$code_touche = $this->getConfiguration('code_touche');
