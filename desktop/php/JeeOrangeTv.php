@@ -60,6 +60,7 @@ foreach ($eqLogics as $eqLogic) {
    <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Décodeurs}}</a></li>
 	<li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Touches}}</a></li>
+	<li role="presentation"><a href="#commandMos" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Mosaïque}}</a></li>
 </ul>
 
 <div class="tab-content" style="height:calc(100% - 50px);overflow:auto;overflow-x: hidden;">
@@ -129,6 +130,23 @@ foreach ($eqLogics as $eqLogic) {
 					<th>{{Sous-Type}}</th>
 					<th>{{Valeur}}</th>
 					<th>{{Paramètres}}</th>
+					<th></th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+</div>
+<div role="tabpanel" class="tab-pane" id="commandMos">
+	<legend>{{Configuration de la Mosaïque}}</legend>
+			<table id="mosaique" class="table table-bordered table-condensed">
+				<thead>
+					<tr>
+					<th>#</th>
+					<th>{{Position}}</th>
+					<th>{{Nom de la Chaine}}</th>
+					<th>{{Numéro de la Chaine}}</th>
+					<th>{{Visibilité}}</th>
 					<th></th>
 					</tr>
 				</thead>

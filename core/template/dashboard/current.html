@@ -260,14 +260,7 @@
 		});
 </script>
 </span>
-<span title="STOP" class="stop" data-type="action" data-subtype="other" data-cmd_id="#cmd_STOP_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/36.png /></a>
-<script>
-		$('.stop[data-cmd_id=#cmd_STOP_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_STOP_id#'});
-		});
-</script>
-</span>
+<img src=plugins/JeeOrangeTv/doc/images/dashWidget/36.png style="margin-left: -2px; margin-right: -2px"/>
 <img src=plugins/JeeOrangeTv/doc/images/dashWidget/37.png style="margin-left: -2px; margin-right: -2px"/>
 <span title="REC" class="rec" data-type="action" data-subtype="other" data-cmd_id="#cmd_REC_id#" style="margin-left: -2px; margin-right: -2px">
 <a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/38.png /></a>
@@ -277,7 +270,14 @@
 		});
 </script>
 </span>
-<img src=plugins/JeeOrangeTv/doc/images/dashWidget/39.png style="margin-left: -2px; margin-right: -2px"/>
+<span title="Mosaique" class="retour" data-type="action" data-subtype="other" data-cmd_id="#cmd_Telecommande_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/39.png /></a>
+<script>
+		$('.retour[data-cmd_id=#cmd_Telecommande_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_Telecommande_id#'});
+		});
+</script>
+</span>
 </div>
 </div>
 </div>
