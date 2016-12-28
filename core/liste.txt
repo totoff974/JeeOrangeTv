@@ -1,0 +1,35 @@
+1 - réunion 1er - 20245
+2 - antenne réu - 20436
+3 - tv kreol	- 21079
+4 - mayotte 1er	- 1080
+5 - kwezi tv 	- -1
+11 - tf1 	- 192
+12 - france 2	- 4
+13 - fr 3	- 80
+15 - fr5	- 47
+16 - m6		- 20118
+17 - arte 	- 111
+18 - c8		- 30445
+19 - w9		- 20119
+20 - tmc	- 30195
+21 - nt1	- 20446
+22 - nrj 12 	- 30444
+23 - lcp	- 234
+24 - fr4	- 78
+25 - bfm 	- 481
+26 - itele	- 226
+27 - cstar	- 20458
+28 - gulli	- 30482
+29 - frace O	- 160
+30 - hd1	- 21404
+32 - 6ter	- 21403
+33 - numero 23	- 21402
+34 - rmc	- 21400
+35 - cherie 25	- 21399
+36 - lci	- 112
+42 - teva	- 30191
+43 - tv5monde	- 20205
+44 - paris premiere	- 20145
+47 tv breith	- 20225
+48 - E!		- 20405
+55 - ocs	- 
