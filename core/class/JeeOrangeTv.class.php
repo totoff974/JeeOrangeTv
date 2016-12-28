@@ -137,6 +137,7 @@ class JeeOrangeTv extends eqLogic {
 		foreach ($this->getCmd('info') as $inf) {
 			$etat_decodeur = $inf->getConfiguration('etat');
 			$replace['#etat_decodeur#'] = $etat_decodeur;
+			$replace['#cmd_chaine_act#'] = $inf->getConfiguration('chaine_actuelle');
 		}
 		
 		foreach ($this->getCmd('action') as $cmd) {
@@ -173,9 +174,6 @@ class JeeOrangeTv extends eqLogic {
 		
 		// execution de la commande
 		$retour_action = shell_exec($cmd_html);
-
-		$this->ActionInfo($box_ip);
-
 		return;
 	}
 	
@@ -192,14 +190,37 @@ class JeeOrangeTv extends eqLogic {
 		foreach (eqLogic::getCmd() as $info) {
 			if ($info->getName() == 'etat') {
 				$retour_etat = intval($retour['result']['data']['activeStandbyState']);
+				
 				if ( $retour_etat == 0 ) {
-					$etat_decodeur = 1;
+					$etat_decodeur = 1;					
 				} else {
 					$etat_decodeur = 0;
-				}			
+				}
+				
 				$info->setConfiguration('etat', $etat_decodeur);
 				$info->save();
 				$info->event($etat_decodeur);
+
+				
+				if($retour['result']['data']['osdContext'] == 'HOMEPAGE' and $etat_decodeur == 1){
+					$chaine_actu = 'home';
+				}
+				elseif ($retour['result']['data']['osdContext'] == 'LIVE'){
+					$chaine_actu = strval($retour['result']['data']['playedMediaId']);
+					if ($chaine_actu != '-1' and $etat_decodeur == 1) {
+						$chaine_actu = $retour['result']['data']['playedMediaId'];
+					} else {
+						$chaine_actu = 'blank';
+					}
+				}
+				else {
+					$chaine_actu = 'blank';
+				}
+				
+				
+				$info->setConfiguration('chaine_actuelle', $chaine_actu);
+				$info->save();
+				$info->event($chaine_actu);
 			}
 		}
 		
@@ -240,6 +261,7 @@ class JeeOrangeTv extends eqLogic {
 					$JeeOrangeTvCmd->setConfiguration('mosaique_chaine', $cmd['configuration']['mosaique_chaine']);
 					$JeeOrangeTvCmd->setConfiguration('telecommande', $cmd['configuration']['telecommande']);
 					$JeeOrangeTvCmd->setConfiguration('etat', 0);
+					$JeeOrangeTvCmd->setConfiguration('chaine_actuelle', $cmd['configuration']['chaine_actuelle']);
 					$JeeOrangeTvCmd->setType($cmd['type']);
 					$JeeOrangeTvCmd->setSubType($cmd['subType']);
 					$JeeOrangeTvCmd->setOrder($cmd['order']);
@@ -277,7 +299,9 @@ class JeeOrangeTvCmd extends cmd {
 	{
 		$eqLogic = $this->getEqLogic();
 		$action_mosaique = preg_match("#Mosaique #", $this->getName());
-
+		$box_ip = $eqLogic->getConfiguration('box_ip');
+		$code_mode = 0;
+		
 		if ($this->getName() == "Telecommande") {
 			
 			$act_mos = $this->getConfiguration('telecommande');
@@ -298,11 +322,9 @@ class JeeOrangeTvCmd extends cmd {
 		else {
 			
 			if ($action_mosaique == 0) {
-				$box_ip = $eqLogic->getConfiguration('box_ip');
 				$code_touche = $this->getConfiguration('code_touche');
-				$code_mode = 0;
 				log::add('JeeOrangeTv', 'debug', 'Action executée Jee IP : ' . $box_ip . ' - touche : ' . $code_touche . ' - mode : ' . $code_mode);
-				$eqLogic->ActionCommande($box_ip, $code_touche, $code_mode);	
+				$eqLogic->ActionCommande($box_ip, $code_touche, $code_mode);
 			}
 
 		
@@ -315,13 +337,18 @@ class JeeOrangeTvCmd extends cmd {
 				foreach ($mos_touche as $touche) {
 					foreach ($eqLogic->getCmd() as $action) {
 						if ($touche == $action->getName()) {
-							$action->execCmd($action->getId());
+							$code_touche = $action->getConfiguration('code_touche');
+							$eqLogic->ActionCommande($box_ip, $code_touche, $code_mode);
 						}
 					}
 				}
 			}
-		}		
-	
+			
+			sleep(3);
+			$eqLogic->ActionInfo($box_ip);
+		}
+
+
 		return;
     }
 

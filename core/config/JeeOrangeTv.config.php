@@ -27,10 +27,11 @@ $listCmdJeeOrangeTv = array(
 		'isVisible' => true,
 		'configuration' => array(
 			'etat'=> '',
+			'chaine_actuelle'=> 'aucune',
         ),
 		'generic_type' => 'GENERIC_STATE',
     ),
-	
+		
     array(
         'name' => 'ON-OFF',
         'type' => 'action',
@@ -602,12 +603,138 @@ $listCmdJeeOrangeTv = array(
 		'generic_type' => 'GENERIC_ACTION',
 		'forceReturnLineAfter' => '1',
     ),
+
+	array(
+        'name' => 'Mosaique 16',
+        'type' => 'action',
+        'subType' => 'other',
+		'order' => 43,
+		'isVisible' => false,
+		'configuration' => array(
+			'mosaique_chaine'=> 'blank',
+			'mosaique_numero'=> null,
+        ),
+		'generic_type' => 'GENERIC_ACTION',
+		'forceReturnLineAfter' => '0',
+    ),
+	
+	array(
+        'name' => 'Mosaique 17',
+        'type' => 'action',
+        'subType' => 'other',
+		'order' => 44,
+		'isVisible' => false,
+		'configuration' => array(
+			'mosaique_chaine'=> 'blank',
+			'mosaique_numero'=> null,
+        ),
+		'generic_type' => 'GENERIC_ACTION',
+		'forceReturnLineAfter' => '0',
+    ),
+	
+	array(
+        'name' => 'Mosaique 18',
+        'type' => 'action',
+        'subType' => 'other',
+		'order' => 45,
+		'isVisible' => false,
+		'configuration' => array(
+			'mosaique_chaine'=> 'blank',
+			'mosaique_numero'=> null,
+        ),
+		'generic_type' => 'GENERIC_ACTION',
+		'forceReturnLineAfter' => '1',
+    ),
+
+	array(
+        'name' => 'Mosaique 19',
+        'type' => 'action',
+        'subType' => 'other',
+		'order' => 46,
+		'isVisible' => false,
+		'configuration' => array(
+			'mosaique_chaine'=> 'blank',
+			'mosaique_numero'=> null,
+        ),
+		'generic_type' => 'GENERIC_ACTION',
+		'forceReturnLineAfter' => '0',
+    ),
+	
+	array(
+        'name' => 'Mosaique 20',
+        'type' => 'action',
+        'subType' => 'other',
+		'order' => 47,
+		'isVisible' => false,
+		'configuration' => array(
+			'mosaique_chaine'=> 'blank',
+			'mosaique_numero'=> null,
+        ),
+		'generic_type' => 'GENERIC_ACTION',
+		'forceReturnLineAfter' => '0',
+    ),
+	
+	array(
+        'name' => 'Mosaique 21',
+        'type' => 'action',
+        'subType' => 'other',
+		'order' => 48,
+		'isVisible' => false,
+		'configuration' => array(
+			'mosaique_chaine'=> 'blank',
+			'mosaique_numero'=> null,
+        ),
+		'generic_type' => 'GENERIC_ACTION',
+		'forceReturnLineAfter' => '1',
+    ),
+
+	array(
+        'name' => 'Mosaique 22',
+        'type' => 'action',
+        'subType' => 'other',
+		'order' => 49,
+		'isVisible' => false,
+		'configuration' => array(
+			'mosaique_chaine'=> 'blank',
+			'mosaique_numero'=> null,
+        ),
+		'generic_type' => 'GENERIC_ACTION',
+		'forceReturnLineAfter' => '0',
+    ),
+	
+	array(
+        'name' => 'Mosaique 23',
+        'type' => 'action',
+        'subType' => 'other',
+		'order' => 50,
+		'isVisible' => false,
+		'configuration' => array(
+			'mosaique_chaine'=> 'blank',
+			'mosaique_numero'=> null,
+        ),
+		'generic_type' => 'GENERIC_ACTION',
+		'forceReturnLineAfter' => '0',
+    ),
+	
+	array(
+        'name' => 'Mosaique 24',
+        'type' => 'action',
+        'subType' => 'other',
+		'order' => 51,
+		'isVisible' => false,
+		'configuration' => array(
+			'mosaique_chaine'=> 'blank',
+			'mosaique_numero'=> null,
+        ),
+		'generic_type' => 'GENERIC_ACTION',
+		'forceReturnLineAfter' => '1',
+    ),
 	
 	array(
         'name' => 'Telecommande',
         'type' => 'action',
         'subType' => 'other',
-		'order' => 43,
+		'order' => 52,
 		'isVisible' => false,
 		'configuration' => array(
 			'telecommande'=> 1,
