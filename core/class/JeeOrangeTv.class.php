@@ -178,7 +178,7 @@ class JeeOrangeTv extends eqLogic {
 	}
 	
 	public function ActionInfo($box_ip) {
-		$this->autoMaJCommande();
+
 		// etat du decodeur
 		$cmd_retour = 'curl -s "http://'.$box_ip.':8080/remoteControl/cmd?operation=10"';
 		// execution de la commande
