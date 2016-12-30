@@ -286,7 +286,7 @@ $listCmdJeeOrangeTv = array(
 		'order' => 19,
 		'isVisible' => true,
 		'configuration' => array(
-			'code_touche'=> '116',
+			'code_touche'=> '106',
         ),
 		'generic_type' => 'GENERIC_ACTION',
 		'forceReturnLineAfter' => '0',

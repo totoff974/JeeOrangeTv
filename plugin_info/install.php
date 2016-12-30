@@ -23,7 +23,7 @@ function JeeOrangeTv_install() {
 }
 
 function JeeOrangeTv_update() {
-    
+	JeeOrangeTv::autoMaJCommande();
 }
 
 

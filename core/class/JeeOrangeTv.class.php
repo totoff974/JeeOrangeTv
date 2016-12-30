@@ -178,7 +178,7 @@ class JeeOrangeTv extends eqLogic {
 	}
 	
 	public function ActionInfo($box_ip) {
-	
+		$this->autoMaJCommande();
 		// etat du decodeur
 		$cmd_retour = 'curl -s "http://'.$box_ip.':8080/remoteControl/cmd?operation=10"';
 		// execution de la commande
@@ -279,6 +279,22 @@ class JeeOrangeTv extends eqLogic {
         }        
     }
 
+	public function autoMaJCommande() {
+		
+		global $listCmdJeeOrangeTv;
+		
+		foreach ($this->getCmd() as $cmd) {
+			foreach ($listCmdJeeOrangeTv as $cmd_config) {
+				if (($cmd->getName()==$cmd_config['name']) AND ($cmd->getConfiguration('code_touche')!=$cmd_config['configuration']['code_touche'])){
+					$cmd->setConfiguration('code_touche', $cmd_config['configuration']['code_touche']);
+					$cmd->save();
+				}
+			}
+		}
+
+	log::add('JeeOrangeTv', 'debug', 'update des commandes OK');		
+   
+    }
 
     /*     * **********************Getteur Setteur*************************** */
 	
