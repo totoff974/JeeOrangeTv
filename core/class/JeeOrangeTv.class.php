@@ -186,7 +186,10 @@ class JeeOrangeTv extends eqLogic {
 		
 		// lecture du json depuis le décodeur
 		$retour = json_decode($retour_action, true);
-			
+		log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - activeStandbyState : ' . $retour['result']['data']['activeStandbyState']);
+		log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - osdContext : ' . $retour['result']['data']['osdContext']);
+		log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - playedMediaId : ' . $retour['result']['data']['playedMediaId']);
+		
 		foreach (eqLogic::getCmd() as $info) {
 			if ($info->getName() == 'etat') {
 				$retour_etat = intval($retour['result']['data']['activeStandbyState']);
@@ -205,6 +208,9 @@ class JeeOrangeTv extends eqLogic {
 				if($retour['result']['data']['osdContext'] == 'HOMEPAGE' and $etat_decodeur == 1){
 					$chaine_actu = 'home';
 				}
+				elseif ($retour['result']['data']['osdContext'] == 'VOD'){
+					$chaine_actu = 'vod';
+				}
 				elseif ($retour['result']['data']['osdContext'] == 'LIVE'){
 					$chaine_actu = strval($retour['result']['data']['playedMediaId']);
 					if ($chaine_actu != '-1' and $etat_decodeur == 1) {
@@ -216,7 +222,6 @@ class JeeOrangeTv extends eqLogic {
 				else {
 					$chaine_actu = 'blank';
 				}
-				
 				
 				$info->setConfiguration('chaine_actuelle', $chaine_actu);
 				$info->save();
