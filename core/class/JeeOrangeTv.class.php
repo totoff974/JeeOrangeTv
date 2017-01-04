@@ -217,11 +217,11 @@ class JeeOrangeTv extends eqLogic {
 				$retour_etat = intval($retour['result']['data']['activeStandbyState']);
 				
 				if ( $retour_etat == 0 ) {
-					$etat_decodeur = 1;					
+					$etat_decodeur = 1;
 				} else {
 					$etat_decodeur = 0;
 				}
-				
+		
 				$info->setConfiguration('etat', $etat_decodeur);
 				$info->save();
 				$info->event($etat_decodeur);
@@ -250,7 +250,10 @@ class JeeOrangeTv extends eqLogic {
 				$info->setConfiguration('chaine_actuelle', $chaine_actu);
 				$info->save();
 				$info->event($chaine_actu);
-			}
+				$info->setValue($etat_decodeur);
+				$info->save();
+				$info->event($etat_decodeur);
+				}
 		}
 	
 			foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
@@ -258,7 +261,7 @@ class JeeOrangeTv extends eqLogic {
 				$JeeOrangeTv->toHtml('dashboard');
 				$JeeOrangeTv->refreshWidget();
 			}
-			
+
 		return;
 	}
 	
@@ -344,7 +347,7 @@ class JeeOrangeTvCmd extends cmd {
 		$box_ip = $eqLogic->getConfiguration('box_ip');
 		$localisation = $eqLogic->getConfiguration('localisation');
 		$code_mode = 0;
-				
+		
 		if ($this->getName() == "Telecommande") {
 			
 			$act_mos = $this->getConfiguration('telecommande');
