@@ -15,7 +15,7 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
- $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+ $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});	
 
  function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
@@ -111,44 +111,9 @@
 				
 				tr += '<td>';
 				tr += '<select class="cmdAttr form-control" data-l1key="configuration" data-l2key="mosaique_chaine">';
-				tr += '<option value="blank">{{ }}</option>';
-				tr += '<option value="21403">{{6 ter}}</option>';
-				tr += '<option value="20436">{{Antenne Réunion}}</option>';
-				tr += '<option value="111">{{Arte}}</option>';
-				tr += '<option value="481">{{BFM}}</option>';
-				tr += '<option value="30445">{{C8}}</option>';
-				tr += '<option value="canal+">{{Canal +}}</option>';
-				tr += '<option value="21399">{{Chérie 25}}</option>';
-				tr += '<option value="20458">{{CStar}}</option>';
-				tr += '<option value="4">{{France 2}}</option>';
-				tr += '<option value="80">{{France 3}}</option>';
-				tr += '<option value="78">{{France 4}}</option>';
-				tr += '<option value="47">{{France 5}}</option>';
-				tr += '<option value="160">{{France Info}}</option>';
-				tr += '<option value="30482">{{Gulli}}</option>';
-				tr += '<option value="21404">{{HD1}}</option>';
-				tr += '<option value="112">{{LCI}}</option>';
-				tr += '<option value="234">{{LCP}}</option>';
-				tr += '<option value="226">{{itélé}}</option>';
-				tr += '<option value="lequipe21">{{L\'équipe 21}}</option>';
-				tr += '<option value="20118">{{M6}}</option>';
-				tr += '<option value="1080">{{Mayotte Première}}</option>';
-				tr += '<option value="30444">{{NRJ12}}</option>';
-				tr += '<option value="20446">{{NT1}}</option>';
-				tr += '<option value="21402">{{Numéro 23}}</option>';
-				tr += '<option value="20245">{{Réunion Première}}</option>';
-				tr += '<option value="21400">{{RMC}}</option>';
-				tr += '<option value="21079">{{Télé Kréol}}</option>';
-				tr += '<option value="192">{{TF1}}</option>';
-				tr += '<option value="30195">{{TMC}}</option>';
-				tr += '<option value="20119">{{W9}}</option>';
 				tr += '</select>';				
 				tr += '</td>';
-				
-				tr += '<td>';
-				tr += '<input type="number" class="cmdAttr form-control" data-l1key="configuration" data-l2key="mosaique_numero"/>';
-				tr += '</td>';
-				
+								
 				tr += '<td>';
 				tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
 				tr += '</td>';
@@ -161,11 +126,24 @@
 				tr += '</td>';
 				tr += '</tr>';
 			}
+			
 		$('#mosaique tbody').append(tr);
 		$('#mosaique tbody tr:last').setValues(_cmd, '.cmdAttr');
 		var tr = $('#mosaique tbody tr:last');
-	}
-	
+
+		code_loc = $('.eqLogicAttr[data-l1key=configuration][data-l2key=localisation]').val();
+		$.getJSON('plugins/JeeOrangeTv/core/config/chaines.json', function(chaine) {
+			tr.find('.cmdAttr[data-l1key=configuration][data-l2key=mosaique_chaine]').append('<option value="blank">{{ }}</option>');			
+			$.each(chaine.localisation,function(index_loc,liste_loc){
+				if (code_loc == liste_loc.code) {
+					$.each(liste_loc.liste,function(index_chaine,nom_chaine){						
+						tr.find('.cmdAttr[data-l1key=configuration][data-l2key=mosaique_chaine]').append('<option value="'+ nom_chaine.logo +'">{{'+ nom_chaine.nom +'}}</option>');
+					});
+				}
+            });
+		tr.setValues(_cmd, '.cmdAttr');
+		});
+}
 	if (init(_cmd.name) == "Telecommande") {
 		if (init(_cmd.type) == 'action') {
 

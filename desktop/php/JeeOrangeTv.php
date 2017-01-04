@@ -116,7 +116,12 @@ foreach ($eqLogics as $eqLogic) {
 						<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="box_ip" placeholder="{{Adresse IP}}"/>
 					</div>
 				</div>
-
+				<div class="form-group">
+					<label class="col-lg-3 control-label">{{Localisation géographique}}</label>
+					<div class="col-sm-2">
+						<?php liste_localisation(); ?>
+					</div>
+				</div>
 			</fieldset> 
 		</form>
 </div>
@@ -145,7 +150,6 @@ foreach ($eqLogics as $eqLogic) {
 					<th>#</th>
 					<th>{{Position}}</th>
 					<th>{{Nom de la Chaine}}</th>
-					<th>{{Numéro de la Chaine}}</th>
 					<th>{{Visibilité}}</th>
 					<th></th>
 					</tr>
@@ -159,3 +163,17 @@ foreach ($eqLogics as $eqLogic) {
 
 <?php include_file('desktop', 'JeeOrangeTv', 'js', 'JeeOrangeTv');?>
 <?php include_file('core', 'plugin.template', 'js');?>
+
+<?php	function liste_localisation() {
+		$json_liste = file_get_contents(realpath(dirname(__FILE__) . '/../../core/config/chaines.json'));
+		$json_localisation = json_decode($json_liste, true);
+		
+		echo '<select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="localisation">';
+		
+		foreach ($json_localisation['localisation'] as $key => $val) {
+			echo '<option value="'.$val['code'].'">{{'.$val['nom'].'}}</option>';
+		}
+		
+		echo '</select>';
+	}
+?>

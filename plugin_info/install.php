@@ -19,10 +19,11 @@
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 function JeeOrangeTv_install() {
- 
+	JeeOrangeTv::Telecommande_Mosaique();
 }
 
 function JeeOrangeTv_update() {
+	JeeOrangeTv::Telecommande_Mosaique();
 	JeeOrangeTv::autoMaJCommande();
 }
 

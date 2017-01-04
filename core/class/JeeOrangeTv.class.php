@@ -82,7 +82,7 @@ class JeeOrangeTv extends eqLogic {
     }
 
     public function postInsert() {
-        
+
     }
 
     public function preSave() {
@@ -92,13 +92,7 @@ class JeeOrangeTv extends eqLogic {
     public function postSave() {
 		if (!$this->getId())
           return;
-	    foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
-			if (config::byKey('widget', 'JeeOrangeTv') == 1) {
-				$JeeOrangeTv->toHtml('mobile');
-				$JeeOrangeTv->toHtml('dashboard');
-				$JeeOrangeTv->refreshWidget();
-			}
-		}
+		$this->Telecommande_Mosaique();
     }
 
     public function preUpdate() {
@@ -109,7 +103,7 @@ class JeeOrangeTv extends eqLogic {
     }
 
     public function postUpdate() {
-		
+		$this->Telecommande_Mosaique();
     }
 
     public function preRemove() {
@@ -121,6 +115,7 @@ class JeeOrangeTv extends eqLogic {
     }
 
  	public function toHtml($_version = 'dashboard')	{
+		$localisation = JeeOrangeTv::getConfiguration('localisation');
 
 		foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
 			if (config::byKey('widget', 'JeeOrangeTv') == 0) {
@@ -137,12 +132,20 @@ class JeeOrangeTv extends eqLogic {
 		foreach ($this->getCmd('info') as $inf) {
 			$etat_decodeur = $inf->getConfiguration('etat');
 			$replace['#etat_decodeur#'] = $etat_decodeur;
-			$replace['#cmd_chaine_act#'] = $inf->getConfiguration('chaine_actuelle');
+			if ($inf->getConfiguration('chaine_actuelle')=='home' OR $inf->getConfiguration('chaine_actuelle')=='vod') {
+				$replace['#cmd_chaine_act#'] = $inf->getConfiguration('chaine_actuelle');
+			}
+			else {
+				$replace['#cmd_chaine_act#'] = $this->lecture_json('logo', 'logo', $localisation, $inf->getConfiguration('chaine_actuelle'));
+			}
+						
 		}
 		
 		foreach ($this->getCmd('action') as $cmd) {
 			$replace['#cmd_' . $cmd->getName() . '_id#'] = $cmd->getId();
 			$replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'#'] = $cmd->getConfiguration('mosaique_chaine');
+			$replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_logo#'] = $this->lecture_json('logo', 'logo', $localisation, $cmd->getConfiguration('mosaique_chaine'));
+			$replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_nom#'] = $this->lecture_json('nom', 'logo', $localisation, $cmd->getConfiguration('mosaique_chaine'));
 			$replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_id#'] = $cmd->getId();
 			$replace['#mos_Telecommande_id#'] = $cmd->getId();
 			$tel_mos = $cmd->getConfiguration('telecommande');
@@ -166,9 +169,27 @@ class JeeOrangeTv extends eqLogic {
       }
      */
 	
+	public function lecture_json($param_sortie, $param_entree, $localisation, $comp_entree) {
+		// param -> id / nom / canal / logo / categorie
+		$json_liste = file_get_contents(realpath(dirname(__FILE__) . '/../../core/config/chaines.json'));
+		$json_chaines = json_decode($json_liste, true);
+		
+		foreach ($json_chaines['localisation'] as $key => $val) {
+			if ($localisation == $val['code']) {
+				foreach ($val['liste'] as $key => $val) {
+					if ($comp_entree == $val[$param_entree]) {
+						$retour = $val[$param_sortie];
+					}
+				}
+			}
+		}
+		if ($retour == '') {
+			$retour = 'blank';
+		}
+		return $retour;
+	}
 	
 	public function ActionCommande($box_ip, $code_touche, $code_mode) {
-
 		// construction de la commande
 		$cmd_html = 'curl -s "http://'.$box_ip.':8080/remoteControl/cmd?operation=01&key='.$code_touche.'&mode='.$code_mode.'" > /dev/null 2>&1';
 		
@@ -178,6 +199,7 @@ class JeeOrangeTv extends eqLogic {
 	}
 	
 	public function ActionInfo($box_ip) {
+		$localisation = JeeOrangeTv::getConfiguration('localisation');
 
 		// etat du decodeur
 		$cmd_retour = 'curl -s "http://'.$box_ip.':8080/remoteControl/cmd?operation=10"';
@@ -215,6 +237,8 @@ class JeeOrangeTv extends eqLogic {
 					$chaine_actu = strval($retour['result']['data']['playedMediaId']);
 					if ($chaine_actu != '-1' and $etat_decodeur == 1) {
 						$chaine_actu = $retour['result']['data']['playedMediaId'];
+						$chaine_actu = $this->lecture_json('logo', 'id', $localisation, $chaine_actu);
+
 					} else {
 						$chaine_actu = 'blank';
 					}
@@ -228,25 +252,22 @@ class JeeOrangeTv extends eqLogic {
 				$info->event($chaine_actu);
 			}
 		}
-		
-		if (config::byKey('widget', 'JeeOrangeTv') == 1) {		
+	
 			foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
 				$JeeOrangeTv->toHtml('mobile');
 				$JeeOrangeTv->toHtml('dashboard');
 				$JeeOrangeTv->refreshWidget();
 			}
-		}
+			
 		return;
 	}
 	
 	public function Telecommande_Mosaique() {
-		if (config::byKey('widget', 'JeeOrangeTv') == 1) {		
 			foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
 				$JeeOrangeTv->toHtml('mobile');
 				$JeeOrangeTv->toHtml('dashboard');
 				$JeeOrangeTv->refreshWidget();
 			}
-		}
 		return;
 	}
 	
@@ -321,8 +342,9 @@ class JeeOrangeTvCmd extends cmd {
 		$eqLogic = $this->getEqLogic();
 		$action_mosaique = preg_match("#Mosaique #", $this->getName());
 		$box_ip = $eqLogic->getConfiguration('box_ip');
+		$localisation = $eqLogic->getConfiguration('localisation');
 		$code_mode = 0;
-		
+				
 		if ($this->getName() == "Telecommande") {
 			
 			$act_mos = $this->getConfiguration('telecommande');
@@ -351,7 +373,7 @@ class JeeOrangeTvCmd extends cmd {
 		
 			if ($action_mosaique == 1) {
 				$mos_chaine = $this->getConfiguration('mosaique_chaine');
-				$mos_num = $this->getConfiguration('mosaique_numero');
+				$mos_num = $eqLogic->lecture_json('canal', 'logo', $localisation, $mos_chaine);
 				$mos_touche = str_split($mos_num);
 				
 				log::add('JeeOrangeTv', 'debug', 'Mosaique Chaine : ' . $mos_chaine . ' Numéro de la chaine : '. $mos_num);
