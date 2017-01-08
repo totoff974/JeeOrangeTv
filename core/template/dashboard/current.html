@@ -223,7 +223,14 @@
 </script>
 </span>
 <img src=plugins/JeeOrangeTv/doc/images/dashWidget/28.png style="margin-left: -2px; margin-right: -2px"/>
-<img src=plugins/JeeOrangeTv/doc/images/dashWidget/29.png style="margin-left: -2px; margin-right: -2px"/>
+<span title="Refresh" class="refresh" data-type="action" data-subtype="other" data-cmd_id="#cmd_Refresh_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/29.png /></a>
+<script>
+		$('.refresh[data-cmd_id=#cmd_Refresh_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_Refresh_id#'});
+		});
+</script>
+</span>
 </div>
 
 <!-- 8ème ligne -->

@@ -24,6 +24,7 @@ function JeeOrangeTv_install() {
 
 function JeeOrangeTv_update() {
 	JeeOrangeTv::Telecommande_Mosaique();
+	JeeOrangeTv::autoAjoutCommande();
 	JeeOrangeTv::autoMaJCommande();
 }
 

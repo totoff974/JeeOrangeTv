@@ -31,7 +31,17 @@ $listCmdJeeOrangeTv = array(
         ),
 		'generic_type' => 'GENERIC_STATE',
     ),
-		
+
+    array(
+        'name' => 'Refresh',
+        'type' => 'action',
+        'subType' => 'other',
+		'order' => 0,
+		'isVisible' => true,
+		'generic_type' => 'GENERIC_ACTION',
+		'forceReturnLineAfter' => '0',
+    ),
+	
     array(
         'name' => 'ON-OFF',
         'type' => 'action',

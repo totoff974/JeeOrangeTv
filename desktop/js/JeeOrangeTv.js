@@ -76,7 +76,9 @@
 			tr += '<input class="cmdAttr" data-l1key="configuration" data-l2key="virtualAction" value="1" style="display:none;" >';
 			tr += '</td>';
 			tr += '<td>';
+			if (init(_cmd.name) != 'Refresh') {
 			tr += '<span>{{Code touche : }}<br/></span><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="code_touche" style="margin-bottom : 5px;width : 50%; display : inline-block;" />';
+			}
 			tr += '</td>';
 			tr += '<td>';
 			tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';

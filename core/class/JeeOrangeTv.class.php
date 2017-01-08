@@ -368,9 +368,15 @@ class JeeOrangeTvCmd extends cmd {
 		else {
 			
 			if ($action_mosaique == 0) {
+				if ($this->getName() == "Refresh") {
+					log::add('JeeOrangeTv', 'debug', 'Refresh : '. $this->getName());
+					$eqLogic->ActionInfo($box_ip);
+				}
+				else {
 				$code_touche = $this->getConfiguration('code_touche');
 				log::add('JeeOrangeTv', 'debug', 'Action executée Jee IP : ' . $box_ip . ' - touche : ' . $code_touche . ' - mode : ' . $code_mode);
 				$eqLogic->ActionCommande($box_ip, $code_touche, $code_mode);
+				}
 			}
 
 		
