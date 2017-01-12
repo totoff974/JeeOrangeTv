@@ -103,10 +103,24 @@
 					"categorie":"Généraliste"
 				},
 				{
+					"id": "-1",
+					"nom":"L\'équipe 21",
+					"canal":"21",
+					"logo":"lequipe21",
+					"categorie":"Généraliste"
+				},
+				{
 					"id": "21403",
 					"nom":"6ter",
 					"canal":"22",
 					"logo":"6ter",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "-1",
+					"nom":"France Info",
+					"canal":"27",
+					"logo":"franceinfo",
 					"categorie":"Généraliste"
 				},
 				{
@@ -339,6 +353,13 @@
 					"canal":"165",
 					"logo":"demain",
 					"categorie":"Société et Culture"
+				},
+				{
+					"id": "21404",
+					"nom":"CStar",
+					"canal":"17",
+					"logo":"cstar",
+					"categorie":"Musique"
 				},
 				{
 					"id": "20490",
