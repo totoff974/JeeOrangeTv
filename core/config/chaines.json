@@ -103,7 +103,7 @@
 					"categorie":"Généraliste"
 				},
 				{
-					"id": "-1",
+					"id": "1401",
 					"nom":"L'équipe 21",
 					"canal":"21",
 					"logo":"lequipe21",
@@ -117,7 +117,7 @@
 					"categorie":"Généraliste"
 				},
 				{
-					"id": "-1",
+					"id": "2111",
 					"nom":"France Info",
 					"canal":"27",
 					"logo":"franceinfo",
@@ -355,7 +355,7 @@
 					"categorie":"Société et Culture"
 				},
 				{
-					"id": "21404",
+					"id": "458",
 					"nom":"CStar",
 					"canal":"17",
 					"logo":"cstar",
