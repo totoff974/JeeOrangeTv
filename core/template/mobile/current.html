@@ -1,6 +1,6 @@
-<div id="plugin_container" class="eqLogic-widget eqLogic" style="width:160px;height:250px;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#; #style#" data-category="" data-eqLogic_id="#id#" data-version="#version#" >
+<div id="plugin_container" class="eqLogic eqLogic-widget col2" style="width:#width#;height:400px;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#; #style#" data-category="" data-eqLogic_id="#id#" data-version="#version#" >
 <center class="widget-name"><strong><a href="#eqLink#" style="font-size : 1.1em;#hideEqLogicName#">#name_display#</strong></a
-<div style="width:160px;height:250px;margin:auto;padding: 10px 0px">
+
 <!-- 1ère ligne -->
 <div>
 <img src=plugins/JeeOrangeTv/doc/images/mobileWidget/#etat_decodeur#.png style="margin-right: -2px"/>
@@ -33,7 +33,13 @@
 		});
 </script>
 </span>
-<img src=plugins/JeeOrangeTv/doc/images/mobileWidget/5.png style="margin-left: -2px; margin-right: -2px" />
+
+<span style="position:relative;margin-left: -2px; margin-right: -2px">
+    <img src=plugins/JeeOrangeTv/doc/images/mosaiqueMobile/off.png />
+	<img src=plugins/JeeOrangeTv/doc/images/mosaiqueMobile/#cmd_chaine_act#.png style="width:45px; height:25px; position:absolute; top: -20px;left: -2px"  />
+</span>
+
+
 <span title="Right" class="right" data-type="action" data-subtype="other" data-cmd_id="#cmd_RIGHT_id#" style="margin-left: -2px; margin-right: -2px">
 <a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/6.png /></a>
 <script>
@@ -217,7 +223,14 @@
 </script>
 </span>
 <img src=plugins/JeeOrangeTv/doc/images/mobileWidget/28.png style="margin-left: -2px; margin-right: -2px"/>
-<img src=plugins/JeeOrangeTv/doc/images/mobileWidget/29.png style="margin-left: -2px; margin-right: -2px"/>
+<span title="Refresh" class="refresh" data-type="action" data-subtype="other" data-cmd_id="#cmd_Refresh_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/29.png /></a>
+<script>
+		$('.refresh[data-cmd_id=#cmd_Refresh_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_Refresh_id#'});
+		});
+</script>
+</span>
 </div>
 
 <!-- 8ème ligne -->
@@ -250,7 +263,7 @@
 <img src=plugins/JeeOrangeTv/doc/images/mobileWidget/34.png style="margin-left: -2px; margin-right: -2px"/>
 </div>
 
-<!-- 8ème ligne -->
+<!-- 9ème ligne -->
 <div style="margin-top: -5px">
 <span title="ON-OFF" class="onoff" data-type="action" data-subtype="other" data-cmd_id="#cmd_ON-OFF_id#" style="margin-right: -2px">
 <a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/35.png /></a>
@@ -260,14 +273,7 @@
 		});
 </script>
 </span>
-<span title="STOP" class="stop" data-type="action" data-subtype="other" data-cmd_id="#cmd_STOP_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/36.png /></a>
-<script>
-		$('.stop[data-cmd_id=#cmd_STOP_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_STOP_id#'});
-		});
-</script>
-</span>
+<img src=plugins/JeeOrangeTv/doc/images/mobileWidget/36.png style="margin-left: -2px; margin-right: -2px"/>
 <img src=plugins/JeeOrangeTv/doc/images/mobileWidget/37.png style="margin-left: -2px; margin-right: -2px"/>
 <span title="REC" class="rec" data-type="action" data-subtype="other" data-cmd_id="#cmd_REC_id#" style="margin-left: -2px; margin-right: -2px">
 <a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/38.png /></a>
@@ -277,7 +283,14 @@
 		});
 </script>
 </span>
-<img src=plugins/JeeOrangeTv/doc/images/mobileWidget/39.png style="margin-left: -2px; margin-right: -2px"/>
+<span title="Mosaique" class="retour" data-type="action" data-subtype="other" data-cmd_id="#cmd_Telecommande_id#" style="margin-left: -2px; margin-right: -2px">
+<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/mobileWidget/39.png /></a>
+<script>
+		$('.retour[data-cmd_id=#cmd_Telecommande_id#] .action').on('click', function () {
+					jeedom.cmd.execute({id: '#cmd_Telecommande_id#'});
+		});
+</script>
+</span>
 </div>
-</div>
+
 </div>
