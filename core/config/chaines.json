@@ -26,7 +26,7 @@
 					"categorie":"Généraliste"
 				},
 				{
-					"id": "-1",
+					"id": "34",
 					"nom":"Canal +",
 					"canal":"4",
 					"logo":"canal+",
@@ -40,7 +40,7 @@
 					"categorie":"Généraliste"
 				},
 				{
-					"id": "20118",
+					"id": "118",
 					"nom":"M6",
 					"canal":"6",
 					"logo":"m6",
@@ -54,35 +54,35 @@
 					"categorie":"Généraliste"
 				},
 				{
-					"id": "30445",
+					"id": "445",
 					"nom":"C8",
 					"canal":"8",
 					"logo":"c8",
 					"categorie":"Généraliste"
 				},
 				{
-					"id": "20119",
+					"id": "119",
 					"nom":"W9",
 					"canal":"9",
 					"logo":"w9",
 					"categorie":"Généraliste"
 				},
 				{
-					"id": "30195",
+					"id": "195",
 					"nom":"TMC",
 					"canal":"10",
 					"logo":"tmc",
 					"categorie":"Généraliste"
 				},
 				{
-					"id": "20446",
+					"id": "446",
 					"nom":"NT1",
 					"canal":"11",
 					"logo":"nt1",
 					"categorie":"Généraliste"
 				},
 				{
-					"id": "30444",
+					"id": "444",
 					"nom":"NRJ12",
 					"canal":"12",
 					"logo":"nrj12",
