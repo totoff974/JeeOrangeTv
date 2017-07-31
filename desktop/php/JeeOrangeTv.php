@@ -132,7 +132,7 @@ foreach ($eqLogics as $eqLogic) {
 					<tr>
 					<th>#</th>
 					<th>{{Nom}}</th>
-					<th>{{Sous-Type}}</th>
+					<!-- <th>{{Sous-Type}}</th> -->
 					<th>{{Valeur}}</th>
 					<th>{{Paramètres}}</th>
 					<th></th>
