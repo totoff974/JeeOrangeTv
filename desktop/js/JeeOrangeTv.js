@@ -34,12 +34,16 @@
 			 tr += '<input disabled class="cmdAttr form-control input-sm" data-l1key="name">';
 			 tr += '</div>';
 			 tr += '</td>';
+			 // tr += '<td>';
+			 // tr += '<input class="cmdAttrcmdAttr form-control type input-sm expertModeVisible" data-l1key="type" value="info" disabled style="margin-bottom : 5px;" />';
+			 // tr += '</td>';
 			 tr += '<td>';
-			 tr += '<input class="cmdAttrcmdAttr form-control type input-sm expertModeVisible" data-l1key="type" value="info" disabled style="margin-bottom : 5px;" />';
-			 tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="etat" disabled style="margin-bottom : 5px;" />';
-			 tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="chaine_actuelle" disabled style="margin-bottom : 5px;" />';
-			 tr += '</td>';
-			 tr += '<td>';
+			 if (init(_cmd.name) == 'Etat') {
+				 tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="etat" disabled style="margin-bottom : 5px;" />';
+			 }			 
+			 if (init(_cmd.name) == 'Chaine Actuelle') {
+				 tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="chaine_actuelle" disabled style="margin-bottom : 5px;" />';
+			 }
 			 tr += '</td>';
 			 tr += '<td>';
 			 tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
@@ -70,11 +74,11 @@
 			tr += '<input disabled class="cmdAttr form-control input-sm" data-l1key="name">';
 			tr += '</div>';
 			tr += '</td>';
-			tr += '<td>';
-			tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="type" value="action" disabled style="margin-bottom : 5px;" />';
-			tr += '<span class="subType" subType="' + init(_cmd.subType) + '"></span>';
-			tr += '<input class="cmdAttr" data-l1key="configuration" data-l2key="virtualAction" value="1" style="display:none;" >';
-			tr += '</td>';
+			// tr += '<td>';
+			// tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="type" value="action" disabled style="margin-bottom : 5px;" />';
+			// tr += '<span class="subType" subType="' + init(_cmd.subType) + '"></span>';
+			// tr += '<input class="cmdAttr" data-l1key="configuration" data-l2key="virtualAction" value="1" style="display:none;" >';
+			// tr += '</td>';
 			tr += '<td>';
 			if (init(_cmd.name) != 'Refresh') {
 			tr += '<span>{{Code touche : }}<br/></span><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="code_touche" style="margin-bottom : 5px;width : 50%; display : inline-block;" />';
