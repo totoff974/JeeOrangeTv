@@ -20,18 +20,29 @@ global $listCmdJeeOrangeTv;
 
 $listCmdJeeOrangeTv = array(
     array(
-        'name' => 'etat',
+        'name' => 'Etat',
         'type' => 'info',
         'subType' => 'binary',
 		'order' => 0,
 		'isVisible' => true,
 		'configuration' => array(
 			'etat'=> '',
-			'chaine_actuelle'=> 'aucune',
         ),
 		'generic_type' => 'GENERIC_STATE',
     ),
 
+	array(
+        'name' => 'Chaine Actuelle',
+        'type' => 'info',
+        'subType' => 'text',
+		'order' => 0,
+		'isVisible' => true,
+		'configuration' => array(
+			'chaine_actuelle'=> 'aucune',
+        ),
+		'generic_type' => 'GENERIC_STATE',
+    ),
+	
     array(
         'name' => 'Refresh',
         'type' => 'action',
