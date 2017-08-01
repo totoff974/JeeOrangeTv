@@ -216,59 +216,67 @@ class JeeOrangeTv extends eqLogic {
 		
 		// lecture du json depuis le décodeur
 		$retour = json_decode($retour_action, true);
+		log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - ResponseCode : ' . $retour['result']['responseCode']);
 		log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - activeStandbyState : ' . $retour['result']['data']['activeStandbyState']);
 		log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - osdContext : ' . $retour['result']['data']['osdContext']);
 		log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - playedMediaId : ' . $retour['result']['data']['playedMediaId']);
 		
 		
-		
-		foreach (eqLogic::getCmd() as $info) {
-			
-			if ($info->getName() == 'Etat') {
+		if ($retour['result']['responseCode'] == '0') {
+			foreach (eqLogic::getCmd() as $info) {
+				
+				if ($info->getName() == 'Etat') {
 
-				$retour_etat = intval($retour['result']['data']['activeStandbyState']);
-				
-				if ( $retour_etat == 0 ) {
-					$etat_decodeur = 1;
-				} else {
-					$etat_decodeur = 0;
-				}
-				if ($info->getConfiguration('etat') != $etat_decodeur) {
-					$info->setConfiguration('etat', $etat_decodeur);
-					$info->setValue($etat_decodeur);
-					$info->save();
-					$info->event($etat_decodeur);
-					JeeOrangeTv::refreshWidget();
-				}
-				}
-				
-			if ($info->getName() == 'Chaine Actuelle') {
+					$retour_etat = $retour['result']['data']['activeStandbyState'];
 					
-				if($retour['result']['data']['osdContext'] == 'HOMEPAGE'){
-					$chaine_actu = 'home';
-				}
-				elseif ($retour['result']['data']['osdContext'] == 'VOD'){
-					$chaine_actu = 'vod';
-				}
-				elseif ($retour['result']['data']['osdContext'] == 'LIVE'){
-					$chaine_actu = strval($retour['result']['data']['playedMediaId']);
-					if ($chaine_actu != '-1') {
-						$chaine_actu = $retour['result']['data']['playedMediaId'];
-						$chaine_actu = $this->lecture_json('logo', 'id', $localisation, $chaine_actu);
-
+					if ( $retour_etat == '0' ) {
+						$etat_decodeur = 1;
+					} elseif ( $retour_etat == '1' ){
+						$etat_decodeur = 0;
+					} else {
+						$etat_decodeur = $info->getConfiguration('etat');
 					}
-				}
-				else {
-					$chaine_actu = 'blank';
-				}
-				if ($info->getConfiguration('chaine_actuelle') != $chaine_actu) {
-					$info->setConfiguration('chaine_actuelle', $chaine_actu);
-					$info->setValue($chaine_actu);
-					$info->save();
-					$info->event($chaine_actu);
-					JeeOrangeTv::refreshWidget();
-				}
-				}
+					
+					if ($info->getConfiguration('etat') != $etat_decodeur) {
+						$info->setConfiguration('etat', $etat_decodeur);
+						$info->setValue($etat_decodeur);
+						$info->save();
+						$info->event($etat_decodeur);
+						JeeOrangeTv::refreshWidget();
+					}
+					}
+					
+				if ($info->getName() == 'Chaine Actuelle') {
+						
+					if($retour['result']['data']['osdContext'] == 'HOMEPAGE'){
+						$chaine_actu = 'home';
+					}
+					elseif ($retour['result']['data']['osdContext'] == 'VOD'){
+						$chaine_actu = 'vod';
+					}
+					elseif ($retour['result']['data']['osdContext'] == 'LIVE'){
+						$chaine_actu = strval($retour['result']['data']['playedMediaId']);
+						if ($chaine_actu != '-1') {
+							$chaine_actu = $retour['result']['data']['playedMediaId'];
+							$chaine_actu = $this->lecture_json('logo', 'id', $localisation, $chaine_actu);
+
+						}
+					}
+					else {
+						$chaine_actu = 'blank';
+					}
+					if ($info->getConfiguration('chaine_actuelle') != $chaine_actu) {
+						$info->setConfiguration('chaine_actuelle', $chaine_actu);
+						$info->setValue($chaine_actu);
+						$info->save();
+						$info->event($chaine_actu);
+						JeeOrangeTv::refreshWidget();
+					}
+					}
+			}
+		} else {
+			log::add('JeeOrangeTv', 'error', 'DECODEUR INFO - ResponseCode : ' . $retour['result']['responseCode']);
+			log::add('JeeOrangeTv', 'error', 'Le décodeur ne donne pas de réponse');
 		}
 		return;
 	}
