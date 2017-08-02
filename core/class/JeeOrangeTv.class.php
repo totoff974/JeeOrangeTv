@@ -27,12 +27,18 @@ class JeeOrangeTv extends eqLogic {
 
 	
     /*     * ***********************Methode static*************************** */
+    public static function cron() {
+		foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
+			$JeeOrangeTv->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
+		}
+	}
+	
     public static function cron5() {
 		foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
 			$JeeOrangeTv->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
 		}
-	
 	}
+	
 	public static function dependancy_info() {
 
 	}
@@ -216,11 +222,12 @@ class JeeOrangeTv extends eqLogic {
 		
 		// lecture du json depuis le décodeur
 		$retour = json_decode($retour_action, true);
+		log::add('JeeOrangeTv', 'debug', ' *** DEBUT RETOUR JSON POUR LE DECODEUR - ' . JeeOrangeTv::getName() . ' - ***');
 		log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - ResponseCode : ' . $retour['result']['responseCode']);
 		log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - activeStandbyState : ' . $retour['result']['data']['activeStandbyState']);
 		log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - osdContext : ' . $retour['result']['data']['osdContext']);
 		log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - playedMediaId : ' . $retour['result']['data']['playedMediaId']);
-		
+		log::add('JeeOrangeTv', 'debug', ' **** FIN RETOUR JSON POUR LE DECODEUR - ' . JeeOrangeTv::getName() . ' - ****');
 		
 		if ($retour['result']['responseCode'] == '0') {
 			foreach (eqLogic::getCmd() as $info) {
@@ -411,7 +418,6 @@ class JeeOrangeTvCmd extends cmd {
 			sleep(3);
 			$eqLogic->ActionInfo($box_ip);
 		}
-
 
 		return;
     }
