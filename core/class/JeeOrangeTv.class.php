@@ -27,6 +27,7 @@ class JeeOrangeTv extends eqLogic {
 
 	
     /*     * ***********************Methode static*************************** */
+<<<<<<< HEAD
     public static function cron() {
 		foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
 			$JeeOrangeTv->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
@@ -38,6 +39,20 @@ class JeeOrangeTv extends eqLogic {
 			$JeeOrangeTv->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
 		}
 	}
+=======
+	
+    // public static function cron() {
+		// foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
+			// $JeeOrangeTv->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
+		// }
+	// }
+	
+    // public static function cron5() {
+		// foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
+			// $JeeOrangeTv->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
+		// }
+	// }
+>>>>>>> refs/remotes/origin/beta
 	
 	public static function dependancy_info() {
 
@@ -47,17 +62,82 @@ class JeeOrangeTv extends eqLogic {
 	}
 	
 	public static function deamon_info() {
-
+    $return = array();
+    $return['log'] = 'JeeOrangeTv_node';
+    $return['state'] = 'nok';
+    $pid = trim( shell_exec ('ps ax | grep "JeeOrangeTv/node/jeeorangetv.js" | grep -v "grep" | wc -l') );
+    if ($pid != '' && $pid != '0') {
+      $return['state'] = 'ok';
+    }
+    $return['launchable'] = 'ok';
+    return $return;
 	}
 
 	public static function deamon_start() {
-
+    self::deamon_stop();
+    $deamon_info = self::deamon_info();
+    if ($deamon_info['launchable'] != 'ok') {
+      throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
+    }
+    $url = network::getNetworkAccess('internal') . '/plugins/JeeOrangeTv/core/api/jeeOrangeTv.php?apikey=' . jeedom::getApiKey('JeeOrangeTv');
+    
+	JeeOrangeTv::launch_svc($url);
 	}
 
 	public static function deamon_stop() {
-
+    exec('kill $(ps aux | grep "JeeOrangeTv/node/jeeorangetv.js" | awk \'{print $2}\')');
+    log::add('JeeOrangeTv', 'info', 'Arrêt du service JeeOrangeTv');
+    $deamon_info = self::deamon_info();
+    if ($deamon_info['state'] == 'ok') {
+      sleep(1);
+      exec('kill -9 $(ps aux | grep "JeeOrangeTv/node/jeeorangetv.js" | awk \'{print $2}\')');
+    }
+    $deamon_info = self::deamon_info();
+    if ($deamon_info['state'] == 'ok') {
+      sleep(1);
+      exec('sudo kill -9 $(ps aux | grep "JeeOrangeTv/node/jeeorangetv.js" | awk \'{print $2}\')');
+    }
 	}
+
+	public static function launch_svc($url) {
+    $log = log::convertLogLevel(log::getLogLevel('JeeOrangeTv'));
+    $sensor_path = realpath(dirname(__FILE__) . '/../../node');
+	$freq = config::byKey('freq_actu', 'JeeOrangeTv');
 	
+    $cmd = 'nice -n 19 nodejs ' . $sensor_path . '/jeeorangetv.js ' . $url . ' ' . $log . ' ' . $freq;
+
+    log::add('JeeOrangeTv', 'debug', 'Lancement démon JeeOrangeTv : ' . $cmd);
+
+    $result = exec('nohup ' . $cmd . ' >> ' . log::getPathToLog('JeeOrangeTv_node') . ' 2>&1 &');
+    if (strpos(strtolower($result), 'error') !== false || strpos(strtolower($result), 'traceback') !== false) {
+      log::add('JeeOrangeTv', 'error', $result);
+      return false;
+    }
+
+    $i = 0;
+    while ($i < 30) {
+      $deamon_info = self::deamon_info();
+      if ($deamon_info['state'] == 'ok') {
+        break;
+      }
+      sleep(1);
+      $i++;
+    }
+    if ($i >= 30) {
+      log::add('JeeOrangeTv', 'error', 'Impossible de lancer le démon JeeOrangeTv', 'unableStartDeamon');
+      return false;
+    }
+    message::removeAll('JeeOrangeTv', 'unableStartDeamon');
+    log::add('JeeOrangeTv', 'info', 'Démon JeeOrangeTv lancé');
+    return true;
+    }
+  
+	public function MaJ_JSON() {
+		foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
+			$JeeOrangeTv->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
+		}
+	}
+
     /*
      * Fonction exécutée automatiquement toutes les minutes par Jeedom
       public static function cron() {
@@ -251,6 +331,7 @@ class JeeOrangeTv extends eqLogic {
 						$info->event($etat_decodeur);
 						JeeOrangeTv::refreshWidget();
 					}
+<<<<<<< HEAD
 					}
 					
 				if ($info->getName() == 'Chaine Actuelle') {
@@ -269,6 +350,39 @@ class JeeOrangeTv extends eqLogic {
 
 						}
 					}
+=======
+				}
+
+				if ($info->getName() == 'Fonction') {
+
+					$retour_fonction = $retour['result']['data']['playedMediaState'];
+									
+					if ($info->getConfiguration('fonction') != $retour_fonction) {
+						$info->setConfiguration('fonction', $retour_fonction);
+						$info->setValue($retour_fonction);
+						$info->save();
+						$info->event($retour_fonction);
+						JeeOrangeTv::refreshWidget();
+					}
+				}
+					
+				if ($info->getName() == 'Chaine Actuelle') {
+						
+					if($retour['result']['data']['osdContext'] == 'HOMEPAGE'){
+						$chaine_actu = 'home';
+					}
+					elseif ($retour['result']['data']['osdContext'] == 'VOD'){
+						$chaine_actu = 'vod';
+					}
+					elseif ($retour['result']['data']['osdContext'] == 'LIVE'){
+						$chaine_actu = strval($retour['result']['data']['playedMediaId']);
+						if ($chaine_actu != '-1') {
+							$chaine_actu = $retour['result']['data']['playedMediaId'];
+							$chaine_actu = $this->lecture_json('logo', 'id', $localisation, $chaine_actu);
+
+						}
+					}
+>>>>>>> refs/remotes/origin/beta
 					else {
 						$chaine_actu = 'blank';
 					}
@@ -309,7 +423,8 @@ class JeeOrangeTv extends eqLogic {
 					$JeeOrangeTvCmd->setConfiguration('mosaique_chaine', $cmd['configuration']['mosaique_chaine']);
 					$JeeOrangeTvCmd->setConfiguration('telecommande', $cmd['configuration']['telecommande']);
 					$JeeOrangeTvCmd->setConfiguration('etat', 0);
-					$JeeOrangeTvCmd->setConfiguration('chaine_actuelle', $cmd['configuration']['chaine_actuelle']);
+					$JeeOrangeTvCmd->setConfiguration('chaine_actuelle', $cmd['configuration']['chaine_actuelle']);					
+					$JeeOrangeTvCmd->setConfiguration('fonction', $cmd['configuration']['fonction']);
 					$JeeOrangeTvCmd->setType($cmd['type']);
 					$JeeOrangeTvCmd->setSubType($cmd['subType']);
 					$JeeOrangeTvCmd->setOrder($cmd['order']);
