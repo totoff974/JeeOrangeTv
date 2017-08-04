@@ -41,10 +41,21 @@ class JeeOrangeTv extends eqLogic {
 	// }
 	
 	public static function dependancy_info() {
-
+		$return = array();
+		$return['log'] = 'JeeOrangeTv_dep';
+		$request = realpath(dirname(__FILE__) . '/../../node/node_modules/request');
+		$return['progress_file'] = '/tmp/JeeOrangeTv_dep';
+		if (is_dir($request)) {
+		  $return['state'] = 'ok';
+		} else {
+		  $return['state'] = 'nok';
+		}
+		return $return;
 	}
 	public static function dependancy_install() {
-
+		log::add('JeeOrangeTv','info','Installation des dépendances nodejs');
+		$resource_path = realpath(dirname(__FILE__) . '/../../resources');
+		passthru('/bin/bash ' . $resource_path . '/nodejs.sh ' . $resource_path . ' > ' . log::getPathToLog('JeeOrangeTv_dep') . ' 2>&1 &');
 	}
 	
 	public static function deamon_info() {
