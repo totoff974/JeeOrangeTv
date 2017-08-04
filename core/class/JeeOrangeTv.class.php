@@ -27,19 +27,6 @@ class JeeOrangeTv extends eqLogic {
 
 	
     /*     * ***********************Methode static*************************** */
-<<<<<<< HEAD
-    public static function cron() {
-		foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
-			$JeeOrangeTv->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
-		}
-	}
-	
-    public static function cron5() {
-		foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
-			$JeeOrangeTv->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
-		}
-	}
-=======
 	
     // public static function cron() {
 		// foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
@@ -52,7 +39,6 @@ class JeeOrangeTv extends eqLogic {
 			// $JeeOrangeTv->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
 		// }
 	// }
->>>>>>> refs/remotes/origin/beta
 	
 	public static function dependancy_info() {
 
@@ -331,26 +317,6 @@ class JeeOrangeTv extends eqLogic {
 						$info->event($etat_decodeur);
 						JeeOrangeTv::refreshWidget();
 					}
-<<<<<<< HEAD
-					}
-					
-				if ($info->getName() == 'Chaine Actuelle') {
-						
-					if($retour['result']['data']['osdContext'] == 'HOMEPAGE'){
-						$chaine_actu = 'home';
-					}
-					elseif ($retour['result']['data']['osdContext'] == 'VOD'){
-						$chaine_actu = 'vod';
-					}
-					elseif ($retour['result']['data']['osdContext'] == 'LIVE'){
-						$chaine_actu = strval($retour['result']['data']['playedMediaId']);
-						if ($chaine_actu != '-1') {
-							$chaine_actu = $retour['result']['data']['playedMediaId'];
-							$chaine_actu = $this->lecture_json('logo', 'id', $localisation, $chaine_actu);
-
-						}
-					}
-=======
 				}
 
 				if ($info->getName() == 'Fonction') {
@@ -382,7 +348,6 @@ class JeeOrangeTv extends eqLogic {
 
 						}
 					}
->>>>>>> refs/remotes/origin/beta
 					else {
 						$chaine_actu = 'blank';
 					}

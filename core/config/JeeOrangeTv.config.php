@@ -440,8 +440,6 @@ $listCmdJeeOrangeTv = array(
 			'mosaique_numero'=> null,
         ),
 		'generic_type' => 'GENERIC_ACTION',
-<<<<<<< HEAD
-=======
 		'forceReturnLineAfter' => '0',
     ),	
 	array(
@@ -483,7 +481,6 @@ $listCmdJeeOrangeTv = array(
 			'mosaique_numero'=> null,
         ),
 		'generic_type' => 'GENERIC_ACTION',
->>>>>>> refs/remotes/origin/stable
 		'forceReturnLineAfter' => '0',
     ),
 	
@@ -514,20 +511,12 @@ $listCmdJeeOrangeTv = array(
 		'generic_type' => 'GENERIC_ACTION',
 		'forceReturnLineAfter' => '1',
     ),	
-<<<<<<< HEAD
-	array(
-        'name' => 'Mosaique 2',
-        'type' => 'action',
-        'subType' => 'other',
-		'order' => 29,
-=======
 	
 	array(
         'name' => 'Mosaique 7',
         'type' => 'action',
         'subType' => 'other',
 		'order' => 34,
->>>>>>> refs/remotes/origin/stable
 		'isVisible' => false,
 		'configuration' => array(
 			'mosaique_chaine'=> 'blank',
@@ -536,14 +525,6 @@ $listCmdJeeOrangeTv = array(
 		'generic_type' => 'GENERIC_ACTION',
 		'forceReturnLineAfter' => '0',
     ),
-<<<<<<< HEAD
-	
-	array(
-        'name' => 'Mosaique 3',
-        'type' => 'action',
-        'subType' => 'other',
-		'order' => 30,
-=======
 
 	array(
         'name' => 'Mosaique 8',
@@ -564,7 +545,6 @@ $listCmdJeeOrangeTv = array(
         'type' => 'action',
         'subType' => 'other',
 		'order' => 36,
->>>>>>> refs/remotes/origin/stable
 		'isVisible' => false,
 		'configuration' => array(
 			'mosaique_chaine'=> 'blank',
@@ -575,17 +555,10 @@ $listCmdJeeOrangeTv = array(
     ),
 	
 	array(
-<<<<<<< HEAD
-        'name' => 'Mosaique 4',
-        'type' => 'action',
-        'subType' => 'other',
-		'order' => 31,
-=======
         'name' => 'Mosaique 10',
         'type' => 'action',
         'subType' => 'other',
 		'order' => 37,
->>>>>>> refs/remotes/origin/stable
 		'isVisible' => false,
 		'configuration' => array(
 			'mosaique_chaine'=> 'blank',
@@ -596,17 +569,10 @@ $listCmdJeeOrangeTv = array(
     ),
 	
 	array(
-<<<<<<< HEAD
-        'name' => 'Mosaique 5',
-        'type' => 'action',
-        'subType' => 'other',
-		'order' => 32,
-=======
         'name' => 'Mosaique 11',
         'type' => 'action',
         'subType' => 'other',
 		'order' => 38,
->>>>>>> refs/remotes/origin/stable
 		'isVisible' => false,
 		'configuration' => array(
 			'mosaique_chaine'=> 'blank',
@@ -614,22 +580,12 @@ $listCmdJeeOrangeTv = array(
         ),
 		'generic_type' => 'GENERIC_ACTION',
 		'forceReturnLineAfter' => '0',
-<<<<<<< HEAD
-    ),	
-	
-	array(
-        'name' => 'Mosaique 6',
-        'type' => 'action',
-        'subType' => 'other',
-		'order' => 33,
-=======
     ),
 	array(
         'name' => 'Mosaique 12',
         'type' => 'action',
         'subType' => 'other',
 		'order' => 39,
->>>>>>> refs/remotes/origin/stable
 		'isVisible' => false,
 		'configuration' => array(
 			'mosaique_chaine'=> 'blank',
@@ -637,15 +593,6 @@ $listCmdJeeOrangeTv = array(
         ),
 		'generic_type' => 'GENERIC_ACTION',
 		'forceReturnLineAfter' => '1',
-<<<<<<< HEAD
-    ),	
-	
-	array(
-        'name' => 'Mosaique 7',
-        'type' => 'action',
-        'subType' => 'other',
-		'order' => 34,
-=======
     ),
 	
 	array(
@@ -653,7 +600,6 @@ $listCmdJeeOrangeTv = array(
         'type' => 'action',
         'subType' => 'other',
 		'order' => 40,
->>>>>>> refs/remotes/origin/stable
 		'isVisible' => false,
 		'configuration' => array(
 			'mosaique_chaine'=> 'blank',
@@ -662,21 +608,12 @@ $listCmdJeeOrangeTv = array(
 		'generic_type' => 'GENERIC_ACTION',
 		'forceReturnLineAfter' => '0',
     ),
-<<<<<<< HEAD
-
-	array(
-        'name' => 'Mosaique 8',
-        'type' => 'action',
-        'subType' => 'other',
-		'order' => 35,
-=======
 	
 	array(
         'name' => 'Mosaique 14',
         'type' => 'action',
         'subType' => 'other',
 		'order' => 41,
->>>>>>> refs/remotes/origin/stable
 		'isVisible' => false,
 		'configuration' => array(
 			'mosaique_chaine'=> 'blank',
@@ -685,21 +622,12 @@ $listCmdJeeOrangeTv = array(
 		'generic_type' => 'GENERIC_ACTION',
 		'forceReturnLineAfter' => '0',
     ),
-<<<<<<< HEAD
-
-	array(
-        'name' => 'Mosaique 9',
-        'type' => 'action',
-        'subType' => 'other',
-		'order' => 36,
-=======
 	
 	array(
         'name' => 'Mosaique 15',
         'type' => 'action',
         'subType' => 'other',
 		'order' => 42,
->>>>>>> refs/remotes/origin/stable
 		'isVisible' => false,
 		'configuration' => array(
 			'mosaique_chaine'=> 'blank',
@@ -708,21 +636,12 @@ $listCmdJeeOrangeTv = array(
 		'generic_type' => 'GENERIC_ACTION',
 		'forceReturnLineAfter' => '1',
     ),
-<<<<<<< HEAD
-	
-	array(
-        'name' => 'Mosaique 10',
-        'type' => 'action',
-        'subType' => 'other',
-		'order' => 37,
-=======
 
 	array(
         'name' => 'Mosaique 16',
         'type' => 'action',
         'subType' => 'other',
 		'order' => 43,
->>>>>>> refs/remotes/origin/stable
 		'isVisible' => false,
 		'configuration' => array(
 			'mosaique_chaine'=> 'blank',
@@ -733,17 +652,10 @@ $listCmdJeeOrangeTv = array(
     ),
 	
 	array(
-<<<<<<< HEAD
-        'name' => 'Mosaique 11',
-        'type' => 'action',
-        'subType' => 'other',
-		'order' => 38,
-=======
         'name' => 'Mosaique 17',
         'type' => 'action',
         'subType' => 'other',
 		'order' => 44,
->>>>>>> refs/remotes/origin/stable
 		'isVisible' => false,
 		'configuration' => array(
 			'mosaique_chaine'=> 'blank',
@@ -752,20 +664,12 @@ $listCmdJeeOrangeTv = array(
 		'generic_type' => 'GENERIC_ACTION',
 		'forceReturnLineAfter' => '0',
     ),
-<<<<<<< HEAD
-	array(
-        'name' => 'Mosaique 12',
-        'type' => 'action',
-        'subType' => 'other',
-		'order' => 39,
-=======
 	
 	array(
         'name' => 'Mosaique 18',
         'type' => 'action',
         'subType' => 'other',
 		'order' => 45,
->>>>>>> refs/remotes/origin/stable
 		'isVisible' => false,
 		'configuration' => array(
 			'mosaique_chaine'=> 'blank',
@@ -774,14 +678,6 @@ $listCmdJeeOrangeTv = array(
 		'generic_type' => 'GENERIC_ACTION',
 		'forceReturnLineAfter' => '1',
     ),
-<<<<<<< HEAD
-	
-	array(
-        'name' => 'Mosaique 13',
-        'type' => 'action',
-        'subType' => 'other',
-		'order' => 40,
-=======
 
 	array(
         'name' => 'Mosaique 19',
@@ -802,7 +698,6 @@ $listCmdJeeOrangeTv = array(
         'type' => 'action',
         'subType' => 'other',
 		'order' => 47,
->>>>>>> refs/remotes/origin/stable
 		'isVisible' => false,
 		'configuration' => array(
 			'mosaique_chaine'=> 'blank',
@@ -813,12 +708,6 @@ $listCmdJeeOrangeTv = array(
     ),
 	
 	array(
-<<<<<<< HEAD
-        'name' => 'Mosaique 14',
-        'type' => 'action',
-        'subType' => 'other',
-		'order' => 41,
-=======
         'name' => 'Mosaique 21',
         'type' => 'action',
         'subType' => 'other',
@@ -837,7 +726,6 @@ $listCmdJeeOrangeTv = array(
         'type' => 'action',
         'subType' => 'other',
 		'order' => 49,
->>>>>>> refs/remotes/origin/stable
 		'isVisible' => false,
 		'configuration' => array(
 			'mosaique_chaine'=> 'blank',
@@ -848,12 +736,6 @@ $listCmdJeeOrangeTv = array(
     ),
 	
 	array(
-<<<<<<< HEAD
-        'name' => 'Mosaique 15',
-        'type' => 'action',
-        'subType' => 'other',
-		'order' => 42,
-=======
         'name' => 'Mosaique 23',
         'type' => 'action',
         'subType' => 'other',
@@ -872,7 +754,6 @@ $listCmdJeeOrangeTv = array(
         'type' => 'action',
         'subType' => 'other',
 		'order' => 51,
->>>>>>> refs/remotes/origin/stable
 		'isVisible' => false,
 		'configuration' => array(
 			'mosaique_chaine'=> 'blank',
@@ -886,11 +767,7 @@ $listCmdJeeOrangeTv = array(
         'name' => 'Telecommande',
         'type' => 'action',
         'subType' => 'other',
-<<<<<<< HEAD
-		'order' => 43,
-=======
 		'order' => 52,
->>>>>>> refs/remotes/origin/stable
 		'isVisible' => false,
 		'configuration' => array(
 			'telecommande'=> 1,

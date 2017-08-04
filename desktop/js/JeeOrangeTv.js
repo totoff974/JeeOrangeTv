@@ -38,16 +38,6 @@
 			 // tr += '<input class="cmdAttrcmdAttr form-control type input-sm expertModeVisible" data-l1key="type" value="info" disabled style="margin-bottom : 5px;" />';
 			 // tr += '</td>';
 			 tr += '<td>';
-<<<<<<< HEAD
-			 tr += '<input class="cmdAttrcmdAttr form-control type input-sm expertModeVisible" data-l1key="type" value="info" disabled style="margin-bottom : 5px;" />';
-			 tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="etat" disabled style="margin-bottom : 5px;" />';
-<<<<<<< HEAD
-=======
-			 tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="chaine_actuelle" disabled style="margin-bottom : 5px;" />';
->>>>>>> refs/remotes/origin/stable
-			 tr += '</td>';
-			 tr += '<td>';
-=======
 			 if (init(_cmd.name) == 'Etat') {
 				 tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="etat" disabled style="margin-bottom : 5px;" />';
 			 }
@@ -57,16 +47,10 @@
 			 if (init(_cmd.name) == 'Chaine Actuelle') {
 				 tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="chaine_actuelle" disabled style="margin-bottom : 5px;" />';
 			 }
->>>>>>> refs/remotes/origin/stable
 			 tr += '</td>';
 			 tr += '<td>';
-<<<<<<< HEAD
-			 tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
-			 tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isHistorized" checked/>{{Historiser}}</label></span> ';
-=======
 			 tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
 			 tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isHistorized" checked/>{{Historiser}}</label></span> ';
->>>>>>> refs/remotes/origin/stable
 			 tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr expertModeVisible" data-l1key="display" data-l2key="invertBinary"/>{{Inverser}}</label></span><br/>';
 			 tr += '</td>';
 			 tr += '<td>';
@@ -99,19 +83,12 @@
 			// tr += '<input class="cmdAttr" data-l1key="configuration" data-l2key="virtualAction" value="1" style="display:none;" >';
 			// tr += '</td>';
 			tr += '<td>';
-<<<<<<< HEAD
-			tr += '<span>{{Code touche : }}<br/></span><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="code_touche" style="margin-bottom : 5px;width : 50%; display : inline-block;" />';
-			tr += '</td>';
-			tr += '<td>';
-			tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
-=======
 			if (init(_cmd.name) != 'Refresh') {
 			tr += '<span>{{Code touche : }}<br/></span><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="code_touche" style="margin-bottom : 5px;width : 50%; display : inline-block;" />';
 			}
 			tr += '</td>';
 			tr += '<td>';
 			tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
->>>>>>> refs/remotes/origin/stable
 			tr += '</td>';
 			tr += '<td>';
 			if (is_numeric(_cmd.id)) {
@@ -143,48 +120,11 @@
 				
 				tr += '<td>';
 				tr += '<select class="cmdAttr form-control" data-l1key="configuration" data-l2key="mosaique_chaine">';
-<<<<<<< HEAD
-				tr += '<option value="blank">{{ }}</option>';
-				tr += '<option value="6ter">{{6 ter}}</option>';
-				tr += '<option value="antennereunion">{{Antenne Réunion}}</option>';
-				tr += '<option value="arte">{{Arte}}</option>';
-				tr += '<option value="c8">{{C8}}</option>';
-				tr += '<option value="canal+">{{Canal +}}</option>';
-				tr += '<option value="cherie25">{{Chérie 25}}</option>';
-				tr += '<option value="france2">{{France 2}}</option>';
-				tr += '<option value="france3">{{France 3}}</option>';
-				tr += '<option value="france4">{{France 4}}</option>';
-				tr += '<option value="france5">{{France 5}}</option>';
-				tr += '<option value="franceinfo">{{France Info}}</option>';
-				tr += '<option value="lci">{{LCI}}</option>';
-				tr += '<option value="lcp">{{LCP}}</option>';
-				tr += '<option value="lequipe21">{{L\'équipe 21}}</option>';
-				tr += '<option value="m6">{{M6}}</option>';
-				tr += '<option value="nrj12">{{NRJ12}}</option>';
-				tr += '<option value="nt1">{{NT1}}</option>';
-				tr += '<option value="numero23">{{Numéro 23}}</option>';
-				tr += '<option value="reunion1er">{{Réunion Première}}</option>';
-				tr += '<option value="rmc">{{RMC}}</option>';
-				tr += '<option value="telekreol">{{Télé Kréol}}</option>';
-				tr += '<option value="tf1">{{TF1}}</option>';
-				tr += '<option value="tmc">{{TMC}}</option>';
-				tr += '<option value="w9">{{W9}}</option>';
-				tr += '</select>';				
-				tr += '</td>';
-				
-				tr += '<td>';
-				tr += '<input type="number" class="cmdAttr form-control" data-l1key="configuration" data-l2key="mosaique_numero"/>';
-				tr += '</td>';
-				
-				tr += '<td>';
-				tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
-=======
 				tr += '</select>';				
 				tr += '</td>';
 								
 				tr += '<td>';
 				tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
->>>>>>> refs/remotes/origin/stable
 				tr += '</td>';
 				
 				tr += '<td>';
@@ -195,13 +135,6 @@
 				tr += '</td>';
 				tr += '</tr>';
 			}
-<<<<<<< HEAD
-		$('#mosaique tbody').append(tr);
-		$('#mosaique tbody tr:last').setValues(_cmd, '.cmdAttr');
-		var tr = $('#mosaique tbody tr:last');
-	}
-	
-=======
 			
 		$('#mosaique tbody').append(tr);
 		$('#mosaique tbody tr:last').setValues(_cmd, '.cmdAttr');
@@ -220,7 +153,6 @@
 		tr.setValues(_cmd, '.cmdAttr');
 		});
 }
->>>>>>> refs/remotes/origin/stable
 	if (init(_cmd.name) == "Telecommande") {
 		if (init(_cmd.type) == 'action') {
 
@@ -246,11 +178,7 @@
 				tr += '</td>';
 				
 				tr += '<td>';
-<<<<<<< HEAD
-				tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
-=======
 				tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
->>>>>>> refs/remotes/origin/stable
 				tr += '</td>';
 				
 				tr += '<td>';
