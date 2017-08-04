@@ -19,10 +19,32 @@
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 function JeeOrangeTv_install() {
+	// $cron = cron::byClassAndFunction('JeeOrangeTv', 'MaJ_JSON');
+	// if (!is_object($cron)) {
+		// $cron = new cron();
+		// $cron->setClass('JeeOrangeTv');
+		// $cron->setFunction('MaJ_JSON');
+		// $cron->setEnable(1);
+		// $cron->setDeamon(0);
+		// $cron->setSchedule('* * * * *');
+		// $cron->save();
+	// }
+	
 	JeeOrangeTv::Telecommande_Mosaique();
 }
 
 function JeeOrangeTv_update() {
+	// $cron = cron::byClassAndFunction('JeeOrangeTv', 'MaJ_JSON');
+	// if (!is_object($cron)) {
+		// $cron = new cron();
+		// $cron->setClass('JeeOrangeTv');
+		// $cron->setFunction('MaJ_JSON');
+		// $cron->setEnable(1);
+		// $cron->setDeamon(0);
+		// $cron->setSchedule('* * * * *');
+		// $cron->save();
+	// }
+	
 	JeeOrangeTv::Telecommande_Mosaique();
 	JeeOrangeTv::autoAjoutCommande();
 	JeeOrangeTv::autoMaJCommande();
@@ -30,7 +52,10 @@ function JeeOrangeTv_update() {
 
 
 function JeeOrangeTv_remove() {
-    
+	// $cron = cron::byClassAndFunction('JeeOrangeTv', 'MaJ_JSON');
+	// if (is_object($cron)) {
+		// $cron->remove();
+	// }
 }
 
 ?>

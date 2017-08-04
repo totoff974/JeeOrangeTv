@@ -41,6 +41,12 @@ if (!isConnect()) {
     <fieldset>
             <legend><i class="icon loisir-darth"></i> {{Configuration de Tv Orange}}</legend>
             <div class="form-group">
+                <label class="col-sm-4 control-label">{{Fréquence d'intérogation des décodeurs (en secondes) :}}</label>
+                <div class="col-sm-4">
+					<input type="number" class="configKey form-control" data-l1key="freq_actu"/>
+               </div>
+           </div>	
+            <div class="form-group">
                 <label class="col-sm-4 control-label">{{Affichage sous forme de Widget :}}</label>
                 <div class="col-sm-4">
 					<label class="checkbox-inline"><input type="checkbox" class="configKey" data-l1key="widget" checked />{{Activer}}</label>
