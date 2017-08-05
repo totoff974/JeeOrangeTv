@@ -413,8 +413,8 @@
 			]
 		},
 		{
-			"nom" : "Métropole (Orange fibre) région parisienne",
-			"code": "metropole_2",
+			"nom" : "Métropole - Orange fibre - région parisienne",
+			"code": "metropole2",
 			"liste": [
 				{
 					"id": "192",
