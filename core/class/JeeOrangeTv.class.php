@@ -101,6 +101,10 @@ class JeeOrangeTv extends eqLogic {
     $sensor_path = realpath(dirname(__FILE__) . '/../../node');
 	$freq = config::byKey('freq_actu', 'JeeOrangeTv');
 	
+	if ($freq == 0) {
+		$freq == 1;
+	}
+	
     $cmd = 'nice -n 19 nodejs ' . $sensor_path . '/jeeorangetv.js ' . $url . ' ' . $log . ' ' . $freq;
 
     log::add('JeeOrangeTv', 'debug', 'Lancement démon JeeOrangeTv : ' . $cmd);
