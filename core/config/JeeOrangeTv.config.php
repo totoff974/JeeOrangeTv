@@ -26,7 +26,7 @@ $listCmdJeeOrangeTv = array(
 		'order' => 0,
 		'isVisible' => true,
 		'configuration' => array(
-			'etat'=> '',
+			'etat'=> 0,
         ),
 		'generic_type' => 'GENERIC_STATE',
     ),
