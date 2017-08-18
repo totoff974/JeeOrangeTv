@@ -222,7 +222,9 @@ class JeeOrangeTv extends eqLogic {
 			
 			if ($inf->getName() == 'Etat') {
 			$etat_decodeur = $inf->getConfiguration('etat');
-			$replace['#etat_decodeur#'] = $etat_decodeur;
+				if ($etat_decodeur == 0 or $etat_decodeur == 1){
+					$replace['#etat_decodeur#'] = $etat_decodeur;
+				}
 			}
 			
 			if ($inf->getName() == 'Chaine Actuelle') {
@@ -321,6 +323,8 @@ class JeeOrangeTv extends eqLogic {
 						$etat_decodeur = 1;
 					} elseif ( $retour_etat == '1' ){
 						$etat_decodeur = 0;
+					} elseif ( $retour_etat == '' ){
+						$etat_decodeur = $info->getConfiguration('etat');
 					} else {
 						$etat_decodeur = $info->getConfiguration('etat');
 					}
