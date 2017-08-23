@@ -306,10 +306,20 @@ class JeeOrangeTv extends eqLogic {
 		// lecture du json depuis le décodeur
 		$retour = json_decode($retour_action, true);
 		log::add('JeeOrangeTv', 'debug', ' *** DEBUT RETOUR JSON POUR LE DECODEUR - ' . JeeOrangeTv::getName() . ' - ***');
-		log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - ResponseCode : ' . $retour['result']['responseCode']);
-		log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - activeStandbyState : ' . $retour['result']['data']['activeStandbyState']);
-		log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - osdContext : ' . $retour['result']['data']['osdContext']);
-		log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - playedMediaId : ' . $retour['result']['data']['playedMediaId']);
+		
+		if (isset($retour['result']['responseCode'])) {
+			log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - ResponseCode : ' . $retour['result']['responseCode']);
+		}
+		if (isset($retour['result']['data']['activeStandbyState'])) {
+			log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - activeStandbyState : ' . $retour['result']['data']['activeStandbyState']);
+		}
+		if (isset($retour['result']['data']['osdContext'])) {
+			log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - osdContext : ' . $retour['result']['data']['osdContext']);
+		}
+		if (isset($retour['result']['data']['playedMediaId'])) {
+			log::add('JeeOrangeTv', 'debug', 'DECODEUR INFO - playedMediaId : ' . $retour['result']['data']['playedMediaId']);
+		}		
+
 		log::add('JeeOrangeTv', 'debug', ' **** FIN RETOUR JSON POUR LE DECODEUR - ' . JeeOrangeTv::getName() . ' - ****');
 		
 		if ($retour['result']['responseCode'] == '0') {
@@ -339,8 +349,13 @@ class JeeOrangeTv extends eqLogic {
 				}
 
 				if ($info->getName() == 'Fonction') {
-
-					$retour_fonction = $retour['result']['data']['playedMediaState'];
+					
+					if (isset($retour['result']['data']['playedMediaState'])){
+						$retour_fonction = $retour['result']['data']['playedMediaState'];
+					} else {
+						$retour_fonction = "null";
+					}
+					
 									
 					if ($info->getConfiguration('fonction') != $retour_fonction) {
 						$info->setConfiguration('fonction', $retour_fonction);
@@ -349,6 +364,7 @@ class JeeOrangeTv extends eqLogic {
 						$info->event($retour_fonction);
 						JeeOrangeTv::refreshWidget();
 					}
+					
 				}
 					
 				if ($info->getName() == 'Chaine Actuelle') {
