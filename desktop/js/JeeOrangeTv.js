@@ -31,7 +31,7 @@
 			 tr += '</td>';
 			 tr += '<td> ';
 			 tr += '<div class="col-sm-6">';
-			 tr += '<input class="cmdAttr form-control input-sm" data-l1key="name">';
+			 tr += '<input disabled class="cmdAttr form-control input-sm" data-l1key="name">';
 			 tr += '</div>';
 			 tr += '</td>';
 			 // tr += '<td>';
@@ -39,13 +39,13 @@
 			 // tr += '</td>';
 			 tr += '<td>';
 			 if (init(_cmd.name) == 'Etat') {
-				 tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="etat" style="margin-bottom : 5px;" />';
+				 tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="etat" disabled style="margin-bottom : 5px;" />';
 			 }
 			 if (init(_cmd.name) == 'Fonction') {
-				 tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="fonction" style="margin-bottom : 5px;" />';
+				 tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="fonction" disabled style="margin-bottom : 5px;" />';
 			 }			 
 			 if (init(_cmd.name) == 'Chaine Actuelle') {
-				 tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="chaine_actuelle" style="margin-bottom : 5px;" />';
+				 tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="chaine_actuelle" disabled style="margin-bottom : 5px;" />';
 			 }
 			 tr += '</td>';
 			 tr += '<td>';
