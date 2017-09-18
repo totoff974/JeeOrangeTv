@@ -1,6 +1,0 @@
-=== Configuration
-Après installation du plugin, il vous suffit d'ajouter un décodeur en précisant son adresse IP.
-
-
-[IMPORTANT]
-Obligatoirement remplir le champ IP pour le bon fonctionnement du plugin.
