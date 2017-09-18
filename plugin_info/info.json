@@ -1,0 +1,14 @@
+{
+	"id" : "JeeOrangeTv",
+	"name" : "JeeOrangeTv",
+	"description" : "Plugin pour piloter le décodeur TV Orange par IP",
+	"licence" : "AGPL",
+	"author" : "Christophe CHAMANT",
+	"require" : "3.0",
+	"category" : "multimedia",
+	"hasDependency" : false,
+	"hasOwnDeamon" : true,
+	"maxDependancyInstallTime" : 120,
+	"changelog" : "https://github.com/totoff974/JeeOrangeTv/blob/stable/doc/#language#/changelog.asciidoc",
+	"documentation" : "https://github.com/totoff974/JeeOrangeTv/blob/stable/doc/#language#/index.asciidoc"
+}

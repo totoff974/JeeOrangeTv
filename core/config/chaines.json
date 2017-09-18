@@ -1,0 +1,1289 @@
+{
+	"localisation": [
+		{
+			"nom" : "Métropole",
+			"code": "metropole",
+			"liste": [
+				{
+					"id": "192",
+					"nom":"TF1",
+					"canal":"1",
+					"logo":"tf1",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "4",
+					"nom":"France 2",
+					"canal":"2",
+					"logo":"france2",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "80",
+					"nom":"France 3",
+					"canal":"3",
+					"logo":"france3",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "34",
+					"nom":"Canal +",
+					"canal":"4",
+					"logo":"canal+",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "47",
+					"nom":"France 5",
+					"canal":"5",
+					"logo":"france5",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "118",
+					"nom":"M6",
+					"canal":"6",
+					"logo":"m6",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "111",
+					"nom":"Arte",
+					"canal":"7",
+					"logo":"arte",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "445",
+					"nom":"C8",
+					"canal":"8",
+					"logo":"c8",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "119",
+					"nom":"W9",
+					"canal":"9",
+					"logo":"w9",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "195",
+					"nom":"TMC",
+					"canal":"10",
+					"logo":"tmc",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "446",
+					"nom":"NT1",
+					"canal":"11",
+					"logo":"nt1",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "444",
+					"nom":"NRJ12",
+					"canal":"12",
+					"logo":"nrj12",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "78",
+					"nom":"France 4",
+					"canal":"14",
+					"logo":"france4",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "160",
+					"nom":"France Ô",
+					"canal":"19",
+					"logo":"franceo",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "1401",
+					"nom":"L'équipe 21",
+					"canal":"21",
+					"logo":"lequipe21",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "21403",
+					"nom":"6ter",
+					"canal":"22",
+					"logo":"6ter",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "2111",
+					"nom":"France Info",
+					"canal":"27",
+					"logo":"franceinfo",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "20205",
+					"nom":"TV5 Monde",
+					"canal":"33",
+					"logo":"tv5monde",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "449",
+					"nom":"TéléSud",
+					"canal":"252",
+					"logo":"telesud",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "234",
+					"nom":"LCP",
+					"canal":"13",
+					"logo":"lcp",
+					"categorie":"Information"
+				},
+				{
+					"id": "481",
+					"nom":"BFM TV",
+					"canal":"15",
+					"logo":"bfmtv",
+					"categorie":"Information"
+				},
+				{
+					"id": "226",
+					"nom":"iTélé",
+					"canal":"16",
+					"logo":"itele",
+					"categorie":"Information"
+				},
+				{
+					"id": "112",
+					"nom":"LCI",
+					"canal":"100",
+					"logo":"lci",
+					"categorie":"Information"
+				},
+				{
+					"id": "-1",
+					"nom":"Public Sénat",
+					"canal":"102",
+					"logo":"publicsenat",
+					"categorie":"Information"
+				},
+				{
+					"id": "529",
+					"nom":"France 24",
+					"canal":"105",
+					"logo":"france24",
+					"categorie":"Information"
+				},
+				{
+					"id": "1073",
+					"nom":"BFM Business",
+					"canal":"103",
+					"logo":"bfmbusiness",
+					"categorie":"Information"
+				},
+				{
+					"id": "671",
+					"nom":"France 24 English",
+					"canal":"175",
+					"logo":"france24english",
+					"categorie":"Information"
+				},
+				{
+					"id": "53",
+					"nom":"CNN",
+					"canal":"171",
+					"logo":"cnn",
+					"categorie":"Information"
+				},
+				{
+					"id": "51",
+					"nom":"CNBC",
+					"canal":"172",
+					"logo":"cnbc",
+					"categorie":"Information"
+				},
+				{
+					"id": "410",
+					"nom":"Bloomberg",
+					"canal":"173",
+					"logo":"bloomberg",
+					"categorie":"Information"
+				},
+				{
+					"id": "21400",
+					"nom":"RMC Découverte",
+					"canal":"24",
+					"logo":"rmcdecouverte",
+					"categorie":"Découverte et Art de vivre"
+				},
+				{
+					"id": "30191",
+					"nom":"Teva",
+					"canal":"30",
+					"logo":"teva",
+					"categorie":"Découverte et Art de vivre"
+				},
+				{
+					"id": "1451",
+					"nom":"Campagnes Tv",
+					"canal":"112",
+					"logo":"campagnestv",
+					"categorie":"Découverte et Art de vivre"
+				},
+				{
+					"id": "449",
+					"nom":"KTO",
+					"canal":"166",
+					"logo":"kto",
+					"categorie":"Découverte et Art de vivre"
+				},
+				{
+					"id": "64",
+					"nom":"Equidia LIFE",
+					"canal":"81",
+					"logo":"equidialife",
+					"categorie":"sports"
+				},
+				{
+					"id": "1146",
+					"nom":"Equidia LIVE",
+					"canal":"80",
+					"logo":"equidialive",
+					"categorie":"sports"
+				},
+				{
+					"id": "787",
+					"nom":"No Life",
+					"canal":"130",
+					"logo":"nolife",
+					"categorie":"Jeunes adultes"
+				},
+				{
+					"id": "-1",
+					"nom":"GINX",
+					"canal":"198",
+					"logo":"ginx",
+					"categorie":"Jeunes adultes"
+				},
+				{
+					"id": "226",
+					"nom":"Gulli",
+					"canal":"18",
+					"logo":"gulli",
+					"categorie":"Jeunesse"
+				},
+				{
+					"id": "20058",
+					"nom":"Disney Channel",
+					"canal":"70",
+					"logo":"disneychannel",
+					"categorie":"Jeunesse"
+				},
+				{
+					"id": "21404",
+					"nom":"HD1",
+					"canal":"20",
+					"logo":"hd1",
+					"categorie":"Divertissement"
+				},
+				{
+					"id": "21402",
+					"nom":"Numéro 23",
+					"canal":"23",
+					"logo":"numero23",
+					"categorie":"Divertissement"
+				},
+				{
+					"id": "21399",
+					"nom":"Chérie 25",
+					"canal":"25",
+					"logo":"cherie25",
+					"categorie":"Divertissement"
+				},
+				{
+					"id": "1061",
+					"nom":"Lucky Jack",
+					"canal":"207",
+					"logo":"luckyjack",
+					"categorie":"Divertissement"
+				},
+				{
+					"id": "1996",
+					"nom":"Fashion Tv",
+					"canal":"170",
+					"logo":"fashiontv",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "531",
+					"nom":"Luxe Tv",
+					"canal":"161",
+					"logo":"luxetv",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "829",
+					"nom":"MyZen",
+					"canal":"162",
+					"logo":"myzen",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "-1",
+					"nom":"Mens Up",
+					"canal":"163",
+					"logo":"mensup",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "987",
+					"nom":"Ma chaine étudiante",
+					"canal":"164",
+					"logo":"mce",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "57",
+					"nom":"Demain !",
+					"canal":"165",
+					"logo":"demain",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "458",
+					"nom":"CStar",
+					"canal":"17",
+					"logo":"cstar",
+					"categorie":"Musique"
+				},
+				{
+					"id": "20490",
+					"nom":"Trace Urban",
+					"canal":"140",
+					"logo":"traceurban",
+					"categorie":"Musique"
+				},
+				{
+					"id": "-1",
+					"nom":"NRJ Hits TV",
+					"canal":"141",
+					"logo":"nrjhitstv",
+					"categorie":"Musique"
+				},
+				{
+					"id": "",
+					"nom":"Virgin Radio Tv",
+					"canal":"142",
+					"logo":"virginradiotv",
+					"categorie":"Musique"
+				},
+				{
+					"id": "-1",
+					"nom":"Clubbing",
+					"canal":"143",
+					"logo":"clubbing",
+					"categorie":"Musique"
+				},
+				{
+					"id": "-1",
+					"nom":"OFive",
+					"canal":"144",
+					"logo":"ofive",
+					"categorie":"Musique"
+				},
+				{
+					"id": "-1",
+					"nom":"BBlack Classik",
+					"canal":"145",
+					"logo":"bblackclassik",
+					"categorie":"Musique"
+				},
+				{
+					"id": "-1",
+					"nom":"BBlack Caribbean",
+					"canal":"146",
+					"logo":"bblackcaribbean",
+					"categorie":"Musique"
+				}
+			]
+		},
+		{
+			"nom" : "Métropole - Orange fibre - région parisienne",
+			"code": "metropole2",
+			"liste": [
+				{
+					"id": "192",
+					"nom":"TF1",
+					"canal":"1",
+					"logo":"tf1",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "4",
+					"nom":"France 2",
+					"canal":"2",
+					"logo":"france2",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "80",
+					"nom":"France 3",
+					"canal":"3",
+					"logo":"france3",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "34",
+					"nom":"Canal +",
+					"canal":"4",
+					"logo":"canal+",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "47",
+					"nom":"France 5",
+					"canal":"5",
+					"logo":"france5",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "118",
+					"nom":"M6",
+					"canal":"6",
+					"logo":"m6",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "111",
+					"nom":"Arte",
+					"canal":"7",
+					"logo":"arte",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "445",
+					"nom":"C8",
+					"canal":"8",
+					"logo":"c8",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "119",
+					"nom":"W9",
+					"canal":"9",
+					"logo":"w9",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "195",
+					"nom":"TMC",
+					"canal":"10",
+					"logo":"tmc",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "446",
+					"nom":"NT1",
+					"canal":"11",
+					"logo":"nt1",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "444",
+					"nom":"NRJ12",
+					"canal":"12",
+					"logo":"nrj12",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "78",
+					"nom":"France 4",
+					"canal":"14",
+					"logo":"france4",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "160",
+					"nom":"France Ô",
+					"canal":"19",
+					"logo":"franceo",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "1401",
+					"nom":"L'équipe 21",
+					"canal":"21",
+					"logo":"lequipe21",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "1403",
+					"nom":"6ter",
+					"canal":"22",
+					"logo":"6ter",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "2111",
+					"nom":"France Info",
+					"canal":"27",
+					"logo":"franceinfo",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "20205",
+					"nom":"TV5 Monde",
+					"canal":"33",
+					"logo":"tv5monde",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "449",
+					"nom":"TéléSud",
+					"canal":"252",
+					"logo":"telesud",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "234",
+					"nom":"LCP",
+					"canal":"13",
+					"logo":"lcp",
+					"categorie":"Information"
+				},
+				{
+					"id": "481",
+					"nom":"BFM TV",
+					"canal":"15",
+					"logo":"bfmtv",
+					"categorie":"Information"
+				},
+				{
+					"id": "226",
+					"nom":"CNEWS",
+					"canal":"16",
+					"logo":"cnews",
+					"categorie":"Information"
+				},
+				{
+					"id": "112",
+					"nom":"LCI",
+					"canal":"26",
+					"logo":"lci",
+					"categorie":"Information"
+				},
+				{
+					"id": "-1",
+					"nom":"Public Sénat",
+					"canal":"226",
+					"logo":"publicsenat",
+					"categorie":"Information"
+				},
+				{
+					"id": "529",
+					"nom":"France 24",
+					"canal":"227",
+					"logo":"france24",
+					"categorie":"Information"
+				},
+				{
+					"id": "1073",
+					"nom":"BFM Business",
+					"canal":"228",
+					"logo":"bfmbusiness",
+					"categorie":"Information"
+				},
+				{
+					"id": "671",
+					"nom":"France 24 English",
+					"canal":"232",
+					"logo":"france24english",
+					"categorie":"Information"
+				},
+				{
+					"id": "53",
+					"nom":"CNN",
+					"canal":"234",
+					"logo":"cnn",
+					"categorie":"Information"
+				},
+				{
+					"id": "51",
+					"nom":"CNBC",
+					"canal":"235",
+					"logo":"cnbc",
+					"categorie":"Information"
+				},
+				{
+					"id": "410",
+					"nom":"Bloomberg",
+					"canal":"236",
+					"logo":"bloomberg",
+					"categorie":"Information"
+				},
+				{
+					"id": "1400",
+					"nom":"RMC Découverte",
+					"canal":"24",
+					"logo":"rmcdecouverte",
+					"categorie":"Découverte et Art de vivre"
+				},
+				{
+					"id": "191",
+					"nom":"Teva",
+					"canal":"34",
+					"logo":"teva",
+					"categorie":"Découverte et Art de vivre"
+				},
+				{
+					"id": "1451",
+					"nom":"Campagnes Tv",
+					"canal":"110",
+					"logo":"campagnestv",
+					"categorie":"Découverte et Art de vivre"
+				},
+				{
+					"id": "449",
+					"nom":"TéléSud",
+					"canal":"585",
+					"logo":"kto",
+					"categorie":"Découverte et Art de vivre"
+				},
+				{
+					"id": "64",
+					"nom":"Equidia LIFE",
+					"canal":"173",
+					"logo":"equidialife",
+					"categorie":"sports"
+				},
+				{
+					"id": "1146",
+					"nom":"Equidia LIVE",
+					"canal":"174",
+					"logo":"equidialive",
+					"categorie":"sports"
+				},
+				{
+					"id": "787",
+					"nom":"No Life",
+					"canal":"138",
+					"logo":"nolife",
+					"categorie":"Jeunes adultes"
+				},
+				{
+					"id": "-1",
+					"nom":"GINX",
+					"canal":"140",
+					"logo":"ginx",
+					"categorie":"Jeunes adultes"
+				},
+				{
+					"id": "-1",
+					"nom":"Gulli",
+					"canal":"18",
+					"logo":"gulli",
+					"categorie":"Jeunesse"
+				},
+				{
+					"id": "58",
+					"nom":"Disney Channel",
+					"canal":"86",
+					"logo":"disneychannel",
+					"categorie":"Jeunesse"
+				},
+				{
+					"id": "1404",
+					"nom":"HD1",
+					"canal":"20",
+					"logo":"hd1",
+					"categorie":"Divertissement"
+				},
+				{
+					"id": "1402",
+					"nom":"Numéro 23",
+					"canal":"23",
+					"logo":"numero23",
+					"categorie":"Divertissement"
+				},
+				{
+					"id": "1399",
+					"nom":"Chérie 25",
+					"canal":"25",
+					"logo":"cherie25",
+					"categorie":"Divertissement"
+				},
+				{
+					"id": "1061",
+					"nom":"Lucky Jack",
+					"canal":"211",
+					"logo":"luckyjack",
+					"categorie":"Divertissement"
+				},
+				{
+					"id": "1996",
+					"nom":"Fashion Tv",
+					"canal":"214",
+					"logo":"fashiontv",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "531",
+					"nom":"Luxe Tv",
+					"canal":"215",
+					"logo":"luxetv",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "829",
+					"nom":"MyZen",
+					"canal":"135",
+					"logo":"myzen",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "987",
+					"nom":"Ma chaine étudiante",
+					"canal":"217",
+					"logo":"mce",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "57",
+					"nom":"Demain !",
+					"canal":"219",
+					"logo":"demain",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "-1",
+					"nom":"CStar",
+					"canal":"17",
+					"logo":"cstar",
+					"categorie":"Musique"
+				},
+				{
+					"id": "325",
+					"nom":"Trace Urban",
+					"canal":"150",
+					"logo":"traceurban",
+					"categorie":"Musique"
+				},
+				{
+					"id": "605",
+					"nom":"NRJ Hits TV",
+					"canal":"151",
+					"logo":"nrjhitstv",
+					"categorie":"Musique"
+				},
+				{
+					"id": "-1",
+					"nom":"Virgin Radio Tv",
+					"canal":"152",
+					"logo":"virginradiotv",
+					"categorie":"Musique"
+				},
+				{
+					"id": "-1",
+					"nom":"Clubbing",
+					"canal":"153",
+					"logo":"clubbing",
+					"categorie":"Musique"
+				},
+				{
+					"id": "-1",
+					"nom":"OFive",
+					"canal":"154",
+					"logo":"ofive",
+					"categorie":"Musique"
+				},
+				{
+					"id": "-1",
+					"nom":"BBlack Classik",
+					"canal":"155",
+					"logo":"bblackclassik",
+					"categorie":"Musique"
+				},
+				{
+					"id": "-1",
+					"nom":"BBlack Caribbean",
+					"canal":"156",
+					"logo":"bblackcaribbean",
+					"categorie":"Musique"
+				}
+			]
+		},
+		{
+			"nom" : "DOM-TOM",
+			"code": "domtom",
+			"liste": [
+				{
+					"id": "20245",
+					"nom":"Réunion Première",
+					"canal":"1",
+					"logo":"reunionpremiere",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "20436",
+					"nom":"Antenne Réunion",
+					"canal":"2",
+					"logo":"antennereunion",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "21079",
+					"nom":"Télé Kréol",
+					"canal":"3",
+					"logo":"telekreol",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "1080",
+					"nom":"Mayotte Première",
+					"canal":"4",
+					"logo":"mayottepremiere",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "-1",
+					"nom":"KTV",
+					"canal":"5",
+					"logo":"ktv",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "192",
+					"nom":"TF1",
+					"canal":"11",
+					"logo":"tf1",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "4",
+					"nom":"France 2",
+					"canal":"12",
+					"logo":"france2",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "80",
+					"nom":"France 3",
+					"canal":"13",
+					"logo":"france3",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "47",
+					"nom":"France 5",
+					"canal":"15",
+					"logo":"france5",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "20118",
+					"nom":"M6",
+					"canal":"16",
+					"logo":"m6",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "111",
+					"nom":"Arte",
+					"canal":"17",
+					"logo":"arte",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "30445",
+					"nom":"C8",
+					"canal":"18",
+					"logo":"c8",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "20119",
+					"nom":"W9",
+					"canal":"19",
+					"logo":"w9",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "30195",
+					"nom":"TMC",
+					"canal":"20",
+					"logo":"tmc",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "20446",
+					"nom":"NT1",
+					"canal":"21",
+					"logo":"nt1",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "30444",
+					"nom":"NRJ12",
+					"canal":"22",
+					"logo":"nrj12",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "78",
+					"nom":"France 4",
+					"canal":"24",
+					"logo":"france4",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "160",
+					"nom":"France Ô",
+					"canal":"29",
+					"logo":"franceo",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "21403",
+					"nom":"6ter",
+					"canal":"32",
+					"logo":"6ter",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "20205",
+					"nom":"TV5 Monde",
+					"canal":"43",
+					"logo":"tv5monde",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "449",
+					"nom":"TéléSud",
+					"canal":"561",
+					"logo":"telesud",
+					"categorie":"Généraliste"
+				},
+				{
+					"id": "234",
+					"nom":"LCP",
+					"canal":"23",
+					"logo":"lcp",
+					"categorie":"Information"
+				},
+				{
+					"id": "481",
+					"nom":"BFM TV",
+					"canal":"25",
+					"logo":"bfmtv",
+					"categorie":"Information"
+				},
+				{
+					"id": "226",
+					"nom":"iTélé",
+					"canal":"26",
+					"logo":"itele",
+					"categorie":"Information"
+				},
+				{
+					"id": "112",
+					"nom":"LCI",
+					"canal":"36",
+					"logo":"lci",
+					"categorie":"Information"
+				},
+				{
+					"id": "992",
+					"nom":"LCP100%",
+					"canal":"111",
+					"logo":"lcp100",
+					"categorie":"Information"
+				},
+				{
+					"id": "-1",
+					"nom":"Public Sénat",
+					"canal":"112",
+					"logo":"publicsenat",
+					"categorie":"Information"
+				},
+				{
+					"id": "529",
+					"nom":"France 24",
+					"canal":"113",
+					"logo":"france24",
+					"categorie":"Information"
+				},
+				{
+					"id": "1073",
+					"nom":"BFM Business",
+					"canal":"114",
+					"logo":"bfmbusiness",
+					"categorie":"Information"
+				},
+				{
+					"id": "671",
+					"nom":"France 24 English",
+					"canal":"180",
+					"logo":"france24english",
+					"categorie":"Information"
+				},
+				{
+					"id": "53",
+					"nom":"CNN",
+					"canal":"181",
+					"logo":"cnn",
+					"categorie":"Information"
+				},
+				{
+					"id": "51",
+					"nom":"CNBC",
+					"canal":"183",
+					"logo":"cnbc",
+					"categorie":"Information"
+				},
+				{
+					"id": "410",
+					"nom":"Bloomberg",
+					"canal":"184",
+					"logo":"bloomberg",
+					"categorie":"Information"
+				},
+				{
+					"id": "21400",
+					"nom":"RMC Découverte",
+					"canal":"34",
+					"logo":"rmcdecouverte",
+					"categorie":"Découverte et Art de vivre"
+				},
+				{
+					"id": "30191",
+					"nom":"Teva",
+					"canal":"42",
+					"logo":"teva",
+					"categorie":"Découverte et Art de vivre"
+				},
+				{
+					"id": "20119",
+					"nom":"Aerostar Tv",
+					"canal":"19",
+					"logo":"aerostartv",
+					"categorie":"Découverte et Art de vivre"
+				},
+				{
+					"id": "-1",
+					"nom":"Dog Tv",
+					"canal":"120",
+					"logo":"dogtv",
+					"categorie":"Découverte et Art de vivre"
+				},
+				{
+					"id": "1451",
+					"nom":"Campagnes Tv",
+					"canal":"122",
+					"logo":"campagnestv",
+					"categorie":"Découverte et Art de vivre"
+				},
+				{
+					"id": "449",
+					"nom":"KTO",
+					"canal":"176",
+					"logo":"kto",
+					"categorie":"Découverte et Art de vivre"
+				},
+				{
+					"id": "64",
+					"nom":"Equidia LIFE",
+					"canal":"90",
+					"logo":"equidialife",
+					"categorie":"sports"
+				},
+				{
+					"id": "1146",
+					"nom":"Equidia LIVE",
+					"canal":"91",
+					"logo":"equidialive",
+					"categorie":"sports"
+				},
+				{
+					"id": "787",
+					"nom":"No Life",
+					"canal":"140",
+					"logo":"nolife",
+					"categorie":"Jeunes adultes"
+				},
+				{
+					"id": "-1",
+					"nom":"GINX",
+					"canal":"187",
+					"logo":"ginx",
+					"categorie":"Jeunes adultes"
+				},
+				{
+					"id": "226",
+					"nom":"Gulli",
+					"canal":"26",
+					"logo":"gulli",
+					"categorie":"Jeunesse"
+				},
+				{
+					"id": "20058",
+					"nom":"Disney Channel",
+					"canal":"80",
+					"logo":"disneychannel",
+					"categorie":"Jeunesse"
+				},
+				{
+					"id": "21404",
+					"nom":"HD1",
+					"canal":"30",
+					"logo":"hd1",
+					"categorie":"Divertissement"
+				},
+				{
+					"id": "21402",
+					"nom":"Numéro 23",
+					"canal":"33",
+					"logo":"numero23",
+					"categorie":"Divertissement"
+				},
+				{
+					"id": "21399",
+					"nom":"Chérie 25",
+					"canal":"35",
+					"logo":"cherie25",
+					"categorie":"Divertissement"
+				},
+				{
+					"id": "1960",
+					"nom":"BET",
+					"canal":"143",
+					"logo":"bet",
+					"categorie":"Divertissement"
+				},
+				{
+					"id": "1061",
+					"nom":"Lucky Jack",
+					"canal":"207",
+					"logo":"luckyjack",
+					"categorie":"Divertissement"
+				},
+				{
+					"id": "1996",
+					"nom":"Fashion Tv",
+					"canal":"170",
+					"logo":"fashiontv",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "531",
+					"nom":"Luxe Tv",
+					"canal":"171",
+					"logo":"luxetv",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "829",
+					"nom":"MyZen",
+					"canal":"172",
+					"logo":"myzen",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "-1",
+					"nom":"Mens Up",
+					"canal":"173",
+					"logo":"mensup",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "987",
+					"nom":"Ma chaine étudiante",
+					"canal":"174",
+					"logo":"mce",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "57",
+					"nom":"Demain !",
+					"canal":"175",
+					"logo":"demain",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "-1",
+					"nom":"OUATCH",
+					"canal":"177",
+					"logo":"ouatch",
+					"categorie":"Société et Culture"
+				},
+				{
+					"id": "21404",
+					"nom":"CStar",
+					"canal":"30",
+					"logo":"cstar",
+					"categorie":"Musique"
+				},
+				{
+					"id": "20490",
+					"nom":"Trace Urban",
+					"canal":"150",
+					"logo":"traceurban",
+					"categorie":"Musique"
+				},
+				{
+					"id": "-1",
+					"nom":"NRJ Hits TV",
+					"canal":"151",
+					"logo":"nrjhitstv",
+					"categorie":"Musique"
+				},
+				{
+					"id": "",
+					"nom":"Virgin Radio Tv",
+					"canal":"152",
+					"logo":"virginradiotv",
+					"categorie":"Musique"
+				},
+				{
+					"id": "-1",
+					"nom":"Clubbing",
+					"canal":"153",
+					"logo":"clubbing",
+					"categorie":"Musique"
+				},
+				{
+					"id": "-1",
+					"nom":"OFive",
+					"canal":"154",
+					"logo":"ofive",
+					"categorie":"Musique"
+				},
+				{
+					"id": "-1",
+					"nom":"BBlack Classik",
+					"canal":"155",
+					"logo":"bblackclassik",
+					"categorie":"Musique"
+				},
+				{
+					"id": "-1",
+					"nom":"BBlack Caribbean",
+					"canal":"156",
+					"logo":"bblackcaribbean",
+					"categorie":"Musique"
+				},
+				{
+					"id": "1622",
+					"nom":"Indies Live",
+					"canal":"158",
+					"logo":"indieslive",
+					"categorie":"Musique"
+				}
+			]
+		}
+	]
+}
