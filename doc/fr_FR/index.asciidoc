@@ -1,24 +1,15 @@
-== Template
+== JeeOrangeTv
 
 === Description
-Plugin servant de base pour les plugins.
-Attention lors de l'utilisation à bien remplacer tous les templates par l'id de votre plugin.
+Plugin qui permet de piloter le décodeur de chez Orange via JEEDOM en utilisant l'api par IP.
 
 '''
-=== Création plugin partie 1 : l'arborescence
+=== Paramétrage
 include::partie_1.asciidoc[]
 
 '''
-=== Création plugin partie 2 : plugin info
+=== Création d'un décodeur
 include::partie_2.asciidoc[]
-
-'''
-=== Création plugin partie 3 : dossier desktop
-include::partie_3.asciidoc[]
-
-'''
-=== Création plugin partie 4 : dossier core
-include::partie_4.asciidoc[]
 
 '''
 === FAQ
