@@ -1,2 +1,7 @@
-- 28/09/2017 10:15 -> Ajout des dÈpendances pour python -> lancement dÈmon
-- 27/09/2017 11:15 -> CrÈation d'un point 0 mise en conformitÈ du plugin
+- 01/10/2017 16:50 -> modification style widget width:310px;height:480px
+- 28/09/2017 10:15 -> Ajout des d√©pendances pour python -> lancement d√©mon
+- 27/09/2017 11:15 -> Cr√©ation d'un point 0 mise en conformit√© du plugin
+
+MODIFICATIONS DETAILLEES :
+
+https://github.com/totoff974/JeeOrangeTv/commits/stable
