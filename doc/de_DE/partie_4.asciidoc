@@ -26,8 +26,8 @@ Ce dossier est pour tout vos fichiers ajax, voici un squelette de fichier ajax :
  *
  * Jeedom is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Free Software Foundation, entweder die Version 3 der Lizenz oder
+ * (nach Ihrer Wahl) jede spätere Version.
  *
  * Jeedom is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -77,8 +77,8 @@ La première devant hériter de la classe eqLogic et la deuxième de cmd. Voici 
  *
  * Jeedom is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * The Free Software Foundation, entweder die Version 3 der Lizenz oder
+ * (nach Ihrer Wahl) jede spätere Version.
  *
  * Jeedom is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
