@@ -1,7 +1,7 @@
 ===== PHP
 Ce dossier contient la vue à proprement parler. Dedans on retrouve obligatoirement la page de configuration du plugin (celle qui apparaîtra quand l'utilisateur fera plugin => catégorie => votre plugin). Il est conseillé de nommer celle-ci avec l'id de votre plugin. Il peut aussi contenir le panel (page que l'utilisateur trouvera dans accueil -> nom de votre plugin).
 
-Tous les fichiers dans ce dossier doivent finir par .php et doivent obligatoirement commencer par :
+Alle Dateien in diesem Ordner müssen mit .php enden und müssen unbedingt beginnen mit :
 
 
 ----

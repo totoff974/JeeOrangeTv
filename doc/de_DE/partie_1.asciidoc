@@ -22,11 +22,11 @@ Pour ce qui est de la convention de nommage des fichiers voici les impératifs :
 - les fichiers de class php doivent obligatoirement se finir par ".class.php"
 - si ce n’est pas géré par un fichier d’inclusion, le nom du fichier doit être "#nom_class#.class.php"
 - les fichiers servant uniquement de point d’entrée pour inclure de multiples fichiers doivent se finir par ".inc.php"
-- les fichiers de configuration doivent se finir par ".config.php"
+- die Konfigurations-Dateien müssen mit ". config.php" enden
 - les fichiers d’aide à une page doivent être nommés de cette forme "help.#nomdelapage#.php". Le plus souvent un plugin n’ayant qu’une page de vue, le fichier d’aide aura donc le nom suivant "help.#PLUGIN_ID#.php" (le nom de la première page d’un plugin est forcément le même que l'ID de celui-ci, et donc que le nom du dossier contenant le plugin)
 
 Voici les recommandations :
 
-- les fichiers de type AJAX doivent se finir par ".ajax.php"
+- die Dateien des Typs AJAX müssen mit ".ajax.php" enden
 - le nom de la première page de vue d’un plugin doit être le même que l’ID du plugin
 - le nom du fichier JS (s’il y en a un) de la première page de vue du plugin doit être l’ID du plugin
