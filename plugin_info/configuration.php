@@ -31,7 +31,7 @@ if (!isConnect()) {
     <fieldset>
             <legend><i class="icon loisir-darth"></i> {{Configuration de Tv Orange}}</legend>
             <div class="form-group">
-                <label class="col-sm-4 control-label">{{Fréquence d'intérogation des décodeurs (en secondes) :}}</label>
+                <label class="col-sm-4 control-label">{{Fréquence d'interrogation des décodeurs (en secondes) :}}</label>
                 <div class="col-sm-4">
 					<input type="number" min="1" max="600" class="configKey form-control" data-l1key="freq_actu"/>
                </div>
