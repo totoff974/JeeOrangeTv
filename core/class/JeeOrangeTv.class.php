@@ -17,6 +17,7 @@
  */
 
 /* * ***************************Includes********************************* */
+include_file('core', 'JeeOrangeTv', 'config', 'JeeOrangeTv');
 
 class JeeOrangeTv extends eqLogic {
     /*     * *************************Attributs****************************** */
