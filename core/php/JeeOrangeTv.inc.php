@@ -30,7 +30,5 @@ if (!is_array($result)) {
 }
 
 if (isset($result['devices'])) {
-    // foreach ($result['devices'] as $key => $datas) {
     JeeOrangeTv::MaJ_JSON();
-    // }
 }
