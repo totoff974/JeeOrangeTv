@@ -522,7 +522,7 @@ class JeeOrangeTvCmd extends cmd {
 
             if ($action_mosaique == 1) {
                 $mos_chaine = $this->getConfiguration('mosaique_chaine');
-                $mos_id = intval($eqLogic->lecture_json('id', 'logo', $localisation, $mos_chaine));
+                $mos_id = $eqLogic->lecture_json('id', 'logo', $localisation, $mos_chaine);
                 $mos_num = $eqLogic->lecture_json('canal', 'logo', $localisation, $mos_chaine);
 
                 log::add('JeeOrangeTv', 'info', 'Mosaique Chaine : ' . $mos_chaine . ' - Numéro de la chaine : '. $mos_num . ' - Id de la chaine : '. $mos_id);
