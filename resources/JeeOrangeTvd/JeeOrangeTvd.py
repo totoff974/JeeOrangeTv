@@ -4,12 +4,12 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-#
+# 
 # Jeedom is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
-#
+# 
 # You should have received a copy of the GNU General Public License
 # along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 
@@ -37,7 +37,7 @@ except ImportError:
 	print "Error: importing module jeedom.jeedom"
 	sys.exit(1)
 
-
+			
 # ----------------------------------------------------------------------------
 
 def read_socket():
@@ -50,27 +50,38 @@ def read_socket():
 				logging.error("Invalid apikey from socket : " + str(message))
 				return
 			if message['apikey'] != _apikey:
-				logging.error("Invalid apikey from socket : " + str(message))
-				return
+					logging.error("Invalid apikey from socket : " + str(message))
+					return
+			# elif message['cmd'] == 'send':
+				# if isinstance(message['data'], list):
+					# for data in message['data']:
+						# try:
+							# # send_plcbus(data)
+						# except Exception, e:
+							# logging.error('Send command to PlcBus error : '+str(e))
+				# else:
+					# try:
+						# # send_plcbus(message['data'])
+					# except Exception, e:
+						# logging.error('Send command to PlcBus error : '+str(e))
 	except Exception,e:
 		logging.error('Error on read socket : '+str(e))
 
 
 # ----------------------------------------------------------------------------
 def send_message():
+
 	action = {}
-	action['MaJ'] = "1"
-	
+	action['refresh'] = "maj"
+
 	try:
 		globals.JEEDOM_COM.add_changes('devices::'+action['refresh'],action)
-		
 	except Exception, e:
 		pass
-	
+		
 	time.sleep(_freq_actu)
-	
 	return
-
+	
 def listen():
 	logging.debug("Start listening...")
 	jeedom_socket.open()
@@ -139,7 +150,7 @@ if args.cycle:
 	_cycle = float(args.cycle)
 if args.freq_actu:
 	_freq_actu = float(args.freq_actu)
-
+	
 jeedom_utils.set_log_level(_log_level)
 
 logging.info('Start JeeOrangeTvd')
@@ -153,7 +164,7 @@ logging.info('Cycle : '+str(_cycle))
 logging.info('Frequence actualisation : '+str(_freq_actu))
 
 signal.signal(signal.SIGINT, handler)
-signal.signal(signal.SIGTERM, handler)
+signal.signal(signal.SIGTERM, handler)	
 
 try:
 	jeedom_utils.write_pid(str(_pidfile))
@@ -161,6 +172,7 @@ try:
 	if not globals.JEEDOM_COM.test():
 		logging.error('Network communication issues. Please fixe your Jeedom network configuration.')
 		shutdown()
+
 	jeedom_socket = jeedom_socket(port=_socket_port,address=_socket_host)
 	listen()
 except Exception, e:
