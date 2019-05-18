@@ -120,10 +120,8 @@ class JeeOrangeTv extends eqLogic {
     }
 
     public function allowDevice() {
-        $value = array('apikey' => jeedom::getApiKey('JeeOrangeTv'), 'cmd' => 'add');
-        $value['device'] = array(
-            'id' => $this->getLogicalId(),
-        );
+        $value = array('apikey' => jeedom::getApiKey('JeeOrangeTv'));
+        $value['device'] = array('id' => $this->getLogicalId());
         $value = json_encode($value);
         $socket = socket_create(AF_INET, SOCK_STREAM, 0);
         socket_connect($socket, '127.0.0.1', config::byKey('socketport', 'JeeOrangeTv'));
