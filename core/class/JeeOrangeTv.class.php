@@ -404,11 +404,9 @@ class JeeOrangeTv extends eqLogic {
         $localisation = JeeOrangeTv::getConfiguration('localisation');
         $theme = JeeOrangeTv::getConfiguration('theme');
 
-        //foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
-            if (config::byKey('widget', 'JeeOrangeTv') == 0) {
-                return parent::toHtml($_version);
-            }
-        //}
+        if ($theme == 'aucun') {
+            return parent::toHtml($_version);
+        }
 
         $replace = $this->preToHtml($_version);
         if (!is_array($replace)) {
