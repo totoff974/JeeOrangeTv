@@ -59,8 +59,12 @@ def read_socket():
 
 # ----------------------------------------------------------------------------
 def send_message():
+
+    action = {}
+    action['MaJ'] = "1"
+
     try:
-        globals.JEEDOM_COM.add_changes('devices::')
+        globals.JEEDOM_COM.add_changes('devices::'+action['refresh'],action)
     except Exception, e:
         pass
 
