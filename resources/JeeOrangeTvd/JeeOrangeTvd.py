@@ -4,12 +4,12 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # Jeedom is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 
@@ -32,76 +32,76 @@ from os.path import join
 import json
 
 try:
-	from jeedom.jeedom import *
+    from jeedom.jeedom import *
 except ImportError:
-	print "Error: importing module jeedom.jeedom"
-	sys.exit(1)
+    print "Error: importing module jeedom.jeedom"
+    sys.exit(1)
 
-			
+
 # ----------------------------------------------------------------------------
 
 def read_socket():
-	try:
-		global JEEDOM_SOCKET_MESSAGE
-		if not JEEDOM_SOCKET_MESSAGE.empty():
-			logging.debug("Message received in socket JEEDOM_SOCKET_MESSAGE")
-			message = json.loads(jeedom_utils.stripped(JEEDOM_SOCKET_MESSAGE.get()))
-			if message['apikey'] != _apikey:
-				logging.error("Invalid apikey from socket : " + str(message))
-				return
-			if message['apikey'] != _apikey:
-				logging.error("Invalid apikey from socket : " + str(message))
-				return
-	except Exception,e:
-		logging.error('Error on read socket : '+str(e))
+    try:
+        global JEEDOM_SOCKET_MESSAGE
+        if not JEEDOM_SOCKET_MESSAGE.empty():
+            logging.debug("Message received in socket JEEDOM_SOCKET_MESSAGE")
+            message = json.loads(jeedom_utils.stripped(JEEDOM_SOCKET_MESSAGE.get()))
+            if message['apikey'] != _apikey:
+                logging.error("Invalid apikey from socket : " + str(message))
+                return
+            if message['apikey'] != _apikey:
+                logging.error("Invalid apikey from socket : " + str(message))
+                return
+    except Exception,e:
+        logging.error('Error on read socket : '+str(e))
 
 
 # ----------------------------------------------------------------------------
 def send_message():
 
-	action = {}
-	action['refresh'] = "maj"
+    action = {}
+    action['refresh'] = "maj"
 
-	try:
-		globals.JEEDOM_COM.add_changes('devices::'+action['refresh'],action)
-	except Exception, e:
-		pass
-		
-	time.sleep(_freq_actu)
-	return
-	
+    try:
+        globals.JEEDOM_COM.add_changes('devices::'+action['refresh'],action)
+    except Exception, e:
+        pass
+
+    time.sleep(_freq_actu)
+    return
+
 def listen():
-	logging.debug("Start listening...")
-	jeedom_socket.open()
-	logging.debug("Start deamon")
-	try:
-		while 1:
-			time.sleep(0.02)
-			send_message()
-			read_socket()
-	except KeyboardInterrupt:
-		shutdown()
+    logging.debug("Start listening...")
+    jeedom_socket.open()
+    logging.debug("Start deamon")
+    try:
+        while 1:
+            time.sleep(0.02)
+            send_message()
+            read_socket()
+    except KeyboardInterrupt:
+        shutdown()
 
 # ----------------------------------------------------------------------------
 
 def handler(signum=None, frame=None):
-	logging.debug("Signal %i caught, exiting..." % int(signum))
-	shutdown()
+    logging.debug("Signal %i caught, exiting..." % int(signum))
+    shutdown()
 
 def shutdown():
-	logging.debug("Shutdown")
-	logging.debug("Removing PID file " + str(_pidfile))
-	try:
-		os.remove(_pidfile)
-	except:
-		pass
-	try:
-		jeedom_socket.close()
-	except:
-		pass
-	logging.debug("Exit 0")
-	sys.stdout.flush()
-	os._exit(0)
+    logging.debug("Shutdown")
+    logging.debug("Removing PID file " + str(_pidfile))
+    try:
+        os.remove(_pidfile)
+    except:
+        pass
+    try:
+        jeedom_socket.close()
+    except:
+        pass
+    logging.debug("Exit 0")
+    sys.stdout.flush()
+    os._exit(0)
 
 # ----------------------------------------------------------------------------
 
@@ -125,20 +125,20 @@ parser.add_argument("--freq_actu", help="Frequence actualisation", type=str)
 args = parser.parse_args()
 
 if args.socketport:
-	_socket_port = int(args.socketport)
+    _socket_port = int(args.socketport)
 if args.loglevel:
-	_log_level = args.loglevel
+    _log_level = args.loglevel
 if args.callback:
-	_callback = args.callback
+    _callback = args.callback
 if args.apikey:
-	_apikey = args.apikey
+    _apikey = args.apikey
 if args.pid:
-	_pidfile = args.pid
+    _pidfile = args.pid
 if args.cycle:
-	_cycle = float(args.cycle)
+    _cycle = float(args.cycle)
 if args.freq_actu:
-	_freq_actu = float(args.freq_actu)
-	
+    _freq_actu = float(args.freq_actu)
+
 jeedom_utils.set_log_level(_log_level)
 
 logging.info('Start JeeOrangeTvd')
@@ -152,18 +152,18 @@ logging.info('Cycle : '+str(_cycle))
 logging.info('Frequence actualisation : '+str(_freq_actu))
 
 signal.signal(signal.SIGINT, handler)
-signal.signal(signal.SIGTERM, handler)	
+signal.signal(signal.SIGTERM, handler)
 
 try:
-	jeedom_utils.write_pid(str(_pidfile))
-	globals.JEEDOM_COM = jeedom_com(apikey = _apikey,url = _callback,cycle=_cycle)
-	if not globals.JEEDOM_COM.test():
-		logging.error('Network communication issues. Please fixe your Jeedom network configuration.')
-		shutdown()
+    jeedom_utils.write_pid(str(_pidfile))
+    globals.JEEDOM_COM = jeedom_com(apikey = _apikey,url = _callback,cycle=_cycle)
+    if not globals.JEEDOM_COM.test():
+        logging.error('Network communication issues. Please fixe your Jeedom network configuration.')
+        shutdown()
 
-	jeedom_socket = jeedom_socket(port=_socket_port,address=_socket_host)
-	listen()
+    jeedom_socket = jeedom_socket(port=_socket_port,address=_socket_host)
+    listen()
 except Exception, e:
-	logging.error('Fatal error : '+str(e))
-	logging.debug(traceback.format_exc())
-	shutdown()
+    logging.error('Fatal error : '+str(e))
+    logging.debug(traceback.format_exc())
+    shutdown()
