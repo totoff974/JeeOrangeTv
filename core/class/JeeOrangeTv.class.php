@@ -207,7 +207,7 @@ class JeeOrangeTv extends eqLogic {
 
         // construction de la commande
         $cmd_html = 'curl -s "http://'.$box_ip.':8080/remoteControl/cmd?operation=09&epg_id='.$epg_id.'&uui=1" > /dev/null 2>&1';
-        log::add('JeeOrangeTv', 'debug', '1 TEST ' . $cmd_html);
+
         // execution de la commande
         $retour_action = shell_exec($cmd_html);
         return;
