@@ -419,7 +419,7 @@ class JeeOrangeTv extends eqLogic {
             if ($inf->getName() == 'Etat Decodeur') {
             $etat_decodeur = $inf->getConfiguration('etat_decodeur');
                 if ($etat_decodeur == 1){
-                    $replace['#etat_decodeur#'] = '<img id="ON" src="plugins/JeeOrangeTv/core/dashboard/images/Widget/on_' . $theme . '.png" style="position:absolute;top:0;left:0px;">';
+                    $replace['#etat_decodeur#'] = '<img id="ON" src="plugins/JeeOrangeTv/core/template/dashboard/images/Widget/on_' . $theme . '.png" style="position:absolute;top:0;left:0px;">';
                 } else {
                     $replace['#etat_decodeur#'] = '';
                 }
@@ -428,11 +428,11 @@ class JeeOrangeTv extends eqLogic {
             if ($inf->getName() == 'Chaine Actuelle') {
             if ($inf->getConfiguration('chaine_actuelle')=='home' OR $inf->getConfiguration('chaine_actuelle')=='vod') {
                 $nom_chaine_act = $inf->getConfiguration('chaine_actuelle');
-                $replace['#cmd_chaine_act#'] = '<img id="ON" src="plugins/JeeOrangeTv/core/dashboard/images/Mosaique/' . $nom_chaine_act . '.png" style="position:absolute;top:63px;left:116px;">';
+                $replace['#cmd_chaine_act#'] = '<img id="ON" src="plugins/JeeOrangeTv/core/template/dashboard/images/Mosaique/' . $nom_chaine_act . '.png" style="position:absolute;top:63px;left:116px;">';
             }
             else {
                 $nom_chaine_act = $this->lecture_json('logo', 'logo', $localisation, $inf->getConfiguration('chaine_actuelle'));
-                $replace['#cmd_chaine_act#'] = '<img id="ON" src="plugins/JeeOrangeTv/core/dashboard/images/Mosaique/' . $nom_chaine_act . '.png" style="position:absolute;top:63px;left:116px;">';
+                $replace['#cmd_chaine_act#'] = '<img id="ON" src="plugins/JeeOrangeTv/core/template/dashboard/images/Mosaique/' . $nom_chaine_act . '.png" style="position:absolute;top:63px;left:116px;">';
             }
             }
         }
