@@ -528,7 +528,7 @@ class JeeOrangeTvCmd extends cmd {
 
                 log::add('JeeOrangeTv', 'debug', 'Mosaique Chaine : ' . $mos_chaine . ' Numéro de la chaine : '. $mos_num . ' Id de la chaine : '. $mos_id);
 
-                if ($mos_id <= 0) {
+                if ($mos_id >= 0) {
                     log::add('JeeOrangeTv', 'debug', 'BIEN RECU');
                     $eqLogic->ActionZapChaine($box_ip, $mos_id);
                 }
