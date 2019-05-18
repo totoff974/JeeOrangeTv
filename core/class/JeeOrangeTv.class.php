@@ -206,7 +206,7 @@ class JeeOrangeTv extends eqLogic {
         $epg_id = str_pad($epg_id, 10, "*", STR_PAD_LEFT);
 
         // construction de la commande
-        $cmd_html = 'curl -s "http://'.$box_ip.':8080/remoteControl/cmd?operation=09&epg_id=' . $epg_id . '&uui=1" > /dev/null 2>&1';
+        $cmd_html = 'curl -s "http://'.$box_ip.':8080/remoteControl/cmd?operation=09&epg_id='.$epg_id.'&uui=1" > /dev/null 2>&1';
         log::add('JeeOrangeTv', 'debug', ' 1 -------------------------------- ' . $cmd_html);
         // execution de la commande
         $retour_action = shell_exec($cmd_html);
@@ -523,7 +523,7 @@ class JeeOrangeTvCmd extends cmd {
 
             if ($action_mosaique == 1) {
                 $mos_chaine = $this->getConfiguration('mosaique_chaine');
-                $mos_id = $eqLogic->lecture_json('id', 'logo', $localisation, $mos_chaine);
+                $mos_id = intval($eqLogic->lecture_json('id', 'logo', $localisation, $mos_chaine));
                 $mos_num = $eqLogic->lecture_json('canal', 'logo', $localisation, $mos_chaine);
 
                 log::add('JeeOrangeTv', 'debug', 'Mosaique Chaine : ' . $mos_chaine . ' Numéro de la chaine : '. $mos_num . ' Id de la chaine : '. $mos_id);
