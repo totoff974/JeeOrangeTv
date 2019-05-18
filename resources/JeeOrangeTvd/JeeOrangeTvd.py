@@ -52,22 +52,18 @@ def read_socket():
             if message['apikey'] != _apikey:
                 logging.error("Invalid apikey from socket : " + str(message))
                 return
-
     except Exception,e:
         logging.error('Error on read socket : '+str(e))
 
 
 # ----------------------------------------------------------------------------
 def send_message():
-
     action = {}
     action['MaJ'] = "1"
-
     try:
         globals.JEEDOM_COM.add_changes('devices::'+action['refresh'],action)
     except Exception, e:
         pass
-
     time.sleep(_freq_actu)
     return
 
@@ -161,7 +157,6 @@ try:
     if not globals.JEEDOM_COM.test():
         logging.error('Network communication issues. Please fixe your Jeedom network configuration.')
         shutdown()
-
     jeedom_socket = jeedom_socket(port=_socket_port,address=_socket_host)
     listen()
 except Exception, e:
