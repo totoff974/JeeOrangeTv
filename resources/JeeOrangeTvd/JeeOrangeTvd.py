@@ -50,20 +50,8 @@ def read_socket():
 				logging.error("Invalid apikey from socket : " + str(message))
 				return
 			if message['apikey'] != _apikey:
-					logging.error("Invalid apikey from socket : " + str(message))
-					return
-			# elif message['cmd'] == 'send':
-				# if isinstance(message['data'], list):
-					# for data in message['data']:
-						# try:
-							# # send_plcbus(data)
-						# except Exception, e:
-							# logging.error('Send command to PlcBus error : '+str(e))
-				# else:
-					# try:
-						# # send_plcbus(message['data'])
-					# except Exception, e:
-						# logging.error('Send command to PlcBus error : '+str(e))
+				logging.error("Invalid apikey from socket : " + str(message))
+				return
 	except Exception,e:
 		logging.error('Error on read socket : '+str(e))
 
