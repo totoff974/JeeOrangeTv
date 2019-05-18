@@ -166,10 +166,9 @@ class JeeOrangeTv extends eqLogic {
                 }
             }
         }
-
     log::add('JeeOrangeTv', 'debug', 'update des commandes OK');
-
     }
+
     public function lecture_json($param_sortie, $param_entree, $localisation, $comp_entree) {
         // param -> id / nom / canal / logo / categorie
         $json_liste = file_get_contents(realpath(dirname(__FILE__) . '/../../core/config/chaines.json'));
@@ -453,7 +452,7 @@ class JeeOrangeTv extends eqLogic {
         }
 
         return $html;
-     }
+    }
 
 
     /*     * **********************Getteur Setteur*************************** */
@@ -522,7 +521,7 @@ class JeeOrangeTvCmd extends cmd {
 
             if ($action_mosaique == 1) {
                 $mos_chaine = $this->getConfiguration('mosaique_chaine');
-                $mos_id = $eqLogic->lecture_json('id', 'logo', $localisation, $mos_chaine);
+                $mos_id = intval($eqLogic->lecture_json('id', 'logo', $localisation, $mos_chaine));
                 $mos_num = $eqLogic->lecture_json('canal', 'logo', $localisation, $mos_chaine);
 
                 log::add('JeeOrangeTv', 'debug', 'Mosaique Chaine : ' . $mos_chaine . ' Numéro de la chaine : '. $mos_num . ' - Id de la chaine : '. $mos_id);
@@ -557,4 +556,3 @@ class JeeOrangeTvCmd extends cmd {
 
     /*     * **********************Getteur Setteur*************************** */
 }
-
