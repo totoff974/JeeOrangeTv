@@ -541,7 +541,7 @@ class JeeOrangeTvCmd extends cmd {
                 else {
                     $mos_touche = str_split($mos_num);
                     $nb_touches = count($mos_touche);
-                    $i = 0;
+                    $i = 1;
                     foreach ($mos_touche as $touche) {
                         // Prise en charge appui long
                         if ($i < $nb_touches) {
