@@ -540,6 +540,8 @@ class JeeOrangeTvCmd extends cmd {
                 }
                 else {
                     $mos_touche = str_split($mos_num);
+                    $nb_touches = count($mos_touche);
+                    log::add('JeeOrangeTv', 'info', '    |---> Nombre de digit : ' . $nb_touches);
                     foreach ($mos_touche as $touche) {
                         foreach ($eqLogic->getCmd() as $action) {
                             if ($touche == $action->getName()) {
