@@ -322,8 +322,8 @@ class JeeOrangeTv extends eqLogic {
                     }
             }
         } else {
-            log::add('JeeOrangeTv', 'debug', '        |---> Décodeur ERREUR - ResponseCode : ' . $retour['result']['responseCode']);
-            log::add('JeeOrangeTv', 'debug', '        |---> Le décodeur ne donne pas de réponse');
+            log::add('JeeOrangeTv', 'debug', '            |---> Décodeur ERREUR - ResponseCode : ' . $retour['result']['responseCode']);
+            log::add('JeeOrangeTv', 'debug', '                |---> Le décodeur ne donne pas de réponse');
         }
         return;
     }
