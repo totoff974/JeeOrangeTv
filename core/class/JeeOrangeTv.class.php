@@ -78,7 +78,8 @@ class JeeOrangeTv extends eqLogic {
         $cmd .= ' --pid ' . jeedom::getTmpFolder('JeeOrangeTv') . '/deamon.pid';
         $cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/JeeOrangeTv/core/php/JeeOrangeTv.inc.php';
 
-        log::add('JeeOrangeTv', 'info', 'Lancement démon JeeOrangeTvd : ' . $cmd);
+        log::add('JeeOrangeTv', 'info', 'Lancement démon JeeOrangeTvd : ' . $cmd)
+;
         exec($cmd . ' >> ' . log::getPathToLog('JeeOrangeTv') . ' 2>&1 &');
         $i = 0;
         while ($i < 30) {
@@ -150,8 +151,8 @@ class JeeOrangeTv extends eqLogic {
      */
     public function MaJ_JSON() {
         foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
-            log::add('JeeOrangeTv', 'debug', '|---> Décodeur : ' . $JeeOrangeTv->getName());
-            log::add('JeeOrangeTv', 'debug', '    |---> mise à jour du JSON');
+            log::add('JeeOrangeTv', 'debug', '\|---> Décodeur : ' . $JeeOrangeTv->getName());
+            log::add('JeeOrangeTv', 'debug', '    \|---> mise à jour du JSON');
             $JeeOrangeTv->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
         }
     }
@@ -199,10 +200,10 @@ class JeeOrangeTv extends eqLogic {
         // execution de la commande
         $retour_action = shell_exec($cmd_html);
         // log
-        log::add('JeeOrangeTv', 'debug', '    |---> Décodeur : ' . JeeOrangeTv::getName());
-        log::add('JeeOrangeTv', 'debug', '        |---> cmd operation=01');
-        log::add('JeeOrangeTv', 'debug', '            |---> Code Touche : ' . $code_touche . ' envoyé');
-        log::add('JeeOrangeTv', 'debug', '            |---> Mode Touche : ' . $code_mode . ' envoyé');
+        log::add('JeeOrangeTv', 'debug', '    \|---> Décodeur : ' . JeeOrangeTv::getName());
+        log::add('JeeOrangeTv', 'debug', '        \|---> cmd operation=01');
+        log::add('JeeOrangeTv', 'debug', '            \|---> Code Touche : ' . $code_touche . ' envoyé');
+        log::add('JeeOrangeTv', 'debug', '            \|---> Mode Touche : ' . $code_mode . ' envoyé');
         return;
     }
 
@@ -215,9 +216,9 @@ class JeeOrangeTv extends eqLogic {
         // execution de la commande
         $retour_action = shell_exec($cmd_html);
         // log
-        log::add('JeeOrangeTv', 'debug', '    |---> Décodeur : ' . JeeOrangeTv::getName());
-        log::add('JeeOrangeTv', 'debug', '        |---> cmd operation=09');
-        log::add('JeeOrangeTv', 'debug', '            |---> operation=09 - EPG ID : ' . $epg_id . ' envoyé');
+        log::add('JeeOrangeTv', 'debug', '    \|---> Décodeur : ' . JeeOrangeTv::getName());
+        log::add('JeeOrangeTv', 'debug', '        \|---> cmd operation=09');
+        log::add('JeeOrangeTv', 'debug', '            \|---> operation=09 - EPG ID : ' . $epg_id . ' envoyé');
         return;
     }
 
@@ -231,23 +232,23 @@ class JeeOrangeTv extends eqLogic {
 
         // lecture du json depuis le décodeur
         $retour = json_decode($retour_action, true);
-        log::add('JeeOrangeTv', 'debug', '        |---> cmd operation=10');
-        log::add('JeeOrangeTv', 'debug', '            |---> Début analyse du JSON');
+        log::add('JeeOrangeTv', 'debug', '        \|---> cmd operation=10');
+        log::add('JeeOrangeTv', 'debug', '            \|---> Début analyse du JSON');
 
         if (isset($retour['result']['responseCode'])) {
-            log::add('JeeOrangeTv', 'debug', '            |   |---> ResponseCode : ' . $retour['result']['responseCode']);
+            log::add('JeeOrangeTv', 'debug', '            \|   \|---> ResponseCode : ' . $retour['result']['responseCode']);
         }
         if (isset($retour['result']['data']['activeStandbyState'])) {
-            log::add('JeeOrangeTv', 'debug', '            |   |--->  activeStandbyState : ' . $retour['result']['data']['activeStandbyState']);
+            log::add('JeeOrangeTv', 'debug', '            \|   \|--->  activeStandbyState : ' . $retour['result']['data']['activeStandbyState']);
         }
         if (isset($retour['result']['data']['osdContext'])) {
-            log::add('JeeOrangeTv', 'debug', '            |   |---> osdContext : ' . $retour['result']['data']['osdContext']);
+            log::add('JeeOrangeTv', 'debug', '            \|   \|---> osdContext : ' . $retour['result']['data']['osdContext']);
         }
         if (isset($retour['result']['data']['playedMediaId'])) {
-            log::add('JeeOrangeTv', 'debug', '            |   |---> playedMediaId : ' . $retour['result']['data']['playedMediaId']);
+            log::add('JeeOrangeTv', 'debug', '            \|   \|---> playedMediaId : ' . $retour['result']['data']['playedMediaId']);
         }
 
-        log::add('JeeOrangeTv', 'debug', '            |---> Fin analyse du JSON');
+        log::add('JeeOrangeTv', 'debug', '            \|---> Fin analyse du JSON');
 
         if ($retour['result']['responseCode'] == '0') {
             foreach (eqLogic::getCmd() as $info) {
