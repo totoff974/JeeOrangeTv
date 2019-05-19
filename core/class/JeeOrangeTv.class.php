@@ -151,8 +151,8 @@ class JeeOrangeTv extends eqLogic {
      */
     public function MaJ_JSON() {
         foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
-            log::add('JeeOrangeTv', 'debug', '\|---> Décodeur : ' . $JeeOrangeTv->getName());
-            log::add('JeeOrangeTv', 'debug', '    \|---> mise à jour du JSON');
+            log::add('JeeOrangeTv', 'debug', '|---> Décodeur : ' . $JeeOrangeTv->getName());
+            log::add('JeeOrangeTv', 'debug', '    |---> mise à jour du JSON');
             $JeeOrangeTv->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
         }
     }
@@ -512,17 +512,17 @@ class JeeOrangeTvCmd extends cmd {
 
             if ($action_mosaique == 0) {
                 if ($this->getName() == "Refresh") {
-                    log::add('JeeOrangeTv', 'debug', '---> Refresh : '. $this->getName());
+                    log::add('JeeOrangeTv', 'debug', '|---> Refresh : '. $this->getName());
                     //$eqLogic->ActionInfo($box_ip);
                 }
                 else {
                 $code_touche = $this->getConfiguration('code_touche');
                     if ($code_touche != "") {
-                        log::add('JeeOrangeTv', 'info', '---> Action executée - IP : ' . $box_ip . ' - touche : ' . $this->getName() . ' - code touche : ' . $code_touche . ' - mode : ' . $code_mode);
+                        log::add('JeeOrangeTv', 'info', '|---> Action executée - IP : ' . $box_ip . ' - touche : ' . $this->getName() . ' - code touche : ' . $code_touche . ' - mode : ' . $code_mode);
                         $eqLogic->ActionTouche($box_ip, $code_touche, $code_mode);
                     }
                     else {
-                        log::add('JeeOrangeTv', 'debug', '---> Action non executée - IP : ' . $box_ip . ' car code touche vide vérifier paramètres des touches');
+                        log::add('JeeOrangeTv', 'debug', '    |---> Action non executée - IP : ' . $box_ip . ' car code touche vide vérifier paramètres des touches');
                     }
                 }
             }
@@ -533,7 +533,7 @@ class JeeOrangeTvCmd extends cmd {
                 $mos_id = $eqLogic->lecture_json('id', 'logo', $localisation, $mos_chaine);
                 $mos_num = $eqLogic->lecture_json('canal', 'logo', $localisation, $mos_chaine);
 
-                log::add('JeeOrangeTv', 'info', '---> Mosaique Chaine : ' . $mos_chaine . ' - Numéro de la chaine : '. $mos_num . ' - Id de la chaine : '. $mos_id);
+                log::add('JeeOrangeTv', 'info', '|---> Mosaique Chaine : ' . $mos_chaine . ' - Numéro de la chaine : '. $mos_num . ' - Id de la chaine : '. $mos_id);
 
                 if ($mos_id >= 0) {
                     $eqLogic->ActionZapChaine($box_ip, $mos_id);
@@ -548,7 +548,7 @@ class JeeOrangeTvCmd extends cmd {
                                     $eqLogic->ActionTouche($box_ip, $code_touche, $code_mode);
                                 }
                                 else {
-                                    log::add('JeeOrangeTv', 'debug', ' ---> Action non executée - IP : ' . $box_ip . ' car code touche vide vérifier paramètres des touches');
+                                    log::add('JeeOrangeTv', 'debug', '    |---> Action non executée - IP : ' . $box_ip . ' car code touche vide vérifier paramètres des touches');
                                 }
                             }
                         }
