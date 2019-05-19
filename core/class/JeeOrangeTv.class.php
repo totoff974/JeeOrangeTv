@@ -218,7 +218,7 @@ class JeeOrangeTv extends eqLogic {
         // log
         log::add('JeeOrangeTv', 'debug', '    |---> Décodeur : ' . JeeOrangeTv::getName());
         log::add('JeeOrangeTv', 'debug', '        |---> cmd operation=09');
-        log::add('JeeOrangeTv', 'debug', '            |---> operation=09 - EPG ID : ' . $epg_id . ' envoyé');
+        log::add('JeeOrangeTv', 'debug', '            |---> EPG ID : ' . $epg_id . ' envoyé');
         return;
     }
 

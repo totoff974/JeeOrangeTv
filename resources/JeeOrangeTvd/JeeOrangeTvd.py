@@ -44,7 +44,6 @@ def read_socket():
     try:
         global JEEDOM_SOCKET_MESSAGE
         if not JEEDOM_SOCKET_MESSAGE.empty():
-            logging.debug("Message received in socket JEEDOM_SOCKET_MESSAGE")
             message = json.loads(jeedom_utils.stripped(JEEDOM_SOCKET_MESSAGE.get()))
             if message['apikey'] != _apikey:
                 logging.error("Invalid apikey from socket : " + str(message))
@@ -71,9 +70,9 @@ def send_message():
     return
 
 def listen():
-    logging.debug("Start listening...")
+    logging.debug("|---> Start listening...")
     jeedom_socket.open()
-    logging.debug("Start deamon")
+    logging.debug("    |---> Start deamon")
     try:
         while 1:
             time.sleep(0.02)
@@ -85,12 +84,12 @@ def listen():
 # ----------------------------------------------------------------------------
 
 def handler(signum=None, frame=None):
-    logging.debug("Signal %i caught, exiting..." % int(signum))
+    logging.debug("|--->Signal %i caught, exiting..." % int(signum))
     shutdown()
 
 def shutdown():
-    logging.debug("Shutdown")
-    logging.debug("Removing PID file " + str(_pidfile))
+    logging.debug("|--->Shutdown")
+    logging.debug("    |---> Removing PID file " + str(_pidfile))
     try:
         os.remove(_pidfile)
     except:
@@ -99,7 +98,7 @@ def shutdown():
         jeedom_socket.close()
     except:
         pass
-    logging.debug("Exit 0")
+    logging.debug("    |---> Exit 0")
     sys.stdout.flush()
     os._exit(0)
 
@@ -141,15 +140,15 @@ if args.freq_actu:
 
 jeedom_utils.set_log_level(_log_level)
 
-logging.info('Start JeeOrangeTvd')
-logging.info('Log level : '+str(_log_level))
-logging.info('Socket port : '+str(_socket_port))
-logging.info('Socket host : '+str(_socket_host))
-logging.info('PID file : '+str(_pidfile))
-logging.info('Apikey : '+str(_apikey))
-logging.info('Callback : '+str(_callback))
-logging.info('Cycle : '+str(_cycle))
-logging.info('Frequence actualisation : '+str(_freq_actu))
+logging.info('|---> Start JeeOrangeTvd')
+logging.info('    |---> Log level : '+str(_log_level))
+logging.info('    |---> Socket port : '+str(_socket_port))
+logging.info('    |---> Socket host : '+str(_socket_host))
+logging.info('    |---> PID file : '+str(_pidfile))
+logging.info('    |---> Apikey : '+str(_apikey))
+logging.info('    |---> Callback : '+str(_callback))
+logging.info('    |---> Cycle : '+str(_cycle))
+logging.info('    |---> Frequence actualisation : '+str(_freq_actu))
 
 signal.signal(signal.SIGINT, handler)
 signal.signal(signal.SIGTERM, handler)
