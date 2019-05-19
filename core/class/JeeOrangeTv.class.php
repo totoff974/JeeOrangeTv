@@ -150,6 +150,8 @@ class JeeOrangeTv extends eqLogic {
      */
     public function MaJ_JSON() {
         foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
+            log::add('JeeOrangeTv', 'debug', '|---> Décodeur : ' . $JeeOrangeTv->getName());
+            log::add('JeeOrangeTv', 'debug', '    |---> mise à jour du JSON');
             $JeeOrangeTv->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
         }
     }
@@ -193,8 +195,10 @@ class JeeOrangeTv extends eqLogic {
     // Appui sur une touche
     public function ActionTouche($box_ip, $code_touche, $code_mode) {
         // construction de la commande
-        $cmd_html = 'curl -s "http://'.$box_ip.':8080/remoteControl/cmd?operation=01&key='.$code_touche.'&mode='.$code_mode.'" > /dev/null 2>&1';
-
+        $cmd_html = 'curl -s "http://'.$box_ip.':8080/remoteControl/cmd?operation=01&key='. $code_touche . '&mode=' . $code_mode . '" > /dev/null 2>&1';
+        log::add('JeeOrangeTv', 'debug', '    |---> Décodeur : ' . JeeOrangeTv::getName());
+        log::add('JeeOrangeTv', 'debug', '        |---> Code Touche : ' . $code_touche . ' envoyé'));
+        log::add('JeeOrangeTv', 'debug', '        |---> Mode Touche : ' . $code_mode . ' envoyé'));
         // execution de la commande
         $retour_action = shell_exec($cmd_html);
         return;
