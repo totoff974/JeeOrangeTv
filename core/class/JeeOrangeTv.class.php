@@ -200,7 +200,7 @@ class JeeOrangeTv extends eqLogic {
         // execution de la commande
         $retour_action = shell_exec($cmd_html);
         // log
-        log::add('JeeOrangeTv', 'debug', '    \|---> Décodeur : ' . JeeOrangeTv::getName());
+        log::add('JeeOrangeTv', 'debug', '    \|---> Décodeur : ');
         log::add('JeeOrangeTv', 'debug', '        \|---> cmd operation=01');
         log::add('JeeOrangeTv', 'debug', '            \|---> Code Touche : ' . $code_touche . ' envoyé');
         log::add('JeeOrangeTv', 'debug', '            \|---> Mode Touche : ' . $code_mode . ' envoyé');
@@ -216,7 +216,7 @@ class JeeOrangeTv extends eqLogic {
         // execution de la commande
         $retour_action = shell_exec($cmd_html);
         // log
-        log::add('JeeOrangeTv', 'debug', '    \|---> Décodeur : ' . JeeOrangeTv::getName());
+        log::add('JeeOrangeTv', 'debug', '    \|---> Décodeur : ');
         log::add('JeeOrangeTv', 'debug', '        \|---> cmd operation=09');
         log::add('JeeOrangeTv', 'debug', '            \|---> operation=09 - EPG ID : ' . $epg_id . ' envoyé');
         return;
