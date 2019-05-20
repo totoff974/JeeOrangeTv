@@ -162,7 +162,7 @@ class JeeOrangeTv extends eqLogic {
         $json_liste_sauv = realpath(dirname(__FILE__) . '/../../core/config/chaines.json_old');
         log::add('JeeOrangeTv', 'info', '    |---> Mise A Jour du JSON');
         log::add('JeeOrangeTv', 'info', '        |---> sauvegarde vers de l\'ancien fichier : ' . $json_liste_sauv);
-        shell_exec('cp -fp' . $json_liste . ' ' . $json_liste_sauv . ' 2>&1 > /dev/null;');
+        shell_exec('cp -fp ' . $json_liste . ' ' . $json_liste_sauv . ' 2>&1 > /dev/null;');
     }
 
     public function autoMaJCommande() {

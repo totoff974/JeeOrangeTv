@@ -25,7 +25,7 @@ function JeeOrangeTv_install() {
     JeeOrangeTv::Telecommande_Mosaique();
 }
 
-function template_update() {
+function JeeOrangeTv_update() {
     if (config::byKey('api::JeeOrangeTv::mode') == '') {
         config::save('api::JeeOrangeTv::mode', 'localhost');
     }
