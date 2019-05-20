@@ -24,6 +24,7 @@ function JeeOrangeTv_install() {
 }
 
 function JeeOrangeTv_update() {
+    JeeOrangeTv::sauvJSON();
     if (config::byKey('api::JeeOrangeTv::mode') == '') {
         config::save('api::JeeOrangeTv::mode', 'localhost');
     }
