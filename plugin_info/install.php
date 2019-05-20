@@ -15,6 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
+ 
+require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 function JeeOrangeTv_install() {
     if (config::byKey('api::JeeOrangeTv::mode') == '') {
@@ -24,10 +26,10 @@ function JeeOrangeTv_install() {
 }
 
 function JeeOrangeTv_update() {
-    JeeOrangeTv::sauvJSON();
     if (config::byKey('api::JeeOrangeTv::mode') == '') {
         config::save('api::JeeOrangeTv::mode', 'localhost');
     }
+    JeeOrangeTv::sauvJSON();
     JeeOrangeTv::Telecommande_Mosaique();
     JeeOrangeTv::autoAjoutCommande();
     JeeOrangeTv::autoMaJCommande();
