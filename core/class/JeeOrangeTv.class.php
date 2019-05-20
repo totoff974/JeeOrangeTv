@@ -156,7 +156,7 @@ class JeeOrangeTv extends eqLogic {
             $JeeOrangeTv->ActionInfo($JeeOrangeTv->getConfiguration('box_ip'));
         }
     }
-    
+
     public function sauvJSON() {
         $json_liste = file_get_contents(realpath(dirname(__FILE__) . '/../../core/config/chaines.json'));
         $json_liste_sauv = file_get_contents(realpath(dirname(__FILE__) . '/../../core/config/chaines.json_old'));
