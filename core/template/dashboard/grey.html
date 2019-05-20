@@ -1,6 +1,6 @@
-<div id="plugin_container" class="eqLogic-widget eqLogic" style="width:340px;height:470px;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#; #style#" data-category="" data-eqLogic_id="#id#" data-version="#version#" >
+<div id="plugin_container" class="eqLogic-widget eqLogic allowResize" style="width:#width#;height:#height#;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#; #style#" data-category="" data-eqLogic_id="#id#" data-version="#version#" >
 <center class="widget-name"><strong><a href="#eqLink#" style="font-size : 1.1em;#hideEqLogicName#">#name_display#</strong></a
-<div style="width:330px;height:445px;margin:auto;padding: 0px 0px">
+<div style="width:#width#-10;height:#height#-25;margin:auto;padding: 0px 0px">
 
 <script type="text/javascript">
 
@@ -120,13 +120,44 @@
         jeedom.cmd.execute({id: '#cmd_Telecommande_id#'});
     });
 
+    $(document).ready(function(){
+        var orig_width = 331;
+        var orig_height = 445;
+
+        if (orig_width == 0) return;
+
+        var pic = $('#imagefond');
+        var curr_width =  pic.width();
+        var ratio = curr_width / orig_width;
+        var calc_height = orig_height * ratio;
+        $(pic).attr("height", calc_height);
+
+        $("area").each(function() {
+
+            var pairs = $(this).attr("coords").split(', ');
+
+            for(var i=0; i<pairs.length; i++) {
+
+                var nums = pairs[i].split(',');
+
+                for(var j=0; j<nums.length; j++) {
+                    nums[j] = nums[j] * ratio;
+                }
+
+                pairs[i] = nums.join(',');
+            }
+            $(this).attr("coords", pairs.join(","));
+        });
+        orig_width = curr_width;
+    });
+    
 </script>
 
 <table style="position:relative;">
     <tbody>
         <tr>
             <td>
-                <img src="plugins/JeeOrangeTv/core/template/dashboard/images/Theme/theme_grey.png" class="remote-control" usemap="#remoteControlMap">
+                <img id="imagefond" src="plugins/JeeOrangeTv/core/template/dashboard/images/Theme/theme_grey.png" class="remote-control" usemap="#remoteControlMap">
                 #etat_decodeur#
                 #cmd_chaine_act#
 
