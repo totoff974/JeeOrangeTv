@@ -131,6 +131,7 @@
         var ratio = curr_width / orig_width;
         var calc_height = orig_height * ratio;
         $(pic).attr("height", calc_height);
+        $("#plugin_container").attr("height", calc_height+20);
 
         $("area").each(function() {
 
