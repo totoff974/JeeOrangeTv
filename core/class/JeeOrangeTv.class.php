@@ -158,8 +158,8 @@ class JeeOrangeTv extends eqLogic {
     }
 
     public function sauvJSON() {
-        $json_liste_new = dirname(__FILE__) . 'plugins/JeeOrangeTv/core/config/chaines.json';
-        $json_liste_sauv = 'plugins/JeeOrangeTv/core/config/chaines.json_old';
+        $json_liste_new = "chaines.json";
+        $json_liste_sauv = 'chaines.json_old';
         log::add('JeeOrangeTv', 'info', '    |---> Mise A Jour du JSON');
         log::add('JeeOrangeTv', 'info', '        |---> nouvelle configuration : ' . $json_liste_new);
         log::add('JeeOrangeTv', 'info', '        |---> sauvegarde de l\'ancien fichier : ' . $json_liste_sauv);
