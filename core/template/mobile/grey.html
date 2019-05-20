@@ -1,9 +1,9 @@
 <div id="plugin_container" class="eqLogic-widget eqLogic" style="width:340px;height:470px;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#; #style#" data-category="" data-eqLogic_id="#id#" data-version="#version#" >
 <center class="widget-name"><strong><a href="#eqLink#" style="font-size : 1.1em;#hideEqLogicName#">#name_display#</strong></a
-<div style="width:330px;height:445px;margin:auto;padding: 0px 0px">
+<div style="width:332px;height:446px;margin:auto;padding: 0px 0px">
 
-<script type="text/javascript">
-
+<script>
+    
     $('.record').on('click', function () {
         jeedom.cmd.execute({id: '#cmd_REC_id#'});
     });
@@ -119,57 +119,56 @@
     $('.mosaique').on('click', function () {
         jeedom.cmd.execute({id: '#cmd_Telecommande_id#'});
     });
-
+    
 </script>
 
-<table style="position:relative;">
+<table  style="position:relative;">
     <tbody>
         <tr>
             <td>
-                <img src="plugins/JeeOrangeTv/core/template/mobile/images/Theme/theme_grey.png" class="remote-control" usemap="#remoteControlMap">
+                <img id="imagefond" src="plugins/JeeOrangeTv/core/template/dashboard/images/Theme/theme_#theme#.png" width="331px" height="445px" class="remote-control" usemap="#remoteControlMap">
                 #etat_decodeur#
                 #cmd_chaine_act#
-
-                <map name="remoteControlMap" style="display: none;">
-                <area shape="rect"      coords="0,404,67,445"           title="ON/OFF"          class="onoff" />
-                <area shape="rect"      coords="0,122,67,180"           title="Menu"            class="menu" />
-                <area shape="rect"      coords="265,0,330,58"           title="Back"            class="back" />
-                <area shape="rect"      coords="265,122,330,180"        title="OK"              class="ok" />
-                <area shape="rect"      coords="133,0,199,58"           title="Up"              class="up" />
-                <area shape="rect"      coords="133,122,199,180"        title="Down"            class="down" />
-                <area shape="rect"      coords="67,58,133,122"          title="Left"            class="left" />
-                <area shape="rect"      coords="199,58,265,122"         title="Right"           class="right" />
-
-                <area shape="rect"      coords="0,180,67,225"           title="Volume up"       class="volUp" />
-                <area shape="rect"      coords="0,225,67,270"           title="Volume down"     class="volDown" />
-                <area shape="rect"      coords="0,270,67,314"           title="Mute"            class="mute" />
-
-                <area shape="rect"      coords="265,180,330,225"        title="Channel up"      class="chaUp" />
-                <area shape="rect"      coords="265,225,330,270"        title="Channel down"    class="chaDown" />
-                <area shape="rect"      coords="265,404,330,445"        title="Mosaique"        class="mosaique" />
-
-                <area shape="rect"      coords="67,180,133,225"         title="1"               class="1" />
-                <area shape="rect"      coords="133,180,199,225"        title="2"               class="2" />
-                <area shape="rect"      coords="199,180,265,225"        title="3"               class="3" />
-
-                <area shape="rect"      coords="67,225,133,270"         title="4"               class="4" />
-                <area shape="rect"      coords="133,270,199,270"        title="5"               class="5" />
-                <area shape="rect"      coords="199,314,265,270"        title="6"               class="6" />
-
-                <area shape="rect"      coords="67,286,133,314"         title="7"               class="7" />
-                <area shape="rect"      coords="133,286,199,314"        title="8"               class="8" />
-                <area shape="rect"      coords="199,286,265,314"        title="9"               class="9" />
-
-                <area shape="rect"      coords="133,314,199,359"        title="0"               class="0" />
-                <area shape="rect"      coords="0,314,67,389"           title="VOD"             class="vod" />
-                <area shape="rect"      coords="0,359,67,404"           title="Stop"            class="stop" />
-                <area shape="rect"      coords="199,404,265,445"        title="Record"          class="record" />
-                <area shape="rect"      coords="67,359,133,404"         title="Previous"        class="fbwd" />
-                <area shape="rect"      coords="133,359,199,404"        title="Play/Pause"      class="playPause" />
-                <area shape="rect"      coords="199,359,265,404"        title="Next"            class="ffwd" />
-                <area shape="rect"      coords="265,314,330,359"        title="Refresh"         class="refresh" />
-                </map>
             </td>
+            <map name="remoteControlMap" style="display: none;">
+            <area shape="rect"      coords="0,404,67,445"           title="ON/OFF"          class="onoff" />
+            <area shape="rect"      coords="0,122,67,180"           title="Menu"            class="menu" />
+            <area shape="rect"      coords="265,0,330,58"           title="Back"            class="back" />
+            <area shape="rect"      coords="265,122,330,180"        title="OK"              class="ok" />
+            <area shape="rect"      coords="133,0,199,58"           title="Up"              class="up" />
+            <area shape="rect"      coords="133,122,199,180"        title="Down"            class="down" />
+            <area shape="rect"      coords="67,58,133,122"          title="Left"            class="left" />
+            <area shape="rect"      coords="199,58,265,122"         title="Right"           class="right" />
+
+            <area shape="rect"      coords="0,180,67,225"           title="Volume up"       class="volUp" />
+            <area shape="rect"      coords="0,225,67,270"           title="Volume down"     class="volDown" />
+            <area shape="rect"      coords="0,270,67,314"           title="Mute"            class="mute" />
+
+            <area shape="rect"      coords="265,180,330,225"        title="Channel up"      class="chaUp" />
+            <area shape="rect"      coords="265,225,330,270"        title="Channel down"    class="chaDown" />
+            <area shape="rect"      coords="265,404,330,445"        title="Mosaique"        class="mosaique" />
+
+            <area shape="rect"      coords="67,180,133,225"         title="1"               class="1" />
+            <area shape="rect"      coords="133,180,199,225"        title="2"               class="2" />
+            <area shape="rect"      coords="199,180,265,225"        title="3"               class="3" />
+
+            <area shape="rect"      coords="67,225,133,270"         title="4"               class="4" />
+            <area shape="rect"      coords="133,225,199,270"        title="5"               class="5" />
+            <area shape="rect"      coords="199,225,265,270"        title="6"               class="6" />
+
+            <area shape="rect"      coords="67,286,133,314"         title="7"               class="7" />
+            <area shape="rect"      coords="133,286,199,314"        title="8"               class="8" />
+            <area shape="rect"      coords="199,286,265,314"        title="9"               class="9" />
+
+            <area shape="rect"      coords="133,314,199,359"        title="0"               class="0" />
+            <area shape="rect"      coords="0,314,67,359"           title="VOD"             class="vod" />
+            <area shape="rect"      coords="0,359,67,404"           title="Stop"            class="stop" />
+            <area shape="rect"      coords="199,404,265,445"        title="Record"          class="record" />
+            <area shape="rect"      coords="67,359,133,404"         title="Previous"        class="fbwd" />
+            <area shape="rect"      coords="133,359,199,404"        title="Play/Pause"      class="playPause" />
+            <area shape="rect"      coords="199,359,265,404"        title="Next"            class="ffwd" />
+            <area shape="rect"      coords="265,314,330,359"        title="Refresh"         class="refresh" />
+            </map>
         </tr>
     </tbody>
 </table>
