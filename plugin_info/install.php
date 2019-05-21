@@ -18,10 +18,6 @@
  
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
-function JeeOrangeTv_pre_update() {
-    JeeOrangeTv::sauvJSON();
-}
-
 function JeeOrangeTv_install() {
     if (config::byKey('api::JeeOrangeTv::mode') == '') {
         config::save('api::JeeOrangeTv::mode', 'localhost');
