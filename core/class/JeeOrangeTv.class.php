@@ -157,15 +157,6 @@ class JeeOrangeTv extends eqLogic {
         }
     }
 
-    public function sauvJSON() {
-        $json_liste_new = realpath(dirname(__FILE__) . '/../../core/config/chaines.json');
-        $json_liste_sauv = dirname(__FILE__) . '/../config/chaines.json_old';
-        shell_exec('cp -fp ' . $json_liste_new . ' ' . $json_liste_sauv . ' 2>&1 > /dev/null;');
-        log::add('JeeOrangeTv', 'info', '    |---> Mise A Jour du JSON');
-        log::add('JeeOrangeTv', 'info', '        |---> nouvelle configuration : ' . addslashes($json_liste_new));
-        log::add('JeeOrangeTv', 'info', '        |---> sauvegarde de l\'ancien fichier : ' . addslashes(realpath($json_liste_sauv)));
-    }
-
     public function autoMaJCommande() {
 
         global $listCmdJeeOrangeTv;
@@ -505,6 +496,7 @@ class JeeOrangeTvCmd extends cmd {
         if ($this->getName() == "Telecommande") {
 
             $act_mos = $this->getConfiguration('telecommande');
+            log::add('JeeOrangeTv', 'info', '|---> DEBUG : '. $act_mos);
             $eqLogic->Telecommande_Mosaique($act_mos);
 
             if ($act_mos == 1) {
