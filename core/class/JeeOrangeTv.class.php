@@ -497,8 +497,6 @@ class JeeOrangeTvCmd extends cmd {
 
             $act_mos = $this->getConfiguration('telecommande');
             log::add('JeeOrangeTv', 'info', '|---> DEBUG : '. $act_mos);
-            $eqLogic->Telecommande_Mosaique($act_mos);
-
             if ($act_mos == 1) {
                 $this->setConfiguration('telecommande', 0);
                 $this->save();
@@ -509,6 +507,7 @@ class JeeOrangeTvCmd extends cmd {
                 $this->save();
                 $this->event(1);
             }
+            $eqLogic->Telecommande_Mosaique();
         }
 
         else {
