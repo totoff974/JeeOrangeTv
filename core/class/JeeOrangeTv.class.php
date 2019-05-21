@@ -416,8 +416,8 @@ class JeeOrangeTv extends eqLogic {
         }
 
         $_version = jeedom::versionAlias($_version);
-        $localisation = JeeOrangeTv::getConfiguration('localisation');
-        $theme = JeeOrangeTv::getConfiguration('theme');
+        $localisation = $this->getConfiguration('localisation');
+        $theme = $this->getConfiguration('theme');
         $replace['#theme#'] = $theme;
         foreach ($this->getCmd('info') as $inf) {
 
@@ -494,9 +494,7 @@ class JeeOrangeTvCmd extends cmd {
         $code_mode = 0;
 
         if ($this->getName() == "Telecommande") {
-
             $act_mos = $this->getConfiguration('telecommande');
-            log::add('JeeOrangeTv', 'info', '|---> DEBUG : '. $act_mos);
             if ($act_mos == 1) {
                 $this->setConfiguration('telecommande', 0);
                 $this->save();
