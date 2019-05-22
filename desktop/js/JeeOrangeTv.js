@@ -230,4 +230,8 @@ function addCmdToTable(_cmd) {
         $('#mosaique tbody tr:last').setValues(_cmd, '.cmdAttr');
         var tr = $('#mosaique tbody tr:last');
     }
+
+    if (init(_cmd.name) == "test") {
+        addCmdToTableChaine(_cmd);
+    }
 }
