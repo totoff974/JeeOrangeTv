@@ -35,8 +35,8 @@ $("#table_liste_chaine").sortable({axis: "y", cursor: "move", items: ".cmd", pla
         tr += '</td>';
         tr += '<td> ';
         tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" placeholder="{{Nom}}">';
-        tr += '<span class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>';
-        tr += '<span class="subType" subType="' + init(_cmd.subType) + '"></span>';
+        tr += '<span style="display:none;" class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>';
+        tr += '<span style="display:none;" class="subType" subType="' + init(_cmd.subType) + '"></span>';
         tr += '</td>';
         tr += '<td>';
         tr += '<input class="cmdAttr form-control input-sm" data-l1key="ch_canal" placeholder="{{Canal}}">';
@@ -49,6 +49,9 @@ $("#table_liste_chaine").sortable({axis: "y", cursor: "move", items: ".cmd", pla
         tr += '</td>';
         tr += '<td>';
         tr += '<input class="cmdAttr form-control input-sm" data-l1key="ch_categorie" placeholder="{{Catégorie}}">';
+        tr += '</td>';
+        tr += '<td>';
+        tr += '<i class="fa fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i>';
         tr += '</td>';
         tr += '</tr>';
         $('#table_liste_chaine tbody').append(tr);
