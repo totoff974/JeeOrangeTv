@@ -1,4 +1,3 @@
-
 /* This file is part of Jeedom.
  *
  * Jeedom is free software: you can redistribute it and/or modify
@@ -16,7 +15,7 @@
  */
 
 $("#bt_addChaine").on('click', function (event) {
-  var _cmd = {type: 'info', subType: 'string'};
+  var _cmd = {type: 'action'};
   addCmdToTableChaine(_cmd);
 });
 
@@ -28,13 +27,15 @@ $("#table_liste_chaine").sortable({axis: "y", cursor: "move", items: ".cmd", pla
         var _cmd = {configuration: {}};
     }
     
-    if (init(_cmd.type) == 'info') {
+    if (init(_cmd.type) == 'action') {
         var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
         tr += '<td>';
         tr += '<span class="cmdAttr" data-l1key="id"></span>';
         tr += '</td>';
         tr += '<td> ';
         tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" placeholder="{{Nom}}">';
+        // tr += '<span style="display:none;" class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>';
+        // tr += '<span style="display:none;" class="subType" subType="' + init(_cmd.subType) + '"></span>';
         tr += '<span style="display:none;" class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>';
         tr += '<span style="display:none;" class="subType" subType="' + init(_cmd.subType) + '"></span>';
         tr += '</td>';
