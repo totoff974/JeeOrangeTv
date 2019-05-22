@@ -236,5 +236,6 @@ function addCmdToTable(_cmd) {
 
     if (init(_cmd.name) == "test") {
         addCmdToTableChaine(_cmd);
+        jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
     }
 }
