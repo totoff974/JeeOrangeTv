@@ -168,6 +168,7 @@ foreach ($eqLogics as $eqLogic) {
                     <th>{{Id EPG}}</th>
                     <th>{{Logo de la Chaîne}}</th>
                     <th>{{Catégorie}}</th>
+                    <th></th>
                     </tr>
                 </thead>
                 <tbody>
