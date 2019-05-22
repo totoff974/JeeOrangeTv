@@ -31,7 +31,7 @@ $("#table_liste_chaine").sortable({axis: "y", cursor: "move", items: ".cmd", pla
         var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
         tr += '<td>';
         tr += '<span class="cmdAttr" data-l1key="id"></span>';
-        tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" value="chaine_' + String.valueOf(init(_cmd.id)) + '">';
+        tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" value="chaine_' + init(_cmd.chaine) + '">';
         tr += '</td>';
         tr += '<td> ';
         tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="ch_nom" placeholder="{{Nom}}">';
