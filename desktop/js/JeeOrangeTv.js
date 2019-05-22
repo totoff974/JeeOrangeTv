@@ -20,7 +20,7 @@ $("#bt_addChaine").on('click', function (event) {
 });
 
 $('input[data-l2key="ch_canal"]').on('click', function (event) {
-  alert('ok');
+  alert('ci ok');
 });
 
 $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
