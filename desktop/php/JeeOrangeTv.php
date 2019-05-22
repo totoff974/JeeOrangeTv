@@ -164,7 +164,7 @@ foreach ($eqLogics as $eqLogic) {
                     <tr>
                     <th>#</th>
                     <th>{{Nom}}</th>
-                    <th>{{Canal}}</th>
+                    <th>{{n° du Canal}}</th>
                     <th>{{Id EPG}}</th>
                     <th>{{Logo de la Chaîne}}</th>
                     <th>{{Catégorie}}</th>
