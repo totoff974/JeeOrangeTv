@@ -70,15 +70,9 @@ function addCmdToTable(_cmd) {
   
     if (init(_cmd.name) == "test") {
         addCmdToTableChaine(_cmd);
-        $('#table_cmd tbody').append(tr);
-        $('#table_cmd tbody tr:last').setValues(_cmd, '.cmdAttr');
-        if (isset(_cmd.type)) {
-            $('#table_cmd tbody tr:last .cmdAttr[data-l1key=type]').value(init(_cmd.type));
-        }
-        jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
     }
   
-    if (init(_cmd.name).indexOf("Mosaique ") == '-1' && init(_cmd.name) != "Telecommande") {
+    if (init(_cmd.name).indexOf("Mosaique ") == '-1' && init(_cmd.name) != "Telecommande" && init(_cmd.name) != "test") {
         if (init(_cmd.type) == 'info') {
              var disabled = (init(_cmd.configuration.virtualAction) == '1') ? 'disabled' : '';
              var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '" virtualAction="' + init(_cmd.configuration.virtualAction) + '">';
