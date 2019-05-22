@@ -31,7 +31,7 @@ $("#table_liste_chaine").sortable({axis: "y", cursor: "move", items: ".cmd", pla
         var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
         tr += '<td>';
         tr += '<span class="cmdAttr" data-l1key="id"></span>';
-        tr += '<input style="display:none;" class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="tab_name" value="tab_chaine">';
+        tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="tab_name" value="tab_chaine">';
         tr += '</td>';
         tr += '<td> ';
         tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" placeholder="{{Nom}}">';
@@ -72,11 +72,11 @@ function addCmdToTable(_cmd) {
         var _cmd = {configuration: {}};
     }
   
-    if (_cmd.configuration('tab_name') == "tab_chaine") {
+    if (_cmd.configuration['tab_name'] == "tab_chaine") {
         addCmdToTableChaine(_cmd);
     }
   
-    if (init(_cmd.name).indexOf("Mosaique ") == '-1' && init(_cmd.name) != "Telecommande" && _cmd.configuration('tab_name') != "tab_chaine") {
+    if (init(_cmd.name).indexOf("Mosaique ") == '-1' && init(_cmd.name) != "Telecommande" && _cmd.configuration['tab_name'] != "tab_chaine") {
         if (init(_cmd.type) == 'info') {
              var disabled = (init(_cmd.configuration.virtualAction) == '1') ? 'disabled' : '';
              var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '" virtualAction="' + init(_cmd.configuration.virtualAction) + '">';
