@@ -63,6 +63,7 @@ foreach ($eqLogics as $eqLogic) {
    <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Décodeurs}}</a></li>
     <li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Touches}}</a></li>
+    <li role="presentation"><a href="#commandListeChaines" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Chaînes}}</a></li>
     <li role="presentation"><a href="#commandMos" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Mosaïque}}</a></li>
 </ul>
 
@@ -149,6 +150,23 @@ foreach ($eqLogics as $eqLogic) {
                     <th>{{Valeur}}</th>
                     <th>{{Paramètres}}</th>
                     <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+</div>
+<div role="tabpanel" class="tab-pane" id="commandListeChaines">
+    <legend>{{Configuration de la liste des Chaines}}</legend>
+            <table id="table_liste_chaine" class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                    <th>#</th>
+                    <th>{{Nom}}</th>
+                    <th>{{Canal}}</th>
+                    <th>{{Id EPG}}</th>
+                    <th>{{Logo de la Chaîne}}</th>
+                    <th>{{Catégorie}}</th>
                     </tr>
                 </thead>
                 <tbody>
