@@ -16,13 +16,53 @@
  */
 
 $("#bt_addChaine").on('click', function (event) {
-  var _cmd = {type: 'action', name: 'Mosaique X'};
-  addCmdToTable(_cmd);
+  var _cmd = {type: 'info'};
+  addCmdToTableChaine(_cmd);
 });
 
- $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+$("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
- function addCmdToTable(_cmd) {
+ function addCmdToTableChaine(_cmd) {
+    if (!isset(_cmd)) {
+        var _cmd = {configuration: {}};
+    }
+    
+    if (init(_cmd.type) == 'info') {
+        var disabled = (init(_cmd.configuration.virtualAction) == '1') ? 'disabled' : '';
+        var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '" virtualAction="' + init(_cmd.configuration.virtualAction) + '">';
+        tr += '<td>';
+        tr += '<span class="cmdAttr" data-l1key="id"></span>';
+        tr += '</td>';
+        tr += '<td> ';
+        tr += '<div class="col-sm-6">';
+        tr += '<input disabled class="cmdAttr form-control input-sm" data-l1key="name">';
+        tr += '</div>';
+        tr += '</td>';
+        tr += '<td>';
+        tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="chaine_actuelle" disabled style="margin-bottom : 5px;" />';
+        tr += '</td>';
+        tr += '<td>';
+        tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
+        tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isHistorized" checked/>{{Historiser}}</label></span> ';
+        tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr expertModeVisible" data-l1key="display" data-l2key="invertBinary"/>{{Inverser}}</label></span><br/>';
+        tr += '</td>';
+        tr += '<td>';
+        if (is_numeric(_cmd.id)) {
+            tr += '<a class="btn btn-default btn-xs cmdAction " data-action="configure"><i class="fa fa-cogs"></i></a> ';
+            tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fa fa-rss"></i> {{Tester}}</a>';
+        }
+        tr += '</td>';
+        tr += '</tr>';
+        $('#table_liste_chaine tbody').append(tr);
+        $('#table_liste_chaine tbody tr:last').setValues(_cmd, '.cmdAttr');
+        if (isset(_cmd.type)) {
+            $('#table_liste_chaine tbody tr:last .cmdAttr[data-l1key=type]').value(init(_cmd.type));
+        }
+        jeedom.cmd.changeType($('#table_liste_chaine tbody tr:last'), init(_cmd.subType));
+    }
+}
+
+function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
         var _cmd = {configuration: {}};
     }
