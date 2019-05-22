@@ -67,7 +67,17 @@ function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
         var _cmd = {configuration: {}};
     }
-
+  
+    if (init(_cmd.name) == "test") {
+        addCmdToTableChaine(_cmd);
+        $('#table_cmd tbody').append(tr);
+        $('#table_cmd tbody tr:last').setValues(_cmd, '.cmdAttr');
+        if (isset(_cmd.type)) {
+            $('#table_cmd tbody tr:last .cmdAttr[data-l1key=type]').value(init(_cmd.type));
+        }
+        jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
+    }
+  
     if (init(_cmd.name).indexOf("Mosaique ") == '-1' && init(_cmd.name) != "Telecommande") {
         if (init(_cmd.type) == 'info') {
              var disabled = (init(_cmd.configuration.virtualAction) == '1') ? 'disabled' : '';
@@ -232,10 +242,5 @@ function addCmdToTable(_cmd) {
         $('#mosaique tbody').append(tr);
         $('#mosaique tbody tr:last').setValues(_cmd, '.cmdAttr');
         var tr = $('#mosaique tbody tr:last');
-    }
-
-    if (init(_cmd.name) == "test") {
-        addCmdToTableChaine(_cmd);
-        jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
     }
 }
