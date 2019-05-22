@@ -16,7 +16,7 @@
  */
 
 $("#bt_addChaine").on('click', function (event) {
-  var _cmd = {type: 'action'};
+  var _cmd = {type: 'action'; name: 'Mosaique X'};
   addCmdToTable(_cmd);
 });
 
