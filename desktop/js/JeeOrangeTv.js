@@ -19,6 +19,10 @@ $("#bt_addChaine").on('click', function (event) {
   addCmdToTableChaine(_cmd);
 });
 
+$('input[data-l2key="ch_canal"]').onmouseout(function (event) {
+  alert('ok');
+});
+
 $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 $("#table_liste_chaine").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
