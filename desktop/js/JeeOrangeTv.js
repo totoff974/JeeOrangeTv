@@ -64,7 +64,6 @@ $("#table_liste_chaine").sortable({axis: "y", cursor: "move", items: ".cmd", pla
         jeedom.cmd.changeType($('#table_liste_chaine tbody tr:last'), init(_cmd.subType));
     }
 }
-}
 
 function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
