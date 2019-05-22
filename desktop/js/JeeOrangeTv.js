@@ -19,7 +19,7 @@ $("#bt_addChaine").on('click', function (event) {
   addCmdToTableChaine(_cmd);
 });
 
-$('input[data-l2key="ch_canal"]').onmouseout(function () {
+$('input[data-l2key="ch_canal"]').on('click', function (event) {
   alert('ok');
 });
 
