@@ -157,7 +157,7 @@ foreach ($eqLogics as $eqLogic) {
 </div>
 <div role="tabpanel" class="tab-pane" id="commandMos">
     <legend>{{Configuration de la Mosaïque}}</legend>
-            <a class="btn btn-default btn-sm  pull-right" id="bt_addVirtualAction" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter une commande virtuelle}}</a><br/><br/>
+            <a class="btn btn-default btn-sm  pull-right" id="bt_addChaine" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter une Chaine}}</a><br/><br/>
             <table id="mosaique" class="table table-bordered table-condensed">
                 <thead>
                     <tr>
