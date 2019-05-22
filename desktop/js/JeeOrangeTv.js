@@ -31,9 +31,10 @@ $("#table_liste_chaine").sortable({axis: "y", cursor: "move", items: ".cmd", pla
         var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
         tr += '<td>';
         tr += '<span class="cmdAttr" data-l1key="id"></span>';
+        tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" value="chaine_' . init(_cmd.id) . '">';
         tr += '</td>';
         tr += '<td> ';
-        tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" placeholder="{{Nom}}">';
+        tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="ch_nom" placeholder="{{Nom}}">';
         tr += '<span style="display:none;" class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>';
         tr += '<span style="display:none;" class="subType" subType="' + init(_cmd.subType) + '"></span>';
         tr += '</td>';
