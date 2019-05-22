@@ -15,7 +15,7 @@
  */
 
 $("#bt_addChaine").on('click', function (event) {
-  var _cmd = {type: 'action', subType="Défaut"};
+  var _cmd = {type: 'action'};
   addCmdToTableChaine(_cmd);
 });
 
