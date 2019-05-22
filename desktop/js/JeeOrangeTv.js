@@ -72,11 +72,11 @@ function addCmdToTable(_cmd) {
         var _cmd = {configuration: {}};
     }
   
-    if (init(_cmd.name).indexOf("chaine_ ") != '-1') {
+    if (init(_cmd.name).indexOf("chaine_") == -1) {
         addCmdToTableChaine(_cmd);
     }
   
-    if (init(_cmd.name).indexOf("Mosaique ") == '-1' && init(_cmd.name) != "Telecommande" && init(_cmd.name).indexOf("chaine_ ") == '-1') {
+    if (init(_cmd.name).indexOf("Mosaique ") == '-1' && init(_cmd.name) != "Telecommande" && init(_cmd.name).indexOf("chaine_") == -1) {
         if (init(_cmd.type) == 'info') {
              var disabled = (init(_cmd.configuration.virtualAction) == '1') ? 'disabled' : '';
              var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '" virtualAction="' + init(_cmd.configuration.virtualAction) + '">';
