@@ -72,7 +72,7 @@ function addCmdToTable(_cmd) {
         var _cmd = {configuration: {}};
     }
   
-    if (init(_cmd.name).indexOf("chaine_") == -1) {
+    if (init(_cmd.name).indexOf("chaine_") != -1) {
         addCmdToTableChaine(_cmd);
     }
   
