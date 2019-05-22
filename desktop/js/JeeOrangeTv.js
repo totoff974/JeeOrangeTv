@@ -21,12 +21,8 @@ $("#bt_addChaine").on('click', function (event) {
 });
 
 $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+$("#table_liste_chaine").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
- function addCmdToTableChaine(_cmd) {
-    if (!isset(_cmd)) {
-        var _cmd = {configuration: {}};
-    }
-    
  function addCmdToTableChaine(_cmd) {
     if (!isset(_cmd)) {
         var _cmd = {configuration: {}};
