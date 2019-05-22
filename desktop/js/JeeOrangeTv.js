@@ -40,7 +40,7 @@ $("#table_liste_chaine").sortable({axis: "y", cursor: "move", items: ".cmd", pla
         tr += '</td>';
         tr += '<td> ';
         tr += '<div class="col-sm-6">';
-        tr += '<input class="cmdAttr form-control input-sm" data-l1key="ch_nom">';
+        tr += '<input class="cmdAttr form-control input-sm" data-l1key="name">';
         tr += '</div>';
         tr += '</td>';
         tr += '<td>';
