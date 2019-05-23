@@ -14,17 +14,12 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
-$(document).ready( function() {
-	$('#tree').fileTree({
-	root: '/var/www/html/',
-	script: 'jqueryFileTree.php',
-	expandSpeed: 1000,
-	collapseSpeed: 1000,
-	multiFolder: false
-	}, function(file) {
+$(document).ready( function() 
+{
+	$('#tree').fileTree({ root: '/var/www/html/' }, function(file) { 
 		alert(file);
 	});
-});
+}); 
 
 $("#bt_addChaine").on('click', function (event) {
   var _cmd = {type: 'action'};
