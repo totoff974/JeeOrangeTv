@@ -14,30 +14,6 @@
 * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 */
 
-function listeFichiersConf() {
-    $.ajax({
-        type: "POST",
-        url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php",
-        data: {
-            action: "listeFichiersConf",
-        },
-        dataType: 'json',
-        global: false,
-        error: function (request, status, error) {
-            handleAjaxError(request, status, error);
-        },
-        success: function (data) {
-            if (data.state != 'ok') {
-                $('#div_alert').showAlert({message: 'Erreur sur le listing des fichiers de configuration'  + data.result, level: 'danger'});
-                return;
-            }
-            else {
-                return data.result;
-            }
-        }
-    });
-}
-
 $("#bt_addChaine").on('click', function (event) {
   var _cmd = {type: 'action'};
   addCmdToTableChaine(_cmd);
@@ -48,7 +24,7 @@ $('#bt_autoChaine').on('click', function () {
     var dialog_message = '<form class="form-horizontal onsubmit="return false;"> ';
     dialog_title = '{{Configuration automatique}}';
     dialog_message += '<label class="control-label" > {{Sélectionner le modèle à appliquer}} </label> ' +
-    '<div> <div class="radio"> <label > ' +
+    '<div class="radio">' +
     '<select id="command">' +
     listeFichiersConf() +
     '</select>' +
@@ -108,6 +84,30 @@ $('#bt_autoChaine').on('click', function () {
 
 $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 $("#table_liste_chaine").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+
+function listeFichiersConf() {
+    $.ajax({
+        type: "POST",
+        url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php",
+        data: {
+            action: "listeFichiersConf",
+        },
+        dataType: 'json',
+        global: false,
+        error: function (request, status, error) {
+            handleAjaxError(request, status, error);
+        },
+        success: function (data) {
+            if (data.state != 'ok') {
+                $('#div_alert').showAlert({message: 'Erreur sur le listing des fichiers de configuration'  + data.result, level: 'danger'});
+                return;
+            }
+            else {
+                return data.result;
+            }
+        }
+    });
+}
 
 function addCmdToTableChaine(_cmd) {
     if (!isset(_cmd)) {
