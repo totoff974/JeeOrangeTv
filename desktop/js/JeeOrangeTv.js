@@ -21,9 +21,6 @@ $("#bt_addChaine").on('click', function (event) {
 
 $('#bt_autoChaine').on('click', function () {
     var dialog_title = '{{Configuration automatique}}';
-    var dialog_message = '<form class="form-horizontal onsubmit="return false;"> ';
-    dialog_title = '{{Configuration automatique}}';
-    
     $.ajax({
         type: "POST",
         url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php",
@@ -31,7 +28,7 @@ $('#bt_autoChaine').on('click', function () {
             action: "listeFichiersConf",
         },
         dataType: 'json',
-        global: false,
+        global: true,
         error: function (request, status, error) {
             handleAjaxError(request, status, error);
         },
@@ -42,13 +39,17 @@ $('#bt_autoChaine').on('click', function () {
             }
             else {
                 $('#div_alert').showAlert({message: 'TEST : ' + '<select>' + data.result +'</select>', level: 'success'});
+                var dialog_message = '<form class="form-horizontal onsubmit="return false;"> ';
+                dialog_title = '{{Configuration automatique}}';
                 dialog_message += '<select>' + data.result +'</select>';
+                dialog_message +='<br>';
+                dialog_message +='<label class="lbl lbl-warning" for="name">{{Attention, cette action va supprimer les chaînes existantes.}}</label> ';
+                dialog_message += '</form>';
+                return;
             }
         }
     });
-    dialog_message +='<br>';
-    dialog_message +='<label class="lbl lbl-warning" for="name">{{Attention, cette action va supprimer les chaînes existantes.}}</label> ';
-    dialog_message += '</form>';
+    var dialog_message =
     bootbox.dialog({
        title: dialog_title,
        message: dialog_message,
