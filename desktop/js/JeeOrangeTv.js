@@ -26,7 +26,7 @@ $('#bt_autoChaine').on('click', function () {
     dialog_message += '<label class="control-label" > {{Sélectionner le modèle à appliquer}} </label> ' +
     '<div> <div class="radio"> <label > ' +
     '<select id="command">' +
-    '<option value="0">{{Métropole}}</option>' +
+    '<?php echo "<option value="0">{{Métropole}}</option>"; ?>' +
     '<option value="1">{{Dom-Tom}}</option>' +
     '</select>' +
     '</div><br>' +
