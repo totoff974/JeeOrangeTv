@@ -63,7 +63,7 @@ $('#bt_autoChaine').on('click', function () {
                                 // if ($("select[id='templateChaine']").val() == "0"){
                                 bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result, selecteur) {
                                     if (result) {
-                                        var strUser = selecteur.options[selecteur.selectedIndex].value;
+                                        var strUser = selecteur.value;
                                         $('#div_alert').showAlert({message: '{{Opération réalisée avec succès : }}' + strUser, level: 'success'});
                                         // $.ajax({
                                             // type: "POST",
