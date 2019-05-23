@@ -14,21 +14,17 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
-$('#bt_addChaine"').on('click',function(){
-    var tr = $(this).closest('tr');
+$('#bt_addChaine2"').on('click',function(){
     $.ajax({
         type: "POST",
         url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php",
         data: {
             action: "listeFichiersConf",
         },
-        dataType: 'json',
-        error: function(request, status, error) {
-            $('#div_alert').showAlert({message: '{{Opération non réalisée}}', level: 'success'});
-        },
+        dataType: 'html',
         success: function(data) {
             $('#div_alert').showAlert({message: data.result, level: 'success'});
-        }
+        },
     });
 });
 
