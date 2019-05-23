@@ -16,15 +16,26 @@
 
 $('#bt_addChaine2"').on('click',function(event){
     $.ajax({
-        type: "POST",
-        url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php",
+        type: "POST", 
+        url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php", 
         data: {
             action: "listeFichiersConf",
         },
-        success: function() {
-            $('#div_alert').showAlert({message: "ok", level: 'success'});
+        dataType: 'json',
+        global: false,
+        error: function (request, status, error) {
+            handleAjaxError(request, status, error);
         },
-    });
+        success: function (data) {
+            if (data.state != 'ok') {
+                $('#div_alert').showAlert({message: data.result, level: 'danger'});
+                return;
+            }
+            else {
+                $('#div_alert').showAlert({message: data.result, level: 'success'});
+            }
+      }
+  });
 });
 
 $("#bt_addChaine").on('click', function (event) {
