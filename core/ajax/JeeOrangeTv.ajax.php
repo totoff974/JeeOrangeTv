@@ -28,7 +28,7 @@ try {
     
     // liste des fichiers json de configuration des chaines
     if (init('action') == 'listeFichiersConf') {
-        ajax::success();
+        ajax::success('ok');
     }
     
     throw new Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));
