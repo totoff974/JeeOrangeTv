@@ -31,14 +31,12 @@ try {
         $result = "";
         if($dossier = opendir(realpath(dirname(__FILE__) . '/../../core/config')))
         {
-            $i = 0;
             while(false !== ($fichier = readdir($dossier)))
             {
                 if($fichier != '.' && $fichier != '..' && pathinfo($fichier, PATHINFO_EXTENSION) === 'json')
                 {
                     $nom_fichier = explode(".", $fichier);
-                    $result = $result . '<option value="' . $i . '">' . $nom_fichier[0] . '</option>';
-                    $i = $i + 1;
+                    $result = $result . '<option value="' . $nom_fichier[0] . '">' . $nom_fichier[0] . '</option>';
                 }
             }
             closedir($dossier);
