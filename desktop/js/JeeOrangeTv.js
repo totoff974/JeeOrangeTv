@@ -1,23 +1,23 @@
 /* This file is part of Jeedom.
- *
- * Jeedom is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Jeedom is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
- */
+*
+* Jeedom is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Jeedom is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
+*/
 
-$("#bt_addChaine2").on('click',function(event){
+function listeFichiersConf() {
     $.ajax({
-        type: "POST", 
-        url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php", 
+        type: "POST",
+        url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php",
         data: {
             action: "listeFichiersConf",
         },
@@ -28,93 +28,92 @@ $("#bt_addChaine2").on('click',function(event){
         },
         success: function (data) {
             if (data.state != 'ok') {
-                $('#div_alert').showAlert({message: 'super pas cool', level: 'danger'});
+                $('#div_alert').showAlert({message: 'Erreur sur le listing des fichiers de configuration'  + data.result, level: 'danger'});
                 return;
             }
             else {
-                $('#div_alert').showAlert({message: 'super' + data.result, level: 'success'});
+                return data.result;
             }
         }
     });
-});
+}
 
 $("#bt_addChaine").on('click', function (event) {
   var _cmd = {type: 'action'};
   addCmdToTableChaine(_cmd);
 });
 
-// $('#bt_autoChaine').on('click', function () {
-    // var dialog_title = '{{Configuration automatique}}';
-    // var dialog_message = '<form class="form-horizontal onsubmit="return false;"> ';
-    // dialog_title = '{{Configuration automatique}}';
-    // dialog_message += '<label class="control-label" > {{Sélectionner le modèle à appliquer}} </label> ' +
-    // '<div> <div class="radio"> <label > ' +
-    // '<select id="command">' +
-    // '<option value="0">{{Métropole}}</option>' +
-    // '<option value="1">{{Dom-Tom}}</option>' +
-    // '</select>' +
-    // '</div><br>' +
-    // '<label class="lbl lbl-warning" for="name">{{Attention, cette action va supprimer les chaînes existantes.}}</label> ';
-    // dialog_message += '</form>';
-    // bootbox.dialog({
-       // title: dialog_title,
-       // message: dialog_message,
-       // buttons: {
-           // "{{Annuler}}": {
-               // className: "btn-danger",
-               // callback: function () {
-               // }
-           // },
-           // success: {
-               // label: "{{Démarrer}}",
-               // className: "btn-success",
-               // callback: function () {
-                    // if ($("select[id='command']").val() == "0"){
-                        // bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result) {
-                            // if (result) {
-                                // $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Métropole}}', level: 'success'});
-                                // // $.ajax({
-                                    // // type: "POST", 
-                                    // // url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php", 
-                                    // // data: {
-                                        // // action: "autoDetectModule",
-                                        // // id: $('.eqLogicAttr[data-l1key=id]').value(),
-                                        // // createcommand: 1,
-                                    // // },
-                                    // // dataType: 'json',
-                                    // // global: false,
-                                    // // error: function (request, status, error) {
-                                        // // handleAjaxError(request, status, error);
-                                    // // },
-                                    // // success: function (data) {
-                                        // // if (data.state != 'ok') {
-                                            // // $('#div_alert').showAlert({message: data.result, level: 'danger'});
-                                            // // return;
-                                        // // }
-                                        // // $('#div_alert').showAlert({message: '{{Opération réalisée avec succès}}', level: 'success'});
-                                        // // $('.li_eqLogic[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click();
-                                    // // }
-                                // // });
-                            // }
-                        // });
-					// }
-                    // if ($("select[id='command']").val() == "1"){
-                        // $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Métropole}}', level: 'success'});
-					// }
-            // }
-        // },
-    // }
-// });
-// });
+$('#bt_autoChaine').on('click', function () {
+    var dialog_title = '{{Configuration automatique}}';
+    var dialog_message = '<form class="form-horizontal onsubmit="return false;"> ';
+    dialog_title = '{{Configuration automatique}}';
+    dialog_message += '<label class="control-label" > {{Sélectionner le modèle à appliquer}} </label> ' +
+    '<div> <div class="radio"> <label > ' +
+    '<select id="command">' +
+    listeFichiersConf() +
+    '</select>' +
+    '</div><br>' +
+    '<label class="lbl lbl-warning" for="name">{{Attention, cette action va supprimer les chaînes existantes.}}</label> ';
+    dialog_message += '</form>';
+    bootbox.dialog({
+       title: dialog_title,
+       message: dialog_message,
+       buttons: {
+           "{{Annuler}}": {
+               className: "btn-danger",
+               callback: function () {
+               }
+           },
+           success: {
+               label: "{{Démarrer}}",
+               className: "btn-success",
+               callback: function () {
+                    if ($("select[id='command']").val() == "0"){
+                        bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result) {
+                            if (result) {
+                                $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Métropole}}', level: 'success'});
+                                // $.ajax({
+                                    // type: "POST",
+                                    // url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php",
+                                    // data: {
+                                        // action: "autoDetectModule",
+                                        // id: $('.eqLogicAttr[data-l1key=id]').value(),
+                                        // createcommand: 1,
+                                    // },
+                                    // dataType: 'json',
+                                    // global: false,
+                                    // error: function (request, status, error) {
+                                        // handleAjaxError(request, status, error);
+                                    // },
+                                    // success: function (data) {
+                                        // if (data.state != 'ok') {
+                                            // $('#div_alert').showAlert({message: data.result, level: 'danger'});
+                                            // return;
+                                        // }
+                                        // $('#div_alert').showAlert({message: '{{Opération réalisée avec succès}}', level: 'success'});
+                                        // $('.li_eqLogic[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click();
+                                    // }
+                                // });
+                            }
+                        });
+                    }
+                    if ($("select[id='command']").val() == "1"){
+                        $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Métropole}}', level: 'success'});
+                    }
+            }
+        },
+    }
+});
+});
 
 $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 $("#table_liste_chaine").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
- function addCmdToTableChaine(_cmd) {
+function addCmdToTableChaine(_cmd) {
     if (!isset(_cmd)) {
         var _cmd = {configuration: {}};
     }
-    
+
     if (init(_cmd.type) == 'action') {
         var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
         tr += '<td>';
@@ -169,11 +168,11 @@ function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
         var _cmd = {configuration: {}};
     }
-  
+
     if (_cmd.configuration['tab_name'] == "tab_chaine") {
         addCmdToTableChaine(_cmd);
     }
-  
+
     if (init(_cmd.name).indexOf("Mosaique ") == '-1' && init(_cmd.name) != "Telecommande" && _cmd.configuration['tab_name'] != "tab_chaine") {
         if (init(_cmd.type) == 'info') {
              var disabled = (init(_cmd.configuration.virtualAction) == '1') ? 'disabled' : '';

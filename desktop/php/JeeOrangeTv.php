@@ -213,18 +213,4 @@ foreach ($eqLogics as $eqLogic) {
 
         echo '</select>';
     }
-    
-function liste_fichier_conf() {
-    if($dossier = opendir(realpath(dirname(__FILE__) . '/../../core/config')))
-    {
-        while(false !== ($fichier = readdir($dossier)))
-        {
-            if($fichier != '.' && $fichier != '..' && pathinfo($fichier, PATHINFO_EXTENSION) === 'json')
-            {
-                echo '<li>' . $fichier . '</li>';
-            }
-        }  
-        closedir($dossier);
-    }
-}
 ?>
