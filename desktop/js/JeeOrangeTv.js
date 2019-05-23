@@ -15,9 +15,6 @@
  */
 
 $("#bt_addChaine").on('click', function (event) {
-  $('#tree').fileTree({ root: '/var/www/html/' }, function(file) { 
-    alert(file);
-  });
   var _cmd = {type: 'action'};
   addCmdToTableChaine(_cmd);
 });
