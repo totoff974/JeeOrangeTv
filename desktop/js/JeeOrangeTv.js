@@ -32,7 +32,7 @@ $("#bt_addChaine2").on('click',function(event){
                 return;
             }
             else {
-                $('#div_alert').showAlert({message: 'super', level: 'success'});
+                $('#div_alert').showAlert({message: 'super' + data.result, level: 'success'});
             }
         }
     });

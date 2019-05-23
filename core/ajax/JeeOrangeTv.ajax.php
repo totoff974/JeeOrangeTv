@@ -28,7 +28,19 @@ try {
     
     // liste des fichiers json de configuration des chaines
     if (init('action') == 'listeFichiersConf') {
-        ajax::success();
+        $result = "";
+        if($dossier = opendir(realpath(dirname(__FILE__) . '/../../core/config')))
+        {
+            while(false !== ($fichier = readdir($dossier)))
+            {
+                if($fichier != '.' && $fichier != '..' && pathinfo($fichier, PATHINFO_EXTENSION) === 'json')
+                {
+                    $result = $result . '<li>' . $fichier . '</li>';
+                }
+            }  
+            closedir($dossier);
+        }
+        ajax::success($result);
     }
     
     throw new \Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));
