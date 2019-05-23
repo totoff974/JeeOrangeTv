@@ -31,7 +31,7 @@ try {
 		$files = ls(dirname(__FILE__) . '/../config/', '_*.json', false, array('files', 'reps'));
         $result = '';
         foreach ($files as $file) {
-            $result = $result . '<option value="' . $file . '">{{' . $file . '}}</option>'
+            $result = $result . '<option value="' . $file . '">{{' . $file . '}}</option>';
         }
 		ajax::success($result);
     }
