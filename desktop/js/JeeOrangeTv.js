@@ -41,16 +41,13 @@ $('#bt_autoChaine').on('click', function () {
                 return;
             }
             else {
-                dialog_message += '<label class="control-label" > {{Sélectionner le modèle à appliquer}} </label> ' +
-                '<div class="radio">' +
-                '<select id="command">' +
-                '</select>' +
-                '</div><br>' +
-                '<label class="lbl lbl-warning" for="name">{{Attention, cette action va supprimer les chaînes existantes.}}</label> ';
+                dialog_message += data.result;
             }
         }
     });
-
+    '</select>' +
+    '</div><br>' +
+    '<label class="lbl lbl-warning" for="name">{{Attention, cette action va supprimer les chaînes existantes.}}</label> ';
     dialog_message += '</form>';
     bootbox.dialog({
        title: dialog_title,
