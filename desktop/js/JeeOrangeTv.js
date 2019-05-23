@@ -30,7 +30,7 @@ $('#bt_autoChaine').on('click', function () {
     dialog_message += '<label class="control-label" > {{Sélectionner le modèle à appliquer}} </label> ' +
     '<div class="radio">' +
     '<select id="command">' +
-    listeFichiersConf(); +
+    listeFichiersConf() +
     '</select>' +
     '</div><br>' +
     '<label class="lbl lbl-warning" for="name">{{Attention, cette action va supprimer les chaînes existantes.}}</label> ';
@@ -111,6 +111,7 @@ function listeFichiersConf() {
             }
         }
     });
+    return data.result;
 }
 
 function addCmdToTableChaine(_cmd) {
