@@ -42,13 +42,12 @@ $('#bt_autoChaine').on('click', function () {
                }
            },
            success: {
-               rep : $("select[id='command']").val(),
                label: "{{Démarrer}}",
                className: "btn-success",
                callback: function () {
-                    bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result) {
-                        if (result) {
-                            if (rep == "0"){
+                    if ($("select[id='command']").val() == "0"){
+                        bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result) {
+                            if (result) {
                                 $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Métropole}}', level: 'success'});
                                 // $.ajax({
                                     // type: "POST", 
@@ -72,12 +71,11 @@ $('#bt_autoChaine').on('click', function () {
                                         // $('.li_eqLogic[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click();
                                     // }
                                 // });
-
                             }
-                        }
-                    });
-                    if (rep == "1"){
-                        $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Réunion}}', level: 'success'});
+                        });
+					}
+                    if ($("select[id='command']").val() == "1"){
+                        $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Métropole}}', level: 'success'});
 					}
             }
         },
