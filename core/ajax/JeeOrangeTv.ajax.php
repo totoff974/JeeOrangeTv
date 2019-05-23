@@ -25,7 +25,17 @@ try {
     }
     
     ajax::init();
-
+    
+    // liste des fichiers json de configuration des chaines
+	if (init('action') == 'listeConfChaines') {
+		$files = ls(dirname(__FILE__) . '/../config/', '_*.json', false, array('files', 'reps'));
+        $result = '';
+        foreach ($files as $file) {
+            $result = $result . '<option value="' . $file . '">{{' . $file . '}}</option>'
+        }
+		ajax::success($result);
+	}
+    
     throw new Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));
     /*     * *********Catch exeption*************** */
 } catch (Exception $e) {
