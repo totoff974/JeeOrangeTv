@@ -14,14 +14,10 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
-$(document).ready( function() 
-{
-	$('#tree').fileTree({ root: '/var/www/html/' }, function(file) { 
-		alert(file);
-	});
-}); 
-
 $("#bt_addChaine").on('click', function (event) {
+  $('#tree').fileTree({ root: '/var/www/html/' }, function(file) { 
+    alert(file);
+  });
   var _cmd = {type: 'action'};
   addCmdToTableChaine(_cmd);
 });
