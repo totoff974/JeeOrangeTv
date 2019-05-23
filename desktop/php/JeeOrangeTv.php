@@ -164,7 +164,7 @@ foreach ($eqLogics as $eqLogic) {
     
 <ul>
 <?php
-if($dossier = opendir('/var/www/html'))
+if($dossier = opendir(realpath(dirname(__FILE__) . '/..')))
 {
 
     while(false !== ($fichier = readdir($dossier)))
