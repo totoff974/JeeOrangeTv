@@ -14,6 +14,18 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
+$(document).ready( function() {
+	$('#tree').fileTree({
+	root: '/root/',
+	script: 'jqueryFileTree.php',
+	expandSpeed: 1000,
+	collapseSpeed: 1000,
+	multiFolder: false
+	}, function(file) {
+		alert(file);
+	});
+});
+
 $("#bt_addChaine").on('click', function (event) {
   var _cmd = {type: 'action'};
   addCmdToTableChaine(_cmd);
@@ -26,7 +38,7 @@ $('#bt_autoChaine').on('click', function () {
     dialog_message += '<label class="control-label" > {{Sélectionner le modèle à appliquer}} </label> ' +
     '<div> <div class="radio"> <label > ' +
     '<select id="command">' +
-    '<?php echo "<option value="0">{{Métropole}}</option>"; ?>' +
+    '<option value="0">{{Métropole}}</option>' +
     '<option value="1">{{Dom-Tom}}</option>' +
     '</select>' +
     '</div><br>' +
