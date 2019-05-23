@@ -160,26 +160,7 @@ foreach ($eqLogics as $eqLogic) {
     <div>
         <a id="bt_autoChaine" class="btn btn-danger btn-sm" style="margin-top:5px;"><i class="fa fa-search"></i>{{Configuration automatique}}</a>
         <a id="bt_addChaine" class="btn btn-default btn-sm pull-right" style="margin-top:5px;"><i class="fas fa-plus-circle"></i>{{Ajouter une Chaine}}</a>
-    </div></br>
-    
-<ul>
-<?php
-if($dossier = opendir(realpath(dirname(__FILE__) . '/../../core/config')))
-{
-
-    while(false !== ($fichier = readdir($dossier)))
-    {
-
-        if($fichier != '.' && $fichier != '..' && pathinfo($fichier, PATHINFO_EXTENSION) === 'json')
-        {
-            echo '<li><a href="./mondossier/' . $fichier . '">' . $fichier . '</a></li>';
-        }
-    }
-
-    echo '</ul><br />';    
-    closedir($dossier);
-}
-?>   
+    </div></br> <?php liste_fichier_conf() ?>
     <legend>{{Configuration de la liste des Chaines}}</legend>
             <table id="table_liste_chaine" class="table table-bordered table-condensed">
                 <thead>
@@ -231,4 +212,18 @@ if($dossier = opendir(realpath(dirname(__FILE__) . '/../../core/config')))
 
         echo '</select>';
     }
+    
+function liste_fichier_conf() {
+    if($dossier = opendir(realpath(dirname(__FILE__) . '/../../core/config')))
+    {
+        while(false !== ($fichier = readdir($dossier)))
+        {
+            if($fichier != '.' && $fichier != '..' && pathinfo($fichier, PATHINFO_EXTENSION) === 'json')
+            {
+                echo '<li>' . $fichier . '</li>';
+            }
+        }  
+        closedir($dossier);
+    }
+}
 ?>
