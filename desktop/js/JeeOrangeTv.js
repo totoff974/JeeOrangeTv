@@ -21,8 +21,7 @@ $('#bt_addChaine2"').on('click',function(event){
         data: {
             action: "listeFichiersConf",
         },
-        dataType: 'html',
-        success: function(data) {
+        success: function() {
             $('#div_alert').showAlert({message: "ok", level: 'success'});
         },
     });
