@@ -164,13 +164,13 @@ foreach ($eqLogics as $eqLogic) {
     
 <ul>
 <?php
-if($dossier = opendir(realpath(dirname(__FILE__) . '/..')))
+if($dossier = opendir(realpath(dirname(__FILE__) . '/../../core/config')))
 {
 
     while(false !== ($fichier = readdir($dossier)))
     {
 
-        if($fichier != '.' && $fichier != '..' && $fichier != 'index.php')
+        if($fichier != '.' && $fichier != '..' && pathinfo($fichier, PATHINFO_EXTENSION) === 'json')
         {
             echo '<li><a href="./mondossier/' . $fichier . '">' . $fichier . '</a></li>';
         }
