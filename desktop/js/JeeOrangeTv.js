@@ -21,6 +21,7 @@ $("#bt_addChaine").on('click', function (event) {
 
 $('#bt_autoChaine').on('click', function () {
     var dialog_title = '{{Configuration automatique}}';
+    var dialog_message = "";
     $.ajax({
         type: "POST",
         url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php",
@@ -45,6 +46,7 @@ $('#bt_autoChaine').on('click', function () {
                 dialog_message +='<br>';
                 dialog_message +='<label class="lbl lbl-warning" for="name">{{Attention, cette action va supprimer les chaînes existantes.}}</label> ';
                 dialog_message += '</form>';
+                return dialog_message;
             }
         }
     });
