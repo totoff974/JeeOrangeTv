@@ -42,7 +42,7 @@ $('#bt_autoChaine').on('click', function () {
                }
            },
            success: {
-               var rep = $("select[id='command']").val();
+               rep : $("select[id='command']").val(),
                label: "{{Démarrer}}",
                className: "btn-success",
                callback: function () {
