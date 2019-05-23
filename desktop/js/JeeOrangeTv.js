@@ -20,7 +20,7 @@ $("#bt_addChaine").on('click', function (event) {
 });
 
 $("#bt_addChaine2").on('click', function (event) {
-    $('#div_alert').showAlert({message: '<select id="command">' + listeFichiersConf() + '</select>', level: 'success'});
+    $('#div_alert').showAlert({message: '<select id="command1">' + listeFichiersConf() + '</select>', level: 'success'});
 });
 
 $('#bt_autoChaine').on('click', function () {
