@@ -62,9 +62,8 @@ $('#bt_autoChaine').on('click', function () {
                                 // if ($("select[id='templateChaine']").val() == "0"){
                                 bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result) {
                                     if (result) {
-                                        var e = document.getElementById("templateChaine");
-                                        var strUser = e.options[e.selectedIndex].value;
-                                        $('#div_alert').showAlert({message: '{{Opération réalisée avec succès : }}' + strUser, level: 'success'});
+                                        var e = $("select[id='templateChaine']").options[e.selectedIndex].value;
+                                        $('#div_alert').showAlert({message: '{{Opération réalisée avec succès : }}' + e, level: 'success'});
                                         // $.ajax({
                                             // type: "POST",
                                             // url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php",
