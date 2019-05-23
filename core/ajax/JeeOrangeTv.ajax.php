@@ -38,7 +38,7 @@ try {
                 {
                     $nom_fichier = explode(".", $fichier);
                     $result = $result . '<option value="' . $i . '">' . $nom_fichier[0] . '</option>';
-                    $i = $i +1;
+                    $i = $i + 1;
                 }
             }
             closedir($dossier);
