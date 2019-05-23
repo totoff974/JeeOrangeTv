@@ -58,12 +58,12 @@ $('#bt_autoChaine').on('click', function () {
                        success: {
                            label: "{{Démarrer}}",
                            className: "btn-success",
-                           callback: function () {
+                           selecteur: $("select[id='templateChaine']");
+                           callback: function (selecteur) {
                                 // if ($("select[id='templateChaine']").val() == "0"){
-                                var ef = $("select[id='templateChaine']");
-                                bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result, ef) {
+                                bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result, selecteur) {
                                     if (result) {
-                                        var strUser = ef.options[ef.selectedIndex].value;
+                                        var strUser = selecteur.options[selecteur.selectedIndex].value;
                                         $('#div_alert').showAlert({message: '{{Opération réalisée avec succès : }}' + strUser, level: 'success'});
                                         // $.ajax({
                                             // type: "POST",
