@@ -158,7 +158,7 @@ foreach ($eqLogics as $eqLogic) {
 </div>
 <div role="tabpanel" class="tab-pane" id="commandListeChaines">
     <div class="col-sm-8">
-        <a id="bt_autoChaine" class="btn btn-danger"><i class="fa fa-search"></i> {{configuration automatique}}</a>
+        <a id="bt_autoChaine" class="btn btn-danger"><i class="fa fa-search"></i> {{Configuration automatique}}</a>
         <a class="btn btn-default btn-sm  pull-right" id="bt_addChaine" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter une Chaine}}</a>
     </div>
     <legend>{{Configuration de la liste des Chaines}}</legend>
