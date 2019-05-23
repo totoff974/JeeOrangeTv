@@ -45,56 +45,37 @@ $('#bt_autoChaine').on('click', function () {
                label: "{{Démarrer}}",
                className: "btn-success",
                callback: function () {
-                    if ($("input[name='command']:checked").val() == "1"){
+                    if ($("select[id='command']").val() == "0"){
 						bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result) {
                             if (result) {
-                                $.ajax({
-                                    type: "POST", 
-                                    url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php", 
-                                    data: {
-                                        action: "autoDetectModule",
-                                        id: $('.eqLogicAttr[data-l1key=id]').value(),
-                                        createcommand: 1,
-                                    },
-                                    dataType: 'json',
-                                    global: false,
-                                    error: function (request, status, error) {
-                                        handleAjaxError(request, status, error);
-                                    },
-                                    success: function (data) { 
-                                        if (data.state != 'ok') {
-                                            $('#div_alert').showAlert({message: data.result, level: 'danger'});
-                                            return;
-                                        }
-                                        $('#div_alert').showAlert({message: '{{Opération réalisée avec succès}}', level: 'success'});
-                                        $('.li_eqLogic[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click();
-                                    }
-                                });
+                                $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Métropole}}', level: 'success'});
+                                // $.ajax({
+                                    // type: "POST", 
+                                    // url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php", 
+                                    // data: {
+                                        // action: "autoDetectModule",
+                                        // id: $('.eqLogicAttr[data-l1key=id]').value(),
+                                        // createcommand: 1,
+                                    // },
+                                    // dataType: 'json',
+                                    // global: false,
+                                    // error: function (request, status, error) {
+                                        // handleAjaxError(request, status, error);
+                                    // },
+                                    // success: function (data) {
+                                        // if (data.state != 'ok') {
+                                            // $('#div_alert').showAlert({message: data.result, level: 'danger'});
+                                            // return;
+                                        // }
+                                        // $('#div_alert').showAlert({message: '{{Opération réalisée avec succès}}', level: 'success'});
+                                        // $('.li_eqLogic[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click();
+                                    // }
+                                // });
                             }
                         });
-					} else {
-						$.ajax({
-                                    type: "POST", 
-                                    url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php", 
-                                    data: {
-                                        action: "autoDetectModule",
-                                        id: $('.eqLogicAttr[data-l1key=id]').value(),
-                                        createcommand: 0,
-                                    },
-                                    dataType: 'json',
-                                    global: false,
-                                    error: function (request, status, error) {
-                                        handleAjaxError(request, status, error);
-                                    },
-                                    success: function (data) { 
-                                        if (data.state != 'ok') {
-                                            $('#div_alert').showAlert({message: data.result, level: 'danger'});
-                                            return;
-                                        }
-                                        $('#div_alert').showAlert({message: '{{Opération réalisée avec succès}}', level: 'success'});
-                                        $('.li_eqLogic[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click();
-                                    }
-                                });
+					}
+                    if ($("select[id='command']").val() == "1"){
+                        $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Métropole}}', level: 'success'});
 					}
             }
         },
