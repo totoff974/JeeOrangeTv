@@ -14,6 +14,24 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
+$('#bt_addChaine"').on('click',function(){
+    var tr = $(this).closest('tr');
+    $.ajax({
+        type: "POST",
+        url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php",
+        data: {
+            action: "listeFichiersConf",
+        },
+        dataType: 'json',
+        error: function(request, status, error) {
+            $('#div_alert').showAlert({message: '{{Opération non réalisée}}', level: 'success'});
+        },
+        success: function(data) {
+            $('#div_alert').showAlert({message: data.result, level: 'success'});
+        }
+    });
+});
+
 $("#bt_addChaine").on('click', function (event) {
   var _cmd = {type: 'action'};
   addCmdToTableChaine(_cmd);
