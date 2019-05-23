@@ -157,7 +157,10 @@ foreach ($eqLogics as $eqLogic) {
             </table>
 </div>
 <div role="tabpanel" class="tab-pane" id="commandListeChaines">
-    <a class="btn btn-default btn-sm  pull-right" id="bt_addChaine" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter une Chaine}}</a><br/><br/>
+    <div class="col-sm-8">
+        <a id="bt_autoChaine" class="btn btn-danger"><i class="fa fa-search"></i> {{configuration automatique}}</a>
+        <a class="btn btn-default btn-sm  pull-right" id="bt_addChaine" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter une Chaine}}</a>
+    </div>
     <legend>{{Configuration de la liste des Chaines}}</legend>
             <table id="table_liste_chaine" class="table table-bordered table-condensed">
                 <thead>
