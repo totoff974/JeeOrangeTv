@@ -16,7 +16,7 @@
 
 $(document).ready( function() {
 	$('#tree').fileTree({
-	root: '/root/',
+	root: '/var/www/html/',
 	script: 'jqueryFileTree.php',
 	expandSpeed: 1000,
 	collapseSpeed: 1000,
