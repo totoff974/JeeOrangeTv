@@ -46,42 +46,43 @@ $('#bt_autoChaine').on('click', function () {
                className: "btn-success",
                callback: function () {
                     bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result) {
-                    if (result) {
-                        if ($("select[id='command']").val() == "0"){
-                            $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Métropole}}', level: 'success'});
-                        }
-                        if ($("select[id='command']").val() == "1"){
-                            $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Réunion}}', level: 'success'});
-                        }
-                        // $.ajax({
-                            // type: "POST",
-                            // url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php",
-                            // data: {
-                                // action: "autoDetectModule",
-                                // id: $('.eqLogicAttr[data-l1key=id]').value(),
-                                // createcommand: 1,
-                            // },
-                            // dataType: 'json',
-                            // global: false,
-                            // error: function (request, status, error) {
-                                // handleAjaxError(request, status, error);
-                            // },
-                            // success: function (data) {
-                                // if (data.state != 'ok') {
-                                    // $('#div_alert').showAlert({message: data.result, level: 'danger'});
-                                    // return;
-                                // }
-                                // $('#div_alert').showAlert({message: '{{Opération réalisée avec succès}}', level: 'success'});
-                                // $('.li_eqLogic[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click();
-                            // }
-                        // });
-                    }
-                    });
-                }
-            }
-        }
-    });
+                        if (result) {
+                            if ($("select[id='command']").val() == "0"){
+                                $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Métropole}}', level: 'success'});
+                                // $.ajax({
+                                    // type: "POST", 
+                                    // url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php", 
+                                    // data: {
+                                        // action: "autoDetectModule",
+                                        // id: $('.eqLogicAttr[data-l1key=id]').value(),
+                                        // createcommand: 1,
+                                    // },
+                                    // dataType: 'json',
+                                    // global: false,
+                                    // error: function (request, status, error) {
+                                        // handleAjaxError(request, status, error);
+                                    // },
+                                    // success: function (data) {
+                                        // if (data.state != 'ok') {
+                                            // $('#div_alert').showAlert({message: data.result, level: 'danger'});
+                                            // return;
+                                        // }
+                                        // $('#div_alert').showAlert({message: '{{Opération réalisée avec succès}}', level: 'success'});
+                                        // $('.li_eqLogic[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click();
+                                    // }
+                                // });
 
+                            }
+                        }
+                    });
+                    if ($("select[id='command']").val() == "1"){
+                        $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Métropole}}', level: 'success'});
+					}
+            }
+        },
+    }
+});
+    
 });
 
 $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
@@ -91,7 +92,7 @@ $("#table_liste_chaine").sortable({axis: "y", cursor: "move", items: ".cmd", pla
     if (!isset(_cmd)) {
         var _cmd = {configuration: {}};
     }
-
+    
     if (init(_cmd.type) == 'action') {
         var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
         tr += '<td>';
@@ -146,11 +147,11 @@ function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
         var _cmd = {configuration: {}};
     }
-
+  
     if (_cmd.configuration['tab_name'] == "tab_chaine") {
         addCmdToTableChaine(_cmd);
     }
-
+  
     if (init(_cmd.name).indexOf("Mosaique ") == '-1' && init(_cmd.name) != "Telecommande" && _cmd.configuration['tab_name'] != "tab_chaine") {
         if (init(_cmd.type) == 'info') {
              var disabled = (init(_cmd.configuration.virtualAction) == '1') ? 'disabled' : '';
