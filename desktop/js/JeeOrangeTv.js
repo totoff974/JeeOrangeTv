@@ -41,14 +41,13 @@ $('#bt_autoChaine').on('click', function () {
                 return;
             }
             else {
-                $('#div_alert').showAlert({message: 'TEST : '  + data.result, level: 'success'});
+                $('#div_alert').showAlert({message: 'TEST : ' + '<select>' + data.result +'</select>', level: 'success'});
                 dialog_message += data.result;
             }
         }
     });
-    '</select>' +
-    '</div><br>' +
-    '<label class="lbl lbl-warning" for="name">{{Attention, cette action va supprimer les chaînes existantes.}}</label> ';
+    dialog_message +='<br>';
+    dialog_message +='<label class="lbl lbl-warning" for="name">{{Attention, cette action va supprimer les chaînes existantes.}}</label> ';
     dialog_message += '</form>';
     bootbox.dialog({
        title: dialog_title,
