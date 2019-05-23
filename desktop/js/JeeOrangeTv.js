@@ -19,8 +19,88 @@ $("#bt_addChaine").on('click', function (event) {
   addCmdToTableChaine(_cmd);
 });
 
-$('input[data-l2key="ch_canal"]').on('click', function (event) {
-  alert('ci ok');
+$('#bt_autoChaine').on('click', function () {
+    var dialog_title = '{{Configuration automatique}}';
+    var dialog_message = '<form class="form-horizontal onsubmit="return false;"> ';
+    dialog_title = '{{Configuration automatique}}';
+    dialog_message += '<label class="control-label" > {{Sélectionner le modèle à appliquer}} </label> ' +
+    '<div> <div class="radio"> <label > ' +
+    '<select id="command">' +
+    '<option value="0">{{Métropole}}</option>' +
+    '<option value="1">{{Dom-Tom}}</option>' +
+    '</select>' +
+    '</div><br>' +
+    '<label class="lbl lbl-warning" for="name">{{Attention, cette action va supprimer les chaînes existantes.}}</label> ';
+    dialog_message += '</form>';
+    bootbox.dialog({
+       title: dialog_title,
+       message: dialog_message,
+       buttons: {
+           "{{Annuler}}": {
+               className: "btn-danger",
+               callback: function () {
+               }
+           },
+           success: {
+               label: "{{Démarrer}}",
+               className: "btn-success",
+               callback: function () {
+                    if ($("input[name='command']:checked").val() == "1"){
+						bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result) {
+                            if (result) {
+                                $.ajax({
+                                    type: "POST", 
+                                    url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php", 
+                                    data: {
+                                        action: "autoDetectModule",
+                                        id: $('.eqLogicAttr[data-l1key=id]').value(),
+                                        createcommand: 1,
+                                    },
+                                    dataType: 'json',
+                                    global: false,
+                                    error: function (request, status, error) {
+                                        handleAjaxError(request, status, error);
+                                    },
+                                    success: function (data) { 
+                                        if (data.state != 'ok') {
+                                            $('#div_alert').showAlert({message: data.result, level: 'danger'});
+                                            return;
+                                        }
+                                        $('#div_alert').showAlert({message: '{{Opération réalisée avec succès}}', level: 'success'});
+                                        $('.li_eqLogic[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click();
+                                    }
+                                });
+                            }
+                        });
+					} else {
+						$.ajax({
+                                    type: "POST", 
+                                    url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php", 
+                                    data: {
+                                        action: "autoDetectModule",
+                                        id: $('.eqLogicAttr[data-l1key=id]').value(),
+                                        createcommand: 0,
+                                    },
+                                    dataType: 'json',
+                                    global: false,
+                                    error: function (request, status, error) {
+                                        handleAjaxError(request, status, error);
+                                    },
+                                    success: function (data) { 
+                                        if (data.state != 'ok') {
+                                            $('#div_alert').showAlert({message: data.result, level: 'danger'});
+                                            return;
+                                        }
+                                        $('#div_alert').showAlert({message: '{{Opération réalisée avec succès}}', level: 'success'});
+                                        $('.li_eqLogic[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click();
+                                    }
+                                });
+					}
+            }
+        },
+    }
+});
+    
 });
 
 $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
