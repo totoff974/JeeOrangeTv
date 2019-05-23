@@ -60,10 +60,10 @@ $('#bt_autoChaine').on('click', function () {
                            className: "btn-success",
                            callback: function () {
                                 // if ($("select[id='templateChaine']").val() == "0"){
-                                bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result) {
+                                var ef = $("select[id='templateChaine']");
+                                bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result, ef) {
                                     if (result) {
-                                        var e = $("select[id='templateChaine']");
-                                        var strUser = e.options[e.selectedIndex].value;
+                                        var strUser = ef.options[ef.selectedIndex].value;
                                         $('#div_alert').showAlert({message: '{{Opération réalisée avec succès : }}' + strUser, level: 'success'});
                                         // $.ajax({
                                             // type: "POST",
