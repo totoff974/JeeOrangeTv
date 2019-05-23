@@ -58,7 +58,7 @@ $('#bt_autoChaine').on('click', function () {
                        success: {
                            label: "{{Démarrer}}",
                            className: "btn-success",
-                           selecteur: $("select[id='templateChaine']");
+                           selecteur: $("select[id='templateChaine']"),
                            callback: function (selecteur) {
                                 // if ($("select[id='templateChaine']").val() == "0"){
                                 bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result, selecteur) {
