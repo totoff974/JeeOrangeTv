@@ -35,7 +35,8 @@ try {
             {
                 if($fichier != '.' && $fichier != '..' && pathinfo($fichier, PATHINFO_EXTENSION) === 'json')
                 {
-                    $result = $result . '<option value="' . $fichier . '">' . $fichier . '</option>';
+                    $fichiers = explode(".", $fichier);
+                    $result = $result . '<option value="' . $fichiers[0] . '">' . $fichiers[1] . '</option>';
                 }
             }  
             closedir($dossier);
