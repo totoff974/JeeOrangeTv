@@ -27,13 +27,19 @@ try {
     ajax::init();
     
     // liste des fichiers json de configuration des chaines
-    if (init('action') == 'listeConfChaines') {
-		$files = ls(dirname(__FILE__) . '/../config/', '_*.json', false, array('files', 'reps'));
-        $result = '';
-        foreach ($files as $file) {
-            $result = $result . '<option value="' . $file . '">{{' . $file . '}}</option>';
+    if (init('action') == 'listeFichiersConf') {
+        if($dossier = opendir(realpath(dirname(__FILE__) . '/../../core/config')))
+        {
+                while(false !== ($fichier = readdir($dossier)))
+                {
+                    if($fichier != '.' && $fichier != '..' && pathinfo($fichier, PATHINFO_EXTENSION) === 'json')
+                    {
+                        $result = $result . '<li>' . $fichier . '</li>';
+                    }
+                }
+                closedir($dossier);
         }
-		ajax::success($result);
+        ajax::success($result);
     }
     
     throw new Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));
