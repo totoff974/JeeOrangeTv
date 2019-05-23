@@ -45,10 +45,14 @@ $('#bt_autoChaine').on('click', function () {
                label: "{{Démarrer}}",
                className: "btn-success",
                callback: function () {
-                    if ($("select[id='command']").val() == "0"){
-						bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result) {
+                            bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result) {
                             if (result) {
-                                $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Métropole}}', level: 'success'});
+                                if ($("select[id='command']").val() == "0"){
+                                    $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Métropole}}', level: 'success'});
+                                }
+                                if ($("select[id='command']").val() == "1"){
+                                    $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Réunion}}', level: 'success'});
+                                }
                                 // $.ajax({
                                     // type: "POST", 
                                     // url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php", 
@@ -73,10 +77,6 @@ $('#bt_autoChaine').on('click', function () {
                                 // });
                             }
                         });
-					}
-                    if ($("select[id='command']").val() == "1"){
-                        $('#div_alert').showAlert({message: '{{Opération réalisée avec succès Métropole}}', level: 'success'});
-					}
             }
         },
     }
