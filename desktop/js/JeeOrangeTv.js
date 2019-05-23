@@ -25,6 +25,7 @@ $('#bt_autoChaine').on('click', function () {
     dialog_title = '{{Configuration automatique}}';
     dialog_message += '<label class="control-label" > {{Sélectionner le modèle à appliquer}} </label> ' +
     '<div> <div class="radio"> <label > ' +
+    '<?php liste_fichier_conf() ?>' +
     '<select id="command">' +
     '<option value="0">{{Métropole}}</option>' +
     '<option value="1">{{Dom-Tom}}</option>' +
