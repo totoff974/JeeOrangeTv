@@ -44,7 +44,6 @@ $('#bt_autoChaine').on('click', function () {
                 dialog_message += '<label class="control-label" > {{Sélectionner le modèle à appliquer}} </label> ' +
                 '<div class="radio">' +
                 '<select id="command">' +
-                data.result +
                 '</select>' +
                 '</div><br>' +
                 '<label class="lbl lbl-warning" for="name">{{Attention, cette action va supprimer les chaînes existantes.}}</label> ';
