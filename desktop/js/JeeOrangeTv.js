@@ -45,11 +45,9 @@ $('#bt_autoChaine').on('click', function () {
                 dialog_message +='<br>';
                 dialog_message +='<label class="lbl lbl-warning" for="name">{{Attention, cette action va supprimer les chaînes existantes.}}</label> ';
                 dialog_message += '</form>';
-                return;
             }
         }
     });
-    var dialog_message =
     bootbox.dialog({
        title: dialog_title,
        message: dialog_message,
