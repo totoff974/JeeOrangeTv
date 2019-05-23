@@ -30,16 +30,17 @@ try {
     if (init('action') == 'listeFichiersConf') {
         if($dossier = opendir(realpath(dirname(__FILE__) . '/../../core/config')))
         {
-                while(false !== ($fichier = readdir($dossier)))
+            $result = '';
+            while(false !== ($fichier = readdir($dossier)))
+            {
+                if($fichier != '.' && $fichier != '..' && pathinfo($fichier, PATHINFO_EXTENSION) === 'json')
                 {
-                    if($fichier != '.' && $fichier != '..' && pathinfo($fichier, PATHINFO_EXTENSION) === 'json')
-                    {
-                        $result = $result . '<li>' . $fichier . '</li>';
-                    }
+                    $result = $result . '<li>' . $fichier . '</li>';
                 }
-                closedir($dossier);
+            }
+            closedir($dossier);
         }
-        ajax::success($result);
+        ajax::success();
     }
     
     throw new Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));
