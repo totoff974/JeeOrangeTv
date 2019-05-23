@@ -14,7 +14,7 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
-$('#bt_addChaine2"').on('click',function(){
+$('#bt_addChaine2"').on('click',function(event){
     $.ajax({
         type: "POST",
         url: "plugins/JeeOrangeTv/core/ajax/JeeOrangeTv.ajax.php",
@@ -23,7 +23,7 @@ $('#bt_addChaine2"').on('click',function(){
         },
         dataType: 'html',
         success: function(data) {
-            $('#div_alert').showAlert({message: data.result, level: 'success'});
+            $('#div_alert').showAlert({message: "ok", level: 'success'});
         },
     });
 });
