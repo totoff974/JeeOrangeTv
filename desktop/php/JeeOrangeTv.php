@@ -176,10 +176,7 @@ foreach ($eqLogics as $eqLogic) {
                 </thead>
                 <tbody>
                 </tbody>
-            </table>
-    
-<div id="tree"></div>
-    
+            </table>    
 </div>
 <div role="tabpanel" class="tab-pane" id="commandMos">
     <legend>{{Configuration de la Mosaïque}}</legend>
