@@ -42,7 +42,7 @@ $('#bt_autoChaine').on('click', function () {
             }
             else {
                 $('#div_alert').showAlert({message: 'TEST : ' + '<select>' + data.result +'</select>', level: 'success'});
-                dialog_message += data.result;
+                dialog_message += '<select>' + data.result +'</select>';
             }
         }
     });
