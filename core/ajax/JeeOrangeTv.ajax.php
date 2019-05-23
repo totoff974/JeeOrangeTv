@@ -21,18 +21,18 @@ try {
     include_file('core', 'authentification', 'php');
 
     if (!isConnect('admin')) {
-        throw new Exception(__('401 - Accès non autorisé', __FILE__));
+        throw new \Exception(__('401 - Accès non autorisé', __FILE__));
     }
     
     ajax::init();
     
     // liste des fichiers json de configuration des chaines
     if (init('action') == 'listeFichiersConf') {
-        ajax::success('ok');
+        ajax::success();
     }
     
-    throw new Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));
+    throw new \Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));
     /*     * *********Catch exeption*************** */
-} catch (Exception $e) {
+} catch (\Exception $e) {
     ajax::error(displayException($e), $e->getCode());
 }
