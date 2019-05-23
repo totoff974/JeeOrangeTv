@@ -107,11 +107,11 @@ function listeFichiersConf() {
                 return;
             }
             else {
+                $('#div_alert').showAlert({message: 'ok :'  + data.result, level: 'success'});
                 return data.result;
             }
         }
     });
-    return data.result;
 }
 
 function addCmdToTableChaine(_cmd) {
