@@ -41,6 +41,7 @@ $('#bt_autoChaine').on('click', function () {
                 return;
             }
             else {
+                $('#div_alert').showAlert({message: 'TEST : '  + data.result, level: 'success'});
                 dialog_message += data.result;
             }
         }
