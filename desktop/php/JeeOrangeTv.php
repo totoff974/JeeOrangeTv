@@ -160,7 +160,7 @@ foreach ($eqLogics as $eqLogic) {
     <div>
         <a id="bt_autoChaine" class="btn btn-danger btn-sm" style="margin-top:5px;"><i class="fa fa-search"></i>{{Configuration automatique}}</a>
         <a id="bt_addChaine" class="btn btn-default btn-sm pull-right" style="margin-top:5px;"><i class="fas fa-plus-circle"></i>{{Ajouter une Chaine}}</a>
-    </div></br>
+    </div></br><div id="tree"></div>
     <legend>{{Configuration de la liste des Chaines}}</legend>
             <table id="table_liste_chaine" class="table table-bordered table-condensed">
                 <thead>
