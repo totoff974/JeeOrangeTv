@@ -43,7 +43,32 @@ try {
         }
         ajax::success($result);
     }
-    
+
+    // liste des fichiers logo
+    if (init('action') == 'listeLogo') {
+        $result = "";
+        if($dossier = opendir(realpath(dirname(__FILE__) . '/../../core/template/dashboard/images/Mosaique')))
+        {
+            while(false !== ($logo = readdir($dossier)))
+            {
+                if($logo != '.' && $logo != '..' && pathinfo($logo, PATHINFO_EXTENSION) === 'png')
+                {
+                    $nom_logo = explode(".", $logo);
+                    $result = $result . '<option value="' . $nom_logo[0] . '">' . $nom_logo[0] . '</option>';
+                }
+            }
+            closedir($dossier);
+        }
+        ajax::success($result);
+    }
+
+    // appliquer modèle des chaines
+    if (init('action') === 'appliqueTemplate') {
+        $template = init('template');
+        $eqLogic = JeeOrangeTv::byId(init('id'));
+        $eqLogic->appliqueTemplate($eqLogic, $template);
+        ajax::success();
+    }    
     throw new \Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));
     /*     * *********Catch exeption*************** */
 } catch (\Exception $e) {

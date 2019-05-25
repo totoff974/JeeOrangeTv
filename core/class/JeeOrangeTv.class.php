@@ -207,7 +207,7 @@ class JeeOrangeTv extends eqLogic {
         return;
     }
 
-        // Zapper sur une chaine directement
+    // Zapper sur une chaine directement
     public function ActionZapChaine($box_ip, $epg_id) {
         // mise en forme du code epg pour 10 digits
         $epg_id = str_pad($epg_id, 10, "*", STR_PAD_LEFT);
@@ -365,6 +365,45 @@ class JeeOrangeTv extends eqLogic {
         }
     }
 
+    // Fonction pour appliquer un template chaine
+    public function appliqueTemplate($eqLogic, $template) {
+        $template_conf = json_decode(file_get_contents(dirname(__FILE__) . '/../config/' . $template . '.json'), true);
+        foreach ($eqLogic->getCmd('action') as $cmd) {
+            // selectionne uniquement la tab chaines
+            if ($cmd->getConfiguration('tab_name') === 'tab_chaine' ){
+                // supprime les existants
+                $cmd->remove();
+                $eqLogic->toHtml();
+            }
+        }
+
+        $ValFrCat = array("Généraliste" => 1,
+                           "Information" => 2,
+                           "Découverte et Art de vivre" => 3,
+                           "Sports" => 4,
+                           "Jeunes adultes" => 5,
+                           "Jeunesse" => 6,
+                           "Divertissement" => 7,
+                           "Société et Culture" => 8,
+                           "Musique" => 9,
+                           );
+        // Création des nouvelles chaines
+        foreach ($template_conf['liste'] as $chaine) {
+            $JeeOrangeTvCmd = new JeeOrangeTvCmd();
+            $JeeOrangeTvCmd->setName(__($chaine['nom'], __FILE__));
+            $JeeOrangeTvCmd->setEqLogic_id($this->id);
+            $JeeOrangeTvCmd->setLogicalId($this->getName() . $this->id);
+            $JeeOrangeTvCmd->setConfiguration('tab_name', 'tab_chaine');
+            $JeeOrangeTvCmd->setConfiguration('ch_canal', $chaine['canal']);
+            $JeeOrangeTvCmd->setConfiguration('ch_epg', $chaine['id']);
+            $JeeOrangeTvCmd->setConfiguration('ch_logo', $chaine['logo']);
+            $JeeOrangeTvCmd->setConfiguration('ch_categorie', $ValFrCat[$chaine['categorie']]);
+            $JeeOrangeTvCmd->setType('action');
+            $JeeOrangeTvCmd->setSubType('other');
+            $JeeOrangeTvCmd->save();
+        }
+        return true;
+    }
     /*     * *********************Méthodes d'instance************************* */
 
     public function preInsert() {
