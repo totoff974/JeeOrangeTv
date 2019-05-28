@@ -149,6 +149,8 @@ class JeeOrangeTv extends eqLogic {
 
       }
      */
+     
+    // A VERIFIER
     public function MaJ_JSON() {
         foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
             log::add('JeeOrangeTv', 'debug', '|---> Décodeur : ' . $JeeOrangeTv->getName());
@@ -157,10 +159,9 @@ class JeeOrangeTv extends eqLogic {
         }
     }
 
+    // A VERIFIER
     public function autoMaJCommande() {
-
         global $listCmdJeeOrangeTv;
-
         foreach ($this->getCmd() as $cmd) {
             foreach ($listCmdJeeOrangeTv as $cmd_config) {
                 if (($cmd->getName()==$cmd_config['name']) AND ($cmd->getConfiguration('code_touche')!=$cmd_config['configuration']['code_touche'])){
@@ -169,10 +170,10 @@ class JeeOrangeTv extends eqLogic {
                 }
             }
         }
-
     log::add('JeeOrangeTv', 'debug', 'update des commandes OK');
-
     }
+
+    // permet de requeter le fichier json en fonction du template
     public function lecture_json($param_sortie, $param_entree, $localisation, $comp_entree) {
         // param -> id / nom / canal / logo / categorie
         $json_chaines = json_decode(file_get_contents(dirname(__FILE__) . '/../config/' . $localisation . '.json'), true);
@@ -217,7 +218,7 @@ class JeeOrangeTv extends eqLogic {
     }
 
     public function ActionInfo($box_ip) {
-        $localisation = JeeOrangeTv::getConfiguration('localisation');
+        $localisation = JeeOrangeTv::getConfiguration('template');
 
         // etat du decodeur
         $cmd_retour = 'curl -s "http://'.$box_ip.':8080/remoteControl/cmd?operation=10"';
@@ -490,7 +491,7 @@ class JeeOrangeTv extends eqLogic {
         $replace['#theme#'] = $theme;
         foreach ($this->getCmd('info') as $inf) {
 
-            if ($inf->getName() == 'Etat Decodeur') {
+            if ($inf->getName() === 'Etat Decodeur') {
             $etat_decodeur = $inf->getConfiguration('etat_decodeur');
                 if ($etat_decodeur == 1){
                     $replace['#etat_decodeur#'] = '<img id="ON" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Widget/on_' . $theme . '.png" style="position:absolute;top:0px;left:0px;">';
@@ -499,15 +500,15 @@ class JeeOrangeTv extends eqLogic {
                 }
             }
 
-            if ($inf->getName() == 'Chaine Actuelle') {
-            if ($inf->getConfiguration('chaine_actuelle')=='home' OR $inf->getConfiguration('chaine_actuelle')=='vod') {
-                $nom_chaine_act = $inf->getConfiguration('chaine_actuelle');
-                $replace['#cmd_chaine_act#'] = '<img id="actuelle" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Mosaique/' . $nom_chaine_act . '.png" style="position:absolute;top:63px;left:116px;">';
-            }
-            else {
-                $nom_chaine_act = $this->lecture_json('logo', 'logo', $localisation, $inf->getConfiguration('chaine_actuelle'));
-                $replace['#cmd_chaine_act#'] = '<img id="actuelle" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Mosaique/' . $nom_chaine_act . '.png" style="position:absolute;top:63px;left:116px;">';
-            }
+            if ($inf->getName() === 'Chaine Actuelle') {
+                if ($inf->getConfiguration('chaine_actuelle')==='home' OR $inf->getConfiguration('chaine_actuelle')==='vod' OR $inf->getConfiguration('chaine_actuelle')==='blank') {
+                    $nom_chaine_act = $inf->getConfiguration('chaine_actuelle');
+                    $replace['#cmd_chaine_act#'] = '<img id="actuelle" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Mosaique/' . $nom_chaine_act . '.png" style="position:absolute;top:63px;left:116px;">';
+                }
+                else {
+                    $nom_chaine_act = $this->lecture_json('logo', 'logo', $localisation, $inf->getConfiguration('chaine_actuelle'));
+                    $replace['#cmd_chaine_act#'] = '<img id="actuelle" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Mosaique/' . $nom_chaine_act . '.png" style="position:absolute;top:63px;left:116px;">';
+                }
             }
         }
         // Affichage de la Mosaique
@@ -526,10 +527,13 @@ class JeeOrangeTv extends eqLogic {
                 $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_nom#'] = $this->lecture_json('nom', 'logo', $localisation, $cmd->getConfiguration('logo'));
                 $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_id#'] = $cmd->getId();
             }
-            $replace['#mos_Telecommande_id#'] = $cmd->getId();
-            $tel_mos = $cmd->getConfiguration('telecommande');
         }
 
+        // Gestion du btn bascule telecommande - Mosaique
+        $tel_mos = cmd::byLogicalId('telecommande', null)[0]->getConfiguration('telecommande');
+        $replace['#mos_Telecommande_id#'] = cmd::byLogicalId('telecommande', null)[0]->getId();
+
+        // Choix du widget a afficher
         if ($tel_mos == 1) {
             $html = template_replace($replace, getTemplate('core', $_version, $theme, 'JeeOrangeTv'));
         }
