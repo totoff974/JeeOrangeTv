@@ -62,9 +62,8 @@ foreach ($eqLogics as $eqLogic) {
 
    <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Décodeur}}</a></li>
-    <li role="presentation"><a href="#commandListeTouches" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Touches}}</a></li>
-    <li role="presentation"><a href="#commandListeChaines" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Chaînes}}</a></li>
-    <li role="presentation"><a href="#commandMos" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Mosaïque}}</a></li>
+    <li role="presentation"><a href="#commandListeTouches" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-key"></i> {{Touches}}</a></li>
+    <li role="presentation"><a href="#commandListeChaines" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-tv"></i> {{Chaînes}}</a></li>
 </ul>
 
 <div class="tab-content" style="height:calc(100% - 50px);overflow:auto;overflow-x: hidden;">
@@ -152,7 +151,8 @@ foreach ($eqLogics as $eqLogic) {
 </div>
 <div role="tabpanel" class="tab-pane" id="commandListeChaines">
     <div>
-        <a id="bt_autoChaine" class="btn btn-danger btn-sm" style="margin-top:5px;"><i class="fa fa-search"></i>{{Configuration automatique}}</a>
+        <a id="bt_autoChaine" class="btn btn-danger btn-sm" style="margin-top:5px;"><i class="fa fa-cog"></i>{{Configuration automatique}}</a>
+        <a id="btn_mosaique"class="btn btn-primary btn-sm eqLogicAction" style="margin-top:5px;"><i class="fa fa-tv"></i> {{Configuration de la Mosaïque}}</a>
         <a id="bt_addChaine" class="btn btn-default btn-sm pull-right" style="margin-top:5px;"><i class="fas fa-plus-circle"></i>{{Ajouter une Chaine}}</a>
     </div></br>
     <legend>{{Configuration de la liste des Chaines}}</legend>
@@ -172,24 +172,8 @@ foreach ($eqLogics as $eqLogic) {
                 </tbody>
             </table>    
 </div>
-<div role="tabpanel" class="tab-pane" id="commandMos">
-    <legend>{{Configuration de la Mosaïque}}</legend>
-            <table id="mosaique" class="table table-bordered table-condensed">
-                <thead>
-                    <tr>
-                    <th>#</th>
-                    <th>{{Position}}</th>
-                    <th>{{Nom de la Chaine}}</th>
-                    <th>{{Visibilité}}</th>
-                    <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
 </div>
 </div>
 </div>
-
 <?php include_file('desktop', 'JeeOrangeTv', 'js', 'JeeOrangeTv');?>
 <?php include_file('core', 'plugin.template', 'js');?>

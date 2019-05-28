@@ -68,7 +68,16 @@ try {
         $eqLogic = JeeOrangeTv::byId(init('id'));
         $eqLogic->appliqueTemplate($eqLogic, $template);
         ajax::success();
-    }    
+    }
+
+    // appliquer le choix des mosaiques
+    if (init('action') === 'appliqueMosaique') {
+        $mosaique = init('mosaique');
+        $eqLogic = JeeOrangeTv::byId(init('id'));
+        $eqLogic->appliqueMosaique($eqLogic, $mosaique);
+        ajax::success();
+    }
+
     throw new \Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));
     /*     * *********Catch exeption*************** */
 } catch (\Exception $e) {

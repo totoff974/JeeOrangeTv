@@ -14,6 +14,12 @@
 * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 */
 
+$('#btn_mosaique').on('click', function () {
+    var logicalId = $('.eqLogicAttr[data-l1key=id]').value();
+    $('#md_modal').dialog({title: "{{Configuration de la Mosaïque}}"});
+    $('#md_modal').load('index.php?v=d&plugin=JeeOrangeTv&modal=mosaique.JeeOrangeTv&id='+logicalId).dialog('open');
+});
+
 $("#bt_addChaine").on('click', function (event) {
     var _cmd = {type: 'action'};
     addCmdToTableChaine(_cmd);
@@ -59,7 +65,7 @@ $('#bt_autoChaine').on('click', function () {
                         label: "{{Démarrer}}",
                         className: "btn-success",
                         callback: function () {
-                            var _valueTemplateChaine = $('#templateChaine').val();
+                            var valueTemplateChaine = $('#templateChaine').val();
                             bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result) {
                                 if (result) {
                                     $('#div_alert').showAlert({message: '{{Opération en cours... Merci de patienter...}}', level: 'success'});
@@ -70,7 +76,7 @@ $('#bt_autoChaine').on('click', function () {
                                         data: {
                                             action: "appliqueTemplate",
                                             id: $('.eqLogicAttr[data-l1key=id]').value(),
-                                            template: _valueTemplateChaine,
+                                            template: valueTemplateChaine,
                                         },
                                         dataType: 'json',
                                         global: false,
@@ -82,7 +88,7 @@ $('#bt_autoChaine').on('click', function () {
                                                 $('#div_alert').showAlert({message: data.result, level: 'danger'});
                                                 return;
                                             }
-                                            location.reload();
+                                            window.location.reload();
                                         }
                                     });
                                 }
@@ -106,7 +112,7 @@ function addCmdToTableTouches(_cmd) {
         var _cmd = {configuration: {}};
     }
     
-    if (init(_cmd.type) == 'info') {
+    if (init(_cmd.type) === 'info') {
          var disabled = (init(_cmd.configuration.virtualAction) == '1') ? 'disabled' : '';
          var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '" virtualAction="' + init(_cmd.configuration.virtualAction) + '">';
          tr += '<td>';
@@ -119,13 +125,13 @@ function addCmdToTableTouches(_cmd) {
          tr += '</td>';
 
          tr += '<td>';
-         if (init(_cmd.name) == 'Etat Decodeur') {
+         if (init(_cmd.name) === 'Etat Decodeur') {
              tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="etat_decodeur" disabled style="margin-bottom : 5px;" />';
          }
-         if (init(_cmd.name) == 'Fonction') {
+         if (init(_cmd.name) === 'Fonction') {
              tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="fonction" disabled style="margin-bottom : 5px;" />';
          }
-         if (init(_cmd.name) == 'Chaine Actuelle') {
+         if (init(_cmd.name) === 'Chaine Actuelle') {
              tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="chaine_actuelle" disabled style="margin-bottom : 5px;" />';
          }
          tr += '</td>';
@@ -148,7 +154,7 @@ function addCmdToTableTouches(_cmd) {
         }
         jeedom.cmd.changeType($('#table_liste_touches tbody tr:last'), init(_cmd.subType));
     }
-    if (init(_cmd.type) == 'action') {
+    if (init(_cmd.type) === 'action') {
         var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
         tr += '<td>';
         tr += '<span class="cmdAttr" data-l1key="id"></span>';
@@ -158,10 +164,9 @@ function addCmdToTableTouches(_cmd) {
         tr += '<input disabled class="cmdAttr form-control input-sm" data-l1key="name">';
         tr += '</div>';
         tr += '</td>';
-
         tr += '<td>';
         if (init(_cmd.name) != 'Refresh') {
-        tr += '<span>{{Code touche : }}<br/></span><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="code_touche" style="margin-bottom : 5px;width : 50%; display : inline-block;" />';
+            tr += '<span>{{Code touche : }}<br/></span><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="code_touche" style="margin-bottom : 5px;width : 50%; display : inline-block;" />';
         }
         tr += '</td>';
         tr += '<td>';
@@ -169,7 +174,7 @@ function addCmdToTableTouches(_cmd) {
         tr += '</td>';
         tr += '<td>';
         if (is_numeric(_cmd.id)) {
-            tr += '<a class="btn btn-default btn-xs cmdAction " data-action="configure"><i class="fa fa-cogs"></i></a> ';
+            tr += '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fa fa-cogs"></i></a> ';
             tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fa fa-rss"></i> {{Tester}}</a>';
         }
         tr += '</td>';
@@ -186,7 +191,7 @@ function addCmdToTableChaines(_cmd) {
         var _cmd = {configuration: {}};
     }
 
-    if (init(_cmd.type) == 'action') {
+    if (init(_cmd.type) === 'action') {
         var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
         tr += '<td>';
         tr += '<span class="cmdAttr" data-l1key="id"></span>';
@@ -208,15 +213,15 @@ function addCmdToTableChaines(_cmd) {
         tr += '</td>';
         tr += '<td>';
         tr += '<select class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="ch_categorie">';
-        tr += '  <option value="1">{{Généraliste}}</option>';
-        tr += '  <option value="2">{{Information}}</option>';
-        tr += '  <option value="3">{{Découverte et Art de vivre}}</option>';
-        tr += '  <option value="4">{{Sports}}</option>';
-        tr += '  <option value="5">{{Jeunes adultes}}</option>';
-        tr += '  <option value="6">{{Jeunesse}}</option>';
-        tr += '  <option value="7">{{Divertissement}}</option>';
-        tr += '  <option value="8">{{Société et Culture}}</option>';
-        tr += '  <option value="9">{{Musique}}</option>';
+        tr += '<option value="1">{{Généraliste}}</option>';
+        tr += '<option value="2">{{Information}}</option>';
+        tr += '<option value="3">{{Découverte et Art de vivre}}</option>';
+        tr += '<option value="4">{{Sports}}</option>';
+        tr += '<option value="5">{{Jeunes adultes}}</option>';
+        tr += '<option value="6">{{Jeunesse}}</option>';
+        tr += '<option value="7">{{Divertissement}}</option>';
+        tr += '<option value="8">{{Société et Culture}}</option>';
+        tr += '<option value="9">{{Musique}}</option>';
         tr += '</select>';
         tr += '</td>';
         tr += '<td>';
@@ -245,97 +250,7 @@ function addCmdToTable(_cmd) {
         addCmdToTableChaines(_cmd);
     }
 
-    if (init(_cmd.name).indexOf("Mosaique ") == '-1' && init(_cmd.name) != "Telecommande" && _cmd.configuration['tab_name'] != "tab_chaine") {
+    if (_cmd.configuration['tab_name'] === "tab_touche") {
         addCmdToTableTouches(_cmd);
-    }
-
-    if (init(_cmd.name).indexOf("Mosaique ") != '-1') {
-        if (init(_cmd.type) == 'action') {
-
-                var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
-                tr += '<td>';
-                tr += '<span class="cmdAttr" data-l1key="id"></span>';
-                tr += '</td>';
-
-                tr += '<td>';
-                tr += '<div class="col-sm-6">';
-                tr += '<input disabled class="cmdAttr form-control input-sm" data-l1key="name">';
-                tr += '</div>';
-                tr += '</td>';
-
-                tr += '<td>';
-                tr += '<select class="cmdAttr form-control" data-l1key="configuration" data-l2key="mosaique_chaine">';
-                tr += '</select>';
-                tr += '</td>';
-
-                tr += '<td>';
-                tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
-                tr += '</td>';
-
-                tr += '<td>';
-                if (is_numeric(_cmd.id)) {
-                    tr += '<a class="btn btn-default btn-xs cmdAction " data-action="configure"><i class="fa fa-cogs"></i></a> ';
-                    tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fa fa-rss"></i> {{Tester}}</a>';
-                }
-                tr += '</td>';
-                tr += '</tr>';
-            }
-
-        $('#mosaique tbody').append(tr);
-        $('#mosaique tbody tr:last').setValues(_cmd, '.cmdAttr');
-        var tr = $('#mosaique tbody tr:last');
-
-        code_loc = $('.eqLogicAttr[data-l1key=configuration][data-l2key=localisation]').val();
-        $.getJSON('plugins/JeeOrangeTv/core/config/chaines.json', function(chaine) {
-            tr.find('.cmdAttr[data-l1key=configuration][data-l2key=mosaique_chaine]').append('<option value="blank">{{ }}</option>');
-            $.each(chaine.localisation,function(index_loc,liste_loc){
-                if (code_loc == liste_loc.code) {
-                    $.each(liste_loc.liste,function(index_chaine,nom_chaine){
-                        tr.find('.cmdAttr[data-l1key=configuration][data-l2key=mosaique_chaine]').append('<option value="'+ nom_chaine.logo +'">{{'+ nom_chaine.nom +'}}</option>');
-                    });
-                }
-            });
-        tr.setValues(_cmd, '.cmdAttr');
-        });
-}
-    if (init(_cmd.name) == "Telecommande") {
-        if (init(_cmd.type) == 'action') {
-
-                var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
-                tr += '<td>';
-                tr += '<span class="cmdAttr" data-l1key="id"></span>';
-                tr += '</td>';
-
-                tr += '<td>';
-                tr += '<div class="col-sm-6">';
-                tr += '<input disabled class="cmdAttr form-control input-sm" data-l1key="name">';
-                tr += '</div>';
-                tr += '</td>';
-
-                tr += '<td>';
-
-                tr += '</td>';
-
-                tr += '<td>';
-                tr += '<div class="col-sm-3" style="visibility: hidden">';
-                tr += '<input type="number" class="cmdAttr form-control" data-l1key="configuration" data-l2key="telecommande" disabled/>';
-                tr += '</div>';
-                tr += '</td>';
-
-                tr += '<td>';
-                tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
-                tr += '</td>';
-
-                tr += '<td>';
-                if (is_numeric(_cmd.id)) {
-                    tr += '<a class="btn btn-default btn-xs cmdAction " data-action="configure"><i class="fa fa-cogs"></i></a> ';
-                    tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fa fa-rss"></i> {{Tester}}</a>';
-                }
-                tr += '</td>';
-                tr += '</tr>';
-            }
-        $('#mosaique tbody').append(tr);
-        $('#mosaique tbody tr:last').setValues(_cmd, '.cmdAttr');
-        var tr = $('#mosaique tbody tr:last');
     }
 }

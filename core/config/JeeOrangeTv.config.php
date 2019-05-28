@@ -27,7 +27,8 @@ $listCmdJeeOrangeTv = array(
         'order' => 1,
         'isVisible' => true,
         'configuration' => array(
-            'etat_decodeur'=> 0,
+            'tab_name' => 'tab_touche',
+            'etat_decodeur' => 0,
         ),
         'generic_type' => 'GENERIC_STATE',
     ),
@@ -40,6 +41,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 2,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'chaine_actuelle'=> 'aucune',
         ),
         'generic_type' => 'GENERIC_STATE',
@@ -53,6 +55,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 3,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'fonction'=> 'aucune',
         ),
         'generic_type' => 'GENERIC_STATE',
@@ -77,6 +80,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 5,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '116',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -91,6 +95,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 6,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '513',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -105,6 +110,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 7,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '514',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -119,6 +125,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 8,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '515',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -133,6 +140,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 9,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '516',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -147,6 +155,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 10,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '517',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -161,6 +170,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 11,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '518',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -175,6 +185,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 12,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '519',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -189,6 +200,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 13,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '520',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -203,6 +215,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 14,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '521',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -217,6 +230,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 15,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '512',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -231,6 +245,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 16,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '402',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -245,6 +260,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 17,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '403',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -259,6 +275,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 18,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '115',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -273,6 +290,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 19,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '114',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -287,6 +305,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 20,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '113',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -301,6 +320,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 21,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '103',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -315,6 +335,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 22,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '108',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -329,6 +350,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 23,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '105',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -343,6 +365,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 24,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '106',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -357,6 +380,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 25,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '352',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -371,6 +395,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 26,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '158',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -385,6 +410,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 27,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '139',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -399,6 +425,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 28,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '164',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -413,6 +440,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 29,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '168',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -427,6 +455,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 30,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '159',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -441,6 +470,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 31,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '166',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -455,6 +485,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 32,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '167',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -469,6 +500,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 33,
         'isVisible' => true,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'code_touche'=> '393',
         ),
         'generic_type' => 'GENERIC_ACTION',
@@ -483,6 +515,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 34,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -497,6 +530,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 35,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -512,6 +546,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 36,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -527,6 +562,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 37,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -542,6 +578,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 38,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -557,6 +594,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 39,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -572,6 +610,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 40,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -587,6 +626,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 41,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -602,6 +642,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 42,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -617,6 +658,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 43,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -632,6 +674,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 44,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -646,6 +689,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 45,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -661,6 +705,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 46,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -676,6 +721,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 47,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -691,6 +737,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 48,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -706,6 +753,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 49,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -721,6 +769,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 50,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -736,6 +785,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 51,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -751,6 +801,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 52,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -766,6 +817,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 53,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -781,6 +833,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 54,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -796,6 +849,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 55,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -811,6 +865,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 56,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -826,6 +881,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 57,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_mosaique',
             'mosaique_chaine'=> 'blank',
             'mosaique_numero'=> null,
         ),
@@ -841,6 +897,7 @@ $listCmdJeeOrangeTv = array(
         'order' => 58,
         'isVisible' => false,
         'configuration' => array(
+            'tab_name' => 'tab_touche',
             'telecommande'=> 1,
         ),
         'generic_type' => 'GENERIC_ACTION',
