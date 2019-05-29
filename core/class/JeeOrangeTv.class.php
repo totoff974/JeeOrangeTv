@@ -149,7 +149,7 @@ class JeeOrangeTv extends eqLogic {
 
       }
      */
-     
+
     // A VERIFIER
     public function MaJ_JSON() {
         foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
@@ -196,6 +196,7 @@ class JeeOrangeTv extends eqLogic {
         $retour_action = shell_exec($cmd_html);
         // log
         log::add('JeeOrangeTv', 'debug', '    |---> Décodeur : ' . JeeOrangeTv::getName());
+        log::add('JeeOrangeTv', 'debug', '        |---> IP : '. $box_ip);
         log::add('JeeOrangeTv', 'debug', '        |---> cmd operation=01');
         log::add('JeeOrangeTv', 'debug', '            |---> Code Touche : ' . $code_touche . ' envoyé');
         log::add('JeeOrangeTv', 'debug', '            |---> Mode Touche : ' . $code_mode . ' envoyé');
@@ -212,6 +213,7 @@ class JeeOrangeTv extends eqLogic {
         $retour_action = shell_exec($cmd_html);
         // log
         log::add('JeeOrangeTv', 'debug', '    |---> Décodeur : ' . JeeOrangeTv::getName());
+        log::add('JeeOrangeTv', 'debug', '        |---> IP : '. $box_ip);
         log::add('JeeOrangeTv', 'debug', '        |---> cmd operation=09');
         log::add('JeeOrangeTv', 'debug', '            |---> EPG ID : ' . $epg_id . ' envoyé');
         return;
@@ -389,7 +391,7 @@ class JeeOrangeTv extends eqLogic {
             $JeeOrangeTvCmd = new JeeOrangeTvCmd();
             $JeeOrangeTvCmd->setName(__($chaine['nom'], __FILE__));
             $JeeOrangeTvCmd->setEqLogic_id($this->id);
-            $JeeOrangeTvCmd->setLogicalId($this->getName() . $this->id);
+            $JeeOrangeTvCmd->setLogicalId('chaine');
             $JeeOrangeTvCmd->setConfiguration('tab_name', 'tab_chaine');
             $JeeOrangeTvCmd->setConfiguration('ch_canal', $chaine['canal']);
             $JeeOrangeTvCmd->setConfiguration('ch_epg', $chaine['id']);
@@ -423,7 +425,7 @@ class JeeOrangeTv extends eqLogic {
                 $JeeOrangeTvCmd = new JeeOrangeTvCmd();
                 $JeeOrangeTvCmd->setName(__($mos, __FILE__));
                 $JeeOrangeTvCmd->setEqLogic_id($this->id);
-                $JeeOrangeTvCmd->setLogicalId($mos);
+                $JeeOrangeTvCmd->setLogicalId('mosaique');
                 $JeeOrangeTvCmd->setConfiguration('tab_name', 'tab_mosaique');
                 $JeeOrangeTvCmd->setConfiguration('ch_mosaique', $val);
                 $JeeOrangeTvCmd->setConfiguration('nom', $nom_chaine);
@@ -456,7 +458,7 @@ class JeeOrangeTv extends eqLogic {
     }
 
     public function preUpdate() {
-        if ($this->getConfiguration('box_ip') == '') {
+        if ($this->getConfiguration('box_ip') === '') {
             throw new Exception(__('Merci de renseigner IP du décodeur.',__FILE__));
         }
         $this->autoAjoutCommande();
@@ -476,7 +478,9 @@ class JeeOrangeTv extends eqLogic {
 
     // Non obligatoire mais permet de modifier l'affichage du widget si vous en avez besoin
     public function toHtml($_version = 'dashboard') {
-        if ($theme == 'aucun') {
+        $theme = $this->getConfiguration('theme');
+
+        if ($theme === 'aucun') {
             return parent::toHtml($_version);
         }
 
@@ -487,13 +491,12 @@ class JeeOrangeTv extends eqLogic {
 
         $_version = jeedom::versionAlias($_version);
         $localisation = $this->getConfiguration('template');
-        $theme = $this->getConfiguration('theme');
         $replace['#theme#'] = $theme;
         foreach ($this->getCmd('info') as $inf) {
 
             if ($inf->getName() === 'Etat Decodeur') {
             $etat_decodeur = $inf->getConfiguration('etat_decodeur');
-                if ($etat_decodeur == 1){
+                if ($etat_decodeur === 1){
                     $replace['#etat_decodeur#'] = '<img id="ON" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Widget/on_' . $theme . '.png" style="position:absolute;top:0px;left:0px;">';
                 } else {
                     $replace['#etat_decodeur#'] = '';
@@ -534,16 +537,12 @@ class JeeOrangeTv extends eqLogic {
         $replace['#mos_Telecommande_id#'] = cmd::byLogicalId('telecommande', null)[0]->getId();
 
         // Choix du widget a afficher
-        if ($tel_mos == 1) {
+        if ($tel_mos === 1) {
             $html = template_replace($replace, getTemplate('core', $_version, $theme, 'JeeOrangeTv'));
         }
-        elseif ($tel_mos == 0) {
+        else {
             $html = template_replace($replace, getTemplate('core', $_version, 'mosaique', 'JeeOrangeTv'));
         }
-        else {
-            $html = template_replace($replace, getTemplate('core', $_version, 'current', 'JeeOrangeTv'));
-        }
-
         return $html;
      }
 
@@ -567,91 +566,90 @@ class JeeOrangeTvCmd extends cmd {
       }
      */
 
-    public function execute($_options = array()) {
-
+    public function mosaique($TouchMosa) {
         $eqLogic = $this->getEqLogic();
-        $action_mosaique = preg_match("#Mosaïque #", $this->getName());
         $box_ip = $eqLogic->getConfiguration('box_ip');
-        $localisation = $eqLogic->getConfiguration('template');
-        $code_mode = 0;
-
-        if ($this->getName() == "Telecommande") {
-            $act_mos = $this->getConfiguration('telecommande');
-            if ($act_mos == 1) {
-                $this->setConfiguration('telecommande', 0);
-                $this->save();
-                $this->event(0);
-            }
-            if ($act_mos == 0) {
-                $this->setConfiguration('telecommande', 1);
-                $this->save();
-                $this->event(1);
-            }
-            $eqLogic->Telecommande_Mosaique();
-        }
-
-        else {
-
-            if ($action_mosaique == 0) {
-                if ($this->getName() == "Refresh") {
-                    log::add('JeeOrangeTv', 'debug', '|---> Refresh : '. $this->getName());
-                    //$eqLogic->ActionInfo($box_ip);
-                }
-                else {
-                $code_touche = $this->getConfiguration('code_touche');
-                    if ($code_touche != "") {
-                        log::add('JeeOrangeTv', 'info', '|---> Action executée - IP : ' . $box_ip . ' - touche : ' . $this->getName() . ' - code touche : ' . $code_touche . ' - mode : ' . $code_mode);
-                        $eqLogic->ActionTouche($box_ip, $code_touche, $code_mode);
-                    }
-                    else {
-                        log::add('JeeOrangeTv', 'debug', '    |---> Action non executée - IP : ' . $box_ip . ' car code touche vide vérifier paramètres des touches');
-                    }
-                }
-            }
-
-
-            if ($action_mosaique == 1) {
+        switch ($TouchMosa) {
+            case 'mosaique':
+                $mos_idca = $this->getConfiguration('ch_mosaique');
+                $prefix = cmd::byId($mos_idca);
                 $mos_chaine = $this->getConfiguration('logo');
-                $mos_id = $eqLogic->lecture_json('id', 'logo', $localisation, $mos_chaine);
-                $mos_num = $eqLogic->lecture_json('canal', 'logo', $localisation, $mos_chaine);
-
-                log::add('JeeOrangeTv', 'info', '|---> Mosaique Chaine : ' . $mos_chaine . ' - Numéro de la chaine : '. $mos_num . ' - Id de la chaine : '. $mos_id);
-
-                if ($mos_id >= 0) {
-                    $eqLogic->ActionZapChaine($box_ip, $mos_id);
+                break;
+            case 'chaine':
+                $prefix = $this;
+                $mos_chaine = $this->getConfiguration('ch_logo');
+                break;
+        }
+        $mos_epg = $prefix->getConfiguration('ch_epg');
+        $mos_canal = $prefix->getConfiguration('ch_canal');
+        log::add('JeeOrangeTv', 'info', '|---> Mosaique Chaine : ' . $mos_chaine . ' - Numéro de la chaine : '. $mos_canal . ' - EPG de la chaine : '. $mos_epg);
+        if ($mos_epg >= 0) {
+            $eqLogic->ActionZapChaine($box_ip, $mos_epg);
+        }
+        else {
+            $mos_touche = str_split($mos_canal);
+            $nb_touches = count($mos_touche);
+            $i = 1;
+            foreach ($mos_touche as $touche) {
+                // Prise en charge appui long
+                if ($i < $nb_touches) {
+                    $code_mode = 1;
                 }
                 else {
-                    $mos_touche = str_split($mos_num);
-                    $nb_touches = count($mos_touche);
-                    $i = 1;
-                    foreach ($mos_touche as $touche) {
-                        // Prise en charge appui long
-                        if ($i < $nb_touches) {
-                            $code_mode = 1;
+                    $code_mode = 2;
+                }
+                $i += 1;
+                foreach ($eqLogic->getCmd() as $action) {
+                    if ($touche == $action->getName()) {
+                        $code_touche = $action->getConfiguration('code_touche');
+                        if ($code_touche != "") {
+                            $eqLogic->ActionTouche($box_ip, $code_touche, $code_mode);
                         }
                         else {
-                            $code_mode = 2;
-                        }
-                        $i += 1;
-                        foreach ($eqLogic->getCmd() as $action) {
-                            if ($touche == $action->getName()) {
-                                $code_touche = $action->getConfiguration('code_touche');
-                                if ($code_touche != "") {
-                                    $eqLogic->ActionTouche($box_ip, $code_touche, $code_mode);
-                                }
-                                else {
-                                    log::add('JeeOrangeTv', 'debug', '    |---> Action non executée - IP : ' . $box_ip . ' car code touche vide vérifier paramètres des touches');
-                                }
-                            }
+                            log::add('JeeOrangeTv', 'debug', '    |---> Action non executée pour "' . $eqLogic->getName() . '" car code touche vide vérifier paramètres des touches');
                         }
                     }
                 }
             }
-
-            sleep(3);
-            $eqLogic->ActionInfo($box_ip);
         }
+    }
 
+    public function execute($_options = array()) {
+        $eqLogic = $this->getEqLogic();
+        $box_ip = $eqLogic->getConfiguration('box_ip');
+        $code_mode = 0;
+        $LogicalId = $this->getLogicalId();
+
+        switch ($LogicalId) {
+            case "telecommande":
+                $act_mos = $this->getConfiguration('telecommande');
+                if ($act_mos === 1) {
+                    $this->setConfiguration('telecommande', 0);
+                    $this->save();
+                }
+                if ($act_mos === 0) {
+                    $this->setConfiguration('telecommande', 1);
+                    $this->save();
+                }
+                $eqLogic->refreshWidget();
+                break;
+            case "touche":
+                $code_touche = $this->getConfiguration('code_touche');
+                if (!empty($code_touche)) {
+                    log::add('JeeOrangeTv', 'info', '|---> Action executée - IP : ' . $box_ip . ' - touche : ' . $this->getName() . ' - code touche : ' . $code_touche . ' - mode : ' . $code_mode);
+                    $eqLogic->ActionTouche($box_ip, $code_touche, $code_mode);
+                }
+                else {
+                    log::add('JeeOrangeTv', 'debug', '    |---> Action non executée pour "' . $eqLogic->getName() . '" car code touche vide vérifier paramètres des touches');
+                }
+                break;
+            case "mosaique":
+                JeeOrangeTvCmd::mosaique('mosaique');
+                break;
+            case "chaine":
+                JeeOrangeTvCmd::mosaique('chaine');
+                break;
+        }
         return;
     }
 
