@@ -64,6 +64,7 @@ foreach ($eqLogics as $eqLogic) {
     <li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Décodeur}}</a></li>
     <li role="presentation"><a href="#commandListeTouches" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-key"></i> {{Touches}}</a></li>
     <li role="presentation"><a href="#commandListeChaines" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-tv"></i> {{Chaînes}}</a></li>
+    <li role="presentation"><a href="#commandListeMosaiques" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-tv"></i> {{Mosaïque}}</a></li>
 </ul>
 
 <div class="tab-content" style="height:calc(100% - 50px);overflow:auto;overflow-x: hidden;">
@@ -117,7 +118,6 @@ foreach ($eqLogics as $eqLogic) {
                     <label class="col-lg-3 control-label">{{Adresse IP du Décodeur}}</label>
                     <div class="col-sm-2">
                         <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="box_ip" placeholder="{{Adresse IP}}"/>
-                        <input hidden type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="template"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -173,6 +173,24 @@ foreach ($eqLogics as $eqLogic) {
                 </tbody>
             </table>    
 </div>
+<div role="tabpanel" class="tab-pane" id="commandListeMosaiques">
+    <legend>{{iiste des Mosaïques}}</legend>
+            <table id="table_liste_mosaiques" class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                    <th>#</th>
+                    <th>{{Nom}}</th>
+                    <th>{{Emplacement}}</th>
+                    <th>{{Nom de la Chaîne}}</th>
+                    <th>{{Logo de la Chaîne}}</th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>    
+</div>
+<input type="hidden" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="template"/>
 </div>
 </div>
 </div>

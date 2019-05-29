@@ -241,6 +241,48 @@ function addCmdToTableChaines(_cmd) {
     }
 }
 
+function addCmdToTableMosaiques(_cmd) {
+    if (!isset(_cmd)) {
+        var _cmd = {configuration: {}};
+    }
+
+    if (init(_cmd.type) === 'action') {
+        var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
+        tr += '<td>';
+        tr += '<span class="cmdAttr" data-l1key="id"></span>';
+        tr += '<input style="display:none;" class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="tab_name" value="tab_chaine">';
+        tr += '</td>';
+        tr += '<td> ';
+        tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" placeholder="{{Nom}}">';
+        tr += '<span style="display:none;" class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>';
+        tr += '<span style="display:none;" class="subType" subType="' + init(_cmd.subType) + '"></span>';
+        tr += '</td>';
+        tr += '<td>';
+        tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="ch_mosaique">';
+        tr += '</td>';
+        tr += '<td>';
+        tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="nom">';
+        tr += '</td>';
+        tr += '<td>';
+        tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="logo">';
+        tr += '</td>';
+        tr += '<td>';
+        if (is_numeric(_cmd.id)) {
+            tr += '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fa fa-cogs"></i></a> ';
+            tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fa fa-rss"></i> {{Tester}}</a>';
+        }
+        tr += '<i class="fa fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i>';
+        tr += '</td>';
+        tr += '</tr>';
+        $('#table_liste_mosaiques tbody').append(tr);
+        $('#table_liste_mosaiques tbody tr:last').setValues(_cmd, '.cmdAttr');
+        if (isset(_cmd.type)) {
+            $('#table_liste_mosaiques tbody tr:last .cmdAttr[data-l1key=type]').value(init(_cmd.type));
+        }
+        jeedom.cmd.changeType($('#table_liste_mosaiques tbody tr:last'), init(_cmd.subType));
+    }
+}
+
 function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
         var _cmd = {configuration: {}};
@@ -252,5 +294,9 @@ function addCmdToTable(_cmd) {
 
     if (_cmd.configuration['tab_name'] === "tab_touche") {
         addCmdToTableTouches(_cmd);
+    }
+
+    if (_cmd.configuration['tab_name'] === "tab_mosaique") {
+        addCmdToTableMosaiques(_cmd);
     }
 }
