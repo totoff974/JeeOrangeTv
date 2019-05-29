@@ -14,6 +14,11 @@
 * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 */
 
+$('#div_pageContainer').on( 'click', '.cmd .cmdAction[data-action=btn_test]',function () {
+  $('#md_modal').dialog({title: "{{Configuration commande}}"});
+  $('#md_modal').load('index.php?v=d&plugin=JeeOrangeTv&modal=logo.JeeOrangeTv&cmd_id=' + $(this).closest('.cmd').attr('data-cmd_id')).dialog('open');
+});
+
 $('#btn_mosaique').on('click', function () {
     var logicalId = $('.eqLogicAttr[data-l1key=id]').value();
     $('#md_modal').dialog({title: "{{Configuration de la Mosaïque}}"});
@@ -209,7 +214,8 @@ function addCmdToTableChaines(_cmd) {
         tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="ch_epg" type="number" min="-1" max="9999999999" placeholder="{{EPG}}">';
         tr += '</td>';
         tr += '<td>';
-        tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="ch_logo" placeholder="{{Logo}}">';
+        tr += '<input class="cmdAttr form-control input-sm col-md-10" data-l1key="configuration" data-l2key="ch_logo" placeholder="{{Logo}}">';
+        tr += '<a class="btn btn-default btn-sm cmdAction col-md-2" data-action="btn_test"><i class="fa fa-link"></i></a>';
         tr += '</td>';
         tr += '<td>';
         tr += '<select class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="ch_categorie">';

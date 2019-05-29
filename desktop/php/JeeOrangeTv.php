@@ -180,7 +180,7 @@ foreach ($eqLogics as $eqLogic) {
                     <tr>
                     <th>#</th>
                     <th>{{Nom}}</th>
-                    <th>{{Emplacement}}</th>
+                    <th>{{Id de la Chaîne}}</th>
                     <th>{{Nom de la Chaîne}}</th>
                     <th>{{Logo de la Chaîne}}</th>
                     <th></th>
