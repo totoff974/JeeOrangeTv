@@ -14,15 +14,18 @@
 * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 */
 
-$('#div_pageContainer').on( 'click', '.cmd .cmdAction[data-action=btn_test]',function () {
+$('#div_pageContainer').on( 'click', '.cmd .cmdAction[data-action=btn_logo]',function () {
+  var idLogo = $(this).closest('.cmd').attr('data-cmd_id');
   var _logo = false
   if ( $('div[data-l2key="logo"] > i').length ) {
     _logo = $('div[data-l2key="logo"] > i').attr('class')
     _logo = '.' + _logo.replace(' ', '.')
   }
-  chooseLogo(function (_logo) {
-    $('.objectAttr[data-l1key=display][data-l2key=logo]').empty().append(_logo);
-  },{logo:_logo});
+  chooseLogo(function (_logo, idLogo, logo_nom) {
+        $('.cmd[data-cmd_id='+idLogo+'] .cmdAttr[data-l1key=configuration][data-l2key=ch_logo]').empty().val(logo_nom);
+        $('.cmd[data-cmd_id='+idLogo+'] .objectAttr[data-l1key=display][data-l2key=logo]').empty().append(_logo);
+  },
+  {logo:_logo, logoid: idLogo});
 });
 
 function chooseLogo(_callback, _params) {
@@ -53,10 +56,6 @@ function chooseLogo(_callback, _params) {
   }
   if(_params && _params.logo) {
     logo = _params.logo
-    replaceAr = ['logo_blue', 'logo_green', 'logo_orange', 'logo_red', 'logo_yellow']
-    replaceAr.forEach(function(element) {
-      logo = logo.replace(element, '')
-    })
     logo = logo.trim().replace(new RegExp('  ', 'g'), ' ')
     logo = logo.trim().replace(new RegExp(' ', 'g'), '.')
     url += '&selectLogo=' + logo;
@@ -68,11 +67,15 @@ function chooseLogo(_callback, _params) {
       },
       "Valider": function () {
         var logo = $('.logoSelected .logoSel').html();
+        var logo_nom = $('.logoSelected .logoSel img').attr("name");
         if (logo == undefined) {
           logo = '';
         }
+        if (logo_nom == undefined) {
+          logo_nom = '';
+        }
         logo = logo.replace(/"/g, "'");
-        _callback(logo);
+        _callback(logo, _params.logoid, logo_nom);
         $(this).dialog('close');
       }
     });
@@ -275,9 +278,9 @@ function addCmdToTableChaines(_cmd) {
         tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="ch_epg" type="number" min="-1" max="9999999999" placeholder="{{EPG}}">';
         tr += '</td>';
         tr += '<td>';
-        tr += '<input class="cmdAttr form-control input-sm col-md-10" data-l1key="configuration" data-l2key="ch_logo" placeholder="{{Logo}}">';
-        tr += '<div class="objectAttr" data-l1key="display" data-l2key="logo" style="font-size : 1.5em;"></div>';
-        tr += '<a class="btn btn-default btn-sm cmdAction col-md-2" data-action="btn_test"><i class="fa fa-link"></i></a>';
+        tr += '<input class="cmdAttr form-control input-sm col-md-7" data-l1key="configuration" data-l2key="ch_logo" placeholder="{{Logo}}">';
+        tr += '<div class="objectAttr col-md-3" data-l1key="display" data-l2key="logo" style="font-size : 1.5em;"></div>';
+        tr += '<a class="btn btn-default btn-sm cmdAction col-md-2" data-action="btn_logo"><i class="fa fa-link"></i></a>';
         tr += '</td>';
         tr += '<td>';
         tr += '<select class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="ch_categorie">';
