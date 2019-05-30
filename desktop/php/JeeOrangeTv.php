@@ -155,7 +155,8 @@ foreach ($eqLogics as $eqLogic) {
         <a id="bt_autoChaine" class="btn btn-danger btn-sm" style="margin-top:5px;"><i class="fa fa-cog"></i>{{Configuration automatique}}</a>
         <a id="btn_mosaique"class="btn btn-primary btn-sm eqLogicAction" style="margin-top:5px;"><i class="fa fa-tv"></i> {{Configuration de la Mosaïque}}</a>
         <a id="bt_addChaine" class="btn btn-default btn-sm pull-right" style="margin-top:5px;"><i class="fas fa-plus-circle"></i>{{Ajouter une Chaine}}</a>
-    </div></br>
+    </div>
+    </br>
     <legend>{{Configuration de la liste des Chaines}}</legend>
             <table id="table_liste_chaines" class="table table-bordered table-condensed">
                 <thead>

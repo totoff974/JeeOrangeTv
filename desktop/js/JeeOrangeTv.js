@@ -15,9 +15,70 @@
 */
 
 $('#div_pageContainer').on( 'click', '.cmd .cmdAction[data-action=btn_test]',function () {
-  $('#md_modal').dialog({title: "{{Configuration commande}}"});
-  $('#md_modal').load('index.php?v=d&plugin=JeeOrangeTv&modal=logo.JeeOrangeTv&cmd_id=' + $(this).closest('.cmd').attr('data-cmd_id')).dialog('open');
+  var _logo = false
+  if ( $('div[data-l2key="logo"] > i').length ) {
+    _logo = $('div[data-l2key="logo"] > i').attr('class')
+    _logo = '.' + _logo.replace(' ', '.')
+  }
+  chooseLogo(function (_logo) {
+    $('.objectAttr[data-l1key=display][data-l2key=logo]').empty().append(_logo);
+  },{logo:_logo});
 });
+
+function chooseLogo(_callback, _params) {
+  if ($("#mod_selectLogo").length == 0) {
+    $('#div_pageContainer').append('<div id="mod_selectLogo"></div>');
+    $("#mod_selectLogo").dialog({
+      title: '{{Choisissez une logo}}',
+      closeText: '',
+      autoOpen: false,
+      modal: true,
+      height: (jQuery(window).height() - 150),
+      width: 1500,
+      open: function () {
+        if ((jQuery(window).width() - 50) < 1500) {
+          $('#mod_selectLogo').dialog({width: jQuery(window).width() - 50});
+        }
+        $("body").css({overflow: 'hidden'});
+        setTimeout(function(){initTooltips($("#mod_selectLogo"))},500);
+      },
+      beforeClose: function (event, ui) {
+        $("body").css({overflow: 'inherit'});
+      }
+    });
+  }
+  var url = 'index.php?v=d&plugin=JeeOrangeTv&modal=logo.JeeOrangeTv';
+  if(_params && _params.img && _params.img === true) {
+    url += '&showimg=1';
+  }
+  if(_params && _params.logo) {
+    logo = _params.logo
+    replaceAr = ['logo_blue', 'logo_green', 'logo_orange', 'logo_red', 'logo_yellow']
+    replaceAr.forEach(function(element) {
+      logo = logo.replace(element, '')
+    })
+    logo = logo.trim().replace(new RegExp('  ', 'g'), ' ')
+    logo = logo.trim().replace(new RegExp(' ', 'g'), '.')
+    url += '&selectLogo=' + logo;
+  }
+  $('#mod_selectLogo').empty().load(url,function(){
+    $("#mod_selectLogo").dialog('option', 'buttons', {
+      "Annuler": function () {
+        $(this).dialog("close");
+      },
+      "Valider": function () {
+        var logo = $('.logoSelected .logoSel').html();
+        if (logo == undefined) {
+          logo = '';
+        }
+        logo = logo.replace(/"/g, "'");
+        _callback(logo);
+        $(this).dialog('close');
+      }
+    });
+    $('#mod_selectLogo').dialog('open');
+  });
+}
 
 $('#btn_mosaique').on('click', function () {
     var logicalId = $('.eqLogicAttr[data-l1key=id]').value();
@@ -215,6 +276,7 @@ function addCmdToTableChaines(_cmd) {
         tr += '</td>';
         tr += '<td>';
         tr += '<input class="cmdAttr form-control input-sm col-md-10" data-l1key="configuration" data-l2key="ch_logo" placeholder="{{Logo}}">';
+        tr += '<div class="objectAttr" data-l1key="display" data-l2key="logo" style="font-size : 1.5em;"></div>';
         tr += '<a class="btn btn-default btn-sm cmdAction col-md-2" data-action="btn_test"><i class="fa fa-link"></i></a>';
         tr += '</td>';
         tr += '<td>';
