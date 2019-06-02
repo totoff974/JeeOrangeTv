@@ -307,16 +307,17 @@ class JeeOrangeTv extends eqLogic {
                                     }
                                 }
                                 break;
-                            // default:
-                                // $id_chaine_actu = null;
-                                // $chaine_actu = 'blank';
+                            default:
+                                $id_chaine_actu = null;
+                                $chaine_actu = 'blank';
                         }
                         if ($cmd->getConfiguration('chaine_actuelle') != $chaine_actu) {
                             $cmd->setConfiguration('id_chaine_actuelle', $id_chaine_actu);
+                            $cmd->save();
+                            $cmd->event($id_chaine_actu);
                             $cmd->setConfiguration('chaine_actuelle', $chaine_actu);
                             $cmd->save();
                             $cmd->event($chaine_actu);
-                            $cmd->event($id_chaine_actu);
                             JeeOrangeTv::refreshWidget();
                         }
                         break;
