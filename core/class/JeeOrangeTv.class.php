@@ -219,6 +219,7 @@ class JeeOrangeTv extends eqLogic {
         return;
     }
 
+    // recupere les infos du decodeur selon frequence
     public function ActionInfo($box_ip) {
         $localisation = JeeOrangeTv::getConfiguration('template');
 
@@ -244,81 +245,86 @@ class JeeOrangeTv extends eqLogic {
         if (isset($retour['result']['data']['playedMediaId'])) {
             log::add('JeeOrangeTv', 'debug', '                |---> playedMediaId : ' . $retour['result']['data']['playedMediaId']);
         }
-
-        if ($retour['result']['responseCode'] == '0') {
-            foreach (eqLogic::getCmd() as $info) {
-
-                if ($info->getName() == 'Etat Decodeur') {
-
-                    $retour_etat = $retour['result']['data']['activeStandbyState'];
-
-                    if ( $retour_etat == '0' ) {
-                        $etat_decodeur = 1;
-                    } elseif ( $retour_etat == '1' ){
-                        $etat_decodeur = 0;
-                    } elseif ( $retour_etat == '' ){
-                        $etat_decodeur = $info->getConfiguration('etat_decodeur');
-                    } else {
-                        $etat_decodeur = $info->getConfiguration('etat_decodeur');
-                    }
-
-                    if ($info->getConfiguration('etat_decodeur') != $etat_decodeur) {
-                        $info->setConfiguration('etat_decodeur', $etat_decodeur);
-                        //$info->setValue($etat_decodeur);
-                        $info->save();
-                        $info->event($etat_decodeur);
-                        JeeOrangeTv::refreshWidget();
-                    }
-                }
-
-                if ($info->getName() == 'Fonction') {
-
-                    if (isset($retour['result']['data']['playedMediaState'])){
-                        $retour_fonction = $retour['result']['data']['playedMediaState'];
-                    } else {
-                        $retour_fonction = "null";
-                    }
-
-
-                    if ($info->getConfiguration('fonction') != $retour_fonction) {
-                        $info->setConfiguration('fonction', $retour_fonction);
-                        //$info->setValue($retour_fonction);
-                        $info->save();
-                        $info->event($retour_fonction);
-                        JeeOrangeTv::refreshWidget();
-                    }
-
-                }
-
-                if ($info->getName() == 'Chaine Actuelle') {
-
-                    if($retour['result']['data']['osdContext'] == 'HOMEPAGE'){
-                        $chaine_actu = 'home';
-                    }
-                    elseif ($retour['result']['data']['osdContext'] == 'VOD'){
-                        $chaine_actu = 'vod';
-                    }
-                    elseif ($retour['result']['data']['osdContext'] == 'LIVE'){
-                        $chaine_actu = strval($retour['result']['data']['playedMediaId']);
-                        if ($chaine_actu != '-1') {
-                            $chaine_actu = $retour['result']['data']['playedMediaId'];
-                            $chaine_actu = $this->lecture_json('logo', 'id', $localisation, $chaine_actu);
-
+        if ($retour['result']['responseCode'] === '0') {
+            foreach ($this->getCmd() as $cmd) {
+                switch ($cmd->getLogicalId()) {
+                    case 'etat_decodeur' :
+                        $retour_etat = $retour['result']['data']['activeStandbyState'];
+                        switch ($retour_etat) {
+                            case '0':
+                                $etat_decodeur = 1;
+                                break;
+                            case '1':
+                                $etat_decodeur = 0;
+                                break;
+                            default:
+                                $etat_decodeur = $cmd->getConfiguration('etat_decodeur');
                         }
-                    }
-                    else {
-                        $chaine_actu = 'blank';
-                    }
-                    if ($info->getConfiguration('chaine_actuelle') != $chaine_actu) {
-                        $info->setConfiguration('chaine_actuelle', $chaine_actu);
-                        //$info->setValue($chaine_actu);
-                        $info->save();
-                        $info->event($chaine_actu);
-                        JeeOrangeTv::refreshWidget();
-                    }
-                    }
+                        if ($cmd->getConfiguration('etat_decodeur') != $etat_decodeur) {
+                            $cmd->setConfiguration('etat_decodeur', $etat_decodeur);
+                            $cmd->save();
+                            $cmd->event($etat_decodeur);
+                            JeeOrangeTv::refreshWidget();
+                        }
+                        break;
+                    case 'fonction':
+                        if (isset($retour['result']['data']['playedMediaState'])){
+                            $retour_fonction = $retour['result']['data']['playedMediaState'];
+                        } else {
+                            $retour_fonction = "null";
+                        }
+                        if ($cmd->getConfiguration('fonction') != $retour_fonction) {
+                            $cmd->setConfiguration('fonction', $retour_fonction);
+                            $cmd->save();
+                            $cmd->event($retour_fonction);
+                            JeeOrangeTv::refreshWidget();
+                        }
+                        break;
+                    case 'chaine_actuelle':
+                        $osdContext = $retour['result']['data']['osdContext'];
+                        switch ($osdContext) {
+                            case 'HOMEPAGE':
+                                $chaine_actu = 'home';
+                                break;
+                            case 'VOD':
+                                $chaine_actu = 'vod';
+                                break;
+                            case 'LIVE':
+                                $playId = intval($retour['result']['data']['playedMediaId']);
+                                $id_actu = $this->getId();
+                                $recherche = (array) cmd::searchConfiguration($playId);
+                                foreach ($recherche as $equip => $result) {
+                                    $id_trouv = $result->geteqLogic_id();
+                                    if (($id_trouv === $id_actu)) {
+                                        $id_chaine_actu = $result->getId();
+                                        $chaine_actu = $result->getName();
+                                        break;
+                                    }
+                                    else {
+                                        $id_chaine_actu = null;
+                                        $chaine_actu = 'blank';
+                                        break;
+                                    }
+                                }
+                                break;
+                            default:
+                                $id_chaine_actu = null;
+                                $chaine_actu = 'blank';
+                        }
+                        if ($cmd->getConfiguration('chaine_actuelle') != $chaine_actu) {
+                            $cmd->setConfiguration('id_chaine_actuelle', $id_chaine_actu);
+                            $cmd->setConfiguration('chaine_actuelle', $chaine_actu);
+                            $cmd->save();
+                            $cmd->event($chaine_actu);
+                            $cmd->event($id_chaine_actu);
+                            JeeOrangeTv::refreshWidget();
+                        }
+                        break;
+                }
             }
-        } else {
+        }
+        else
+        {
             log::add('JeeOrangeTv', 'debug', '            |---> Décodeur ERREUR - ResponseCode : ' . $retour['result']['responseCode']);
             log::add('JeeOrangeTv', 'debug', '                |---> Le décodeur ne donne pas de réponse');
         }
@@ -347,6 +353,7 @@ class JeeOrangeTv extends eqLogic {
                     $JeeOrangeTvCmd->setConfiguration('telecommande', $cmd['configuration']['telecommande']);
                     $JeeOrangeTvCmd->setConfiguration('etat_decodeur', 0);
                     $JeeOrangeTvCmd->setConfiguration('chaine_actuelle', $cmd['configuration']['chaine_actuelle']);
+                    $JeeOrangeTvCmd->setConfiguration('id_chaine_actuelle', $cmd['configuration']['id_chaine_actuelle']);
                     $JeeOrangeTvCmd->setConfiguration('fonction', $cmd['configuration']['fonction']);
                     $JeeOrangeTvCmd->setType($cmd['type']);
                     $JeeOrangeTvCmd->setSubType($cmd['subType']);
@@ -488,53 +495,67 @@ class JeeOrangeTv extends eqLogic {
         if (!is_array($replace)) {
             return $replace;
         }
-
         $_version = jeedom::versionAlias($_version);
-        $localisation = $this->getConfiguration('template');
         $replace['#theme#'] = $theme;
-        foreach ($this->getCmd('info') as $inf) {
-
-            if ($inf->getName() === 'Etat Decodeur') {
-            $etat_decodeur = $inf->getConfiguration('etat_decodeur');
-                if ($etat_decodeur === 1){
-                    $replace['#etat_decodeur#'] = '<img id="ON" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Widget/on_' . $theme . '.png" style="position:absolute;top:0px;left:0px;">';
-                } else {
-                    $replace['#etat_decodeur#'] = '';
-                }
-            }
-
-            if ($inf->getName() === 'Chaine Actuelle') {
-                if ($inf->getConfiguration('chaine_actuelle')==='home' OR $inf->getConfiguration('chaine_actuelle')==='vod' OR $inf->getConfiguration('chaine_actuelle')==='blank') {
-                    $nom_chaine_act = $inf->getConfiguration('chaine_actuelle');
-                    $replace['#cmd_chaine_act#'] = '<img id="actuelle" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Mosaique/' . $nom_chaine_act . '.png" style="position:absolute;top:63px;left:116px;">';
-                }
-                else {
-                    $nom_chaine_act = $this->lecture_json('logo', 'logo', $localisation, $inf->getConfiguration('chaine_actuelle'));
-                    $replace['#cmd_chaine_act#'] = '<img id="actuelle" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Mosaique/' . $nom_chaine_act . '.png" style="position:absolute;top:63px;left:116px;">';
-                }
+        foreach ($this->getCmd('info') as $info) {
+            switch ($info->getLogicalId()) {
+                case 'etat_decodeur' :
+                    switch ($info->getConfiguration('etat_decodeur')) {
+                        case 0:
+                            $replace['#etat_decodeur#'] = '';
+                            break;
+                        case 1:
+                            $replace['#etat_decodeur#'] = '<img class="onoff" id="ON" title="ON/OFF" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Widget/on_' . $theme . '.png" style="position:absolute;top:0px;left:0px;z-index: 99;">';
+                            break;
+                        default:
+                            $replace['#etat_decodeur#'] = '';
+                    }
+                    break;
+                case 'chaine_actuelle' :
+                    $id_chaine_actuel = $info->getConfiguration('id_chaine_actuelle');
+                    if (!empty($id_chaine_actuel)) {
+                        $logo_chaine = cmd::byId($id_chaine_actuel)->getConfiguration('ch_logo');
+                    }
+                    else {
+                        $logo_chaine = 'aucun';
+                    }
+                    switch ($logo_chaine) {
+                        case 'aucun':
+                            $replace['#cmd_chaine_act#'] = '<img id="actuelle" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Mosaique/blank.png" style="position:absolute;top:63px;left:116px;">';
+                            break;
+                        default:
+                            $replace['#cmd_chaine_act#'] = '<img id="actuelle" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Mosaique/' . $logo_chaine . '.png" style="position:absolute;top:63px;left:116px;">';
+                    }
+                    break;
             }
         }
         // Affichage de la Mosaique
         for ($i = 1; $i < 25; $i++)
         {
+            $replace['#mos_Mosaïque_' . $i . '_visib#'] = 'hidden';
             $replace['#mos_Mosaïque_' . $i . '#'] = 'blank';
             $replace['#mos_Mosaïque_' . $i . '_logo#'] = 'blank';
             $replace['#mos_Mosaïque_' . $i . '_nom#'] = 'blank';
-             $replace['#mos_Mosaïque_' . $i . '_id#'] = 'blank';
+            $replace['#mos_Mosaïque_' . $i . '_id#'] = 'blank';
         }
         foreach ($this->getCmd('action') as $cmd) {
-            $replace['#cmd_' . $cmd->getName() . '_id#'] = $cmd->getId();
+            $id_cmd = $cmd->getId();
+            $replace['#cmd_' . $cmd->getName() . '_id#'] = $id_cmd;
             if($cmd->getConfiguration('tab_name') === 'tab_mosaique' ) {
-                $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'#'] = $cmd->getConfiguration('logo');
-                $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_logo#'] = $this->lecture_json('logo', 'logo', $localisation, $cmd->getConfiguration('logo'));
-                $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_nom#'] = $this->lecture_json('nom', 'logo', $localisation, $cmd->getConfiguration('logo'));
-                $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_id#'] = $cmd->getId();
+                $id_chaine = cmd::byId($id_cmd)->getConfiguration('ch_mosaique');
+                $nom_chaine = cmd::byId($id_chaine)->getName();
+                $logo_chaine = cmd::byId($id_chaine)->getConfiguration('ch_logo');
+                $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_visib#'] = 'visible';
+                $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'#'] = $logo_chaine;
+                $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_logo#'] = $logo_chaine;
+                $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_nom#'] = $nom_chaine;
+                $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_id#'] = $id_cmd;
+            }
+            if($cmd->getLogicalId() === 'telecommande' ) {
+                $replace['#mos_Telecommande_id#'] = $id_cmd;
+                $tel_mos = $cmd->getConfiguration('telecommande');
             }
         }
-
-        // Gestion du btn bascule telecommande - Mosaique
-        $tel_mos = cmd::byLogicalId('telecommande', null)[0]->getConfiguration('telecommande');
-        $replace['#mos_Telecommande_id#'] = cmd::byLogicalId('telecommande', null)[0]->getId();
 
         // Choix du widget a afficher
         if ($tel_mos === 1) {
@@ -544,7 +565,7 @@ class JeeOrangeTv extends eqLogic {
             $html = template_replace($replace, getTemplate('core', $_version, 'mosaique', 'JeeOrangeTv'));
         }
         return $html;
-     }
+    }
 
 
     /*     * **********************Getteur Setteur*************************** */
@@ -573,17 +594,16 @@ class JeeOrangeTvCmd extends cmd {
             case 'mosaique':
                 $mos_idca = $this->getConfiguration('ch_mosaique');
                 $prefix = cmd::byId($mos_idca);
-                $mos_chaine = $this->getConfiguration('logo');
                 break;
             case 'chaine':
                 $prefix = $this;
-                $mos_chaine = $this->getConfiguration('ch_logo');
                 break;
         }
+        $mos_chaine = $prefix->getName();
         $mos_epg = $prefix->getConfiguration('ch_epg');
         $mos_canal = $prefix->getConfiguration('ch_canal');
         log::add('JeeOrangeTv', 'info', '|---> Mosaique Chaine : ' . $mos_chaine . ' - Numéro de la chaine : '. $mos_canal . ' - EPG de la chaine : '. $mos_epg);
-        if ($mos_epg >= 0) {
+        if (!empty($mos_epg) && $mos_epg > 0) {
             $eqLogic->ActionZapChaine($box_ip, $mos_epg);
         }
         else {

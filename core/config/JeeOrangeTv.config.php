@@ -43,6 +43,7 @@ $listCmdJeeOrangeTv = array(
         'configuration' => array(
             'tab_name' => 'tab_touche',
             'chaine_actuelle'=> 'aucune',
+            'id_chaine_actuelle'=> '',
         ),
         'generic_type' => 'GENERIC_STATE',
     ),

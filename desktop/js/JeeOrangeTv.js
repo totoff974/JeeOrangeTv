@@ -91,7 +91,7 @@ $('#btn_mosaique').on('click', function () {
 
 $("#bt_addChaine").on('click', function (event) {
     var _cmd = {type: 'action'};
-    addCmdToTableChaine(_cmd);
+    addCmdToTableChaines(_cmd);
 });
 
 $('#bt_autoChaine').on('click', function () {
@@ -202,6 +202,7 @@ function addCmdToTableTouches(_cmd) {
          }
          if (init(_cmd.name) === 'Chaine Actuelle') {
              tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="chaine_actuelle" disabled style="margin-bottom : 5px;" />';
+             tr += '<input style="display:none;" class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="id_chaine_actuelle" disabled style="margin-bottom : 5px;" />';
          }
          tr += '</td>';
          tr += '<td>';
@@ -265,6 +266,7 @@ function addCmdToTableChaines(_cmd) {
         tr += '<td>';
         tr += '<span class="cmdAttr" data-l1key="id"></span>';
         tr += '<input style="display:none;" class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="tab_name" value="tab_chaine">';
+        tr += '<input style="display:none;" class="cmdAttr form-control input-sm" data-l1key="LogicalId" value="chaine">';
         tr += '</td>';
         tr += '<td> ';
         tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" placeholder="{{Nom}}">';
