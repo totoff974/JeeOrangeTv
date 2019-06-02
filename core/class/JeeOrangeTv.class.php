@@ -486,11 +486,9 @@ class JeeOrangeTv extends eqLogic {
     // Non obligatoire mais permet de modifier l'affichage du widget si vous en avez besoin
     public function toHtml($_version = 'dashboard') {
         $theme = $this->getConfiguration('theme');
-
         if ($theme === 'aucun') {
             return parent::toHtml($_version);
         }
-
         $replace = $this->preToHtml($_version);
         if (!is_array($replace)) {
             return $replace;
