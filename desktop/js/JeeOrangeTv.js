@@ -52,7 +52,7 @@ function chooseLogo(_callback, _params) {
   }
   var url = 'index.php?v=d&plugin=JeeOrangeTv&modal=logo.JeeOrangeTv';
   if(_params && _params.img && _params.img === true) {
-    url += '&showimg=1';
+    url += '&showimg=1&imgtab=1';
   }
   if(_params && _params.logo) {
     logo = _params.logo
@@ -281,7 +281,7 @@ function addCmdToTableChaines(_cmd) {
         tr += '</td>';
         tr += '<td>';
         tr += '<input class="cmdAttr form-control input-sm col-md-7" data-l1key="configuration" data-l2key="ch_logo" placeholder="{{Logo}}">';
-        tr += '<div class="objectAttr col-md-3" data-l1key="display" data-l2key="logo" style="font-size : 1.5em;"></div>';
+        tr += '<div class="objectAttr col-md-3" data-l1key="display" data-l2key="logo" style="height:15px;width:30px"></div>';
         tr += '<a class="btn btn-default btn-sm cmdAction col-md-2" data-action="btn_logo"><i class="fa fa-link"></i></a>';
         tr += '</td>';
         tr += '<td>';

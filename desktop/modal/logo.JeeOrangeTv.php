@@ -37,9 +37,9 @@ sendVarToJs('selectLogo', init('selectLogo', 0));
 </style>
 <ul class="nav nav-tabs" role="tablist">
 	<li role="presentation" class="active"><a href="#logo" aria-controls="home" role="tab" data-toggle="tab">{{Icône}}</a></li>
-	<?php if(init('imgtab') == 1 || init('showimg') == 1){ ?>
+
 		<li role="presentation" ><a href="#img" aria-controls="home" role="tab" data-toggle="tab">{{Image}}</a></li>
-	<?php } ?>
+
 </ul>
 
 <div class="tab-content" style="height:calc(100% - 20px);overflow-y:scroll;">
@@ -66,7 +66,6 @@ sendVarToJs('selectLogo', init('selectLogo', 0));
 			</div>
 		</div>
 	</div>
-	<?php if(init('imgtab') == 1 || init('showimg') == 1){ ?>
 		<div role="tabpanel" class="tab-pane" id="img">
 			<span class="btn btn-default btn-file pull-right">
 				<i class="fas fa-cloud-upload-alt"></i> {{Envoyer}}<input  id="bt_uploadImageLogo" type="file" name="file" style="display: inline-block;">
@@ -74,10 +73,10 @@ sendVarToJs('selectLogo', init('selectLogo', 0));
 			<div class="imgContainer">
 				<div class="row">
 					<?php
-					foreach (ls(__DIR__.'/../../data/img/','*') as $file) {
+					foreach (ls('plugins/JeeOrangeTv/core/template/dashboard/images/Mosaique/','*') as $file) {
 						echo '<div class="col-lg-1">';
 						echo '<div class="divLogoSel">';
-						echo '<span class="logoSel"><img src="data/img/'.$file.'" /></span>';
+						echo '<span class="logoSel"><img src="plugins/JeeOrangeTv/core/template/dashboard/images/Mosaique/'.$file.'" /></span>';
 						echo '</div>';
 						echo '<center>'.substr(basename($file),0,12).'</center>';
 						echo '<center><a class="btn btn-danger btn-xs bt_removeImgLogo" data-filename="'.$file.'"><i class="fas fa-trash"></i> {{Supprimer}}</a></center>';
@@ -96,7 +95,7 @@ sendVarToJs('selectLogo', init('selectLogo', 0));
 						$('#div_logoSelectorAlert').showAlert({message: data.result.result, level: 'danger'});
 						return;
 					}
-					$('#mod_selectLogo').empty().load('index.php?v=d&modal=logo.selector&tabimg=1&showimg=1');
+					$('#mod_selectLogo').empty().load('index.php?v=d&modal=logo.JeeOrangeTv&tabimg=1&showimg=1');
 				}
 			});
 
@@ -118,7 +117,6 @@ sendVarToJs('selectLogo', init('selectLogo', 0));
 			});
 			</script>
 		</div>
-	<?php } ?>
 </div>
 
 <script>
