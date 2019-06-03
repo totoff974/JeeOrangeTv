@@ -303,7 +303,6 @@ class JeeOrangeTv extends eqLogic {
                                     else {
                                         $id_chaine_actu = null;
                                         $chaine_actu = 'blank';
-                                        break;
                                     }
                                 }
                                 break;
@@ -504,7 +503,7 @@ class JeeOrangeTv extends eqLogic {
                             $replace['#etat_decodeur#'] = '';
                             break;
                         case 1:
-                            $replace['#etat_decodeur#'] = '<img class="onoff" id="ON" title="ON/OFF" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Widget/on_' . $theme . '.png" style="position:absolute;top:0px;left:0px;z-index: 99;">';
+                            $replace['#etat_decodeur#'] = '<img class="onoff_' . $this->getId() . '" title="ON/OFF" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Widget/on_' . $theme . '.png" style="position:absolute;top:0px;left:0px;z-index: 99;">';
                             break;
                         default:
                             $replace['#etat_decodeur#'] = '';
@@ -513,18 +512,12 @@ class JeeOrangeTv extends eqLogic {
                 case 'chaine_actuelle' :
                     $id_chaine_actuel = $info->getConfiguration('id_chaine_actuelle');
                     if (!empty($id_chaine_actuel)) {
-                        $logo_chaine = cmd::byId($id_chaine_actuel)->getConfiguration('ch_logo');
+                        $logo_chaine_actuel = cmd::byId($id_chaine_actuel)->getConfiguration('ch_logo');
                     }
                     else {
-                        $logo_chaine = 'aucun';
+                        $logo_chaine_actuel = $info->getConfiguration('chaine_actuelle');
                     }
-                    switch ($logo_chaine) {
-                        case 'aucun':
-                            $replace['#cmd_chaine_act#'] = '<img id="actuelle" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Mosaique/blank.png" style="position:absolute;top:63px;left:116px;">';
-                            break;
-                        default:
-                            $replace['#cmd_chaine_act#'] = '<img id="actuelle" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Mosaique/' . $logo_chaine . '.png" style="position:absolute;top:63px;left:116px;">';
-                    }
+                    $replace['#cmd_chaine_act#'] = '<img id="actuelle" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Mosaique/' . $logo_chaine_actuel . '.png" style="position:absolute;top:63px;left:116px;">';
                     break;
             }
         }
@@ -539,30 +532,40 @@ class JeeOrangeTv extends eqLogic {
         }
         foreach ($this->getCmd('action') as $cmd) {
             $id_cmd = $cmd->getId();
-            $replace['#cmd_' . $cmd->getName() . '_id#'] = $id_cmd;
-            if($cmd->getConfiguration('tab_name') === 'tab_mosaique' ) {
-                $id_chaine = cmd::byId($id_cmd)->getConfiguration('ch_mosaique');
-                $nom_chaine = cmd::byId($id_chaine)->getName();
-                $logo_chaine = cmd::byId($id_chaine)->getConfiguration('ch_logo');
-                $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_visib#'] = 'visible';
-                $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'#'] = $logo_chaine;
-                $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_logo#'] = $logo_chaine;
-                $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_nom#'] = $nom_chaine;
-                $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_id#'] = $id_cmd;
-            }
-            if($cmd->getLogicalId() === 'telecommande' ) {
-                $replace['#mos_Telecommande_id#'] = $id_cmd;
-                $tel_mos = $cmd->getConfiguration('telecommande');
+            switch ($cmd->getLogicalId()) {
+                case 'touche':
+                    $replace['#cmd_' . $cmd->getName() . '_id#'] = $id_cmd;
+                    break;
+                case 'telecommande':
+                    $replace['#mos_Telecommande_id#'] = $id_cmd;
+                    $tel_mos = $cmd->getConfiguration('telecommande');
+                    break;
+                case 'mosaique':
+                    $id_chaine = cmd::byId($id_cmd)->getConfiguration('ch_mosaique');
+                    $nom_chaine = cmd::byId($id_chaine)->getName();
+                    $logo_chaine = cmd::byId($id_chaine)->getConfiguration('ch_logo');
+                    $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_visib#'] = 'visible';
+                    $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'#'] = $logo_chaine;
+                    $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_logo#'] = $logo_chaine;
+                    $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_nom#'] = $nom_chaine;
+                    $replace['#mos_'.str_replace(' ', '_', $cmd->getName()).'_id#'] = $id_cmd;
+                    break;
             }
         }
 
         // Choix du widget a afficher
-        if ($tel_mos === 1) {
-            $html = template_replace($replace, getTemplate('core', $_version, $theme, 'JeeOrangeTv'));
+        switch ($tel_mos) {
+            case 1:
+                $widget = 'current';
+                break;
+            case 0:
+                $widget = 'mosaique';
+                break;
+            default:
+                $widget = 'current';
+                break;
         }
-        else {
-            $html = template_replace($replace, getTemplate('core', $_version, 'mosaique', 'JeeOrangeTv'));
-        }
+        $html = template_replace($replace, getTemplate('core', $_version, $widget, 'JeeOrangeTv'));
         return $html;
     }
 
@@ -638,7 +641,6 @@ class JeeOrangeTvCmd extends cmd {
         $box_ip = $eqLogic->getConfiguration('box_ip');
         $code_mode = 0;
         $LogicalId = $this->getLogicalId();
-
         switch ($LogicalId) {
             case "telecommande":
                 $act_mos = $this->getConfiguration('telecommande');

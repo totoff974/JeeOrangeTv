@@ -1,0 +1,210 @@
+<div id="plugin_container" class="eqLogic-widget eqLogic" style="width:340px;height:470px;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#; #style#" data-category="" data-eqLogic_id="#id#" data-version="#version#" >
+<center class="widget-name"><strong><a href="#eqLink#" style="font-size : 1.1em;#hideEqLogicName#">#name_display#</strong></a
+<div style="width:332px;height:446px;margin:auto;padding: 0px 0px">
+
+<script>
+    
+    $('.record_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_REC_id#'});
+    });
+
+    $('.onoff_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_ON-OFF_id#'});
+    });
+
+    $('.1_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_1_id#'});
+    });
+
+    $('.2_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_2_id#'});
+    });
+
+    $('.3').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_3_id#'});
+    });
+
+    $('.4_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_4_id#'});
+    });
+
+    $('.5_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_5_id#'});
+    });
+
+    $('.6_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_6_id#'});
+    });
+
+    $('.7_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_7_id#'});
+    });
+
+    $('.8_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_8_id#'});
+    });
+
+    $('.9_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_9_id#'});
+    });
+
+    $('.0_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_0_id#'});
+    });
+
+    $('.volUp_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_VOL+_id#'});
+    });
+
+    $('.volDown_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_VOL-_id#'});
+    });
+
+    $('.chaUp_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_CH+_id#'});
+    });
+
+    $('.chaDown_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_CH-_id#'});
+    });
+
+    $('.mute_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_MUTE_id#'});
+    });
+
+    $('.up_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_UP_id#'});
+    });
+
+    $('.down_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_DOWN_id#'});
+    });
+
+    $('.left_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_LEFT_id#'});
+    });
+
+    $('.right_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_RIGHT_id#'});
+    });
+
+    $('.ok_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_OK_id#'});
+    });
+
+    $('.back_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_BACK_id#'});
+    });
+
+    $('.menu_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_MENU_id#'});
+    });
+
+    $('.playPause_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_PLAY-PAUSE_id#'});
+    });
+
+    $('.stop_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_STOP_id#'});
+    });
+
+    $('.fbwd_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_FBWD_id#'});
+    });
+
+    $('.ffwd_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_FFWD_id#'});
+    });
+
+    $('.mosaique_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#mos_Telecommande_id#'});
+    });
+    
+</script>
+
+<table  style="position:relative;">
+    <tbody>
+        <tr>
+            <td>
+                <img src="plugins/JeeOrangeTv/core/template/dashboard/images/Theme/theme_#theme#.png" width="331px" height="445px" class="remote-control" usemap="#Map_#theme#_#id#">
+                #etat_decodeur#
+                #cmd_chaine_act#
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+
+<!-- theme grey -->
+<map name="Map_grey_#id#" style="display: none;">
+<area shape="rect"      coords="0,404,67,445"           title="ON/OFF"          class="onoff_#id#" />
+<area shape="rect"      coords="0,122,67,180"           title="Menu"            class="menu_#id#" />
+<area shape="rect"      coords="265,0,330,58"           title="Back"            class="back_#id#" />
+<area shape="rect"      coords="265,122,330,180"        title="OK"              class="ok_#id#" />
+<area shape="rect"      coords="133,0,199,58"           title="Up"              class="up_#id#" />
+<area shape="rect"      coords="133,122,199,180"        title="Down"            class="down_#id#" />
+<area shape="rect"      coords="67,58,133,122"          title="Left"            class="left_#id#" />
+<area shape="rect"      coords="199,58,265,122"         title="Right"           class="right_#id#" />
+
+<area shape="rect"      coords="0,180,67,225"           title="Volume up"       class="volUp_#id#" />
+<area shape="rect"      coords="0,225,67,270"           title="Volume down"     class="volDown_#id#" />
+<area shape="rect"      coords="0,270,67,314"           title="Mute"            class="mute_#id#" />
+
+<area shape="rect"      coords="265,180,330,225"        title="Channel up"      class="chaUp_#id#" />
+<area shape="rect"      coords="265,225,330,270"        title="Channel down"    class="chaDown_#id#" />
+<area shape="rect"      coords="265,404,330,445"        title="Mosaique"        class="mosaique_#id#" />
+
+<area shape="rect"      coords="67,180,133,225"         title="1"               class="1_#id#" />
+<area shape="rect"      coords="133,180,199,225"        title="2"               class="2_#id#" />
+<area shape="rect"      coords="199,180,265,225"        title="3"               class="3_#id#" />
+
+<area shape="rect"      coords="67,225,133,270"         title="4"               class="4_#id#" />
+<area shape="rect"      coords="133,225,199,270"        title="5"               class="5_#id#" />
+<area shape="rect"      coords="199,225,265,270"        title="6"               class="6_#id#" />
+
+<area shape="rect"      coords="67,286,133,314"         title="7"               class="7_#id#" />
+<area shape="rect"      coords="133,286,199,314"        title="8"               class="8_#id#" />
+<area shape="rect"      coords="199,286,265,314"        title="9"               class="9_#id#" />
+
+<area shape="rect"      coords="133,314,199,359"        title="0"               class="0_#id#" />
+<area shape="rect"      coords="0,359,67,404"           title="Stop"            class="stop_#id#" />
+<area shape="rect"      coords="199,404,265,445"        title="Record"          class="record_#id#" />
+<area shape="rect"      coords="67,359,133,404"         title="Previous"        class="fbwd_#id#" />
+<area shape="rect"      coords="133,359,199,404"        title="Play/Pause"      class="playPause_#id#" />
+<area shape="rect"      coords="199,359,265,404"        title="Next"            class="ffwd_#id#" />
+<area shape="rect"      coords="265,314,330,359"        title="Refresh"         class="refresh_#id#" />
+</map>
+
+<!-- theme light -->
+<map name="Map_light_#id#" style="display: none;">
+<area shape="rect"      coords="0,0,51,50"              title="ON/OFF"          class="onoff_#id#" />
+<area shape="rect"      coords="0,131,51,177"           title="Menu"            class="menu_#id#" />
+<area shape="rect"      coords="280,0,330,50"           title="Back"            class="back_#id#" />
+<area shape="rect"      coords="280,131,330,177"        title="OK"              class="ok_#id#" />
+<area shape="rect"      coords="123,0,206,50"           title="Up"              class="up_#id#" />
+<area shape="rect"      coords="123,131,206,177"        title="Down"            class="down_#id#" />
+<area shape="rect"      coords="51,50,123,131"          title="Left"            class="left_#id#" />
+<area shape="rect"      coords="206,50,280,131"         title="Right"           class="right_#id#" />
+<area shape="rect"      coords="0,177,66,260"           title="Volume up"       class="volUp_#id#" />
+<area shape="rect"      coords="0,260,66,339"           title="Volume down"     class="volDown" />
+<area shape="rect"      coords="0,339,66,392"           title="Mute"            class="mute_#id#" />
+<area shape="rect"      coords="265,177,330,260"        title="Channel up"      class="chaUp_#id#" />
+<area shape="rect"      coords="265,260,330,339"        title="Channel down"    class="chaDown_#id#" />
+<area shape="rect"      coords="265,339,330,392"        title="Mosaique"        class="mosaique_#id#" />
+<area shape="rect"      coords="66,177,132,231"         title="1"               class="1_#id#" />
+<area shape="rect"      coords="132,177,198,231"        title="2"               class="2_#id#" />
+<area shape="rect"      coords="198,177,265,231"        title="3"               class="3_#id#" />
+<area shape="rect"      coords="66,231,132,286"         title="4"               class="4_#id#" />
+<area shape="rect"      coords="132,231,198,286"        title="5"               class="5_#id#" />
+<area shape="rect"      coords="198,231,265,286"        title="6"               class="6_#id#" />
+<area shape="rect"      coords="66,286,132,339"         title="7"               class="7_#id#" />
+<area shape="rect"      coords="132,286,198,339"        title="8"               class="8_#id#" />
+<area shape="rect"      coords="198,286,265,339"        title="9"               class="9_#id#" />
+<area shape="rect"      coords="132,339,198,392"        title="0"               class="0_#id#" />
+<area shape="rect"      coords="0,392,66,445"           title="Stop"            class="stop_#id#" />
+<area shape="rect"      coords="66,392,132,445"         title="Record"          class="record_#id#" />
+<area shape="rect"      coords="132,392,198,445"        title="Previous"        class="fbwd_#id#" />
+<area shape="rect"      coords="198,392,265,445"        title="Play/Pause"      class="playPause_#id#" />
+<area shape="rect"      coords="265,392,330,445"        title="Next"            class="ffwd_#id#" />
+</map>
