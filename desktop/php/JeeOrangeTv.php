@@ -61,9 +61,10 @@ foreach ($eqLogics as $eqLogic) {
    <a class="btn btn-danger eqLogicAction pull-right" data-action="remove"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>
 
    <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Décodeurs}}</a></li>
-    <li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Touches}}</a></li>
-    <li role="presentation"><a href="#commandMos" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Mosaïque}}</a></li>
+    <li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Décodeur}}</a></li>
+    <li role="presentation"><a href="#commandListeTouches" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-key"></i> {{Touches}}</a></li>
+    <li role="presentation"><a href="#commandListeChaines" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-tv"></i> {{Chaînes}}</a></li>
+    <li role="presentation"><a href="#commandListeMosaiques" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-tv"></i> {{Mosaïque}}</a></li>
 </ul>
 
 <div class="tab-content" style="height:calc(100% - 50px);overflow:auto;overflow-x: hidden;">
@@ -120,12 +121,6 @@ foreach ($eqLogics as $eqLogic) {
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">{{Localisation géographique}}</label>
-                    <div class="col-sm-2">
-                        <?php liste_localisation(); ?>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="col-lg-3 control-label">{{Choix du thème}}</label>
                     <div class="col-sm-2">
                         <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="theme">
@@ -138,9 +133,9 @@ foreach ($eqLogics as $eqLogic) {
             </fieldset>
         </form>
 </div>
-<div role="tabpanel" class="tab-pane" id="commandtab">
+<div role="tabpanel" class="tab-pane" id="commandListeTouches">
     <legend>{{Configuration des Touches}}</legend>
-            <table id="table_cmd" class="table table-bordered table-condensed">
+            <table id="table_liste_touches" class="table table-bordered table-condensed">
                 <thead>
                     <tr>
                     <th>#</th>
@@ -155,38 +150,50 @@ foreach ($eqLogics as $eqLogic) {
                 </tbody>
             </table>
 </div>
-<div role="tabpanel" class="tab-pane" id="commandMos">
-    <legend>{{Configuration de la Mosaïque}}</legend>
-            <table id="mosaique" class="table table-bordered table-condensed">
+<div role="tabpanel" class="tab-pane" id="commandListeChaines">
+    <div>
+        <a id="bt_autoChaine" class="btn btn-danger btn-sm" style="margin-top:5px;"><i class="fa fa-cog"></i>{{Configuration automatique}}</a>
+        <a id="btn_mosaique"class="btn btn-primary btn-sm eqLogicAction" style="margin-top:5px;"><i class="fa fa-tv"></i> {{Configuration de la Mosaïque}}</a>
+        <a id="bt_addChaine" class="btn btn-default btn-sm pull-right" style="margin-top:5px;"><i class="fas fa-plus-circle"></i>{{Ajouter une Chaine}}</a>
+    </div>
+    </br>
+    <legend>{{Configuration de la liste des Chaines}}</legend>
+            <table id="table_liste_chaines" class="table table-bordered table-condensed">
                 <thead>
                     <tr>
                     <th>#</th>
-                    <th>{{Position}}</th>
-                    <th>{{Nom de la Chaine}}</th>
-                    <th>{{Visibilité}}</th>
+                    <th>{{Nom}}</th>
+                    <th>{{n° du Canal}}</th>
+                    <th>{{Id EPG}}</th>
+                    <th>{{Logo de la Chaîne}}</th>
+                    <th>{{Catégorie}}</th>
                     <th></th>
                     </tr>
                 </thead>
                 <tbody>
                 </tbody>
-            </table>
+            </table>    
+</div>
+<div role="tabpanel" class="tab-pane" id="commandListeMosaiques">
+    <legend>{{Liste des Mosaïques}}</legend>
+            <table id="table_liste_mosaiques" class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                    <th>#</th>
+                    <th>{{Nom}}</th>
+                    <th>{{Id de la Chaîne}}</th>
+                    <th>{{Nom de la Chaîne}}</th>
+                    <th>{{Logo de la Chaîne}}</th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>    
+</div>
+<input type="hidden" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="template"/>
 </div>
 </div>
 </div>
-
 <?php include_file('desktop', 'JeeOrangeTv', 'js', 'JeeOrangeTv');?>
 <?php include_file('core', 'plugin.template', 'js');?>
-
-<?php   function liste_localisation() {
-        $json_liste = file_get_contents(realpath(dirname(__FILE__) . '/../../core/config/chaines.json'));
-        $json_localisation = json_decode($json_liste, true);
-
-        echo '<select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="localisation">';
-
-        foreach ($json_localisation['localisation'] as $key => $val) {
-            echo '<option value="'.$val['code'].'">{{'.$val['nom'].'}}</option>';
-        }
-
-        echo '</select>';
-    }
-?>
