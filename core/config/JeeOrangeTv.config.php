@@ -42,8 +42,8 @@ $listCmdJeeOrangeTv = array(
         'isVisible' => true,
         'configuration' => array(
             'tab_name' => 'tab_touche',
-            'chaine_actuelle'=> 'aucune',
-            'id_chaine_actuelle'=> '',
+            'chaine_actuelle'=> 'blank',
+            'id_chaine_actuelle'=> -1,
         ),
         'generic_type' => 'GENERIC_STATE',
     ),

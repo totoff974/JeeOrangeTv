@@ -547,6 +547,9 @@ class JeeOrangeTv extends eqLogic {
                     else
                     {
                         $logo_chaine_actuel = $info->getConfiguration('chaine_actuelle');
+                        if (empty($logo_chaine_actuel)) {
+                            $logo_chaine_actuel = 'blank';
+                        }
                     }
                     $replace['#cmd_chaine_act#'] = '<img id="actuelle" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Mosaique/' . $logo_chaine_actuel . '.png" style="position:absolute;top:63px;left:116px;">';
                     break;
