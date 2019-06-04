@@ -1,296 +1,210 @@
-<div id="plugin_container" class="eqLogic-widget eqLogic" style="width:310px;height:480px;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#; #style#" data-category="" data-eqLogic_id="#id#" data-version="#version#" >
+<div id="plugin_container" class="eqLogic-widget eqLogic" style="width:340px;height:470px;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#; #style#" data-category="" data-eqLogic_id="#id#" data-version="#version#" >
 <center class="widget-name"><strong><a href="#eqLink#" style="font-size : 1.1em;#hideEqLogicName#">#name_display#</strong></a
-<div style="width:300px;height:410px;margin:auto;padding: 20px 0px">
-<!-- 1ère ligne -->
-<div>
-<img src=plugins/JeeOrangeTv/doc/images/dashWidget/#etat_decodeur#.png style="margin-right: -2px"/>
-<span title="Up" class="up" data-type="action" data-subtype="other" data-cmd_id="#cmd_UP_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/2.png /></a>
-<script>
-		$('.up[data-cmd_id=#cmd_UP_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_UP_id#'});
-		});
-		
-</script>
-</span>
-<span title="Back" class="back" data-type="action" data-subtype="other" data-cmd_id="#cmd_BACK_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/3.png /></a>
-<script>
-		$('.back[data-cmd_id=#cmd_BACK_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_BACK_id#'});
-		});
-</script>
-</span>
-</div>
+<div style="width:332px;height:446px;margin:auto;padding: 0px 0px">
 
-<!-- 2ème ligne -->
-<div>
-<span title="Left" class="left" data-type="action" data-subtype="other" data-cmd_id="#cmd_LEFT_id#" style="margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/4.png /></a>
 <script>
-		$('.left[data-cmd_id=#cmd_LEFT_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_LEFT_id#'});
-		});
-</script>
-</span>
+    
+    $('.record_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_REC_id#'});
+    });
 
-<span style="position:relative;margin-left: -2px; margin-right: -2px">
-    <img src=plugins/JeeOrangeTv/doc/images/mosaique/off.png />
-	<img src=plugins/JeeOrangeTv/doc/images/mosaique/#cmd_chaine_act#.png style="width:60px; height:30px; position:absolute; top: 0px;left: 0px"  />
-</span>
+    $('.onoff_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_ON-OFF_id#'});
+    });
 
+    $('.1_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_1_id#'});
+    });
 
-<span title="Right" class="right" data-type="action" data-subtype="other" data-cmd_id="#cmd_RIGHT_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/6.png /></a>
-<script>
-		$('.right[data-cmd_id=#cmd_RIGHT_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_RIGHT_id#'});
-		});
-</script>
-</span>
-</div>
+    $('.2_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_2_id#'});
+    });
 
-<!-- 3ème ligne -->
-<div>
-<span title="Menu" class="menu" data-type="action" data-subtype="other" data-cmd_id="#cmd_MENU_id#" style="margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/7.png /></a>
-<script>
-		$('.menu[data-cmd_id=#cmd_MENU_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_MENU_id#'});
-		});
-</script>
-</span>
-<span title="Down" class="down" data-type="action" data-subtype="other" data-cmd_id="#cmd_DOWN_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/8.png /></a>
-<script>
-		$('.down[data-cmd_id=#cmd_DOWN_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_DOWN_id#'});
-		});
-</script>
-</span>
-<span title="Ok" class="ok" data-type="action" data-subtype="other" data-cmd_id="#cmd_OK_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/9.png /></a>
-<script>
-		$('.ok[data-cmd_id=#cmd_OK_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_OK_id#'});
-		});
-</script>
-</span>
-</div>
+    $('.3_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_3_id#'});
+    });
 
-<!-- 4ème ligne -->
-<div>
-<span title="Vol+" class="volP" data-type="action" data-subtype="other" data-cmd_id="#cmd_VOL+_id#" style="margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/10.png /></a>
-<script>
-		$('.volP[data-cmd_id=#cmd_VOL+_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_VOL+_id#'});
-		});
-</script>
-</span>
-<span title="1" class="1" data-type="action" data-subtype="other" data-cmd_id="#cmd_1_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/11.png /></a>
-<script>
-		$('.1[data-cmd_id=#cmd_1_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_1_id#'});
-		});
-</script>
-</span>
-<span title="2" class="2" data-type="action" data-subtype="other" data-cmd_id="#cmd_2_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/12.png /></a>
-<script>
-		$('.2[data-cmd_id=#cmd_2_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_2_id#'});
-		});
-</script>
-</span>
-<span title="3" class="3" data-type="action" data-subtype="other" data-cmd_id="#cmd_3_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/13.png /></a>
-<script>
-		$('.3[data-cmd_id=#cmd_3_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_3_id#'});
-		});
-</script>
-</span>
-<span title="CH+" class="chP" data-type="action" data-subtype="other" data-cmd_id="#cmd_CH+_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/14.png /></a>
-<script>
-		$('.chP[data-cmd_id=#cmd_CH+_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_CH+_id#'});
-		});
-</script>
-</span>
-</div>
+    $('.4_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_4_id#'});
+    });
 
-<!-- 5ème ligne -->
-<div>
-<span title="Vol-" class="volM" data-type="action" data-subtype="other" data-cmd_id="#cmd_VOL-_id#" style="margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/15.png /></a>
-<script>
-		$('.volM[data-cmd_id=#cmd_VOL-_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_VOL-_id#'});
-		});
-</script>
-</span>
-<span title="4" class="4" data-type="action" data-subtype="other" data-cmd_id="#cmd_4_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/16.png /></a>
-<script>
-		$('.4[data-cmd_id=#cmd_4_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_4_id#'});
-		});
-</script>
-</span>
-<span title="5" class="5" data-type="action" data-subtype="other" data-cmd_id="#cmd_5_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/17.png /></a>
-<script>
-		$('.5[data-cmd_id=#cmd_5_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_5_id#'});
-		});
-</script>
-</span>
-<span title="6" class="6" data-type="action" data-subtype="other" data-cmd_id="#cmd_6_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/18.png /></a>
-<script>
-		$('.6[data-cmd_id=#cmd_6_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_6_id#'});
-		});
-</script>
-</span>
-<span title="CH-" class="chM" data-type="action" data-subtype="other" data-cmd_id="#cmd_CH-_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/19.png /></a>
-<script>
-		$('.chM[data-cmd_id=#cmd_CH-_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_CH-_id#'});
-		});
-</script>
-</span>
-</div>
+    $('.5_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_5_id#'});
+    });
 
-<!-- 6ème ligne -->
-<div>
-<span title="Mute" class="mute" data-type="action" data-subtype="other" data-cmd_id="#cmd_MUTE_id#" style="margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/20.png /></a>
-<script>
-		$('.mute[data-cmd_id=#cmd_MUTE_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_MUTE_id#'});
-		});
-</script>
-</span>
-<span title="7" class="7" data-type="action" data-subtype="other" data-cmd_id="#cmd_7_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/21.png /></a>
-<script>
-		$('.7[data-cmd_id=#cmd_7_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_7_id#'});
-		});
-</script>
-</span>
-<span title="8" class="8" data-type="action" data-subtype="other" data-cmd_id="#cmd_8_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/22.png /></a>
-<script>
-		$('.8[data-cmd_id=#cmd_8_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_8_id#'});
-		});
-</script>
-</span>
-<span title="9" class="9" data-type="action" data-subtype="other" data-cmd_id="#cmd_9_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/23.png /></a>
-<script>
-		$('.9[data-cmd_id=#cmd_9_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_9_id#'});
-		});
-</script>
-</span>
-<img src=plugins/JeeOrangeTv/doc/images/dashWidget/24.png style="margin-left: -2px; margin-right: -2px"/>
-</div>
+    $('.6_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_6_id#'});
+    });
 
-<!-- 7ème ligne -->
-<div>
-<span title="VOD" class="vod" data-type="action" data-subtype="other" data-cmd_id="#cmd_VOD_id#" style="margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/25.png /></a>
-<script>
-		$('.vod[data-cmd_id=#cmd_VOD_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_VOD_id#'});
-		});
-</script>
-</span>
-<img src=plugins/JeeOrangeTv/doc/images/dashWidget/26.png style="margin-left: -2px; margin-right: -2px"/>
-<span title="0" class="0" data-type="action" data-subtype="other" data-cmd_id="#cmd_0_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/27.png /></a>
-<script>
-		$('.0[data-cmd_id=#cmd_0_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_0_id#'});
-		});
-</script>
-</span>
-<img src=plugins/JeeOrangeTv/doc/images/dashWidget/28.png style="margin-left: -2px; margin-right: -2px"/>
-<span title="Refresh" class="refresh" data-type="action" data-subtype="other" data-cmd_id="#cmd_Refresh_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/29.png /></a>
-<script>
-		$('.refresh[data-cmd_id=#cmd_Refresh_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_Refresh_id#'});
-		});
-</script>
-</span>
-</div>
+    $('.7_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_7_id#'});
+    });
 
-<!-- 8ème ligne -->
-<div>
-<img src=plugins/JeeOrangeTv/doc/images/dashWidget/30.png style="margin-right: -2px"/>
-<span title="FBWD" class="fbwd" data-type="action" data-subtype="other" data-cmd_id="#cmd_FBWD_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/31.png /></a>
-<script>
-		$('.fbwd[data-cmd_id=#cmd_FBWD_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_FBWD_id#'});
-		});
-</script>
-</span>
-<span title="PLAY-PAUSE" class="plpa" data-type="action" data-subtype="other" data-cmd_id="#cmd_PLAY-PAUSE_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/32.png /></a>
-<script>
-		$('.plpa[data-cmd_id=#cmd_PLAY-PAUSE_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_PLAY-PAUSE_id#'});
-		});
-</script>
-</span>
-<span title="FFWD" class="ffwd" data-type="action" data-subtype="other" data-cmd_id="#cmd_FFWD_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/33.png /></a>
-<script>
-		$('.ffwd[data-cmd_id=#cmd_FFWD_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_FFWD_id#'});
-		});
-</script>
-</span>
-<img src=plugins/JeeOrangeTv/doc/images/dashWidget/34.png style="margin-left: -2px; margin-right: -2px"/>
-</div>
+    $('.8_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_8_id#'});
+    });
 
-<!-- 8ème ligne -->
-<div>
-<span title="ON-OFF" class="onoff" data-type="action" data-subtype="other" data-cmd_id="#cmd_ON-OFF_id#" style="margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/35.png /></a>
-<script>
-		$('.onoff[data-cmd_id=#cmd_ON-OFF_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_ON-OFF_id#'});
-		});
+    $('.9_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_9_id#'});
+    });
+
+    $('.0_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_0_id#'});
+    });
+
+    $('.volUp_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_VOL+_id#'});
+    });
+
+    $('.volDown_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_VOL-_id#'});
+    });
+
+    $('.chaUp_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_CH+_id#'});
+    });
+
+    $('.chaDown_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_CH-_id#'});
+    });
+
+    $('.mute_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_MUTE_id#'});
+    });
+
+    $('.up_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_UP_id#'});
+    });
+
+    $('.down_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_DOWN_id#'});
+    });
+
+    $('.left_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_LEFT_id#'});
+    });
+
+    $('.right_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_RIGHT_id#'});
+    });
+
+    $('.ok_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_OK_id#'});
+    });
+
+    $('.back_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_BACK_id#'});
+    });
+
+    $('.menu_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_MENU_id#'});
+    });
+
+    $('.playPause_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_PLAY-PAUSE_id#'});
+    });
+
+    $('.stop_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_STOP_id#'});
+    });
+
+    $('.fbwd_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_FBWD_id#'});
+    });
+
+    $('.ffwd_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#cmd_FFWD_id#'});
+    });
+
+    $('.mosaique_#id#').on('click', function () {
+        jeedom.cmd.execute({id: '#mos_Telecommande_id#'});
+    });
+    
 </script>
-</span>
-<img src=plugins/JeeOrangeTv/doc/images/dashWidget/36.png style="margin-left: -2px; margin-right: -2px"/>
-<img src=plugins/JeeOrangeTv/doc/images/dashWidget/37.png style="margin-left: -2px; margin-right: -2px"/>
-<span title="REC" class="rec" data-type="action" data-subtype="other" data-cmd_id="#cmd_REC_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/38.png /></a>
-<script>
-		$('.rec[data-cmd_id=#cmd_REC_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_REC_id#'});
-		});
-</script>
-</span>
-<span title="Mosaique" class="retour" data-type="action" data-subtype="other" data-cmd_id="#cmd_Telecommande_id#" style="margin-left: -2px; margin-right: -2px">
-<a class="action" style="cursor: pointer;"><img src=plugins/JeeOrangeTv/doc/images/dashWidget/39.png /></a>
-<script>
-		$('.retour[data-cmd_id=#cmd_Telecommande_id#] .action').on('click', function () {
-					jeedom.cmd.execute({id: '#cmd_Telecommande_id#'});
-		});
-</script>
-</span>
-</div>
+
+<table  style="position:relative;">
+    <tbody>
+        <tr>
+            <td>
+                <img src="plugins/JeeOrangeTv/core/template/dashboard/images/Theme/theme_#theme#.png" width="331px" height="445px" class="remote-control" usemap="#Map_#theme#_#id#">
+                #etat_decodeur#
+                #cmd_chaine_act#
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- theme grey -->
+<map name="Map_grey_#id#" style="display: none;">
+<area shape="rect"      coords="0,404,67,445"           title="ON/OFF"          class="onoff_#id#" />
+<area shape="rect"      coords="0,122,67,180"           title="Menu"            class="menu_#id#" />
+<area shape="rect"      coords="265,0,330,58"           title="Back"            class="back_#id#" />
+<area shape="rect"      coords="265,122,330,180"        title="OK"              class="ok_#id#" />
+<area shape="rect"      coords="133,0,199,58"           title="Up"              class="up_#id#" />
+<area shape="rect"      coords="133,122,199,180"        title="Down"            class="down_#id#" />
+<area shape="rect"      coords="67,58,133,122"          title="Left"            class="left_#id#" />
+<area shape="rect"      coords="199,58,265,122"         title="Right"           class="right_#id#" />
+
+<area shape="rect"      coords="0,180,67,225"           title="Volume up"       class="volUp_#id#" />
+<area shape="rect"      coords="0,225,67,270"           title="Volume down"     class="volDown_#id#" />
+<area shape="rect"      coords="0,270,67,314"           title="Mute"            class="mute_#id#" />
+
+<area shape="rect"      coords="265,180,330,225"        title="Channel up"      class="chaUp_#id#" />
+<area shape="rect"      coords="265,225,330,270"        title="Channel down"    class="chaDown_#id#" />
+<area shape="rect"      coords="265,404,330,445"        title="Mosaique"        class="mosaique_#id#" />
+
+<area shape="rect"      coords="67,180,133,225"         title="1"               class="1_#id#" />
+<area shape="rect"      coords="133,180,199,225"        title="2"               class="2_#id#" />
+<area shape="rect"      coords="199,180,265,225"        title="3"               class="3_#id#" />
+
+<area shape="rect"      coords="67,225,133,270"         title="4"               class="4_#id#" />
+<area shape="rect"      coords="133,225,199,270"        title="5"               class="5_#id#" />
+<area shape="rect"      coords="199,225,265,270"        title="6"               class="6_#id#" />
+
+<area shape="rect"      coords="67,286,133,314"         title="7"               class="7_#id#" />
+<area shape="rect"      coords="133,286,199,314"        title="8"               class="8_#id#" />
+<area shape="rect"      coords="199,286,265,314"        title="9"               class="9_#id#" />
+
+<area shape="rect"      coords="133,314,199,359"        title="0"               class="0_#id#" />
+<area shape="rect"      coords="0,359,67,404"           title="Stop"            class="stop_#id#" />
+<area shape="rect"      coords="199,404,265,445"        title="Record"          class="record_#id#" />
+<area shape="rect"      coords="67,359,133,404"         title="Previous"        class="fbwd_#id#" />
+<area shape="rect"      coords="133,359,199,404"        title="Play/Pause"      class="playPause_#id#" />
+<area shape="rect"      coords="199,359,265,404"        title="Next"            class="ffwd_#id#" />
+<area shape="rect"      coords="265,314,330,359"        title="Refresh"         class="refresh_#id#" />
+</map>
+
+<!-- theme light -->
+<map name="Map_light_#id#" style="display: none;">
+<area shape="rect"      coords="0,0,51,50"              title="ON/OFF"          class="onoff_#id#" />
+<area shape="rect"      coords="0,131,51,177"           title="Menu"            class="menu_#id#" />
+<area shape="rect"      coords="280,0,330,50"           title="Back"            class="back_#id#" />
+<area shape="rect"      coords="280,131,330,177"        title="OK"              class="ok_#id#" />
+<area shape="rect"      coords="123,0,206,50"           title="Up"              class="up_#id#" />
+<area shape="rect"      coords="123,131,206,177"        title="Down"            class="down_#id#" />
+<area shape="rect"      coords="51,50,123,131"          title="Left"            class="left_#id#" />
+<area shape="rect"      coords="206,50,280,131"         title="Right"           class="right_#id#" />
+<area shape="rect"      coords="0,177,66,260"           title="Volume up"       class="volUp_#id#" />
+<area shape="rect"      coords="0,260,66,339"           title="Volume down"     class="volDown" />
+<area shape="rect"      coords="0,339,66,392"           title="Mute"            class="mute_#id#" />
+<area shape="rect"      coords="265,177,330,260"        title="Channel up"      class="chaUp_#id#" />
+<area shape="rect"      coords="265,260,330,339"        title="Channel down"    class="chaDown_#id#" />
+<area shape="rect"      coords="265,339,330,392"        title="Mosaique"        class="mosaique_#id#" />
+<area shape="rect"      coords="66,177,132,231"         title="1"               class="1_#id#" />
+<area shape="rect"      coords="132,177,198,231"        title="2"               class="2_#id#" />
+<area shape="rect"      coords="198,177,265,231"        title="3"               class="3_#id#" />
+<area shape="rect"      coords="66,231,132,286"         title="4"               class="4_#id#" />
+<area shape="rect"      coords="132,231,198,286"        title="5"               class="5_#id#" />
+<area shape="rect"      coords="198,231,265,286"        title="6"               class="6_#id#" />
+<area shape="rect"      coords="66,286,132,339"         title="7"               class="7_#id#" />
+<area shape="rect"      coords="132,286,198,339"        title="8"               class="8_#id#" />
+<area shape="rect"      coords="198,286,265,339"        title="9"               class="9_#id#" />
+<area shape="rect"      coords="132,339,198,392"        title="0"               class="0_#id#" />
+<area shape="rect"      coords="0,392,66,445"           title="Stop"            class="stop_#id#" />
+<area shape="rect"      coords="66,392,132,445"         title="Record"          class="record_#id#" />
+<area shape="rect"      coords="132,392,198,445"        title="Previous"        class="fbwd_#id#" />
+<area shape="rect"      coords="198,392,265,445"        title="Play/Pause"      class="playPause_#id#" />
+<area shape="rect"      coords="265,392,330,445"        title="Next"            class="ffwd_#id#" />
+</map>
 </div>
 </div>
