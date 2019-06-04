@@ -150,7 +150,6 @@ class JeeOrangeTv extends eqLogic {
       }
      */
 
-    // A VERIFIER
     public function MaJ_JSON() {
         foreach (eqLogic::byType('JeeOrangeTv') as $JeeOrangeTv) {
             log::add('JeeOrangeTv', 'debug', '|---> Décodeur : ' . $JeeOrangeTv->getName());
@@ -159,7 +158,6 @@ class JeeOrangeTv extends eqLogic {
         }
     }
 
-    // A VERIFIER
     public function autoMaJCommande() {
         global $listCmdJeeOrangeTv;
         foreach ($this->getCmd() as $cmd) {
@@ -257,8 +255,6 @@ class JeeOrangeTv extends eqLogic {
                             case '1':
                                 $etat_decodeur = 0;
                                 break;
-                            default:
-                                $etat_decodeur = $cmd->getConfiguration('etat_decodeur');
                         }
                         if ($cmd->getConfiguration('etat_decodeur') != $etat_decodeur) {
                             $cmd->setConfiguration('etat_decodeur', $etat_decodeur);
@@ -312,10 +308,9 @@ class JeeOrangeTv extends eqLogic {
                         }
                         if ($cmd->getConfiguration('chaine_actuelle') != $chaine_actu) {
                             $cmd->setConfiguration('id_chaine_actuelle', $id_chaine_actu);
-                            $cmd->save();
-                            $cmd->event($id_chaine_actu);
                             $cmd->setConfiguration('chaine_actuelle', $chaine_actu);
                             $cmd->save();
+                            $cmd->event($id_chaine_actu);
                             $cmd->event($chaine_actu);
                             JeeOrangeTv::refreshWidget();
                         }
@@ -325,6 +320,39 @@ class JeeOrangeTv extends eqLogic {
         }
         else
         {
+            foreach ($this->getCmd() as $cmd) {
+                switch ($cmd->getLogicalId()) {
+                    case 'etat_decodeur' :
+                        $etat_decodeur = -1;
+                        if ($cmd->getConfiguration('etat_decodeur') != $etat_decodeur) {
+                            $cmd->setConfiguration('etat_decodeur', $etat_decodeur);
+                            $cmd->save();
+                            $cmd->event($etat_decodeur);
+                            JeeOrangeTv::refreshWidget();
+                        }
+                        break;
+                    case 'fonction':
+                        $retour_fonction = null;
+                        if ($cmd->getConfiguration('fonction') != $retour_fonction) {
+                            $cmd->setConfiguration('fonction', $retour_fonction);
+                            $cmd->save();
+                            $cmd->event($retour_fonction);
+                            JeeOrangeTv::refreshWidget();
+                        }
+                        break;
+                    case 'chaine_actuelle':
+                        $chaine_actu = 'erreur';
+                        if ($cmd->getConfiguration('chaine_actuelle') != $chaine_actu) {
+                            $cmd->setConfiguration('id_chaine_actuelle', -1);
+                            $cmd->setConfiguration('chaine_actuelle', $chaine_actu);
+                            $cmd->save();
+                            $cmd->event($id_chaine_actu);
+                            $cmd->event($chaine_actu);
+                            JeeOrangeTv::refreshWidget();
+                        }
+                        break;
+                }
+            }
             log::add('JeeOrangeTv', 'debug', '            |---> Décodeur ERREUR - ResponseCode : ' . $retour['result']['responseCode']);
             log::add('JeeOrangeTv', 'debug', '                |---> Le décodeur ne donne pas de réponse');
         }
@@ -375,10 +403,9 @@ class JeeOrangeTv extends eqLogic {
         $template_conf = json_decode(file_get_contents(dirname(__FILE__) . '/../config/' . $template . '.json'), true);
         foreach ($eqLogic->getCmd('action') as $cmd) {
             // selectionne uniquement la tab chaines
-            if ($cmd->getConfiguration('tab_name') === 'tab_chaine' ){
+            if ($cmd->getConfiguration('tab_name') === 'tab_chaine' or $cmd->getConfiguration('tab_name') === 'tab_mosaique'){
                 // supprime les existants
                 $cmd->remove();
-                $eqLogic->toHtml();
             }
         }
 
@@ -418,7 +445,6 @@ class JeeOrangeTv extends eqLogic {
             if ($cmd->getConfiguration('tab_name') === 'tab_mosaique' ){
                 // supprime les existants
                 $cmd->remove();
-                $eqLogic->toHtml();
             }
         }
 
@@ -505,16 +531,21 @@ class JeeOrangeTv extends eqLogic {
                         case 1:
                             $replace['#etat_decodeur#'] = '<img class="onoff_' . $this->getId() . '" title="ON/OFF" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Widget/on_' . $theme . '.png" style="position:absolute;top:0px;left:0px;z-index: 99;">';
                             break;
-                        default:
+                        case -1:
                             $replace['#etat_decodeur#'] = '';
+                            break;
                     }
                     break;
                 case 'chaine_actuelle' :
                     $id_chaine_actuel = $info->getConfiguration('id_chaine_actuelle');
-                    if (!empty($id_chaine_actuel)) {
+                    if (!empty($id_chaine_actuel) && $id_chaine_actuel != -1) {
                         $logo_chaine_actuel = cmd::byId($id_chaine_actuel)->getConfiguration('ch_logo');
                     }
-                    else {
+                    elseif ($id_chaine_actuel === -1) {
+                        $logo_chaine_actuel = 'erreur';
+                    }
+                    else
+                    {
                         $logo_chaine_actuel = $info->getConfiguration('chaine_actuelle');
                     }
                     $replace['#cmd_chaine_act#'] = '<img id="actuelle" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Mosaique/' . $logo_chaine_actuel . '.png" style="position:absolute;top:63px;left:116px;">';
@@ -560,9 +591,6 @@ class JeeOrangeTv extends eqLogic {
                 break;
             case 0:
                 $widget = 'mosaique';
-                break;
-            default:
-                $widget = 'current';
                 break;
         }
         $html = template_replace($replace, getTemplate('core', $_version, $widget, 'JeeOrangeTv'));
@@ -622,7 +650,7 @@ class JeeOrangeTvCmd extends cmd {
                 }
                 $i += 1;
                 foreach ($eqLogic->getCmd() as $action) {
-                    if ($touche == $action->getName()) {
+                    if ($touche === $action->getName()) {
                         $code_touche = $action->getConfiguration('code_touche');
                         if ($code_touche != "") {
                             $eqLogic->ActionTouche($box_ip, $code_touche, $code_mode);

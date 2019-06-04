@@ -23,9 +23,9 @@ try {
     if (!isConnect('admin')) {
         throw new \Exception(__('401 - Accès non autorisé', __FILE__));
     }
-    
+
     ajax::init();
-    
+
     // liste des fichiers json de configuration des chaines
     if (init('action') == 'listeFichiersConf') {
         $result = "";
@@ -75,6 +75,48 @@ try {
         $mosaique = init('mosaique');
         $eqLogic = JeeOrangeTv::byId(init('id'));
         $eqLogic->appliqueMosaique($eqLogic, $mosaique);
+        ajax::success();
+    }
+
+    // telecharge une nouvelle image pour les logos
+    if (init('action') === 'uploadImageLogo') {
+        if (!isConnect('admin')) {
+            throw new Exception(__('401 - Accès non autorisé', __FILE__));
+        }
+        unautorizedInDemo();
+        if (!isset($_FILES['file'])) {
+            throw new Exception(__('Aucun fichier trouvé. Vérifiez le paramètre PHP (post size limit)', __FILE__));
+        }
+        $extension = strtolower(strrchr($_FILES['file']['name'], '.'));
+        if (!in_array($extension, array('.png'))) {
+            throw new Exception('Extension du fichier non valide (autorisé .png) : ' . $extension);
+        }
+        if (filesize($_FILES['file']['tmp_name']) > 1000000) {
+            throw new Exception(__('Le fichier est trop gros (maximum 1Mo)', __FILE__));
+        }
+        
+        $img_size = getimagesize($_FILES['file']['tmp_name']);
+        
+        if ($img_size[0] != 100 and $img_size[1] != 50) {
+            throw new Exception(__('Le fichier doit avoir une hauteur de 50px et une largeur de 100px', __FILE__));
+        }
+        
+        $filename = $_FILES['file']['name'];
+        $filepath = __DIR__ . '/../template/dashboard/images/Mosaique/' . $filename;
+        move_uploaded_file($_FILES['file']['tmp_name'], $filepath);
+        if(!file_exists($filepath)){
+            throw new \Exception(__('Impossible de sauvegarder l\'image' . $filepath,__FILE__));
+        }
+        ajax::success();
+    }
+
+    if (init('action') === 'removeImageLogo') {
+        if (!isConnect('admin')) {
+            throw new Exception(__('401 - Accès non autorisé', __FILE__));
+        }
+        unautorizedInDemo();
+        $filename = init('filename');
+        @rrmdir(__DIR__ . '/../template/dashboard/images/Mosaique/' . $filename);
         ajax::success();
     }
 

@@ -175,7 +175,7 @@ foreach ($eqLogics as $eqLogic) {
             </table>    
 </div>
 <div role="tabpanel" class="tab-pane" id="commandListeMosaiques">
-    <legend>{{iiste des Mosaïques}}</legend>
+    <legend>{{Liste des Mosaïques}}</legend>
             <table id="table_liste_mosaiques" class="table table-bordered table-condensed">
                 <thead>
                     <tr>

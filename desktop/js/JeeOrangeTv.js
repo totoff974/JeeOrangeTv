@@ -14,6 +14,14 @@
 * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 */
 
+$('#div_pageContainer').on( 'click', 'a .btn[data-action=save]',function () {
+    $("#bt_addChaine").show();
+});
+
+$('#div_pageContainer').on( 'click', '.cmdAction[data-action=remove]',function () {
+    $("#bt_addChaine").show();
+});
+
 $('#div_pageContainer').on( 'click', '.cmd .cmdAction[data-action=btn_logo]',function () {
   var idLogo = $(this).closest('.cmd').attr('data-cmd_id');
   var _logo = false
@@ -22,8 +30,13 @@ $('#div_pageContainer').on( 'click', '.cmd .cmdAction[data-action=btn_logo]',fun
     _logo = '.' + _logo.replace(' ', '.')
   }
   chooseLogo(function (_logo, idLogo, logo_nom) {
+    if (idLogo != '') {
         $('.cmd[data-cmd_id='+idLogo+'] .cmdAttr[data-l1key=configuration][data-l2key=ch_logo]').empty().val(logo_nom);
-        $('.cmd[data-cmd_id='+idLogo+'] .objectAttr[data-l1key=display][data-l2key=logo]').empty().append(_logo);
+    }
+    else {
+        $('.cmd[data-cmd_id] .cmdAttr[data-l1key=configuration][data-l2key=ch_logo]:last').empty().val(logo_nom);
+    }
+
   },
   {logo:_logo, logoid: idLogo});
 });
@@ -32,14 +45,14 @@ function chooseLogo(_callback, _params) {
   if ($("#mod_selectLogo").length == 0) {
     $('#div_pageContainer').append('<div id="mod_selectLogo"></div>');
     $("#mod_selectLogo").dialog({
-      title: '{{Choisissez une logo}}',
+      title: '{{Choisissez un logo}}',
       closeText: '',
       autoOpen: false,
       modal: true,
       height: (jQuery(window).height() - 150),
-      width: 1500,
+      width: 1510,
       open: function () {
-        if ((jQuery(window).width() - 50) < 1500) {
+        if ((jQuery(window).width() - 50) < 1510) {
           $('#mod_selectLogo').dialog({width: jQuery(window).width() - 50});
         }
         $("body").css({overflow: 'hidden'});
@@ -52,7 +65,7 @@ function chooseLogo(_callback, _params) {
   }
   var url = 'index.php?v=d&plugin=JeeOrangeTv&modal=logo.JeeOrangeTv';
   if(_params && _params.img && _params.img === true) {
-    url += '&showimg=1&imgtab=1';
+    url += '&showimg=1';
   }
   if(_params && _params.logo) {
     logo = _params.logo
@@ -91,6 +104,7 @@ $('#btn_mosaique').on('click', function () {
 
 $("#bt_addChaine").on('click', function (event) {
     var _cmd = {type: 'action'};
+    $("#bt_addChaine").hide();
     addCmdToTableChaines(_cmd);
 });
 
@@ -188,11 +202,8 @@ function addCmdToTableTouches(_cmd) {
          tr += '<span class="cmdAttr" data-l1key="id"></span>';
          tr += '</td>';
          tr += '<td> ';
-         tr += '<div class="col-sm-6">';
          tr += '<input disabled class="cmdAttr form-control input-sm" data-l1key="name">';
-         tr += '</div>';
          tr += '</td>';
-
          tr += '<td>';
          if (init(_cmd.name) === 'Etat Decodeur') {
              tr += '<input class="cmdAttr form-control type input-sm expertModeVisible" data-l1key="configuration" data-l2key="etat_decodeur" disabled style="margin-bottom : 5px;" />';
@@ -230,13 +241,12 @@ function addCmdToTableTouches(_cmd) {
         tr += '<span class="cmdAttr" data-l1key="id"></span>';
         tr += '</td>';
         tr += '<td>';
-        tr += '<div class="col-sm-6">';
         tr += '<input disabled class="cmdAttr form-control input-sm" data-l1key="name">';
-        tr += '</div>';
         tr += '</td>';
         tr += '<td>';
-        if (init(_cmd.name) != 'Refresh') {
-            tr += '<span>{{Code touche : }}<br/></span><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="code_touche" style="margin-bottom : 5px;width : 50%; display : inline-block;" />';
+        if (init(_cmd.name) != 'Refresh' && init(_cmd.name) != 'Telecommande') {
+            tr += '<div class="col-md-3"><span>{{Code touche : }}<br/></span></div>';
+            tr += '<div class="col-md-9"><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="code_touche" /></div>';
         }
         tr += '</td>';
         tr += '<td>';
@@ -280,8 +290,7 @@ function addCmdToTableChaines(_cmd) {
         tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="ch_epg" type="number" min="-1" max="9999999999" placeholder="{{EPG}}">';
         tr += '</td>';
         tr += '<td>';
-        tr += '<input class="cmdAttr form-control input-sm col-md-7" data-l1key="configuration" data-l2key="ch_logo" placeholder="{{Logo}}">';
-        tr += '<div class="objectAttr col-md-3" data-l1key="display" data-l2key="logo" style="height:15px;width:30px"></div>';
+        tr += '<input class="cmdAttr form-control input-sm col-md-10" data-l1key="configuration" data-l2key="ch_logo" placeholder="{{Logo}}">';
         tr += '<a class="btn btn-default btn-sm cmdAction col-md-2" data-action="btn_logo"><i class="fa fa-link"></i></a>';
         tr += '</td>';
         tr += '<td>';
