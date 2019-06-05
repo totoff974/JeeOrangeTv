@@ -1,6 +1,11 @@
 Changelog détaillé :
 <https://github.com/totoff974/JeeOrangeTv/commits/stable>
 
+05-06-2018 16:35
+===
+
+-   Fusion de la télécommande avec la mosaique avec ajout d'un effet slide 
+
 04-06-2018 22:35
 ===
 
