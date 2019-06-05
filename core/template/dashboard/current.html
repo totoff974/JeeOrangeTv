@@ -4,7 +4,8 @@
 
 <script>
     $(".retour_#id#").click(function(){
-        $("#panel").slideToggle("slow");
+        $("#panel_#id#").fadeToggle("slow");
+        
     });
     
     $(".touche_#id#").click(function(){
@@ -19,7 +20,7 @@
 </script>
 
 <!-- Mosaique -->
-<div id="panel" style="width:332px;height:470px;margin:auto;padding: 0px 0px;display:none;">
+<div id="panel_#id#" style="width:332px;height:470px;margin:auto;padding: 0px 0px;display:none;">
     <!-- 1ère ligne -->
     <div>
 
