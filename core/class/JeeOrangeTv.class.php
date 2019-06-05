@@ -378,7 +378,6 @@ class JeeOrangeTv extends eqLogic {
                     $JeeOrangeTvCmd->setConfiguration('tab_name', $cmd['configuration']['tab_name']);
                     $JeeOrangeTvCmd->setConfiguration('code_touche', $cmd['configuration']['code_touche']);
                     $JeeOrangeTvCmd->setConfiguration('mosaique_chaine', $cmd['configuration']['mosaique_chaine']);
-                    $JeeOrangeTvCmd->setConfiguration('telecommande', $cmd['configuration']['telecommande']);
                     $JeeOrangeTvCmd->setConfiguration('etat_decodeur', 0);
                     $JeeOrangeTvCmd->setConfiguration('chaine_actuelle', $cmd['configuration']['chaine_actuelle']);
                     $JeeOrangeTvCmd->setConfiguration('id_chaine_actuelle', $cmd['configuration']['id_chaine_actuelle']);
@@ -572,7 +571,6 @@ class JeeOrangeTv extends eqLogic {
                     break;
                 case 'telecommande':
                     $replace['#mos_Telecommande_id#'] = $id_cmd;
-                    $tel_mos = $cmd->getConfiguration('telecommande');
                     break;
                 case 'mosaique':
                     $id_chaine = cmd::byId($id_cmd)->getConfiguration('ch_mosaique');
@@ -587,16 +585,7 @@ class JeeOrangeTv extends eqLogic {
             }
         }
 
-        // Choix du widget a afficher
-        switch ($tel_mos) {
-            case 1:
-                $widget = 'current';
-                break;
-            case 0:
-                $widget = 'mosaique';
-                break;
-        }
-        $html = template_replace($replace, getTemplate('core', $_version, $widget, 'JeeOrangeTv'));
+        $html = template_replace($replace, getTemplate('core', $_version, 'current', 'JeeOrangeTv'));
         return $html;
     }
 
@@ -673,18 +662,6 @@ class JeeOrangeTvCmd extends cmd {
         $code_mode = 0;
         $LogicalId = $this->getLogicalId();
         switch ($LogicalId) {
-            case "telecommande":
-                $act_mos = $this->getConfiguration('telecommande');
-                if ($act_mos === 1) {
-                    $this->setConfiguration('telecommande', 0);
-                    $this->save();
-                }
-                if ($act_mos === 0) {
-                    $this->setConfiguration('telecommande', 1);
-                    $this->save();
-                }
-                $eqLogic->refreshWidget();
-                break;
             case "touche":
                 $code_touche = $this->getConfiguration('code_touche');
                 if (!empty($code_touche)) {
@@ -707,4 +684,3 @@ class JeeOrangeTvCmd extends cmd {
 
     /*     * **********************Getteur Setteur*************************** */
 }
-
