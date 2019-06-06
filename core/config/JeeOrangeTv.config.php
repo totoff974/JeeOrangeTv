@@ -507,20 +507,5 @@ $listCmdJeeOrangeTv = array(
         'generic_type' => 'GENERIC_ACTION',
         'forceReturnLineAfter' => '1',
     ),
-
-    array(
-        'name' => 'Telecommande',
-        'logicalId' => 'telecommande',
-        'type' => 'action',
-        'subType' => 'other',
-        'order' => 58,
-        'isVisible' => false,
-        'configuration' => array(
-            'tab_name' => 'tab_touche',
-            'telecommande'=> 1,
-        ),
-        'generic_type' => 'GENERIC_ACTION',
-        'forceReturnLineAfter' => '0',
-    ),
 );
 ?>
