@@ -4,8 +4,8 @@
 
 <script>
     $(".retour_#id#").click(function(){
-        $("#panel_#id#").fadeToggle("slow");
-        
+        $("#panel_mosaique_#id#").fadeToggle(0);
+        $("#panel_touche_#id#").fadeToggle(0);
     });
     
     $(".touche_#id#").click(function(){
@@ -20,7 +20,7 @@
 </script>
 
 <!-- Mosaique -->
-<div id="panel_#id#" style="width:332px;height:470px;margin:auto;padding: 0px 0px;display:none;">
+<div id="panel_mosaique_#id#" style="width:332px;height:470px;margin:auto;padding: 0px 0px;display:none;">
     <!-- 1ère ligne -->
     <div>
 
@@ -153,7 +153,7 @@
 
 
 <!-- Telecommande touche -->
-<div>
+<div id="panel_touche_#id#">
 <table  style="position:relative;">
     <tbody>
         <tr>
