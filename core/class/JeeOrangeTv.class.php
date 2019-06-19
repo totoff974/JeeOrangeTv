@@ -635,10 +635,10 @@ class JeeOrangeTvCmd extends cmd {
             foreach ($mos_touche as $touche) {
                 // Prise en charge appui long
                 if ($i < $nb_touches) {
-                    $code_mode = 1;
+                    $code_mode = 0;
                 }
                 else {
-                    $code_mode = 2;
+                    $code_mode = 0;
                 }
                 $i += 1;
                 foreach ($eqLogic->getCmd() as $action) {
