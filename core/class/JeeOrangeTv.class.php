@@ -159,8 +159,26 @@ class JeeOrangeTv extends eqLogic {
     }
 
     public function autoMaJCommande() {
-        $this->setConfiguration('theme', 'light');
-        $this->save();
+        global $listCmdJeeOrangeTv;
+        foreach ($this->getCmd() as $cmd) {
+            $cmd->setConfiguration('theme', 'light');
+            $cmd->setConfiguration('tab_name', $cmd['configuration']['tab_name']);
+            $cmd->setConfiguration('code_touche', $cmd['configuration']['code_touche']);
+            $cmd->setConfiguration('mosaique_chaine', $cmd['configuration']['mosaique_chaine']);
+            $cmd->setConfiguration('etat_decodeur', 0);
+            $cmd->setConfiguration('chaine_actuelle', $cmd['configuration']['chaine_actuelle']);
+            $cmd->setConfiguration('id_chaine_actuelle', $cmd['configuration']['id_chaine_actuelle']);
+            $cmd->setConfiguration('fonction', $cmd['configuration']['fonction']);
+            $cmd->setType($cmd['type']);
+            $cmd->setSubType($cmd['subType']);
+            $cmd->setOrder($cmd['order']);
+            $cmd->setIsVisible($cmd['isVisible']);
+            $cmd->setDisplay('generic_type', $cmd['generic_type']);
+            $cmd->setDisplay('forceReturnLineAfter', $cmd['forceReturnLineAfter']);
+            $cmd->setValue(0);
+            $cmd->save();
+        }
+    log::add('JeeOrangeTv', 'debug', 'update des commandes OK');
     }
 
     // permet de requeter le fichier json en fonction du template
