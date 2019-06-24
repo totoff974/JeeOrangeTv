@@ -159,30 +159,7 @@ class JeeOrangeTv extends eqLogic {
     }
 
     public function autoMaJCommande() {
-        $this->autoAjoutCommande();
-        // gestion des mises a jour
-        global $listCmdJeeOrangeTv;
-
-        // supprime action ancienne version
-        foreach ($this->getCmd() as $cmd) {
-            if ($cmd->getName()==='telecommande' || $cmd->getName()==='Refresh' || strpos($cmd->getName(), 'Mosaique ') !== false) {
-                $cmd->remove();
-            }
-            else {
-                // ajoute nouvelles fonctions
-                foreach ($listCmdJeeOrangeTv as $cmd_ex) {
-                       if ($cmd_ex) {
-                            $JeeOrangeTvCmd = new JeeOrangeTvCmd();
-                            $JeeOrangeTvCmd->setConfiguration('tab_name', $cmd_ex['configuration']['tab_name']);
-                            if ($cmd->getName()==='Chaine Actuelle') {
-                                $JeeOrangeTvCmd->setConfiguration('id_chaine_actuelle', $cmd_ex['configuration']['id_chaine_actuelle']);
-                            }
-                            $JeeOrangeTvCmd->save();
-                       }
-                }
-            }
-        }
-    log::add('JeeOrangeTv', 'debug', 'update des commandes OK');
+        
     }
 
     // permet de requeter le fichier json en fonction du template
