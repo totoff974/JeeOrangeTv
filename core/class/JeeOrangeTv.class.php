@@ -159,12 +159,25 @@ class JeeOrangeTv extends eqLogic {
     }
 
     public function autoMaJCommande() {
+        // gestion des mises a jour
         global $listCmdJeeOrangeTv;
+
+        // supprime action ancienne version
         foreach ($this->getCmd() as $cmd) {
-            foreach ($listCmdJeeOrangeTv as $cmd_config) {
-                if (($cmd->getName()==$cmd_config['name']) AND ($cmd->getConfiguration('code_touche')!=$cmd_config['configuration']['code_touche'])){
-                    $cmd->setConfiguration('code_touche', $cmd_config['configuration']['code_touche']);
-                    $cmd->save();
+            if ($cmd->getName()==='telecommande' || $cmd->getName()==='Refresh' || strpos($cmd->getName(), 'Mosaique ') !== false) {
+                $cmd->remove();
+            }
+            else {
+                // ajoute nouvelles fonctions
+                foreach ($listCmdJeeOrangeTv as $cmd_ex) {
+                       if ($cmd_ex) {
+                            $JeeOrangeTvCmd = new JeeOrangeTvCmd();
+                            $JeeOrangeTvCmd->setConfiguration('tab_name', $cmd_ex['configuration']['tab_name']);
+                            if ($cmd->getName()==='Chaine Actuelle') {
+                                $JeeOrangeTvCmd->setConfiguration('id_chaine_actuelle', $cmd_ex['configuration']['id_chaine_actuelle']);
+                            }
+                            $JeeOrangeTvCmd->save();
+                       }
                 }
             }
         }
