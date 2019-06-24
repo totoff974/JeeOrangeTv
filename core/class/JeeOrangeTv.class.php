@@ -159,6 +159,7 @@ class JeeOrangeTv extends eqLogic {
     }
 
     public function autoMaJCommande() {
+        $this->autoAjoutCommande();
         // gestion des mises a jour
         global $listCmdJeeOrangeTv;
 
