@@ -159,31 +159,8 @@ class JeeOrangeTv extends eqLogic {
     }
 
     public function autoMaJCommande() {
-
-        global $listCmdJeeOrangeTv;
         $this->setConfiguration('theme', 'light');
-        foreach ($this->getCmd() as $cmd) {
-            foreach ($listCmdJeeOrangeTv as $cmd_config) {
-                if ($cmd->getName()===$cmd_config['name']){
-                    $cmd->setConfiguration('tab_name', $cmd_config['configuration']['tab_name']);
-                    $cmd->setConfiguration('code_touche', $cmd_config['configuration']['code_touche']);
-                    $cmd->setConfiguration('mosaique_chaine', $cmd_config['configuration']['mosaique_chaine']);
-                    $cmd->setConfiguration('etat_decodeur', 0);
-                    $cmd->setConfiguration('chaine_actuelle', $cmd_config['configuration']['chaine_actuelle']);
-                    $cmd->setConfiguration('id_chaine_actuelle', $cmd_config['configuration']['id_chaine_actuelle']);
-                    $cmd->setConfiguration('fonction', $cmd_config['configuration']['fonction']);
-                    $cmd->setType($cmd_config['type']);
-                    $cmd->setSubType($cmd_config['subType']);
-                    $cmd->setOrder($cmd_config['order']);
-                    $cmd->setIsVisible($cmd_config['isVisible']);
-                    $cmd->setDisplay('generic_type', $cmd_config['generic_type']);
-                    $cmd->setDisplay('forceReturnLineAfter', $cmd_config['forceReturnLineAfter']);
-                    $cmd->setValue(0);
-                    $cmd->save();
-                }
-            }
-        }
-    log::add('JeeOrangeTv', 'debug', 'update des commandes OK');
+        $this->save();
     }
 
     // permet de requeter le fichier json en fonction du template
