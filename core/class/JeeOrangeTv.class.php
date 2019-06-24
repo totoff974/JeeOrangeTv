@@ -161,7 +161,7 @@ class JeeOrangeTv extends eqLogic {
     public function autoMaJCommande() {
 
         global $listCmdJeeOrangeTv;
-
+        $this->setConfiguration('theme', 'light');
         foreach ($this->getCmd() as $cmd) {
             foreach ($listCmdJeeOrangeTv as $cmd_config) {
                 if ($cmd->getName()===$cmd_config['name']){
