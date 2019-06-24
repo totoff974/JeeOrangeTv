@@ -1,6 +1,21 @@
 Changelog détaillé :
 <https://github.com/totoff974/JeeOrangeTv/commits/stable>
 
+05-06-2018 16:35
+===
+
+-   Fusion de la télécommande avec la mosaique avec ajout d'un effet slide 
+
+04-06-2018 22:35
+===
+
+-   Refonte totale du plugin
+-   Possibilité de créer des chaînes
+-   Gestion des logos
+-   Optimisation du code
+-   Gestion des thèmes
+-   Ajout de la fonction send EPG
+
 31-01-2018 21:35
 ===
 

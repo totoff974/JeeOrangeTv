@@ -53,7 +53,7 @@ class jeedom_com():
 			changes = self.changes
 			self.changes = {}
 			try:
-				logging.debug('Send to jeedom :  %s' % (str(changes),))
+				# logging.debug('Send to jeedom :  %s' % (str(changes),))
 				r = requests.post(self.url + '?apikey=' + self.apikey, json=changes, timeout=(0.5, 120), verify=False)
 				if r.status_code != requests.codes.ok:
 					logging.error('Error on send request to jeedom, return code %s' % (str(r.status_code),))
@@ -87,7 +87,7 @@ class jeedom_com():
 
 	def send_change_immediate(self, change):
 		try:
-			logging.debug('Send to jeedom :  %s' % (str(change),))
+			# logging.debug('Send to jeedom :  %s' % (str(change),))
 			r = requests.post(self.url + '?apikey=' + self.apikey, json=change, timeout=(0.5, 120), verify=False)
 			if r.status_code != requests.codes.ok:
 				logging.error('Error on send request to jeedom, return code %s' % (str(r.status_code),))

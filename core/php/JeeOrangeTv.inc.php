@@ -17,23 +17,20 @@
  */
 require_once dirname(__FILE__) . "/../../../../core/php/core.inc.php";
 if (!jeedom::apiAccess(init('apikey'), 'JeeOrangeTv')) {
-	echo __('Vous n\'etes pas autorisé à effectuer cette action', __FILE__);
-	die();
+    echo __('Vous n\'etes pas autorisé à effectuer cette action', __FILE__);
+    die();
 }
 if (isset($_GET['test'])) {
-	echo 'OK';
-	die();
+    echo 'OK';
+    die();
 }
 $result = json_decode(file_get_contents("php://input"), true);
 if (!is_array($result)) {
-	die();
+    die();
 }
 
 if (isset($result['devices'])) {
-		
-	foreach ($result['devices'] as $key => $datas) {
-
-		JeeOrangeTv::MaJ_JSON();
-	
-	}
+    foreach ($result['devices'] as $key => $datas) {
+        JeeOrangeTv::MaJ_JSON();
+    }
 }

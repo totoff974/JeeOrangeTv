@@ -17,31 +17,23 @@
 
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 include_file('core', 'authentification', 'php');
-if (!isConnect()) {
-    include_file('desktop', '404', 'php');
-    die();
+if (!isConnect('admin')) {
+    throw new Exception('{{401 - Accès non autorisé}}');
 }
 ?>
 <form class="form-horizontal">
     <fieldset>
             <legend><i class="icon loisir-darth"></i> {{Aide au développement}}</legend>
-			<span><i>Ce plugin est gratuit, le don est laissé au libre choix de chacun en fonction de sa satisfaction pour m'aider au développement. Merci.</i></span>
+            <span><i>Ce plugin est gratuit, le don est laissé au libre choix de chacun en fonction de sa satisfaction pour m'aider au développement. Merci.</i></span>
     </fieldset>
-	
     <fieldset>
             <legend><i class="icon loisir-darth"></i> {{Configuration de Tv Orange}}</legend>
             <div class="form-group">
                 <label class="col-sm-4 control-label">{{Fréquence d'interrogation des décodeurs (en secondes) :}}</label>
                 <div class="col-sm-4">
-					<input type="number" min="1" max="600" class="configKey form-control" data-l1key="freq_actu"/>
+                    <input type="number" min="1" max="600" class="configKey form-control" data-l1key="freq_actu"/>
                </div>
-           </div>	
-            <div class="form-group">
-                <label class="col-sm-4 control-label">{{Affichage sous forme de Widget :}}</label>
-                <div class="col-sm-4">
-					<label class="checkbox-inline"><input type="checkbox" class="configKey" data-l1key="widget" checked />{{Activer}}</label>
-               </div>
-           </div>		
+           </div>
     </fieldset>
 </form>
 <form class="form-horizontal">
