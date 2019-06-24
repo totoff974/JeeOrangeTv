@@ -159,16 +159,6 @@ class JeeOrangeTv extends eqLogic {
     }
 
     public function autoMaJCommande() {
-        global $listCmdJeeOrangeTv;
-        foreach ($this->getCmd() as $cmd) {
-            foreach ($listCmdJeeOrangeTv as $cmd_config) {
-                if (($cmd->getName()==$cmd_config['name']) AND ($cmd->getConfiguration('code_touche')!=$cmd_config['configuration']['code_touche'])){
-                    $cmd->setConfiguration('code_touche', $cmd_config['configuration']['code_touche']);
-                    $cmd->save();
-                }
-            }
-        }
-    log::add('JeeOrangeTv', 'debug', 'update des commandes OK');
     }
 
     // permet de requeter le fichier json en fonction du template
