@@ -1,12 +1,17 @@
 Changelog détaillé :
 <https://github.com/totoff974/JeeOrangeTv/commits/stable>
 
-05-06-2018 16:35
+24-06-2019 16:10
+===
+
+-   ATTENTION CETTE MISE A JOUR NECESSITE DE RECREER LES EQUIPEMENTS !
+
+05-06-2019 16:35
 ===
 
 -   Fusion de la télécommande avec la mosaique avec ajout d'un effet slide 
 
-04-06-2018 22:35
+04-06-2019 22:35
 ===
 
 -   Refonte totale du plugin
