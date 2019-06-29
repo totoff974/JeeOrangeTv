@@ -1,6 +1,12 @@
 Changelog détaillé :
 <https://github.com/totoff974/JeeOrangeTv/commits/stable>
 
+29-06-2019 21:30
+===
+
+-   Réduction du temps entre deux touches lors du zapping à 300ms
+-   Activation de la vue mobile (identique au dash)
+
 24-06-2019 16:10
 ===
 
