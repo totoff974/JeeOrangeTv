@@ -103,7 +103,9 @@ try {
         
         $filename = $_FILES['file']['name'];
         $filepath = __DIR__ . '/../template/dashboard/images/Mosaique/' . $filename;
+        $filepath_mobile = __DIR__ . '/../template/mobile/images/Mosaique/' . $filename;
         move_uploaded_file($_FILES['file']['tmp_name'], $filepath);
+        move_uploaded_file($_FILES['file']['tmp_name'], $filepath_mobile);
         if(!file_exists($filepath)){
             throw new \Exception(__('Impossible de sauvegarder l\'image' . $filepath,__FILE__));
         }
@@ -117,6 +119,7 @@ try {
         unautorizedInDemo();
         $filename = init('filename');
         @rrmdir(__DIR__ . '/../template/dashboard/images/Mosaique/' . $filename);
+        @rrmdir(__DIR__ . '/../template/mobile/images/Mosaique/' . $filename);
         ajax::success();
     }
 
