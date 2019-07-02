@@ -636,7 +636,7 @@ class JeeOrangeTvCmd extends cmd {
                         $code_touche = $action->getConfiguration('code_touche');
                         if ($code_touche != "") {
                             $eqLogic->ActionTouche($box_ip, $code_touche, $code_mode);
-                            sleep(1);
+                            usleep(300000);
                         }
                         else {
                             log::add('JeeOrangeTv', 'debug', '    |---> Action non executée pour "' . $eqLogic->getName() . '" car code touche vide vérifier paramètres des touches');
