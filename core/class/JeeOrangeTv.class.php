@@ -518,7 +518,7 @@ class JeeOrangeTv extends eqLogic {
                             $replace['#etat_decodeur#'] = '';
                             break;
                         case 1:
-                            $replace['#etat_decodeur#'] = '<img class="onoff_' . $this->getId() . '" title="ON/OFF" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Widget/on_' . $theme . '.png" style="position:absolute;top:0px;left:0px;z-index: 99;">';
+                            $replace['#etat_decodeur#'] = '<img class="touche_' . $this->getId() . '" data-cmd="#cmd_ON-OFF_id#" title="ON/OFF" src="plugins/JeeOrangeTv/core/template/' . $_version . '/images/Widget/on_' . $theme . '.png" style="position:absolute;top:0px;left:0px;z-index: 99;">';
                             break;
                         case -1:
                             $replace['#etat_decodeur#'] = '';
