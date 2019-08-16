@@ -1,5 +1,5 @@
 Changelog détaillé :
-<https://github.com/totoff974/JeeOrangeTv/commits/stable>
+<https://github.com/totoff974/JeeOrangeTv/commits/master>
 
 16-08-2019 11:00
 ===
