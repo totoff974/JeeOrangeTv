@@ -1,6 +1,11 @@
 Changelog détaillé :
 <https://github.com/totoff974/JeeOrangeTv/commits/stable>
 
+16-08-2019 11:00
+===
+
+-   Fix php 7.3 (object -> jeeObject)
+
 29-06-2019 21:30
 ===
 
