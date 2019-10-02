@@ -1,6 +1,11 @@
 Changelog détaillé :
 <https://github.com/totoff974/JeeOrangeTv/commits/master>
 
+02-10-2019 22:30
+===
+
+-   Correction du bug affichage de la chaine actuelle
+
 16-08-2019 11:00
 ===
 
