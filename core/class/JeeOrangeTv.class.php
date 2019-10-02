@@ -281,7 +281,8 @@ class JeeOrangeTv extends eqLogic {
                                 $recherche = (array) cmd::searchConfiguration($playId);
                                 foreach ($recherche as $equip => $result) {
                                     $id_trouv = $result->geteqLogic_id();
-                                    if (($id_trouv === $id_actu)) {
+                                    $playId_trouv = intval($result->getConfiguration('ch_epg'));
+                                    if ($playId_trouv === $playId AND $id_actu === $id_trouv) {
                                         $id_chaine_actu = $result->getId();
                                         $chaine_actu = $result->getName();
                                         break;
