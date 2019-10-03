@@ -1,6 +1,11 @@
 Changelog détaillé :
 <https://github.com/totoff974/JeeOrangeTv/commits/master>
 
+03-10-2019 12:00
+===
+
+-   Correction du bug affichage version mobile
+
 02-10-2019 22:30
 ===
 
