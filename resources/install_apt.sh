@@ -1,4 +1,4 @@
-PROGRESS_FILE=/tmp/dependancy_JeeMySensors_in_progress
+PROGRESS_FILE=/tmp/dependancy_JeeOrangeTv_in_progress
 if [ ! -z $1 ]; then
 	PROGRESS_FILE=$1
 fi
