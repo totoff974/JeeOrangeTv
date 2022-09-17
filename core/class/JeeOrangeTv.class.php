@@ -26,108 +26,48 @@ class JeeOrangeTv extends eqLogic {
 
     /*     * ***********************Methode static*************************** */
 
-    public static function dependancy_info() {
-        $return = array();
-        $return['progress_file'] = jeedom::getTmpFolder('JeeOrangeTv') . '/dependance';
-        if (exec(system::getCmdSudo() . system::get('cmd_check') . '-E "python\-serial|python\-request|python\-pyudev" | wc -l') >= 3) {
-            $return['state'] = 'ok';
-        } else {
-            $return['state'] = 'nok';
-        }
-        return $return;
-    }
-
-    public static function dependancy_install() {
-        log::remove(__CLASS__ . '_update');
-        return array('script' => dirname(__FILE__) . '/../../resources/install_#stype#.sh ' . jeedom::getTmpFolder('JeeOrangeTv') . '/dependance', 'log' => log::getPathToLog(__CLASS__ . '_update'));
-    }
-
     public static function deamon_info() {
-        $return = array();
-        $return['log'] = 'JeeOrangeTv';
-        $return['state'] = 'nok';
-        $pid_file = jeedom::getTmpFolder('JeeOrangeTv') . '/deamon.pid';
-        if (file_exists($pid_file)) {
-            $pid = trim(file_get_contents($pid_file));
-            if (is_numeric($pid) && posix_getsid($pid)) {
-                $return['state'] = 'ok';
-            } else {
-                shell_exec(system::getCmdSudo() . 'rm -rf ' . $pid_file . ' 2>&1 > /dev/null;rm -rf ' . $pid_file . ' 2>&1 > /dev/null;');
-            }
-        }
-        $return['launchable'] = 'ok';
-        return $return;
-    }
+		$return = array();
+		$return['log'] = '';
+		$return['state'] = 'nok';
+		$cron = cron::byClassAndFunction(__CLASS__, 'MaJ_JSON');
+		if (is_object($cron) && $cron->running()) {
+			$return['state'] = 'ok';
+		}
+		$return['launchable'] = 'ok';
+		return $return;
+	}
 
-    public static function deamon_start() {
-        self::deamon_stop();
-        $deamon_info = self::deamon_info();
-        if ($deamon_info['launchable'] != 'ok') {
-            throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
-        }
+	public static function deamon_start() {
+		self::deamon_stop();
+		$deamon_info = self::deamon_info();
+		if ($deamon_info['launchable'] != 'ok') {
+			throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
+		}
+		$cron = cron::byClassAndFunction(__CLASS__, 'MaJ_JSON');
+		if (!is_object($cron)) {
+			throw new Exception(__('Tache cron introuvable', __FILE__));
+		}
+		$cron->run();
+	}
 
-        $JeeOrangeTv_path = realpath(dirname(__FILE__) . '/../../resources/JeeOrangeTvd');
-        $cmd = '/usr/bin/python ' . $JeeOrangeTv_path . '/JeeOrangeTvd.py';
-        // $cmd .= ' --ip ' . $port;
-        // $cmd .= ' --freq ' . $port;
-        $cmd .= ' --socketport ' . config::byKey('socketport', 'JeeOrangeTv');
-        $cmd .= ' --cycle ' . config::byKey('cycle', 'JeeOrangeTv');
-        $cmd .= ' --freq_actu ' . config::byKey('freq_actu', 'JeeOrangeTv');
-        $cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel('JeeOrangeTv'));
-        $cmd .= ' --apikey ' . jeedom::getApiKey('JeeOrangeTv');
-        $cmd .= ' --pid ' . jeedom::getTmpFolder('JeeOrangeTv') . '/deamon.pid';
-        $cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/JeeOrangeTv/core/php/JeeOrangeTv.inc.php';
+	public static function deamon_stop() {
+		$cron = cron::byClassAndFunction(__CLASS__, 'MaJ_JSON');
+		if (!is_object($cron)) {
+			throw new Exception(__('Tache cron introuvable', __FILE__));
+		}
+		$cron->halt();
+	}
 
-        log::add('JeeOrangeTv', 'info', 'Lancement démon JeeOrangeTvd : ' . $cmd)
-;
-        exec($cmd . ' >> ' . log::getPathToLog('JeeOrangeTv') . ' 2>&1 &');
-        $i = 0;
-        while ($i < 30) {
-            $deamon_info = self::deamon_info();
-            if ($deamon_info['state'] == 'ok') {
-                break;
-            }
-            sleep(1);
-            $i++;
-        }
-        if ($i >= 30) {
-            log::add('JeeOrangeTv', 'error', 'Impossible de lancer le démon JeeOrangeTv, vérifiez le log', 'unableStartDeamon');
-            return false;
-        }
-        message::removeAll('JeeOrangeTv', 'unableStartDeamon');
-        sleep(2);
-        self::sendIdToDeamon();
-        config::save('include_mode', 0, 'JeeOrangeTv');
-        log::add('JeeOrangeTv', 'info', 'Démon JeeOrangeTv lancé');
-        return true;
-    }
+	public static function deamon_changeAutoMode($_mode) {
+		$cron = cron::byClassAndFunction(__CLASS__, 'MaJ_JSON');
+		if (!is_object($cron)) {
+			throw new Exception(__('Tache cron introuvable', __FILE__));
+		}
+		$cron->setEnable($_mode);
+		$cron->save();
+	}
 
-    public static function deamon_stop() {
-        $pid_file = jeedom::getTmpFolder('JeeOrangeTv') . '/deamon.pid';
-        if (file_exists($pid_file)) {
-            $pid = intval(trim(file_get_contents($pid_file)));
-            system::kill($pid);
-        }
-        system::kill('JeeOrangeTvd.py');
-        system::fuserk(config::byKey('socketport', 'JeeOrangeTv'));
-        sleep(1);
-    }
-
-    public static function sendIdToDeamon() {
-        foreach (self::byType('JeeOrangeTv') as $eqLogic) {
-            $eqLogic->allowDevice();
-            usleep(300);
-        }
-    }
-
-    public function allowDevice() {
-        $value = array('apikey' => jeedom::getApiKey('JeeOrangeTv'));
-        $value = json_encode($value);
-        $socket = socket_create(AF_INET, SOCK_STREAM, 0);
-        socket_connect($socket, '127.0.0.1', config::byKey('socketport', 'JeeOrangeTv'));
-        socket_write($socket, $value, strlen($value));
-        socket_close($socket);
-    }
     /*
      * Fonction exécutée automatiquement toutes les minutes par Jeedom
       public static function cron() {
