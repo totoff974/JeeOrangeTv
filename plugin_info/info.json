@@ -6,7 +6,7 @@
     "author" : "Christophe CHAMANT",
     "require" : "3.0",
     "category" : "multimedia",
-    "hasDependency" : true,
+    "hasDependency" : false,
     "hasOwnDeamon" : true,
     "maxDependancyInstallTime" : 120,
     "changelog" : "https://totoff974.github.io/JeeOrangeTv/#language#/changelog",
