@@ -10,5 +10,7 @@
     "hasOwnDeamon" : true,
     "maxDependancyInstallTime" : 120,
     "changelog" : "https://totoff974.github.io/JeeOrangeTv/#language#/changelog",
-    "documentation" : "https://totoff974.github.io/JeeOrangeTv/#language#/"
+    "documentation" : "https://totoff974.github.io/JeeOrangeTv/#language#/",
+    "changelog_beta" : "https://totoff974.github.io/JeeOrangeTv/#language#/changelog",
+	"documentation_beta" : "https://totoff974.github.io/JeeOrangeTv/#language#/"
 }
